@@ -10,7 +10,7 @@ from mpl_toolkits.mplot3d import Axes3D
 X1=0                     #Result variables
 Y1=0
 Z1=0
-Z_body=1.5               #Input variables
+Z_body=1                #Input variables
 Theta1=90
 Phi1=0
 Alpha1=0
