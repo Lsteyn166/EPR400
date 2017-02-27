@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d6a4c8b6-264c-44fc-999b-2e2c80966fea" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Animation Example.py" afterPath="$PROJECT_DIR$/Animation Example.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Inverse Kinematics.py" afterPath="$PROJECT_DIR$/Inverse Kinematics.py" />
-    </list>
+    <list default="true" id="d6a4c8b6-264c-44fc-999b-2e2c80966fea" name="Default" comment="" />
     <ignored path="Python code.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,7 +20,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Inverse Kinematics.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Inverse Kinematics.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Inverse Kinematics.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
@@ -35,11 +32,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Animation Example.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Animation Example.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Animation Example.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="314">
-              <caret line="25" column="11" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
+              <caret line="25" column="10" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
               <folding>
                 <element signature="e#45#63#0" expanded="true" />
               </folding>
@@ -55,8 +52,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Inverse Kinematics.py" />
         <option value="$PROJECT_DIR$/Animation Example.py" />
+        <option value="$PROJECT_DIR$/Inverse Kinematics.py" />
       </list>
     </option>
   </component>
@@ -318,7 +315,14 @@
       <option name="project" value="LOCAL" />
       <updated>1488221198412</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added to repo">
+      <created>1488223882901</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1488223882901</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView">
@@ -384,7 +388,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Changed Z_body to 0.5" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed Z_body to 0.5" />
+    <MESSAGE value="Added to repo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added to repo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -413,22 +418,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Animation Example.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="25" column="10" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
+          <folding>
+            <element signature="e#45#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Inverse Kinematics.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="24" column="14" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
           <folding>
             <element signature="e#96#107#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Animation Example.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="25" column="11" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
-          <folding>
-            <element signature="e#45#63#0" expanded="true" />
           </folding>
         </state>
       </provider>
