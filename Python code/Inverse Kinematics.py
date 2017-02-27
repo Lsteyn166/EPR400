@@ -5,12 +5,14 @@
 import math
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
+import numpy as np
+import matplotlib.animation as animation
 #Declare variables used
 
-X1=0                     #Result variables
-Y1=0
+X1=1                     #Result variables
+Y1=1
 Z1=0
-Z_body=1                #Input variables
+Z_body=0.5                #Input variables
 Theta1=90
 Phi1=0
 Alpha1=0
@@ -23,7 +25,7 @@ Leg1MountAngle=0
 AbsDistance1=0
 
 #Calculations
-if (Y1!=0 & X1!=0):
+if (Y1!=0 and X1!=0):
     Theta1 = math.atan2(X1, Y1)
 else:
     Theta1 = math.radians(90)
@@ -66,21 +68,20 @@ LegX=[0,A]
 LegY=[0,A*math.cos(math.radians(Theta1))]
 LegZ=[Z_body,Z_body]
 ax.plot(LegX,LegY,LegZ,label='A',color='#FF0000')
-print(LegY)
+
 
 #Plot segment B
 LegX=[A,A+B*math.sin(math.radians(Phi1))]
 LegY=[A*math.cos(math.radians(Theta1)),A*math.cos(math.radians(Theta1))+B*math.cos(math.radians(Theta1))]
 LegZ=[Z_body,Z_body+B*math.cos(math.radians(Phi1))]
 ax.plot(LegX,LegY,LegZ,label='B',color='#00FF00')#
-print(LegY)
 
 #Plot segment C
 LegX=[A+B*math.sin(math.radians(Phi1)),A+B*math.sin(math.radians(Phi1))+C*math.sin(math.radians(Phi1)+math.radians(Alpha1)-math.radians(90))]
 LegY=[A*math.cos(math.radians(Theta1))+B*math.cos(math.radians(Theta1)),A*math.cos(math.radians(Theta1))+B*math.cos(math.radians(Theta1))+C*math.cos(math.radians(Theta1))]
 LegZ=[Z_body+B*math.cos(math.radians(Phi1)),Z_body+B*math.cos(math.radians(Phi1))+C*math.cos(math.radians(Phi1)+math.radians(Alpha1)-math.radians(90))]
 ax.plot(LegX,LegY,LegZ,label='C',color='#0000FF')#
-print(LegY)
+
 # 2D Plot
 # plt.plot(LegX,LegZ);
 # plt.axis([-1,3, -1, 3])
