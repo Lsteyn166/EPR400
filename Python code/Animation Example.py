@@ -23,4 +23,4 @@ def init():
 
 ani = animation.FuncAnimation(fig, animate, np.arange(1, 200), init_func=init,
                               interval=25, blit=True)
-plt.show() 
+plt.show()
