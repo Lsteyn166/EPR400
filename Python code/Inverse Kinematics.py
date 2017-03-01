@@ -9,7 +9,7 @@ import numpy as np
 import matplotlib.animation as animation
 #Declare variables used
 
-X1=1                     #Result variables
+X1=1#Result variables
 Y1=1
 Z1=0
 Z_body=0.5                #Input variables
@@ -24,26 +24,32 @@ Radius=1
 Leg1MountAngle=0
 AbsDistance1=0
 
-#Calculations
-if (Y1!=0 and X1!=0):
-    Theta1 = math.atan2(X1, Y1)
-else:
-    Theta1 = math.radians(90)
+####################################CALCULATIONS#####################################################
+
+#Calculate Theta
+Theta1 = math.atan2(X1, Y1)
 Theta1=math.degrees(Theta1)
 print("Theta")
 print(Theta1)
-AbsDistance1=math.sqrt(X1**2+Y1**2+(Z_body-Z1)**2)        #Absolute Distance from Joint 1 to foot
-Reach1=math.sqrt(X1**2+Y1**2)
-# print("Abs")
-# print(AbsDistance1)
-x=(B**2+C**2-AbsDistance1**2)/(2*B*C)
+
+#Calculate Phi & Alpha
+#AbsDistance1=math.sqrt(X1**2+Y1**2+(Z_body-Z1)**2)          #Absolute Distance from Joint 1 to foot
+Reach1=math.sqrt(X1**2+Y1**2)                               #Horizontal Distance from Joint 1 to foot
+#Calculate absolute distance between Joint 2 to foot:
+x=A*math.sin(math.radians(Theta1))
+y=A*math.cos(math.radians(Theta1))
+z=Z_body
+TwoToFoot=math.sqrt((X1-x)**2+(Y1-y)**2+(Z1-z)**2)
+print("TwoToFoot")
+print(TwoToFoot)
+x=(B**2+C**2-TwoToFoot**2)/(2*B*C)
 d=math.acos(x)
 # print("d")
 # print(math.degrees(d))
 Alpha1=270-math.degrees(d)
 print("Alpha")
 print(Alpha1)
-c=math.asin(C*math.sin(d)/AbsDistance1)
+c=math.asin(C*math.sin(d)/TwoToFoot)
 # print("c")
 # print(math.degrees(c))
 e=math.atan2(Reach1,Z_body-Z1)
@@ -64,20 +70,20 @@ ax=fig.add_subplot(111,projection='3d')
 
 
 #Plot segment A
-LegX=[0,A]
+LegX=[0,A*math.sin(math.radians(Theta1))]
 LegY=[0,A*math.cos(math.radians(Theta1))]
 LegZ=[Z_body,Z_body]
 ax.plot(LegX,LegY,LegZ,label='A',color='#FF0000')
 
 
 #Plot segment B
-LegX=[A,A+B*math.sin(math.radians(Phi1))]
+LegX=[A*math.sin(math.radians(Theta1)),A*math.sin(math.radians(Theta1))+B*math.sin(math.radians(Phi1))*math.sin(math.radians(Theta1))]
 LegY=[A*math.cos(math.radians(Theta1)),A*math.cos(math.radians(Theta1))+B*math.cos(math.radians(Theta1))]
 LegZ=[Z_body,Z_body+B*math.cos(math.radians(Phi1))]
 ax.plot(LegX,LegY,LegZ,label='B',color='#00FF00')#
 
 #Plot segment C
-LegX=[A+B*math.sin(math.radians(Phi1)),A+B*math.sin(math.radians(Phi1))+C*math.sin(math.radians(Phi1)+math.radians(Alpha1)-math.radians(90))]
+LegX=[A*math.sin(math.radians(Theta1))+B*math.sin(math.radians(Phi1))*math.sin(math.radians(Theta1)),A*math.sin(math.radians(Theta1))+B*math.sin(math.radians(Phi1))*math.sin(math.radians(Theta1))+C*math.sin(math.radians(Phi1)+math.radians(Alpha1)-math.radians(90))*math.sin(math.radians(Theta1))]
 LegY=[A*math.cos(math.radians(Theta1))+B*math.cos(math.radians(Theta1)),A*math.cos(math.radians(Theta1))+B*math.cos(math.radians(Theta1))+C*math.cos(math.radians(Theta1))]
 LegZ=[Z_body+B*math.cos(math.radians(Phi1)),Z_body+B*math.cos(math.radians(Phi1))+C*math.cos(math.radians(Phi1)+math.radians(Alpha1)-math.radians(90))]
 ax.plot(LegX,LegY,LegZ,label='C',color='#0000FF')#
