@@ -9,8 +9,8 @@ import numpy as np
 import matplotlib.animation as animation
 #Declare variables used
 
-X1=1#Result variables
-Y1=1
+X1=0#Result variables
+Y1=2
 Z1=0
 Z_body=0.5                #Input variables
 Theta1=90
@@ -74,20 +74,21 @@ LegX=[0,A*math.sin(math.radians(Theta1))]
 LegY=[0,A*math.cos(math.radians(Theta1))]
 LegZ=[Z_body,Z_body]
 ax.plot(LegX,LegY,LegZ,label='A',color='#FF0000')
-
+print(LegZ[1])
 
 #Plot segment B
 LegX=[A*math.sin(math.radians(Theta1)),A*math.sin(math.radians(Theta1))+B*math.sin(math.radians(Phi1))*math.sin(math.radians(Theta1))]
-LegY=[A*math.cos(math.radians(Theta1)),A*math.cos(math.radians(Theta1))+B*math.cos(math.radians(Theta1))]
+LegY=[A*math.cos(math.radians(Theta1)),A*math.cos(math.radians(Theta1))+B*math.cos(math.radians(Phi1))*math.cos(math.radians(Theta1))]
 LegZ=[Z_body,Z_body+B*math.cos(math.radians(Phi1))]
 ax.plot(LegX,LegY,LegZ,label='B',color='#00FF00')#
-
+print(LegZ[1])
 #Plot segment C
 LegX=[A*math.sin(math.radians(Theta1))+B*math.sin(math.radians(Phi1))*math.sin(math.radians(Theta1)),A*math.sin(math.radians(Theta1))+B*math.sin(math.radians(Phi1))*math.sin(math.radians(Theta1))+C*math.sin(math.radians(Phi1)+math.radians(Alpha1)-math.radians(90))*math.sin(math.radians(Theta1))]
-LegY=[A*math.cos(math.radians(Theta1))+B*math.cos(math.radians(Theta1)),A*math.cos(math.radians(Theta1))+B*math.cos(math.radians(Theta1))+C*math.cos(math.radians(Theta1))]
+LegY=[A*math.cos(math.radians(Theta1))+B*math.cos(math.radians(Phi1))*math.cos(math.radians(Theta1)),A*math.cos(math.radians(Theta1))+B*math.cos(math.radians(Phi1))*math.cos(math.radians(Theta1))+C*math.cos(math.radians(Phi1)+math.radians(Alpha1)-math.radians(90))*math.cos(math.radians(Theta1))]
 LegZ=[Z_body+B*math.cos(math.radians(Phi1)),Z_body+B*math.cos(math.radians(Phi1))+C*math.cos(math.radians(Phi1)+math.radians(Alpha1)-math.radians(90))]
 ax.plot(LegX,LegY,LegZ,label='C',color='#0000FF')#
-
+#TODO Why is argument phi+alpha-90? Confirm this
+print(LegZ[1])
 # 2D Plot
 # plt.plot(LegX,LegZ);
 # plt.axis([-1,3, -1, 3])
@@ -99,5 +100,6 @@ ax.legend()
 ax.set_xlabel('X')
 ax.set_ylabel('Y')
 ax.set_zlabel('Z')
-ax.axis([-3,3,-3,3])
+ax.axis([-1.5,2,0,3])
+ax.set_zlim3d(0,3)
 plt.show()
