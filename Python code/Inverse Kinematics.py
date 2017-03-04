@@ -9,10 +9,10 @@ import numpy as np
 import matplotlib.animation as animation
 #Declare variables used
 
-X1=0#Result variables
-Y1=2
+X1=-1.5                        #Result variables
+Y1=1.5
 Z1=0
-Z_body=0.5                #Input variables
+Z_body=0.5                  #Input variables
 Theta1=90
 Phi1=0
 Alpha1=0
@@ -34,27 +34,28 @@ print(Theta1)
 
 #Calculate Phi & Alpha
 #AbsDistance1=math.sqrt(X1**2+Y1**2+(Z_body-Z1)**2)          #Absolute Distance from Joint 1 to foot
-Reach1=math.sqrt(X1**2+Y1**2)                               #Horizontal Distance from Joint 1 to foot
 #Calculate absolute distance between Joint 2 to foot:
 x=A*math.sin(math.radians(Theta1))
 y=A*math.cos(math.radians(Theta1))
 z=Z_body
-TwoToFoot=math.sqrt((X1-x)**2+(Y1-y)**2+(Z1-z)**2)
-print("TwoToFoot")
-print(TwoToFoot)
+Reach1=math.sqrt((X1-x)**2+(Y1-y)**2)                       #Horizontal Distance from Joint 2 to foot
+TwoToFoot=math.sqrt((X1-x)**2+(Y1-y)**2+(Z1-z)**2)          #Absolute Distance from Joint 1 to foot
+#print("TwoToFoot")
+#print(TwoToFoot)
 x=(B**2+C**2-TwoToFoot**2)/(2*B*C)
+#print(x)
 d=math.acos(x)
-# print("d")
-# print(math.degrees(d))
+#print("d")
+#print(math.degrees(d))
 Alpha1=270-math.degrees(d)
 print("Alpha")
 print(Alpha1)
 c=math.asin(C*math.sin(d)/TwoToFoot)
-# print("c")
-# print(math.degrees(c))
+#print("c")
+#print(math.degrees(c))
 e=math.atan2(Reach1,Z_body-Z1)
-# print("e")
-# print(math.degrees(e))
+#print("e")
+#print(math.degrees(e))
 Phi1=180-math.degrees(c)-math.degrees(e)
 print("Phi")
 print(Phi1)
@@ -74,21 +75,19 @@ LegX=[0,A*math.sin(math.radians(Theta1))]
 LegY=[0,A*math.cos(math.radians(Theta1))]
 LegZ=[Z_body,Z_body]
 ax.plot(LegX,LegY,LegZ,label='A',color='#FF0000')
-print(LegZ[1])
 
 #Plot segment B
 LegX=[A*math.sin(math.radians(Theta1)),A*math.sin(math.radians(Theta1))+B*math.sin(math.radians(Phi1))*math.sin(math.radians(Theta1))]
-LegY=[A*math.cos(math.radians(Theta1)),A*math.cos(math.radians(Theta1))+B*math.cos(math.radians(Phi1))*math.cos(math.radians(Theta1))]
+LegY=[A*math.cos(math.radians(Theta1)),A*math.cos(math.radians(Theta1))+B*math.sin(math.radians(Phi1))*math.cos(math.radians(Theta1))]
 LegZ=[Z_body,Z_body+B*math.cos(math.radians(Phi1))]
 ax.plot(LegX,LegY,LegZ,label='B',color='#00FF00')#
-print(LegZ[1])
+
 #Plot segment C
 LegX=[A*math.sin(math.radians(Theta1))+B*math.sin(math.radians(Phi1))*math.sin(math.radians(Theta1)),A*math.sin(math.radians(Theta1))+B*math.sin(math.radians(Phi1))*math.sin(math.radians(Theta1))+C*math.sin(math.radians(Phi1)+math.radians(Alpha1)-math.radians(90))*math.sin(math.radians(Theta1))]
-LegY=[A*math.cos(math.radians(Theta1))+B*math.cos(math.radians(Phi1))*math.cos(math.radians(Theta1)),A*math.cos(math.radians(Theta1))+B*math.cos(math.radians(Phi1))*math.cos(math.radians(Theta1))+C*math.cos(math.radians(Phi1)+math.radians(Alpha1)-math.radians(90))*math.cos(math.radians(Theta1))]
+LegY=[A*math.cos(math.radians(Theta1))+B*math.sin(math.radians(Phi1))*math.cos(math.radians(Theta1)),A*math.cos(math.radians(Theta1))+B*math.sin(math.radians(Phi1))*math.cos(math.radians(Theta1))+C*math.sin(math.radians(Phi1)+math.radians(Alpha1)-math.radians(90))*math.cos(math.radians(Theta1))]
 LegZ=[Z_body+B*math.cos(math.radians(Phi1)),Z_body+B*math.cos(math.radians(Phi1))+C*math.cos(math.radians(Phi1)+math.radians(Alpha1)-math.radians(90))]
 ax.plot(LegX,LegY,LegZ,label='C',color='#0000FF')#
-#TODO Why is argument phi+alpha-90? Confirm this
-print(LegZ[1])
+print(LegX[1],LegY[1],LegZ[1])
 # 2D Plot
 # plt.plot(LegX,LegZ);
 # plt.axis([-1,3, -1, 3])
