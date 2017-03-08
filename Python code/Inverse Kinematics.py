@@ -38,22 +38,21 @@ def Plotleg (Theta,Phi,Alpha,leg):
     LegX = [A * math.sin(Theta), A * math.sin(Theta) + B * math.sin(Phi) * math.sin(Theta)]
     LegY = [A * math.cos(Theta), A * math.cos(Theta) + B * math.sin(Phi) * math.cos(Theta)]
     LegZ = [Z_body, Z_body + B * math.cos(Phi)]
-    ax.plot(LegX, LegY, LegZ, color='#00FF00')  #
+    ax.plot(LegX, LegY, LegZ, color='#00FF00')
 
     # Plot segment C
     LegX = [A * math.sin(Theta) + B * math.sin(Phi) * math.sin(Theta),A * math.sin(Theta) + B * math.sin(Phi) * math.sin(Theta) + C * math.sin(Phi + Alpha - math.radians(90)) * math.sin(Theta)]
     LegY = [A * math.cos(Theta) + B * math.sin(Phi) * math.cos(Theta),A * math.cos(Theta) + B * math.sin(Phi) * math.cos(Theta) + C * math.sin(Phi + Alpha - math.radians(90)) * math.cos(Theta)]
     LegZ = [Z_body + B * math.cos(Phi), Z_body + B * math.cos(Phi) + C * math.cos(Phi + Alpha - math.radians(90))]
-    ax.plot(LegX, LegY, LegZ, color='#0000FF')  #
-    print(LegX[1], LegY[1], LegZ[1])
+    ax.plot(LegX, LegY, LegZ, color='#0000FF')
+    print (LegX[1], LegY[1], LegZ[1]),"\n\r"
     return
 
 def IK(X,Y,Z,leg):
+    "This function calculates the servo positions required for speccific coordinates"
     Theta = math.atan2(X, Y)  # Calculate Theta
     # Theta1=math.degrees(Theta1)
-    print("Theta")
-    print(math.degrees(Theta))
-
+    print "Theta",leg,"=",math.degrees(Theta)
     ###Calculate Phi & Alpha:
     # Calculate absolute distance between Joint 2 to foot:
     x1 = A * math.sin(Theta)
@@ -70,8 +69,7 @@ def IK(X,Y,Z,leg):
     # print(math.degrees(d))
     Alpha = 270 - math.degrees(d)
     Alpha = math.radians(Alpha)
-    print("Alpha")
-    print(math.degrees(Alpha))
+    print "Alpha",leg,"=",math.degrees(Alpha)
     c = math.asin(C * math.sin(d) / TwoToFoot)
     # print("c")
     # print(math.degrees(c))
@@ -80,9 +78,12 @@ def IK(X,Y,Z,leg):
     # print(math.degrees(e))
     Phi = 180 - math.degrees(c) - math.degrees(e)
     Phi = math.radians(Phi)
-    print("Phi")
-    print(math.degrees(Phi))
+    print "Phi  ",leg,"=",math.degrees(Phi)
     return Theta,Phi,Alpha
+
+def Rotate(leg):
+    "This function rotates the coordinates of a specific leg to its required position"
+    return
 
 ####################################  Main   #####################################################
 
@@ -98,33 +99,34 @@ ax.plot(blank,blank,blank,label="Segment C", color='#0000FF')
 
 #Leg 1
 X=1.5
-Y=1.5
+Y=0
 Theta,Phi,Alpha=IK(X,Y,Z,1)
 Plotleg(Theta,Phi,Alpha,1)
 
 #Leg 2
-X=-1.5
-Y=1.5
-Theta,Phi,Alpha=IK(X,Y,Z,1)
-Plotleg(Theta,Phi,Alpha,1)
+# X=-1.5
+# Y=1.5
+Theta,Phi,Alpha=IK(X,Y,Z,2)
+Plotleg(Theta,Phi,Alpha,2)
 
 #Leg 3
-X=-1.5
-Y=-1.5
-Theta,Phi,Alpha=IK(X,Y,Z,1)
-Plotleg(Theta,Phi,Alpha,1)
+# X=-1.5
+# Y=-1.5
+# Theta,Phi,Alpha=IK(X,Y,Z,3)
+# Plotleg(Theta,Phi,Alpha,3)
 
 #Leg 4
-X=1.5
-Y=-1.5
-Theta,Phi,Alpha=IK(X,Y,Z,1)
-Plotleg(Theta,Phi,Alpha,1)
+# X=1.5
+# Y=-1.5
+# Theta,Phi,Alpha=IK(X,Y,Z,4)
+# Plotleg(Theta,Phi,Alpha,4)
 
 #Leg 5
-X=2.5
-Y=0
-Theta,Phi,Alpha=IK(X,Y,Z,1)
-Plotleg(Theta,Phi,Alpha,1)
+# X=2
+# Y=0
+# Z=1.5
+# Theta,Phi,Alpha=IK(X,Y,Z,5)
+# Plotleg(Theta,Phi,Alpha,5)
 
 # 2D Plot
 # plt.plot(LegX,LegZ);
@@ -133,7 +135,6 @@ Plotleg(Theta,Phi,Alpha,1)
 
 
 ax.legend()
-
 ax.set_xlabel('X')
 ax.set_ylabel('Y')
 ax.set_zlabel('Z')
