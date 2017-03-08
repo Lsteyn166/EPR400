@@ -7,6 +7,8 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
 import matplotlib.animation as animation
+from matplotlib.patches import Circle, PathPatch
+import mpl_toolkits.mplot3d.art3d as art3d
 #Declare variables used
 
 X=0                       #Result variables
@@ -20,7 +22,7 @@ Reach=0
 A=1
 B=1
 C=1
-Radius=1
+Radius=0.5
 Leg1MountAngle=0
 AbsDistance1=0
 
@@ -28,21 +30,24 @@ AbsDistance1=0
 
 def Plotleg (Theta,Phi,Alpha,leg):
     "This function plots a leg after the inverse kinematics are calculated"
+    # Call the translatiom function
+    offsetx, offsety = Translate(leg)
+
     # Plot segment A
-    LegX = [0, A * math.sin(Theta)]
-    LegY = [0, A * math.cos(Theta)]
+    LegX = [offsetx, offsetx+A * math.sin(Theta)]
+    LegY = [offsety, offsety+A * math.cos(Theta)]
     LegZ = [Z_body, Z_body]
     ax.plot(LegX, LegY, LegZ, color='#FF0000')
 
     # Plot segment B
-    LegX = [A * math.sin(Theta), A * math.sin(Theta) + B * math.sin(Phi) * math.sin(Theta)]
-    LegY = [A * math.cos(Theta), A * math.cos(Theta) + B * math.sin(Phi) * math.cos(Theta)]
+    LegX = [offsetx+A * math.sin(Theta),offsetx+ A * math.sin(Theta) + B * math.sin(Phi) * math.sin(Theta)]
+    LegY = [offsety+A * math.cos(Theta),offsety+ A * math.cos(Theta) + B * math.sin(Phi) * math.cos(Theta)]
     LegZ = [Z_body, Z_body + B * math.cos(Phi)]
     ax.plot(LegX, LegY, LegZ, color='#00FF00')
 
     # Plot segment C
-    LegX = [A * math.sin(Theta) + B * math.sin(Phi) * math.sin(Theta),A * math.sin(Theta) + B * math.sin(Phi) * math.sin(Theta) + C * math.sin(Phi + Alpha - math.radians(90)) * math.sin(Theta)]
-    LegY = [A * math.cos(Theta) + B * math.sin(Phi) * math.cos(Theta),A * math.cos(Theta) + B * math.sin(Phi) * math.cos(Theta) + C * math.sin(Phi + Alpha - math.radians(90)) * math.cos(Theta)]
+    LegX = [offsetx+A * math.sin(Theta) + B * math.sin(Phi) * math.sin(Theta),offsetx+A * math.sin(Theta) + B * math.sin(Phi) * math.sin(Theta) + C * math.sin(Phi + Alpha - math.radians(90)) * math.sin(Theta)]
+    LegY = [offsety+A * math.cos(Theta) + B * math.sin(Phi) * math.cos(Theta),offsety+A * math.cos(Theta) + B * math.sin(Phi) * math.cos(Theta) + C * math.sin(Phi + Alpha - math.radians(90)) * math.cos(Theta)]
     LegZ = [Z_body + B * math.cos(Phi), Z_body + B * math.cos(Phi) + C * math.cos(Phi + Alpha - math.radians(90))]
     ax.plot(LegX, LegY, LegZ, color='#0000FF')
     print (LegX[1], LegY[1], LegZ[1]),"\n\r"
@@ -50,6 +55,8 @@ def Plotleg (Theta,Phi,Alpha,leg):
 
 def IK(X,Y,Z,leg):
     "This function calculates the servo positions required for speccific coordinates"
+    #Call the translatiom function
+    offsetx,offsety=Translate(leg)
     Theta = math.atan2(X, Y)  # Calculate Theta
     # Theta1=math.degrees(Theta1)
     print "Theta",leg,"=",math.degrees(Theta)
@@ -89,8 +96,10 @@ def Rotate(x,y,leg):
     return X,Y
 
 def Translate(leg):
-
-    return
+    "This function is called from the plotleg function to set the necessary offsets for plotting"
+    x=Radius*math.cos(math.radians(72*(leg-1)))
+    y=Radius*math.sin(math.radians(72*(leg-1)))
+    return x,y
 
 ####################################  Main   #####################################################
 
@@ -101,37 +110,42 @@ blank=[0,0]
 ax.plot(blank,blank,blank,label="Segment A", color='#FF0000')
 ax.plot(blank,blank,blank,label="Segment B", color='#00FF00')
 ax.plot(blank,blank,blank,label="Segment C", color='#0000FF')
+ax.plot(blank,blank,blank,label="Chassis", color='#AF00FF')
+
+p = Circle((0, 0), Radius,color='#AF00FF')
+ax.add_patch(p)
+art3d.pathpatch_2d_to_3d(p, z=Z_body, zdir="z")
 
 #Leg 1
-X=1.5
+X=2
 Y=0
 X,Y=Rotate(X,Y,1)
 Theta,Phi,Alpha=IK(X,Y,Z,1)
 Plotleg(Theta,Phi,Alpha,1)
 
 #Leg 2
-X=1.5
+X=2
 Y=0
 X,Y=Rotate(X,Y,2)
 Theta,Phi,Alpha=IK(X,Y,Z,2)
 Plotleg(Theta,Phi,Alpha,2)
 
 #Leg 3
-X=1.5
+X=2
 Y=0
 X,Y=Rotate(X,Y,3)
 Theta,Phi,Alpha=IK(X,Y,Z,3)
 Plotleg(Theta,Phi,Alpha,3)
 
 #Leg 4
-X=1.5
+X=2
 Y=0
 X,Y=Rotate(X,Y,4)
 Theta,Phi,Alpha=IK(X,Y,Z,4)
 Plotleg(Theta,Phi,Alpha,4)
 
 #Leg 5
-X=1.5
+X=2
 Y=0
 X,Y=Rotate(X,Y,5)
 Theta,Phi,Alpha=IK(X,Y,Z,5)
