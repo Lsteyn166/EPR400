@@ -81,13 +81,18 @@ def IK(X,Y,Z,leg):
     print "Phi  ",leg,"=",math.degrees(Phi)
     return Theta,Phi,Alpha
 
-def Rotate(leg):
+def Rotate(x,y,leg):
     "This function rotates the coordinates of a specific leg to its required position"
+    Angle=math.radians((leg-1)*72)
+    X=x*math.cos(Angle)-y*math.sin(Angle)
+    Y=x*math.sin(Angle)+y*math.cos(Angle)
+    return X,Y
+
+def Translate(leg):
+
     return
 
 ####################################  Main   #####################################################
-
-
 
 #3D Plot config
 fig =plt.figure()
@@ -100,38 +105,37 @@ ax.plot(blank,blank,blank,label="Segment C", color='#0000FF')
 #Leg 1
 X=1.5
 Y=0
+X,Y=Rotate(X,Y,1)
 Theta,Phi,Alpha=IK(X,Y,Z,1)
 Plotleg(Theta,Phi,Alpha,1)
 
 #Leg 2
-# X=-1.5
-# Y=1.5
+X=1.5
+Y=0
+X,Y=Rotate(X,Y,2)
 Theta,Phi,Alpha=IK(X,Y,Z,2)
 Plotleg(Theta,Phi,Alpha,2)
 
 #Leg 3
-# X=-1.5
-# Y=-1.5
-# Theta,Phi,Alpha=IK(X,Y,Z,3)
-# Plotleg(Theta,Phi,Alpha,3)
+X=1.5
+Y=0
+X,Y=Rotate(X,Y,3)
+Theta,Phi,Alpha=IK(X,Y,Z,3)
+Plotleg(Theta,Phi,Alpha,3)
 
 #Leg 4
-# X=1.5
-# Y=-1.5
-# Theta,Phi,Alpha=IK(X,Y,Z,4)
-# Plotleg(Theta,Phi,Alpha,4)
+X=1.5
+Y=0
+X,Y=Rotate(X,Y,4)
+Theta,Phi,Alpha=IK(X,Y,Z,4)
+Plotleg(Theta,Phi,Alpha,4)
 
 #Leg 5
-# X=2
-# Y=0
-# Z=1.5
-# Theta,Phi,Alpha=IK(X,Y,Z,5)
-# Plotleg(Theta,Phi,Alpha,5)
-
-# 2D Plot
-# plt.plot(LegX,LegZ);
-# plt.axis([-1,3, -1, 3])
-# plt.show()
+X=1.5
+Y=0
+X,Y=Rotate(X,Y,5)
+Theta,Phi,Alpha=IK(X,Y,Z,5)
+Plotleg(Theta,Phi,Alpha,5)
 
 
 ax.legend()
