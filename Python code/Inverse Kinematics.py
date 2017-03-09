@@ -131,7 +131,7 @@ ax.add_patch(p)
 art3d.pathpatch_2d_to_3d(p, z=Z_body, zdir="z")
 
 
-VectorX=0
+VectorX=0.5
 VectorY=0
 
 
