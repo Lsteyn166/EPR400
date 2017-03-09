@@ -19,10 +19,10 @@ Theta=90
 Phi=0
 Alpha=0
 Reach=0
-A=1
+A=0.5
 B=1
 C=1
-Radius=0.5
+Radius=1
 Leg1MountAngle=0
 AbsDistance1=0
 
@@ -101,55 +101,78 @@ def Translate(leg):
     y=Radius*math.sin(math.radians(72*(leg-1)))
     return x,y
 
+def Vector(x,y,leg):
+    "This function determines the required position of the foot given a specific vector"
+    Angle=math.atan2(y,x)
+    Magnitude=math.sqrt(x**2+y**2)
+    NeutralX,NeutralY=Rotate(2.5,0,leg)
+    a,b=Rotate(Radius,0,leg)
+    NeutralX=NeutralX-a
+    NeutralY=NeutralY-b
+    X=NeutralX+Magnitude*math.cos(Angle)
+    Y=NeutralY+Magnitude*math.sin(Angle)
+    return X,Y
+
 ####################################  Main   #####################################################
 
 #3D Plot config
 fig =plt.figure()
+fig.hold
 ax=fig.add_subplot(111,projection='3d')
 blank=[0,0]
 ax.plot(blank,blank,blank,label="Segment A", color='#FF0000')
 ax.plot(blank,blank,blank,label="Segment B", color='#00FF00')
 ax.plot(blank,blank,blank,label="Segment C", color='#0000FF')
 ax.plot(blank,blank,blank,label="Chassis", color='#AF00FF')
+ax.plot(blank,blank,blank,label="Feet zone", color='#FFAF00')
 
 p = Circle((0, 0), Radius,color='#AF00FF')
 ax.add_patch(p)
 art3d.pathpatch_2d_to_3d(p, z=Z_body, zdir="z")
 
-#Leg 1
-X=2
-Y=0
-X,Y=Rotate(X,Y,1)
-Theta,Phi,Alpha=IK(X,Y,Z,1)
-Plotleg(Theta,Phi,Alpha,1)
 
-#Leg 2
-X=2
-Y=0
-X,Y=Rotate(X,Y,2)
-Theta,Phi,Alpha=IK(X,Y,Z,2)
-Plotleg(Theta,Phi,Alpha,2)
+VectorX=0
+VectorY=0
 
-#Leg 3
-X=2
-Y=0
-X,Y=Rotate(X,Y,3)
-Theta,Phi,Alpha=IK(X,Y,Z,3)
-Plotleg(Theta,Phi,Alpha,3)
 
-#Leg 4
-X=2
-Y=0
-X,Y=Rotate(X,Y,4)
-Theta,Phi,Alpha=IK(X,Y,Z,4)
-Plotleg(Theta,Phi,Alpha,4)
+for leg in range(1, 6):
+    X,Y=Vector(VectorX,VectorY,leg)
+    Theta, Phi, Alpha = IK(X, Y, Z, leg)
+    Plotleg(Theta,Phi,Alpha,leg)
+    x,y=Rotate(2.5,0,leg)
+    ax.plot([x,x],[y,y],[0,-0.05], color='#FFAF00')
 
-#Leg 5
-X=2
-Y=0
-X,Y=Rotate(X,Y,5)
-Theta,Phi,Alpha=IK(X,Y,Z,5)
-Plotleg(Theta,Phi,Alpha,5)
+
+# #Leg 1
+#
+# X,Y=Vector(0.5,0,1)
+# X,Y=Rotate(X,Y,1)
+# Theta,Phi,Alpha=IK(X,Y,Z,1)
+# Plotleg(Theta,Phi,Alpha,1)
+#
+# #Leg 2
+# X,Y=Vector(0.5,0,2)
+# #X,Y=Rotate(X,Y,2)
+# Theta,Phi,Alpha=IK(X,Y,Z,2)
+# Plotleg(Theta,Phi,Alpha,2)
+#
+# #Leg 3
+# X,Y=Vector(0.5,0,3)
+# #X,Y=Rotate(X,Y,3)
+# Theta,Phi,Alpha=IK(X,Y,Z,3)
+# Plotleg(Theta,Phi,Alpha,3)
+#
+# #Leg 4
+# X,Y=Vector(0.5,0,4)
+# #X,Y=Rotate(X,Y,4)
+# Theta,Phi,Alpha=IK(X,Y,Z,4)
+# Plotleg(Theta,Phi,Alpha,4)
+#
+# #Leg 5
+# X,Y=Vector(0.5,0,5)
+# #X,Y=Rotate(X,Y,5)
+# Theta,Phi,Alpha=IK(X,Y,Z,5)
+# Plotleg(Theta,Phi,Alpha,5)
 
 
 ax.legend()
