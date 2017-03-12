@@ -4,7 +4,7 @@
 #import dependencies
 import math
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
+import mpl_toolkits.mplot3d.axes3d as p3
 import numpy as np
 import matplotlib.animation as animation
 from matplotlib.patches import Circle, PathPatch
@@ -104,7 +104,7 @@ def Translate(leg):
 def Vector(x,y,leg):
     "This function determines the required position of the foot given a specific vector"
     Angle=math.atan2(y,x)
-    Magnitude=math.sqrt(x**2+y**2)
+    Magnitude=0.5   #math.sqrt(x**2+y**2)       #Use fixed magnitude instead of calculation
     NeutralX,NeutralY=Rotate(2.5,0,leg)
     a,b=Rotate(Radius,0,leg)
     NeutralX=NeutralX-a
@@ -113,26 +113,38 @@ def Vector(x,y,leg):
     Y=NeutralY+Magnitude*math.sin(Angle)
     return X,Y
 
+def ConfigurePlot():
+    "This function creates a 3D plot and configures axes and labels"
+    fig = plt.figure()
+    fig.hold
+    ax = fig.add_subplot(111, projection='3d')
+    blank = [0, 0]
+    ax.plot(blank, blank, blank, label="Segment A", color='#FF0000')
+    ax.plot(blank, blank, blank, label="Segment B", color='#00FF00')
+    ax.plot(blank, blank, blank, label="Segment C", color='#0000FF')
+    ax.plot(blank, blank, blank, label="Chassis", color='#AF00FF')
+    ax.plot(blank, blank, blank, label="Feet zone", color='#FFAF00')
+
+    p = Circle((0, 0), Radius, color='#AF00FF')
+    ax.add_patch(p)
+    art3d.pathpatch_2d_to_3d(p, z=Z_body, zdir="z")
+
+    ax.legend()
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
+    ax.axis([-2.5, 2.5, -2.5, 2.5])
+    ax.set_zlim3d(0, 5)
+    return fig,ax
+
 ####################################  Main   #####################################################
 
 #3D Plot config
-fig =plt.figure()
-fig.hold
-ax=fig.add_subplot(111,projection='3d')
-blank=[0,0]
-ax.plot(blank,blank,blank,label="Segment A", color='#FF0000')
-ax.plot(blank,blank,blank,label="Segment B", color='#00FF00')
-ax.plot(blank,blank,blank,label="Segment C", color='#0000FF')
-ax.plot(blank,blank,blank,label="Chassis", color='#AF00FF')
-ax.plot(blank,blank,blank,label="Feet zone", color='#FFAF00')
-
-p = Circle((0, 0), Radius,color='#AF00FF')
-ax.add_patch(p)
-art3d.pathpatch_2d_to_3d(p, z=Z_body, zdir="z")
+fig,ax=ConfigurePlot()
 
 
-VectorX=0.5
-VectorY=0
+VectorX=1
+VectorY=1
 
 
 for leg in range(1, 6):
@@ -142,7 +154,7 @@ for leg in range(1, 6):
     x,y=Rotate(2.5,0,leg)
     ax.plot([x,x],[y,y],[0,-0.05], color='#FFAF00')
 
-
+plt.show()
 # #Leg 1
 #
 # X,Y=Vector(0.5,0,1)
@@ -175,10 +187,3 @@ for leg in range(1, 6):
 # Plotleg(Theta,Phi,Alpha,5)
 
 
-ax.legend()
-ax.set_xlabel('X')
-ax.set_ylabel('Y')
-ax.set_zlabel('Z')
-ax.axis([-2.5,2.5,-2.5,2.5])
-ax.set_zlim3d(0,5)
-plt.show()
