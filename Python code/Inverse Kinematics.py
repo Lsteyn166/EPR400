@@ -143,8 +143,8 @@ def ConfigurePlot():
 fig,ax=ConfigurePlot()
 
 
-VectorX=1
-VectorY=1
+VectorX=0.1
+VectorY=0.1
 
 
 for leg in range(1, 6):

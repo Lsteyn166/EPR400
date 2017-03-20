@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.3.15)  15 MAR 2017 18:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.3.15)  19 MAR 2017 18:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1712,12 +1712,8 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <16> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 7.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 9.
-
-
-LaTeX Warning: Citation `Haykin:Communication_Systems' undefined on input line 
-17.
-
-) (./section2.tex
+)
+(./section2.tex
 Overfull \hbox (9.12012pt too wide) has occurred while \output is active
     []
  []
@@ -1802,7 +1798,22 @@ Overfull \hbox (9.12012pt too wide) has occurred while \output is active
 
 [2
 
-]) (./section3.tex
+]
+Underfull \hbox (badness 10000) in paragraph at lines 38--39
+
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[3]) (./section3.tex
 Overfull \hbox (9.12012pt too wide) has occurred while \output is active
     []
  []
@@ -1812,7 +1823,7 @@ Overfull \hbox (9.12012pt too wide) has occurred while \output is active
     []
  []
 
-[3
+[4
 
 ]) (./section4.tex
 Underfull \hbox (badness 10000) in paragraph at lines 14--14
@@ -1876,7 +1887,7 @@ Overfull \hbox (9.12012pt too wide) has occurred while \output is active
     []
  []
 
-[4
+[5
 
 ]
 Overfull \hbox (9.12012pt too wide) has occurred while \output is active
@@ -1888,7 +1899,7 @@ Overfull \hbox (9.12012pt too wide) has occurred while \output is active
     []
  []
 
-[5]) (./section5.tex
+[6]) (./section5.tex
 Underfull \hbox (badness 10000) in paragraph at lines 14--14
 []|\T1/ptm/b/n/12 DESIGNED AND
  []
@@ -1912,30 +1923,37 @@ Overfull \hbox (9.12012pt too wide) has occurred while \output is active
     []
  []
 
-[6
+[7
 
-])
-No file proposal.bbl.
-(./proposal.aux)
+]) (./proposal.bbl)
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
 
-LaTeX Warning: There were undefined references.
 
- ) 
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[8
+
+] (./proposal.aux) ) 
 Here is how much of TeX's memory you used:
- 40883 strings out of 494910
- 935792 string characters out of 6179836
- 1126951 words of memory out of 5000000
- 43371 multiletter control sequences out of 15000+600000
- 31847 words of font info for 70 fonts, out of 8000000 for 9000
+ 40958 strings out of 494910
+ 936538 string characters out of 6179836
+ 1126959 words of memory out of 5000000
+ 43386 multiletter control sequences out of 15000+600000
+ 37343 words of font info for 109 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  62i,18n,94p,10398b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
-e/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/urw/times/utmr8a.pfb>
-Output written on proposal.pdf (7 pages, 67672 bytes).
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}
+</usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/urw/times/utmri8a.pfb>
+Output written on proposal.pdf (9 pages, 88152 bytes).
 PDF statistics:
- 80 PDF objects out of 1000 (max. 8388607)
- 44 compressed objects within 1 object stream
+ 90 PDF objects out of 1000 (max. 8388607)
+ 51 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 13441 words of extra memory for PDF output out of 14400 (max. 10000000)
+ 17537 words of extra memory for PDF output out of 20736 (max. 10000000)
 
