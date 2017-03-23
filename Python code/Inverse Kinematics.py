@@ -104,7 +104,9 @@ def Translate(leg):
 def Vector(x,y,leg):
     "This function determines the required position of the foot given a specific vector"
     Angle=math.atan2(y,x)
-    Magnitude=0.5   #math.sqrt(x**2+y**2)       #Use fixed magnitude instead of calculation
+    Magnitude=math.sqrt(x**2+y**2)       #Use fixed magnitude instead of calculation
+    if (Magnitude > 0.5):
+        Magnitude=0.5
     NeutralX,NeutralY=Rotate(2.5,0,leg)
     a,b=Rotate(Radius,0,leg)
     NeutralX=NeutralX-a
@@ -143,8 +145,8 @@ def ConfigurePlot():
 fig,ax=ConfigurePlot()
 
 
-VectorX=0.1
-VectorY=0.1
+VectorX=1
+VectorY=-2
 
 
 for leg in range(1, 6):
