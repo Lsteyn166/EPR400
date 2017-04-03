@@ -21,6 +21,19 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{StudyGuide}
+\BIBentryALTinterwordspacing
+J.~Hanekom. (2017) 2017 study guide part 1. Accessed 2017-02-20. [Online].
+  Available: \url{http://www2.ee.up.ac.za/~epr400/StudyGuide.pdf}
+\BIBentrySTDinterwordspacing
+
+\bibitem{ProposalRequirements}
+\BIBentryALTinterwordspacing
+Hanekom. (2017) Requirements for written reports. Accessed 2017-02-20.
+  [Online]. Available:
+  \url{http://www2.ee.up.ac.za/~epr400/APPENDIX2\_2017.pdf}
+\BIBentrySTDinterwordspacing
+
 \bibitem{parallel:1}
 J.~Reeds and L.~Shepp, ``Optimal paths for a car that goes both forwards and
   backwards,'' \emph{Pacific Journal of Mathematics}, vol. 145, October 1990.

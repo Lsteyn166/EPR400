@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.3.16)  2 APR 2017 22:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.3.16)  3 APR 2017 08:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1866,17 +1866,13 @@ Underfull \vbox (badness 10000) detected at line 32
  []
 
 
-Underfull \hbox (badness 3000) in paragraph at lines 41--42
+Underfull \hbox (badness 3000) in paragraph at lines 42--43
 []|\T1/ptm/b/n/12 SPECIFICATION (IN MEAS-UR-ABLE
  []
 
 
-Overfull \hbox (10.97357pt too wide) in alignment at lines 38--56
+Overfull \hbox (10.97357pt too wide) in alignment at lines 39--57
  [] [] 
- []
-
-
-Underfull \vbox (badness 10000) detected at line 56
  []
 
 
@@ -1892,12 +1888,16 @@ Overfull \hbox (9.12012pt too wide) has occurred while \output is active
 [5
 
 ]
-Overfull \hbox (10.97357pt too wide) in alignment at lines 62--76
+Underfull \vbox (badness 10000) detected at line 57
+ []
+
+
+Overfull \hbox (10.97357pt too wide) in alignment at lines 63--77
  [] [] 
  []
 
 
-Underfull \vbox (badness 10000) detected at line 76
+Underfull \vbox (badness 10000) detected at line 77
  []
 
 
@@ -1926,7 +1926,7 @@ Underfull \hbox (badness 7685) in paragraph at lines 22--23
  []
 
 
-Underfull \vbox (badness 10000) detected at line 32
+Underfull \vbox (badness 10000) detected at line 34
  []
 
 
@@ -1941,7 +1941,7 @@ Overfull \hbox (9.12012pt too wide) has occurred while \output is active
 
 [7
 
-]) (./proposal.bbl)
+]
 Overfull \hbox (9.12012pt too wide) has occurred while \output is active
     []
  []
@@ -1951,25 +1951,35 @@ Overfull \hbox (9.12012pt too wide) has occurred while \output is active
     []
  []
 
-[8
+[8]) (./proposal.bbl)
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[9
 
 ] (./proposal.aux) ) 
 Here is how much of TeX's memory you used:
- 41009 strings out of 494910
- 937069 string characters out of 6179836
- 1130967 words of memory out of 5000000
- 43394 multiletter control sequences out of 15000+600000
- 40897 words of font info for 138 fonts, out of 8000000 for 9000
+ 41020 strings out of 494910
+ 937181 string characters out of 6179836
+ 1128975 words of memory out of 5000000
+ 43396 multiletter control sequences out of 15000+600000
+ 41287 words of font info for 144 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  62i,18n,94p,10398b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}
 </usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/urw/times/utmri8a.pfb>
-Output written on proposal.pdf (9 pages, 161549 bytes).
+Output written on proposal.pdf (10 pages, 163286 bytes).
 PDF statistics:
- 94 PDF objects out of 1000 (max. 8388607)
- 54 compressed objects within 1 object stream
+ 97 PDF objects out of 1000 (max. 8388607)
+ 56 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  17542 words of extra memory for PDF output out of 20736 (max. 10000000)
 
