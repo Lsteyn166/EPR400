@@ -23,8 +23,8 @@
       <file leaf-file-name="Inverse Kinematics.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Inverse Kinematics.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="134" column="20" lean-forward="false" selection-start-line="134" selection-start-column="20" selection-end-line="134" selection-end-column="20" />
+            <state relative-caret-position="3094">
+              <caret line="182" column="0" lean-forward="true" selection-start-line="182" selection-start-column="0" selection-end-line="182" selection-end-column="0" />
               <folding>
                 <element signature="e#96#107#0" expanded="true" />
               </folding>
@@ -620,8 +620,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Inverse Kinematics.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="134" column="20" lean-forward="false" selection-start-line="134" selection-start-column="20" selection-end-line="134" selection-end-column="20" />
+        <state relative-caret-position="3094">
+          <caret line="182" column="0" lean-forward="true" selection-start-line="182" selection-start-column="0" selection-end-line="182" selection-end-column="0" />
           <folding>
             <element signature="e#96#107#0" expanded="true" />
           </folding>
