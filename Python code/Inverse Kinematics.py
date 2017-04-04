@@ -29,9 +29,10 @@ AbsDistance1=0
 ####################################  FUNCTIONS  ########################################################
 
 def Plotleg (Theta,Phi,Alpha,leg):
+    ""
     "This function plots a leg after the inverse kinematics are calculated"
     # Call the translatiom function
-    offsetx, offsety = Translate(leg)
+    offsetx, offsety = TranslateLeg(leg)
 
     # Plot segment A
     LegX = [offsetx, offsetx+A * math.sin(Theta)]
@@ -54,9 +55,9 @@ def Plotleg (Theta,Phi,Alpha,leg):
     return
 
 def IK(X,Y,Z,leg):
-    "This function calculates the servo positions required for speccific coordinates"
+    ""
+    "This function calculates the servo positions required for specific coordinates"
     #Call the translatiom function
-    offsetx,offsety=Translate(leg)
     Theta = math.atan2(X, Y)  # Calculate Theta
     # Theta1=math.degrees(Theta1)
     print "Theta",leg,"=",math.degrees(Theta)
@@ -88,34 +89,57 @@ def IK(X,Y,Z,leg):
     print "Phi  ",leg,"=",math.degrees(Phi)
     return Theta,Phi,Alpha
 
-def Rotate(x,y,leg):
+def Rotate(xi,yi,angle):
+    ""
+    "This function rotates the coordinates of a specific point around the origin by a certain angle(degrees)"
+    Angle=math.radians(angle)
+    xo=xi*math.cos(Angle)-yi*math.sin(Angle)
+    yo=xi*math.sin(Angle)+yi*math.cos(Angle)
+    return xo,yo
+
+def RotateLeg(x,y,leg):
+    ""
     "This function rotates the coordinates of a specific leg to its required position"
     Angle=math.radians((leg-1)*72)
     X=x*math.cos(Angle)-y*math.sin(Angle)
     Y=x*math.sin(Angle)+y*math.cos(Angle)
     return X,Y
 
-def Translate(leg):
-    "This function is called from the plotleg function to set the necessary offsets for plotting"
+def TranslateLeg(leg):
+    ""
+    "This function is called from the plotleg function to set the necessary offsets for plotting."
+    "It calculates the offset distance from shoulder joint to robot centre"
     x=Radius*math.cos(math.radians(72*(leg-1)))
     y=Radius*math.sin(math.radians(72*(leg-1)))
     return x,y
 
-def Vector(x,y,leg):
-    "This function determines the required position of the foot given a specific vector"
+def Vector(x,y,leg,Rot):
+    ""
+    "This function determines the required position of the foot given a specific vector and rotation"
+    #First do the translation vector
     Angle=math.atan2(y,x)
-    Magnitude=math.sqrt(x**2+y**2)       #Use fixed magnitude instead of calculation
-    if (Magnitude > 0.5):
+    Magnitude=math.sqrt(x**2+y**2)                  #Calculate actual magnitude
+    if (Magnitude > 0.5):                           #Limit magnitude to 0.5
         Magnitude=0.5
-    NeutralX,NeutralY=Rotate(2.5,0,leg)
-    a,b=Rotate(Radius,0,leg)
+    NeutralX,NeutralY=RotateLeg(2.5,0,leg)
+    a,b=RotateLeg(Radius,0,leg)
     NeutralX=NeutralX-a
     NeutralY=NeutralY-b
     X=NeutralX+Magnitude*math.cos(Angle)
     Y=NeutralY+Magnitude*math.sin(Angle)
+
+    # Now the rotation part
+    offsetx,offsety=TranslateLeg(leg)               #Move system origin to robot center
+    X=X+offsetx
+    Y=Y+offsety
+    X,Y=Rotate(X,Y,-10*Rot)                              #Rotate around origin
+    X=X-offsetx
+    Y=Y-offsety
+
     return X,Y
 
 def ConfigurePlot():
+    ""
     "This function creates a 3D plot and configures axes and labels"
     fig = plt.figure()
     fig.hold
@@ -145,47 +169,19 @@ def ConfigurePlot():
 fig,ax=ConfigurePlot()
 
 
-VectorX=1
-VectorY=-2
+VectorX=1                                               #X movement vector
+VectorY=0                                               #Y movement vector
+Rot=1                                                   #Rotation scalar
 
 
 for leg in range(1, 6):
-    X,Y=Vector(VectorX,VectorY,leg)
+    X,Y=Vector(VectorX,VectorY,leg,Rot)                 #Determine desired coordinates of a given leg from x,y vectors and rotation
     Theta, Phi, Alpha = IK(X, Y, Z, leg)
     Plotleg(Theta,Phi,Alpha,leg)
-    x,y=Rotate(2.5,0,leg)
+    x,y=RotateLeg(2.5,0,leg)
     ax.plot([x,x],[y,y],[0,-0.05], color='#FFAF00')
 
 plt.show()
-# #Leg 1
-#
-# X,Y=Vector(0.5,0,1)
-# X,Y=Rotate(X,Y,1)
-# Theta,Phi,Alpha=IK(X,Y,Z,1)
-# Plotleg(Theta,Phi,Alpha,1)
-#
-# #Leg 2
-# X,Y=Vector(0.5,0,2)
-# #X,Y=Rotate(X,Y,2)
-# Theta,Phi,Alpha=IK(X,Y,Z,2)
-# Plotleg(Theta,Phi,Alpha,2)
-#
-# #Leg 3
-# X,Y=Vector(0.5,0,3)
-# #X,Y=Rotate(X,Y,3)
-# Theta,Phi,Alpha=IK(X,Y,Z,3)
-# Plotleg(Theta,Phi,Alpha,3)
-#
-# #Leg 4
-# X,Y=Vector(0.5,0,4)
-# #X,Y=Rotate(X,Y,4)
-# Theta,Phi,Alpha=IK(X,Y,Z,4)
-# Plotleg(Theta,Phi,Alpha,4)
-#
-# #Leg 5
-# X,Y=Vector(0.5,0,5)
-# #X,Y=Rotate(X,Y,5)
-# Theta,Phi,Alpha=IK(X,Y,Z,5)
-# Plotleg(Theta,Phi,Alpha,5)
+
 
 
