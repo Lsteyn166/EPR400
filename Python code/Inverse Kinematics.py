@@ -166,22 +166,20 @@ def ConfigurePlot():
 ####################################  Main   #####################################################
 
 #3D Plot config
-fig,ax=ConfigurePlot()
+
+for step in range (0, 20):
+    step=float(step)
+    VectorX=0                                               #X movement vector
+    VectorY=0                                               #Y movement vector
+    Rot=step/20                                                   #Rotation scalar
+    fig, ax = ConfigurePlot()
 
 
-VectorX=1                                               #X movement vector
-VectorY=0                                               #Y movement vector
-Rot=1                                                   #Rotation scalar
+    for leg in range(1, 6):
+        X,Y=Vector(VectorX,VectorY,leg,Rot)                 #Determine desired coordinates of a given leg from x,y vectors and rotation
+        Theta, Phi, Alpha = IK(X, Y, Z, leg)
+        Plotleg(Theta,Phi,Alpha,leg)
+        x,y=RotateLeg(2.5,0,leg)
+        ax.plot([x,x],[y,y],[0,-0.05], color='#FFAF00')
 
-
-for leg in range(1, 6):
-    X,Y=Vector(VectorX,VectorY,leg,Rot)                 #Determine desired coordinates of a given leg from x,y vectors and rotation
-    Theta, Phi, Alpha = IK(X, Y, Z, leg)
-    Plotleg(Theta,Phi,Alpha,leg)
-    x,y=RotateLeg(2.5,0,leg)
-    ax.plot([x,x],[y,y],[0,-0.05], color='#FFAF00')
-
-plt.show()
-
-
-
+    plt.show()
