@@ -15,37 +15,37 @@ Database file #1: proposal.bib
 Done.
 You've used 4 entries,
             4087 wiz_defined-function locations,
-            862 strings with 8175 characters,
-and the built_in function-call counts, 1816 in all, are:
-= -- 146
-> -- 30
+            863 strings with 8222 characters,
+and the built_in function-call counts, 1931 in all, are:
+= -- 151
+> -- 43
 < -- 2
-+ -- 14
-- -- 7
-* -- 86
-:= -- 348
++ -- 20
+- -- 10
+* -- 95
+:= -- 357
 add.period$ -- 10
 call.type$ -- 4
 change.case$ -- 6
 chr.to.int$ -- 0
 cite$ -- 4
-duplicate$ -- 142
-empty$ -- 151
-format.name$ -- 9
-if$ -- 380
+duplicate$ -- 149
+empty$ -- 157
+format.name$ -- 13
+if$ -- 407
 int.to.chr$ -- 0
 int.to.str$ -- 4
-missing$ -- 31
+missing$ -- 34
 newline$ -- 39
 num.names$ -- 4
-pop$ -- 77
+pop$ -- 87
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 135
+skip$ -- 141
 stack$ -- 0
 substring$ -- 6
-swap$ -- 96
+swap$ -- 103
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 5

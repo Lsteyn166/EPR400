@@ -15,7 +15,7 @@
   \textbf{ORIGIN OR MOTIVATION OF THIS SPECIFICATION} &
   \textbf{HOW WILL YOU CONFIRM THAT YOUR SYSTEM COMPLIES WITH
            THIS SPECIFICATION?}\\
-\hline The robot should be able to move in a given direction in 90 degree increments from a stationary position.
+\hline The robot should be able to move in a given direction in 30 degree increments from a stationary position.
    & Proving that the robot can move straight forward, left, backwards and right (directions spaced 90 degrees apart), will prove that the robot is holonomic.
    &The robot will be placed on a grid on the floor and instructed to move in one of the chosen directions at a time.
    \\
@@ -27,7 +27,14 @@
    & A variation of less than 25\% in time can still be considered to be a similar time. This proves that the robot can move over different surfaces with similar difficulty.
    &The robot will be instructed to complete a specific set of movements on a flat smooth surface and the time to completion will be recorded. Various obstacles will be placed in the way of the robot (small blocks, sand, etc.), and the robot will be instructed to repeat the specific set of instructions and the time difference will be noted.
    \\
+\hline The robot should be able to walk at a speed of at least 100mm/s.
+&100mm/s is a reasonable speed for the scale of the robot. This proves that all of the subsystems function together well.
+&The robot will be instructed to walk at maximum speed in a straight line for one meter. The time to completion will be measured.\\
+\hline The robot should be able to walk on a surface with a 10\% incline without falling over.
+& An incline of 10\% proves that the robot platform is stable while not putting too much strain on the servo motors.
+& The robot will be placed on a slanted surface and instructed to translate and rotate. It should not fall over while performing these manoeuvres.\\
 \hline
+
 \caption{Mission-critical system specification}
 \end{longtable}
 \end{center}
