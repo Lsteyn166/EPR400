@@ -163,23 +163,31 @@ def ConfigurePlot():
     ax.set_zlim3d(0, 5)
     return fig,ax
 
+def ResetCheck():
+    ""
+    "This function checks each leg to see if it's in range and returns a bool for reset"
+
+    return
+
 ####################################  Main   #####################################################
 
-#3D Plot config
+#Init Vectors
+VectorX = 0                                                 # X movement vector
+VectorY = 0                                                 # Y movement vector
+Rot = 1                                                     # Rotation scalar
+TotalTime = 5                                               #Number of time steps in simulation
 
-for step in range (0, 20):
-    step=float(step)
-    VectorX=0                                               #X movement vector
-    VectorY=0                                               #Y movement vector
-    Rot=step/20                                                   #Rotation scalar
+for time in range (0, 5):
+    time=float(time)
+    Rot=time/20
     fig, ax = ConfigurePlot()
 
 
     for leg in range(1, 6):
         X,Y=Vector(VectorX,VectorY,leg,Rot)                 #Determine desired coordinates of a given leg from x,y vectors and rotation
-        Theta, Phi, Alpha = IK(X, Y, Z, leg)
-        Plotleg(Theta,Phi,Alpha,leg)
-        x,y=RotateLeg(2.5,0,leg)
-        ax.plot([x,x],[y,y],[0,-0.05], color='#FFAF00')
+        Theta, Phi, Alpha = IK(X, Y, Z, leg)                #Determine Servo angles for desired position
+        Plotleg(Theta,Phi,Alpha,leg)                        #Plot result
+        x,y=RotateLeg(2.5,0,leg)                            #Find position of little orange markers
+        ax.plot([x,x],[y,y],[0,-0.05], color='#FFAF00')     #Plot little orange markers for home position
 
     plt.show()
