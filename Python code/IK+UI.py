@@ -12,8 +12,7 @@ from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
 import matplotlib.pyplot as plt
 import mpl_toolkits.mplot3d.art3d as art3d
 import math
-import numpy as np
-from matplotlib.patches import Circle, PathPatch
+from matplotlib.patches import Circle
 
 
 # Predefine Vectors
@@ -24,7 +23,7 @@ Rot_Vector = 0
 
 # Predefine variables
 Z_body = 0.5                                            # Height of the robot body
-A = 1                                                   # Leg segment A length
+A = 0.5                                                 # Leg segment A length
 B = 1                                                   # Leg segment B length
 C = 1                                                   # Leg segment C length
 Radius = 1                                              # Radius of robot body
@@ -72,6 +71,7 @@ class GUI(QtGui.QDialog):
         self.D31.setFixedWidth(75)
         self.D32 = QtGui.QLabel('0')                    # Rotation numerical label
         self.D32.setFixedWidth(75)
+        self.AutoPlot = QtGui.QCheckBox('Auto Plot')    # Checkbox to enable plotting on press of a a directional button
 
         # Set all widgets in layouts
         GL = QtGui.QGridLayout()                        # Grid layout for buttons
@@ -94,12 +94,14 @@ class GUI(QtGui.QDialog):
         VL = QtGui.QVBoxLayout()                        # Vertical layout for grid layouts
         VL.addStretch()
         VL.addLayout(GL)
+        VL.addWidget(self.AutoPlot)
         VL.addLayout(GL2)
         VL.addStretch()
 
         HL = QtGui.QHBoxLayout()                        # Horizontal layout for canvas and vertical layout
         HL.addWidget(self.canvas)
         HL.addLayout(VL)
+
         self.setLayout(HL)
         self.showMaximized()
 
@@ -110,13 +112,13 @@ class GUI(QtGui.QDialog):
         ConfigurePlot()
 
         for leg in range(1, 6):
-            X, Y = Vector(X_Vector, Y_Vector, leg,Rot_Vector)  # Determine desired coordinates of a given leg from x,y vectors and rotation
+            # Determine desired coordinates of a given leg from x,y vectors and rotation
+            X, Y = Vector(X_Vector, Y_Vector, leg,Rot_Vector)
             Theta, Phi, Alpha = IK(X, Y, Z, leg)  # Determine Servo angles for desired position
             Plotleg(Theta, Phi, Alpha, leg)  # Plot result
             x, y = RotateLeg(2.5, 0, leg)  # Find position of little orange markers
-            self.ax.plot([x, x], [y, y], [0, -0.05], color='#FFAF00')  # Plot little orange markers for home position                                 # Discard previous plot
-
-        #self.ax.plot(LegX, LegY, LegZ, color='#00FF00')      # Plot data
+            # Plot little orange markers for home position
+            self.ax.plot([x, x], [y, y], [0, -0.05], color='#FFAF00')
 
         self.ax.set_xlabel('X')                              # Set axis labels
 
@@ -124,38 +126,59 @@ class GUI(QtGui.QDialog):
 
     def UP(self):                                       # Callback function for Button
         global Y_Vector
-        Y_Vector += 1
+        Y_Vector += .1
+        if Y_Vector > 0.5:
+            Y_Vector = 0.5
         self.D22.setNum(Y_Vector)
+        if self.AutoPlot.isChecked():
+            self.plot()
         return
 
     def DOWN(self):                                     # Callback function for Button
         global Y_Vector
-        Y_Vector -= 1
+        Y_Vector -= .1
+        if Y_Vector < -0.5:
+            Y_Vector = -0.5
         self.D22.setNum(Y_Vector)
+        if self.AutoPlot.isChecked():
+            self.plot()
         return
 
     def LEFT(self):                                     # Callback function for Button
         global X_Vector
-        X_Vector -= 1
+        X_Vector -= .1
+        if X_Vector < -0.5:
+            X_Vector = -0.5
         self.D12.setNum(X_Vector)
+        if self.AutoPlot.isChecked():
+            self.plot()
         return
 
     def RIGHT(self):                                    # Callback function for Button
         global X_Vector
-        X_Vector += 1
+        X_Vector += .1
+        if X_Vector > 0.5:
+            X_Vector = 0.5
         self.D12.setNum(X_Vector)
+        if self.AutoPlot.isChecked():
+            self.plot()
         return
 
     def CW(self):                                       # Callback function for Button
         global Rot_Vector
         Rot_Vector += 1
         self.D32.setNum(Rot_Vector)
+        if self.AutoPlot.isChecked():
+            self.plot()
         return
 
     def CCW(self):                                      # Callback function for Button
         global Rot_Vector
         Rot_Vector -= 1
         self.D32.setNum(Rot_Vector)
+        if self.AutoPlot.isChecked():
+            self.plot()
+        return
 # End of class GUI
 
 # Functions from inverse kinematics calculations
@@ -163,7 +186,7 @@ class GUI(QtGui.QDialog):
 def Plotleg(Theta, Phi, Alpha, leg):
     ""
     "This function plots a leg after the inverse kinematics are calculated"
-    # Call the translatiom function
+    # Call the translation function
     offsetx, offsety = TranslateLeg(leg)
 
     # Plot segment A
@@ -195,10 +218,8 @@ def IK(X, Y, Z, leg):
     "This function calculates the servo positions required for specific coordinates"
     # Call the translatiom function
     Theta = math.atan2(X, Y)  # Calculate Theta
-    # Theta1=math.degrees(Theta1)
     print "Theta", leg, "=", math.degrees(Theta)
     ###Calculate Phi & Alpha:
-    # Calculate absolute distance between Joint 2 to foot:
     x1 = A * math.sin(Theta)
     y1 = A * math.cos(Theta)
     z1 = Z_body
