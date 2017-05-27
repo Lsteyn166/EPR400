@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import mpl_toolkits.mplot3d.art3d as art3d
 import math
 from matplotlib.patches import Circle
-
+import time
 
 # Predefine Vectors
 X_Vector = 0
@@ -27,7 +27,11 @@ A = 0.5                                                 # Leg segment A length
 B = 1                                                   # Leg segment B length
 C = 1                                                   # Leg segment C length
 Radius = 1                                              # Radius of robot body
-Z=0
+Z = 0
+Time = 0
+destination = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+current = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+reset =[False,False,False,False,False]
 
 # Create GUI class with all the components necessary to create and maintain the GUI
 class GUI(QtGui.QDialog):
@@ -35,12 +39,12 @@ class GUI(QtGui.QDialog):
     def __init__(self, parent=None):                    # Main function of the GUI class. Inits everything
         super(GUI, self).__init__(parent)
         self.figure = plt.figure()                      # Create instance of matplotlib figure for GUI
-        self.canvas = FigureCanvas(self.figure)         # Put this figure on a canvas object
+        GUI.canvas = FigureCanvas(self.figure)         # Put this figure on a canvas object
 
         # Create UI widgets
-        self.PlotButton = QtGui.QPushButton('Plot')     # Plot button
+        self.PlotButton = QtGui.QPushButton('Step')     # Plot button
         self.PlotButton.setFixedSize(50, 50)
-        self.PlotButton.clicked.connect(self.plot)
+        self.PlotButton.clicked.connect(self.Step)
         self.UpButton = QtGui.QPushButton('UP')         # Forward button
         self.UpButton.setFixedSize(50, 50)
         self.UpButton.clicked.connect(self.UP)
@@ -105,24 +109,35 @@ class GUI(QtGui.QDialog):
         self.setLayout(HL)
         self.showMaximized()
 
-    def plot(self):                                     # Function for updating the plot in the UI
+    def Step(self):                                     # Function for updating the plot in the UI
+
 
         GUI.ax = self.figure.add_subplot(111, projection='3d')  # Create axis on plot
         GUI.ax.hold(True)
         ConfigurePlot()
-
         for leg in range(1, 6):
             # Determine desired coordinates of a given leg from x,y vectors and rotation
-            X, Y = Vector(X_Vector, Y_Vector, leg,Rot_Vector)
-            Theta, Phi, Alpha = IK(X, Y, Z, leg)  # Determine Servo angles for desired position
-            Plotleg(Theta, Phi, Alpha, leg)  # Plot result
-            x, y = RotateLeg(2.5, 0, leg)  # Find position of little orange markers
+            X, Y = Vector(-X_Vector, -Y_Vector, leg, -Rot_Vector)
+            current[2*leg-2] = current[2*leg-2] + X
+            current[2 * leg - 1] = current[2 * leg - 1] + Y
+            reset[leg - 1] = CheckBound(current[2*leg-2], current[2 * leg - 1], leg)
+
+        for leg in range(1, 6):
+            #Reset the legs that need it
+            if reset[leg-1] == True:
+                ResetLeg(leg)
+            X = current[2*leg-2]
+            Y = current[2*leg-1]
+            # Determine Servo angles for desired position
+            Theta, Phi, Alpha = IK(X, Y, Z, leg)
+            # Plot result
+            Plotleg(Theta, Phi, Alpha, leg)
+            # Find position of little orange markers
+            x, y = RotateLeg(2.5, 0, leg)
             # Plot little orange markers for home position
             self.ax.plot([x, x], [y, y], [0, -0.05], color='#FFAF00')
 
-        self.ax.set_xlabel('X')                              # Set axis labels
-
-        self.canvas.draw()                              # Refresh canvas
+        GUI.canvas.draw()                              # Refresh canvas
 
     def UP(self):                                       # Callback function for Button
         global Y_Vector
@@ -131,7 +146,7 @@ class GUI(QtGui.QDialog):
             Y_Vector = 0.5
         self.D22.setNum(Y_Vector)
         if self.AutoPlot.isChecked():
-            self.plot()
+            self.Step()
         return
 
     def DOWN(self):                                     # Callback function for Button
@@ -141,7 +156,7 @@ class GUI(QtGui.QDialog):
             Y_Vector = -0.5
         self.D22.setNum(Y_Vector)
         if self.AutoPlot.isChecked():
-            self.plot()
+            self.Step()
         return
 
     def LEFT(self):                                     # Callback function for Button
@@ -151,7 +166,7 @@ class GUI(QtGui.QDialog):
             X_Vector = -0.5
         self.D12.setNum(X_Vector)
         if self.AutoPlot.isChecked():
-            self.plot()
+            self.Step()
         return
 
     def RIGHT(self):                                    # Callback function for Button
@@ -161,7 +176,7 @@ class GUI(QtGui.QDialog):
             X_Vector = 0.5
         self.D12.setNum(X_Vector)
         if self.AutoPlot.isChecked():
-            self.plot()
+            self.Step()
         return
 
     def CW(self):                                       # Callback function for Button
@@ -169,7 +184,7 @@ class GUI(QtGui.QDialog):
         Rot_Vector += 1
         self.D32.setNum(Rot_Vector)
         if self.AutoPlot.isChecked():
-            self.plot()
+            self.Step()
         return
 
     def CCW(self):                                      # Callback function for Button
@@ -177,7 +192,7 @@ class GUI(QtGui.QDialog):
         Rot_Vector -= 1
         self.D32.setNum(Rot_Vector)
         if self.AutoPlot.isChecked():
-            self.plot()
+            self.Step()
         return
 # End of class GUI
 
@@ -210,7 +225,7 @@ def Plotleg(Theta, Phi, Alpha, leg):
                 Phi + Alpha - math.radians(90)) * math.cos(Theta)]
     LegZ = [Z_body + B * math.cos(Phi), Z_body + B * math.cos(Phi) + C * math.cos(Phi + Alpha - math.radians(90))]
     GUI.ax.plot(LegX, LegY, LegZ, color='#0000FF')
-    print (LegX[1], LegY[1], LegZ[1]), "\n\r"
+    # print (LegX[1], LegY[1], LegZ[1]), "\n\r"
     return
 
 def IK(X, Y, Z, leg):
@@ -218,7 +233,7 @@ def IK(X, Y, Z, leg):
     "This function calculates the servo positions required for specific coordinates"
     # Call the translatiom function
     Theta = math.atan2(X, Y)  # Calculate Theta
-    print "Theta", leg, "=", math.degrees(Theta)
+    # print "Theta", leg, "=", math.degrees(Theta)
     ###Calculate Phi & Alpha:
     x1 = A * math.sin(Theta)
     y1 = A * math.cos(Theta)
@@ -234,7 +249,7 @@ def IK(X, Y, Z, leg):
     # print(math.degrees(d))
     Alpha = 270 - math.degrees(d)
     Alpha = math.radians(Alpha)
-    print "Alpha", leg, "=", math.degrees(Alpha)
+    # print "Alpha", leg, "=", math.degrees(Alpha)
     c = math.asin(C * math.sin(d) / TwoToFoot)
     # print("c")
     # print(math.degrees(c))
@@ -243,7 +258,7 @@ def IK(X, Y, Z, leg):
     # print(math.degrees(e))
     Phi = 180 - math.degrees(c) - math.degrees(e)
     Phi = math.radians(Phi)
-    print "Phi  ", leg, "=", math.degrees(Phi)
+    # print "Phi  ", leg, "=", math.degrees(Phi)
     return Theta, Phi, Alpha
 
 def Rotate(xi, yi, angle):
@@ -293,7 +308,47 @@ def Vector(x, y, leg, Rot):
     X = X - offsetx
     Y = Y - offsety
 
+
+    destination[2*leg-2] = X
+    destination[2*leg-1] = Y
     return X, Y
+
+def CheckBound(x, y, leg):
+    ""
+    "This function checks if a leg needs to be reset by determining whether it is within range from its neutral position"
+    NeutralX, NeutralY = RotateLeg(1.5, 0, leg)
+    deltaX = NeutralX - x
+    deltaY = NeutralY - y
+    absDist = math.sqrt(deltaX**2+deltaY**2)
+    if absDist > 0.51:
+        return True
+    else:
+        return False
+
+def ResetLeg(leg):
+    ""
+    "This function resets a leg to the postion furthest in the direction of robot movement"
+    #Pick up the leg
+    # Z = 0.5
+    # X = destination[2*leg-2]
+    # Y = destination[2*leg-1]
+    # Determine Servo angles for desired position
+    # Theta, Phi, Alpha = IK(X, Y, Z, leg)
+    # # Plot result
+    # Plotleg(Theta, Phi, Alpha, leg)
+    # GUI.canvas.draw()
+    #Move to reset position
+    X, Y = Vector(X_Vector, Y_Vector, leg, Rot_Vector)
+    current[2*leg-2] = X
+    current[2*leg-1] = Y
+    # Theta, Phi, Alpha = IK(X, Y, Z, leg)
+    # Plotleg(Theta, Phi, Alpha, leg)
+    # GUI.canvas.draw
+    #Put leg down
+    # Z = 0
+    # Theta, Phi, Alpha = IK(X, Y, Z, leg)
+    # Plotleg(Theta, Phi, Alpha, leg)
+    return
 
 def ConfigurePlot():
     ""

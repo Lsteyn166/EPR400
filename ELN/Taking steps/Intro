@@ -1,0 +1,22 @@
+In order for the robot to move, it needs to pick up legs and place them while continually moving the robot body by moving all legs forward.
+
+This continuous forward motion of the body by moving the legs requires the control system to keep track of time in order to keep the motions synchronized. This time does not need to be real time, in the case of the python simulation time is only a counter that is incremented in steps. Each action is divided into a predetermined number of steps and executed sequentially. This process is described in the flow diagram below. This flow diagram repeats in an infinite loop.
+
+    |-->|Get movement vectors from UI|[1]
+    |
+    |	|calculate trajectories| -> |Get maximum position for each leg in direction opposite to that specified by the vectors|[1]
+    |
+inf |	    |-->|Check for legs out of bounds| -> |Place these legs in the maximum position in the direction of the movement vector|[1]
+    |	    |
+    |	    |	|Speed calculations| -> |Legs should move at the appropriate speed to reach their destinations at the same time|
+    |	   X|
+    |	    |   |Move| -> |Move all legs at once in the opposite direction of robot travel for a short time|
+    |	    |___|
+    |	
+    |___|
+
+The inner loop is repeated X times. The value of X influences a few properties of robot motion. A larger number means higher movement resolution but possibly slower response and movement due to the increased number of calculations.
+
+The vector variable destination is used to store the destination values of all five legs. The format is [x1,y1,x2,y2,...,y5]
+The vector reset is used to store the reset requirements of each leg. The format is [False,...,True] if element n is True, leg n needs to be reset.
+
