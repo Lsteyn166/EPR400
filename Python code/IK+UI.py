@@ -40,6 +40,7 @@ class GUI(QtGui.QDialog):
         super(GUI, self).__init__(parent)
         self.figure = plt.figure()                      # Create instance of matplotlib figure for GUI
         GUI.canvas = FigureCanvas(self.figure)         # Put this figure on a canvas object
+        plt.ion()
 
         # Create UI widgets
         self.PlotButton = QtGui.QPushButton('Step')     # Plot button
@@ -110,16 +111,14 @@ class GUI(QtGui.QDialog):
         self.showMaximized()
 
     def Step(self):                                     # Function for updating the plot in the UI
-
-
         GUI.ax = self.figure.add_subplot(111, projection='3d')  # Create axis on plot
         GUI.ax.hold(True)
         ConfigurePlot()
         for leg in range(1, 6):
             # Determine desired coordinates of a given leg from x,y vectors and rotation
             X, Y = Vector(-X_Vector, -Y_Vector, leg, -Rot_Vector)
-            current[2*leg-2] = current[2*leg-2] + X
-            current[2 * leg - 1] = current[2 * leg - 1] + Y
+            current[2*leg-2] = X
+            current[2 * leg - 1] = Y
             reset[leg - 1] = CheckBound(current[2*leg-2], current[2 * leg - 1], leg)
 
         for leg in range(1, 6):
@@ -131,7 +130,7 @@ class GUI(QtGui.QDialog):
             # Determine Servo angles for desired position
             Theta, Phi, Alpha = IK(X, Y, Z, leg)
             # Plot result
-            Plotleg(Theta, Phi, Alpha, leg)
+            Plotleg(Theta, Phi, Alpha, leg, False)
             # Find position of little orange markers
             x, y = RotateLeg(2.5, 0, leg)
             # Plot little orange markers for home position
@@ -198,25 +197,37 @@ class GUI(QtGui.QDialog):
 
 # Functions from inverse kinematics calculations
 
-def Plotleg(Theta, Phi, Alpha, leg):
+def Plotleg(Theta, Phi, Alpha, leg, Dim):
     ""
     "This function plots a leg after the inverse kinematics are calculated"
     # Call the translation function
     offsetx, offsety = TranslateLeg(leg)
 
     # Plot segment A
+    if Dim == True:
+        plotColour = '#FFAFAF'
+    else:
+        plotColour = '#FF0000'
     LegX = [offsetx, offsetx + A * math.sin(Theta)]
     LegY = [offsety, offsety + A * math.cos(Theta)]
     LegZ = [Z_body, Z_body]
-    GUI.ax.plot(LegX, LegY, LegZ, color='#FF0000')
+    GUI.ax.plot(LegX, LegY, LegZ, plotColour)
 
     # Plot segment B
+    if Dim == True:
+        plotColour = '#AFFFAF'
+    else:
+        plotColour = '#00FF00'
     LegX = [offsetx + A * math.sin(Theta), offsetx + A * math.sin(Theta) + B * math.sin(Phi) * math.sin(Theta)]
     LegY = [offsety + A * math.cos(Theta), offsety + A * math.cos(Theta) + B * math.sin(Phi) * math.cos(Theta)]
     LegZ = [Z_body, Z_body + B * math.cos(Phi)]
-    GUI.ax.plot(LegX, LegY, LegZ, color='#00FF00')
+    GUI.ax.plot(LegX, LegY, LegZ, plotColour)
 
     # Plot segment C
+    if Dim == True:
+        plotColour = '#AFAFFF'
+    else:
+        plotColour = '#0000FF'
     LegX = [offsetx + A * math.sin(Theta) + B * math.sin(Phi) * math.sin(Theta),
             offsetx + A * math.sin(Theta) + B * math.sin(Phi) * math.sin(Theta) + C * math.sin(
                 Phi + Alpha - math.radians(90)) * math.sin(Theta)]
@@ -224,7 +235,7 @@ def Plotleg(Theta, Phi, Alpha, leg):
             offsety + A * math.cos(Theta) + B * math.sin(Phi) * math.cos(Theta) + C * math.sin(
                 Phi + Alpha - math.radians(90)) * math.cos(Theta)]
     LegZ = [Z_body + B * math.cos(Phi), Z_body + B * math.cos(Phi) + C * math.cos(Phi + Alpha - math.radians(90))]
-    GUI.ax.plot(LegX, LegY, LegZ, color='#0000FF')
+    GUI.ax.plot(LegX, LegY, LegZ, plotColour)
     # print (LegX[1], LegY[1], LegZ[1]), "\n\r"
     return
 
@@ -329,25 +340,26 @@ def ResetLeg(leg):
     ""
     "This function resets a leg to the postion furthest in the direction of robot movement"
     #Pick up the leg
-    # Z = 0.5
-    # X = destination[2*leg-2]
-    # Y = destination[2*leg-1]
+    Z = 0.5
+    X = destination[2*leg-2]
+    Y = destination[2*leg-1]
     # Determine Servo angles for desired position
-    # Theta, Phi, Alpha = IK(X, Y, Z, leg)
-    # # Plot result
-    # Plotleg(Theta, Phi, Alpha, leg)
+    Theta, Phi, Alpha = IK(X, Y, Z, leg)
+    # Plot result
+    Plotleg(Theta, Phi, Alpha, leg, True)
+    # plt.pause(0.5)
     # GUI.canvas.draw()
     #Move to reset position
     X, Y = Vector(X_Vector, Y_Vector, leg, Rot_Vector)
     current[2*leg-2] = X
     current[2*leg-1] = Y
-    # Theta, Phi, Alpha = IK(X, Y, Z, leg)
-    # Plotleg(Theta, Phi, Alpha, leg)
+    Theta, Phi, Alpha = IK(X, Y, Z, leg)
+    Plotleg(Theta, Phi, Alpha, leg, True)
     # GUI.canvas.draw
     #Put leg down
-    # Z = 0
-    # Theta, Phi, Alpha = IK(X, Y, Z, leg)
-    # Plotleg(Theta, Phi, Alpha, leg)
+    Z = 0
+    Theta, Phi, Alpha = IK(X, Y, Z, leg)
+    Plotleg(Theta, Phi, Alpha, leg, False)
     return
 
 def ConfigurePlot():
