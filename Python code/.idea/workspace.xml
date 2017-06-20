@@ -26,18 +26,18 @@
       <file leaf-file-name="Inverse Kinematics.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Inverse Kinematics.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="31" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="31" />
+            <state relative-caret-position="-2543">
+              <caret line="5" column="31" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IK+UI.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="IK+UI.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/IK+UI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="210" column="51" lean-forward="true" selection-start-line="210" selection-start-column="51" selection-end-line="210" selection-end-column="51" />
+            <state relative-caret-position="117">
+              <caret line="115" column="0" lean-forward="false" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
               <folding>
                 <element signature="e#463#473#0" expanded="true" />
               </folding>
@@ -45,13 +45,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlotUpdate.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PlotUpdate.py">
+      <file leaf-file-name="IK+UI_MultiThread.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/IK+UI_MultiThread.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="19" lean-forward="false" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+            <state relative-caret-position="-1316">
+              <caret line="126" column="34" lean-forward="true" selection-start-line="126" selection-start-column="34" selection-end-line="126" selection-end-column="34" />
               <folding>
-                <element signature="e#0#18#0" expanded="true" />
+                <element signature="e#529#539#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -69,6 +69,9 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>Plotleg</find>
+      <find>Destination</find>
+      <find>Vecto</find>
+      <find>RotateLeg</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -83,14 +86,15 @@
         <option value="$PROJECT_DIR$/Inverse Kinematics.py" />
         <option value="$PROJECT_DIR$/PlotUpdate.py" />
         <option value="$PROJECT_DIR$/IK+UI.py" />
+        <option value="$PROJECT_DIR$/IK+UI_MultiThread.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="40" />
-    <option name="y" value="121" />
-    <option name="width" value="1327" />
-    <option name="height" value="780" />
+    <option name="x" value="41" />
+    <option name="y" value="-4" />
+    <option name="width" value="1325" />
+    <option name="height" value="772" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -108,7 +112,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -123,6 +126,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -151,7 +155,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.IK+UI">
+  <component name="RunManager" selected="Python.IK+UI_MultiThread">
     <configuration default="false" name="Inverse Kinematics" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -165,24 +169,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Python code" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Inverse Kinematics.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="simple_3danim" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Python code" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/simple_3danim.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -237,6 +223,24 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Python code" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/IK+UI.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="IK+UI_MultiThread" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Python code" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/IK+UI_MultiThread.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -340,18 +344,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.Inverse Kinematics" />
-      <item index="1" class="java.lang.String" itemvalue="Python.simple_3danim" />
-      <item index="2" class="java.lang.String" itemvalue="Python.PlotUpdate" />
-      <item index="3" class="java.lang.String" itemvalue="Python.UI test" />
-      <item index="4" class="java.lang.String" itemvalue="Python.IK+UI" />
+      <item index="1" class="java.lang.String" itemvalue="Python.PlotUpdate" />
+      <item index="2" class="java.lang.String" itemvalue="Python.UI test" />
+      <item index="3" class="java.lang.String" itemvalue="Python.IK+UI" />
+      <item index="4" class="java.lang.String" itemvalue="Python.IK+UI_MultiThread" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.IK+UI" />
-        <item index="1" class="java.lang.String" itemvalue="Python.PlotUpdate" />
-        <item index="2" class="java.lang.String" itemvalue="Python.UI test" />
-        <item index="3" class="java.lang.String" itemvalue="Python.Inverse Kinematics" />
-        <item index="4" class="java.lang.String" itemvalue="Python.simple_3danim" />
+        <item index="0" class="java.lang.String" itemvalue="Python.IK+UI_MultiThread" />
+        <item index="1" class="java.lang.String" itemvalue="Python.IK+UI" />
+        <item index="2" class="java.lang.String" itemvalue="Python.PlotUpdate" />
+        <item index="3" class="java.lang.String" itemvalue="Python.UI test" />
+        <item index="4" class="java.lang.String" itemvalue="Python.Inverse Kinematics" />
       </list>
     </recent_temporary>
     <configuration default="true" type="tests" factoryName="Attests">
@@ -405,7 +409,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="40" y="121" width="1327" height="780" extended-state="6" />
+    <frame x="41" y="-4" width="1325" height="772" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15849057" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287037" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -415,7 +420,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287037" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287037" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39493293" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39493293" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -484,9 +489,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/IK+UI.py</url>
-          <line>115</line>
-          <option name="timeStamp" value="57" />
+          <url>file://$PROJECT_DIR$/IK+UI_MultiThread.py</url>
+          <line>222</line>
+          <option name="timeStamp" value="60" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -496,25 +501,20 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="58" />
+      <option name="time" value="61" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
         <watch expression="reset" language="Python" />
         <watch expression="destination" language="Python" />
         <watch expression="current" language="Python" />
+        <watch expression="X_Vector" language="Python" />
+        <watch expression="Y_Vector" language="Python" />
+        <watch expression="Rot_Vector" language="Python" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/UI test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PlotUpdate.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -847,30 +847,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Inverse Kinematics.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="31" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PlotUpdate.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="19" lean-forward="false" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/IK+UI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="210" column="51" lean-forward="true" selection-start-line="210" selection-start-column="51" selection-end-line="210" selection-end-column="51" />
+        <state relative-caret-position="117">
+          <caret line="115" column="0" lean-forward="false" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
           <folding>
             <element signature="e#463#473#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Inverse Kinematics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2543">
+          <caret line="5" column="31" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IK+UI_MultiThread.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1316">
+          <caret line="126" column="34" lean-forward="true" selection-start-line="126" selection-start-column="34" selection-end-line="126" selection-end-column="34" />
+          <folding>
+            <element signature="e#529#539#0" expanded="true" />
           </folding>
         </state>
       </provider>

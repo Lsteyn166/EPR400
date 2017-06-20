@@ -4,7 +4,7 @@ This continuous forward motion of the body by moving the legs requires the contr
 
     |-->|Get movement vectors from UI| [1]
     |
-    |	|calculate trajectories| -> |Get maximum position for each leg in direction opposite to that specified by the vectors| [1]
+    |	|calculate trajectories| -> |Get maximum position for each leg in direction opposite to that specified by the vectors| [0]
     |
 inf |	    |-->|Check for legs out of bounds| -> |Place these legs in the maximum position in the direction of the movement vector| [1]
     |	    |
@@ -23,3 +23,4 @@ The vector reset is used to store the reset requirements of each leg. The format
 
 Notes:
 1. Change reset check from abs distance to angle check. [0]
+2. Steps should be calculated every cycle from the global vectors [0]

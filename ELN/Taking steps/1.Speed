@@ -1,0 +1,3 @@
+In order to determine how the legs should be moved when updating the current and destination, a global speed parameter should be defined which refers to the robot body. From this global speed parameter and the trajectories calculated by the global movement vectors, the speed of each leg can be calculated and therefore the position of each leg. The process can be seen in pseudocode below:
+
+
