@@ -15,13 +15,11 @@ import matplotlib.pyplot as plt
 import mpl_toolkits.mplot3d.art3d as art3d
 import math
 from matplotlib.patches import Circle
-import time
 
 # Predefine Vectors
 X_Vector = 0
 Y_Vector = 0
 Rot_Vector = 0
-
 
 # Predefine variables
 Z_body = 0.5                                            # Height of the robot body
@@ -30,7 +28,7 @@ B = 1                                                   # Leg segment B length
 C = 1                                                   # Leg segment C length
 Radius = 1                                              # Radius of robot body
 Z = 0
-Time = 1                                                # This is the update frequency of the system in seconds
+Time = 2                                                # This is the update frequency of the system in seconds
 Speed = 0.1                                             # This is the speed of the robot (normalized)
 destination = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]            # Init to zeros
 current = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]                # Init to zeros
@@ -145,6 +143,7 @@ class GUI(QtGui.QDialog):
             self.ax.plot([x, x], [y, y], [0, -0.05], color='#FFAF00')
 
         GUI.canvas.draw()                              # Refresh canvas
+        print "done"
 
     def UP(self):                                       # Callback function for Button
         global Y_Vector
@@ -205,6 +204,7 @@ class GUI(QtGui.QDialog):
     def On_Timer(self):
         """Executed when the timer runs out"""
         self.Step()                                     # Automatically take the next step
+        print "tick"
 
     def On_Start(self):
         """This module is called to start the timer and multithreading services"""
@@ -214,19 +214,24 @@ class GUI(QtGui.QDialog):
         self.timer.start(Time*1000)
 
         # Start the necessary services
-        for leg in range(1,6):
-           self.DestinationUpdate(leg)
+        for leg in range(1, 6):
+            X, Y = Vector(-X_Vector, -Y_Vector, leg, -Rot_Vector, True)
+            destination[2 * leg - 2] = X
+            destination[2 * leg - 1] = Y
         # End of class GUI
 
-def DestinationUpdate(self,leg):
+
+def DestinationUpdate(leg):
     """This module updates the global update array"""
-    X, Y = Vector(-X_Vector, -Y_Vector, leg, -Rot_Vector)
+    # X, Y = Vector(-X_Vector, -Y_Vector, leg, -Rot_Vector,True)
     # The stepsize should now be added to the current array in the direction of movement
-    angle = math.radians(72*(leg-1))
-    x = StepSize*math.cos(angle)
-    y = StepSize*math.cos(angle)
-    destination[2 * leg - 2] = X + x
-    destination[2 * leg - 1] = Y + y
+    current[2 * leg - 2] = destination[2 * leg - 2]
+    current[2 * leg - 1] = destination[2 * leg - 1]
+    global StepSize
+    StepSize = math.sqrt(X_Vector**2+Y_Vector**2+Rot_Vector**2)  # Absolute stepsize from input vectors
+    x, y = Vector(-X_Vector, -Y_Vector, leg, -Rot_Vector, False)
+    destination[2 * leg - 2] = x + current[2 * leg - 2]
+    destination[2 * leg - 1] = y + current[2 * leg - 1]
 
 # Functions from inverse kinematics calculations
 
@@ -329,7 +334,7 @@ def TranslateLeg(leg):
     y = Radius * math.sin(math.radians(72 * (leg - 1)))
     return x, y
 
-def Vector(x, y, leg, Rot):
+def Vector(x, y, leg, Rot, Offset):
     ""
     "This function determines the required position of the foot given a specific vector and rotation"
     # First do the translation vector
@@ -337,12 +342,17 @@ def Vector(x, y, leg, Rot):
     Magnitude = math.sqrt(x ** 2 + y ** 2)  # Calculate actual magnitude
     if (Magnitude > 0.5):  # Limit magnitude to 0.5
         Magnitude = 0.5
-    # Find Neutral position of each leg:
-    NeutralX, NeutralY = RotateLeg(2.5, 0, leg)
-    # Move leg to the edge of the robot:
-    a, b = RotateLeg(Radius, 0, leg)
-    NeutralX = NeutralX - a
-    NeutralY = NeutralY - b
+    if Offset:
+        # Find Neutral position of each leg:
+        NeutralX, NeutralY = RotateLeg(2.5, 0, leg)
+        # Move leg to the edge of the robot:
+        a, b = RotateLeg(Radius, 0, leg)
+        NeutralX = NeutralX - a
+        NeutralY = NeutralY - b
+    else:
+        NeutralY = 0
+        NeutralX = 0
+
     X = NeutralX + Magnitude * math.cos(Angle)
     Y = NeutralY + Magnitude * math.sin(Angle)
 
@@ -354,8 +364,10 @@ def Vector(x, y, leg, Rot):
     X = X - offsetx
     Y = Y - offsety
 
-    current[2*leg-2] = X
-    current[2*leg-1] = Y
+    if Offset:
+        current[2 * leg - 2] = X
+        current[2 * leg - 1] = Y
+
     return X, Y
 
 def CheckBound(x, y, leg):
@@ -384,9 +396,14 @@ def ResetLeg(leg):
     # plt.pause(0.5)
     # GUI.canvas.draw()
     #Move to reset position
-    X, Y = Vector(X_Vector, Y_Vector, leg, Rot_Vector)
+    Angle =
+    x =
+    y = -(current[2 * leg - 1])
+    X, Y = Vector(X_Vector, Y_Vector, leg, Rot_Vector, True)
     current[2*leg-2] = X
     current[2*leg-1] = Y
+    destination[2 * leg - 2] = X
+    destination[2 * leg - 1] = Y
     Theta, Phi, Alpha = IK(X, Y, Z, leg)
     Plotleg(Theta, Phi, Alpha, leg, True)
     # GUI.canvas.draw
