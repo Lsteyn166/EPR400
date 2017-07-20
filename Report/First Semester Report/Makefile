@@ -4,16 +4,16 @@
 ##  Copyright (C) 2011-2017 University of Pretoria.
 ##
 
-all: proposal.pdf
+all: FirstSem.pdf
 
 proposal.pdf: *.tex *.bib epr400.cls
-	pdflatex proposal
-	bibtex   proposal
-	pdflatex proposal
-	pdflatex proposal
+	pdflatex FirstSem
+	bibtex   FirstSem
+	pdflatex FirstSem
+	pdflatex FirstSem
 
 clean:
 	rm -f *.aux *.log *.bbl *.blg *.toc
-	rm -f *converted-to.pdf proposal.pdf
+	rm -f *converted-to.pdf FirstSem.pdf
 
 ## End of File.

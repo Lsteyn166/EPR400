@@ -1,0 +1,96 @@
+@STRING( EL = "Electronics Letters"
+)
+
+@STRING( ICL = "IEEE Communications Letters"
+)
+
+@STRING( ICM = "IEEE Communications Magazine"
+)
+
+@STRING( IJSAC = "IEEE Journal on Selected Areas of Communication"
+)
+
+@STRING( IJSC = "International Journal of Satellite Communications"
+)
+
+@STRING( ITC = "IEEE Transactions on Communications"
+)
+
+@STRING( ITIT = "IEEE Transactions on Information Theory"
+)
+
+@STRING( ITVT = "IEEE Transactions on Vehicular Technology"
+)
+
+@ARTICLE(Shannon:A_Mathematical_Theory_of_Communications,
+ author = "C. Shannon",
+ title = "{A} {M}athematical {T}heoryof {C}ommunications",
+ journal = "Bell Systems Technical Journal",
+ year = "1948",
+ volume = "27",
+ month = "October"
+)
+
+@BOOK(Haykin:Communication_Systems,
+ author = "Simon Haykin",
+ title = "Communications {S}ystems",
+ publisher = "John Wiley and Sons",
+ year =  1994 ,
+ address = "New York",
+ edition = "{T}hird"
+)
+
+
+@ARTICLE(Oh:Analytic,
+ author = "Jaesung Oh and Hyoin Bae and Jun-Ho Oh",
+ title = "Analytic Inverse Kinematics Considering the Joint Constraints and Self-collision for Redundant 7DOF Manipulator",
+ journal = "IEEE",
+ year = "2017",
+ volume = "",
+ month = ""
+)
+
+@ARTICLE(Hidayat:Autonomous,
+ author = "Aditya Hidayat and Agung Nugroho Jati and Randy Erfa Saputra",
+ title = "Autonomous Quadruped Robot Locomotion Control Using Inverse Kinematics and Sine Pattern Method",
+ journal = "IEEE",
+ year = "2017",
+ volume = "",
+ month = ""
+)
+
+@ARTICLE(Jain:Odometry,
+ author = "Paril Jain",
+ title = "Odometry and Motion Planning for Omni Drive Robots",
+ journal = "IEEE",
+ year = "2014",
+ volume = "",
+ month = "November"
+)
+
+@ARTICLE(Ollervides:Navigation,
+ author = "Javier Ollervides and Jorge Orrante-Sakanassi and Vı́ctor Santibanez and Alejandro Dzul",
+ title = "Navigation Control System of Walking Hexapod Robot",
+ journal = "IEEE",
+ year = "2012",
+ volume = "",
+ month = ""
+)
+
+@ARTICLE(Arkin:Reactive,
+ author = "Ronald C. Arkin and Warren F. Gardner",
+ title = "Reactive Inclinometer-based Mobile Robot Navigation",
+ journal = "IEEE",
+ year = "1990",
+ volume = "2",
+ month = ""
+)
+
+@ARTICLE(Hyeon:Reflex,
+ author = "Jong Hyeon Park and Ohung Kwon ",
+ title = "Reflex Control of Biped Robot Locomotion on a Slippery Surface ",
+ journal = "IEEE",
+ year = "2001",
+ volume = "",
+ month = "May"
+)

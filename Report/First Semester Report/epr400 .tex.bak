@@ -364,7 +364,8 @@
 \RequirePackage{tocloft}
 \setlength{\cftbeforetoctitleskip}{0 pt}
 \setlength{\cftaftertoctitleskip}{4ex}
-\renewcommand{\cfttoctitlefont}{\bfseries\fontsize{18pt}{21.6pt}\fontfamily{cmr}\selectfont\sectionrule{0ex}{0pt}{-1ex}{1pt}}
+\renewcommand{\cfttoctitlefont}{\bfseries\fontsize{18pt}{21.6pt}\fontfamily{cmr}\selectfont
+\sectionrule{0ex}{0pt}{-1ex}{1pt}}
 
 % Space below captions
 \setlength{\belowcaptionskip}{10 pt}
@@ -410,7 +411,7 @@
 
 % Pull in support for EPS -> PDF conversion for the UP logo.
 \ifpdf{}
-  \usepackage{epstopdf}
+%  \usepackage{epstopdf}
   \pdfadjustspacing=1
 \else
 \fi
@@ -484,3 +485,4 @@
 \endinput
 
 %% End of File.
+\end{document}

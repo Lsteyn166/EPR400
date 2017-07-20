@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.3.15)  18 JUL 2017 09:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.3.15)  20 JUL 2017 12:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**proposal.tex
-(./proposal.tex
+**FirstSem.tex
+(./FirstSem.tex
 LaTeX2e <2016/02/01>
 Babel <3.9q> and hyphenation patterns for 5 language(s) loaded.
 (./epr400.cls
@@ -1570,8 +1570,8 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))))
-(./proposal.aux)
-\openout1 = `proposal.aux'.
+(./FirstSem.aux)
+\openout1 = `FirstSem.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
@@ -1671,49 +1671,76 @@ s been generated with the most recent feature set (\pgfplotsset{compat=1.13}).
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-<coverpage.pdf, id=29, 597.23125pt x 845.1575pt>
-File: coverpage.pdf Graphic file (type pdf)
- <use coverpage.pdf>
-Package pdftex.def Info: coverpage.pdf used on input line 20.
-(pdftex.def)             Requested size: 597.22978pt x 845.15544pt.
-File: coverpage.pdf Graphic file (type pdf)
+<Coverpage.pdf, id=29, 614.295pt x 794.97pt>
+File: Coverpage.pdf Graphic file (type pdf)
+ <use Coverpage.pdf>
+Package pdftex.def Info: Coverpage.pdf used on input line 20.
+(pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
+File: Coverpage.pdf Graphic file (type pdf)
 
-<use coverpage.pdf>
-Package pdftex.def Info: coverpage.pdf used on input line 20.
-(pdftex.def)             Requested size: 597.22978pt x 845.15544pt.
- <coverpage.pdf, id=32, page=1, 597.23125pt x 845.1575pt>
-File: coverpage.pdf Graphic file (type pdf)
+<use Coverpage.pdf>
+Package pdftex.def Info: Coverpage.pdf used on input line 20.
+(pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
+ <Coverpage.pdf, id=32, page=1, 614.295pt x 794.97pt>
+File: Coverpage.pdf Graphic file (type pdf)
 
-<use coverpage.pdf, page 1>
-Package pdftex.def Info: coverpage.pdf, page1 used on input line 20.
-(pdftex.def)             Requested size: 597.22978pt x 845.15544pt.
-File: coverpage.pdf Graphic file (type pdf)
- <use coverpage.pdf, page 1>
-Package pdftex.def Info: coverpage.pdf, page1 used on input line 20.
-(pdftex.def)             Requested size: 597.25711pt x 845.19412pt.
-File: coverpage.pdf Graphic file (type pdf)
+<use Coverpage.pdf, page 1>
+Package pdftex.def Info: Coverpage.pdf, page1 used on input line 20.
+(pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
+File: Coverpage.pdf Graphic file (type pdf)
+ <use Coverpage.pdf, page 1>
+Package pdftex.def Info: Coverpage.pdf, page1 used on input line 20.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
+File: Coverpage.pdf Graphic file (type pdf)
 
-<use coverpage.pdf, page 1>
-Package pdftex.def Info: coverpage.pdf, page1 used on input line 20.
-(pdftex.def)             Requested size: 597.25711pt x 845.19412pt.
-File: coverpage.pdf Graphic file (type pdf)
- <use coverpage.pdf, page 1>
-Package pdftex.def Info: coverpage.pdf, page1 used on input line 20.
-(pdftex.def)             Requested size: 597.25711pt x 845.19412pt.
-File: coverpage.pdf Graphic file (type pdf)
+<use Coverpage.pdf, page 1>
+Package pdftex.def Info: Coverpage.pdf, page1 used on input line 20.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
+File: Coverpage.pdf Graphic file (type pdf)
+ <use Coverpage.pdf, page 1>
+Package pdftex.def Info: Coverpage.pdf, page1 used on input line 20.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
+File: Coverpage.pdf Graphic file (type pdf)
 
-<use coverpage.pdf, page 1>
-Package pdftex.def Info: coverpage.pdf, page1 used on input line 20.
-(pdftex.def)             Requested size: 597.25711pt x 845.19412pt.
+<use Coverpage.pdf, page 1>
+Package pdftex.def Info: Coverpage.pdf, page1 used on input line 20.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
  [1
 
- <./coverpage.pdf>] (./section1.tex
+ <./Coverpage.pdf>] (./section1.tex
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <16> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 7.
-LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 9.
-)
-(./section2.tex
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 12.
+
+Underfull \hbox (badness 10000) in paragraph at lines 13--14
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--16
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--18
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--20
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--22
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--24
+
+ []
+
+
 Overfull \hbox (9.12012pt too wide) has occurred while \output is active
     []
  []
@@ -1726,6 +1753,21 @@ Overfull \hbox (9.12012pt too wide) has occurred while \output is active
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Underfull \hbox (badness 10000) in paragraph at lines 25--26
+
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[2]) (./section2.tex
 LaTeX Font Info:    Try loading font information for OT1+ztmcm on input line 9.
 
 
@@ -1780,26 +1822,7 @@ LaTeX Font Info:    Try loading font information for U+wasy on input line 9.
 (/usr/share/texlive/texmf-dist/tex/latex/wasysym/uwasy.fd
 File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
 )
-LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 9.
-LaTeX Font Info:    Try loading font information for TS1+ptm on input line 13.
-
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
-File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-)
-Overfull \hbox (9.12012pt too wide) has occurred while \output is active
-    []
- []
-
-
-Overfull \hbox (9.12012pt too wide) has occurred while \output is active
-    []
- []
-
-[2
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 39--40
+Underfull \hbox (badness 10000) in paragraph at lines 9--11
 
  []
 
@@ -1813,13 +1836,9 @@ Overfull \hbox (9.12012pt too wide) has occurred while \output is active
     []
  []
 
-[3]) (./section3.tex <FunctionalDiagram.pdf, id=60, 519.9425pt x 293.095pt>
-File: FunctionalDiagram.pdf Graphic file (type pdf)
+[3
 
-<use FunctionalDiagram.pdf>
-Package pdftex.def Info: FunctionalDiagram.pdf used on input line 12.
-(pdftex.def)             Requested size: 415.95457pt x 234.4763pt.
-
+]) (./section3.tex
 Overfull \hbox (9.12012pt too wide) has occurred while \output is active
     []
  []
@@ -1831,46 +1850,7 @@ Overfull \hbox (9.12012pt too wide) has occurred while \output is active
 
 [4
 
- <./FunctionalDiagram.pdf>]) (./section4.tex
-Underfull \hbox (badness 10000) in paragraph at lines 14--14
-[]|\T1/ptm/b/n/12 SPECIFICATION (IN
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 15--15
-[]|\T1/ptm/b/n/12 ORIGIN OR MO-TIV-A-
- []
-
-
-Underfull \hbox (badness 2409) in paragraph at lines 16--18
-[]|\T1/ptm/b/n/12 HOW WILL YOU CON-
- []
-
-
-Underfull \hbox (badness 3098) in paragraph at lines 16--18
-\T1/ptm/b/n/12 TEM COM-PLIES WITH
- []
-
-
-Underfull \hbox (badness 1377) in paragraph at lines 19--20
-[]|\T1/ptm/m/n/12 (+20) Proving that the ro-bot can
- []
-
-
-Underfull \hbox (badness 6526) in paragraph at lines 31--32
-[]|\T1/ptm/m/n/12 (+20) 100mm/s is a reas-on-able
- []
-
-
-Overfull \hbox (23.37358pt too wide) in alignment at lines 12--39
- [] [] [] 
- []
-
-
-Underfull \vbox (badness 10000) detected at line 39
- []
-
-
+]) (./section4.tex
 Overfull \hbox (9.12012pt too wide) has occurred while \output is active
     []
  []
@@ -1882,30 +1862,7 @@ Overfull \hbox (9.12012pt too wide) has occurred while \output is active
 
 [5
 
-]
-Underfull \hbox (badness 3000) in paragraph at lines 49--50
-[]|\T1/ptm/b/n/12 SPECIFICATION (IN MEAS-UR-ABLE
- []
-
-
-Overfull \hbox (10.97357pt too wide) in alignment at lines 46--64
- [] [] 
- []
-
-
-Underfull \vbox (badness 10000) detected at line 64
- []
-
-
-Overfull \hbox (10.97357pt too wide) in alignment at lines 70--84
- [] [] 
- []
-
-
-Underfull \vbox (badness 10000) detected at line 84
- []
-
-
+]) (./FirstSem.bbl)
 Overfull \hbox (9.12012pt too wide) has occurred while \output is active
     []
  []
@@ -1915,86 +1872,26 @@ Overfull \hbox (9.12012pt too wide) has occurred while \output is active
     []
  []
 
-[6]
-Overfull \hbox (9.12012pt too wide) has occurred while \output is active
-    []
- []
+[6
 
-
-Overfull \hbox (9.12012pt too wide) has occurred while \output is active
-    []
- []
-
-[7]) (./section5.tex
-Underfull \hbox (badness 10000) in paragraph at lines 14--14
-[]|\T1/ptm/b/n/12 DESIGNED AND
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--14
-\T1/ptm/b/n/12 IM-PLE-MEN-TED
- []
-
-
-Underfull \hbox (badness 7685) in paragraph at lines 22--23
-[]|\T1/ptm/m/n/12 (+20) Wireless mod-ule for com-mu-nic-a-tion
- []
-
-
-Underfull \vbox (badness 10000) detected at line 34
- []
-
-
-Overfull \hbox (9.12012pt too wide) has occurred while \output is active
-    []
- []
-
-
-Overfull \hbox (9.12012pt too wide) has occurred while \output is active
-    []
- []
-
-[8
-
-]
-Overfull \hbox (9.12012pt too wide) has occurred while \output is active
-    []
- []
-
-
-Overfull \hbox (9.12012pt too wide) has occurred while \output is active
-    []
- []
-
-[9]) (./proposal.bbl)
-Overfull \hbox (9.12012pt too wide) has occurred while \output is active
-    []
- []
-
-
-Overfull \hbox (9.12012pt too wide) has occurred while \output is active
-    []
- []
-
-[10
-
-] (./proposal.aux) ) 
+] (./FirstSem.aux) ) 
 Here is how much of TeX's memory you used:
- 41023 strings out of 494910
- 937178 string characters out of 6179836
- 1132975 words of memory out of 5000000
- 43396 multiletter control sequences out of 15000+600000
- 41417 words of font info for 146 fonts, out of 8000000 for 9000
+ 40937 strings out of 494910
+ 936071 string characters out of 6179836
+ 1129797 words of memory out of 5000000
+ 43346 multiletter control sequences out of 15000+600000
+ 32153 words of font info for 123 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  62i,18n,94p,10398b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}
-</usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/urw/times/utmri8a.pfb>
-Output written on proposal.pdf (11 pages, 140675 bytes).
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/urw/times/utmri8a.pfb>
+Output written on FirstSem.pdf (7 pages, 92233 bytes).
 PDF statistics:
- 100 PDF objects out of 1000 (max. 8388607)
- 58 compressed objects within 1 object stream
+ 98 PDF objects out of 1000 (max. 8388607)
+ 56 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 17542 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 15489 words of extra memory for PDF output out of 17280 (max. 10000000)
 
