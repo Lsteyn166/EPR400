@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.3.15)  20 JUL 2017 12:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.3.15)  21 JUL 2017 14:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1570,24 +1570,26 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))))
-(./FirstSem.aux)
+(/usr/share/texlive/texmf-dist/tex/latex/placeins/placeins.sty
+Package: placeins 2005/04/18  v 2.2
+) (./FirstSem.aux)
 \openout1 = `FirstSem.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Try loading font information for T1+ptm on input line 17.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 18.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )
@@ -1639,7 +1641,7 @@ File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 \makeMPintoPDFobject=\count297
 \everyMPtoPDFconversion=\toks56
 )
-LaTeX Info: Redefining \microtypecontext on input line 17.
+LaTeX Info: Redefining \microtypecontext on input line 18.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -1674,36 +1676,36 @@ Package caption Info: End \AtBeginDocument code.
 <Coverpage.pdf, id=29, 614.295pt x 794.97pt>
 File: Coverpage.pdf Graphic file (type pdf)
  <use Coverpage.pdf>
-Package pdftex.def Info: Coverpage.pdf used on input line 20.
+Package pdftex.def Info: Coverpage.pdf used on input line 21.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 File: Coverpage.pdf Graphic file (type pdf)
 
 <use Coverpage.pdf>
-Package pdftex.def Info: Coverpage.pdf used on input line 20.
+Package pdftex.def Info: Coverpage.pdf used on input line 21.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
  <Coverpage.pdf, id=32, page=1, 614.295pt x 794.97pt>
 File: Coverpage.pdf Graphic file (type pdf)
 
 <use Coverpage.pdf, page 1>
-Package pdftex.def Info: Coverpage.pdf, page1 used on input line 20.
+Package pdftex.def Info: Coverpage.pdf, page1 used on input line 21.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 File: Coverpage.pdf Graphic file (type pdf)
  <use Coverpage.pdf, page 1>
-Package pdftex.def Info: Coverpage.pdf, page1 used on input line 20.
+Package pdftex.def Info: Coverpage.pdf, page1 used on input line 21.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
 File: Coverpage.pdf Graphic file (type pdf)
 
 <use Coverpage.pdf, page 1>
-Package pdftex.def Info: Coverpage.pdf, page1 used on input line 20.
+Package pdftex.def Info: Coverpage.pdf, page1 used on input line 21.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
 File: Coverpage.pdf Graphic file (type pdf)
  <use Coverpage.pdf, page 1>
-Package pdftex.def Info: Coverpage.pdf, page1 used on input line 20.
+Package pdftex.def Info: Coverpage.pdf, page1 used on input line 21.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
 File: Coverpage.pdf Graphic file (type pdf)
 
 <use Coverpage.pdf, page 1>
-Package pdftex.def Info: Coverpage.pdf, page1 used on input line 20.
+Package pdftex.def Info: Coverpage.pdf, page1 used on input line 21.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
  [1
 
@@ -1711,32 +1713,32 @@ Package pdftex.def Info: Coverpage.pdf, page1 used on input line 20.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <16> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 12.
 
-Underfull \hbox (badness 10000) in paragraph at lines 13--14
+Underfull \hbox (badness 10000) in paragraph at lines 14--15
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 15--16
+Underfull \hbox (badness 10000) in paragraph at lines 16--17
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 17--18
+Underfull \hbox (badness 10000) in paragraph at lines 18--19
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 19--20
+Underfull \hbox (badness 10000) in paragraph at lines 20--21
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 21--22
+Underfull \hbox (badness 10000) in paragraph at lines 22--23
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 23--24
+Underfull \hbox (badness 10000) in paragraph at lines 24--25
 
  []
 
@@ -1753,7 +1755,7 @@ Overfull \hbox (9.12012pt too wide) has occurred while \output is active
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 25--26
+Underfull \hbox (badness 10000) in paragraph at lines 26--27
 
  []
 
@@ -1768,7 +1770,7 @@ Overfull \hbox (9.12012pt too wide) has occurred while \output is active
  []
 
 [2]) (./section2.tex
-LaTeX Font Info:    Try loading font information for OT1+ztmcm on input line 9.
+LaTeX Font Info:    Try loading font information for OT1+ztmcm on input line 8.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
@@ -1778,35 +1780,35 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             `ztmcm' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Try loading font information for OML+ztmcm on input line 9.
+LaTeX Font Info:    Try loading font information for OML+ztmcm on input line 8.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omlztmcm.fd
 File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for OMS+ztmcm on input line 9.
+LaTeX Font Info:    Try loading font information for OMS+ztmcm on input line 8.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsztmcm.fd
 File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for OMX+ztmcm on input line 9.
+LaTeX Font Info:    Try loading font information for OMX+ztmcm on input line 8.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omxztmcm.fd
 File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 9.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 8.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 9.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 8.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 9.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 8.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 9.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 8.
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
@@ -1817,15 +1819,30 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-eur.cfg
 File: mt-eur.cfg 2006/07/31 v1.1 microtype config. file: AMS Euler Roman (RS)
 )
-LaTeX Font Info:    Try loading font information for U+wasy on input line 9.
+LaTeX Font Info:    Try loading font information for U+wasy on input line 8.
 
 (/usr/share/texlive/texmf-dist/tex/latex/wasysym/uwasy.fd
 File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
 )
-Underfull \hbox (badness 10000) in paragraph at lines 9--11
+Underfull \hbox (badness 10000) in paragraph at lines 8--9
 
  []
 
+<pics/EPR400-2DOF.pdf, id=67, 252.945pt x 233.87375pt>
+File: pics/EPR400-2DOF.pdf Graphic file (type pdf)
+
+<use pics/EPR400-2DOF.pdf>
+Package pdftex.def Info: pics/EPR400-2DOF.pdf used on input line 15.
+(pdftex.def)             Requested size: 202.35626pt x 187.09923pt.
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 16.
+
+<pics/EPR400-3DOF.pdf, id=68, 293.095pt x 294.09875pt>
+File: pics/EPR400-3DOF.pdf Graphic file (type pdf)
+
+<use pics/EPR400-3DOF.pdf>
+Package pdftex.def Info: pics/EPR400-3DOF.pdf used on input line 26.
+(pdftex.def)             Requested size: 234.4763pt x 235.27931pt.
 
 Overfull \hbox (9.12012pt too wide) has occurred while \output is active
     []
@@ -1838,7 +1855,32 @@ Overfull \hbox (9.12012pt too wide) has occurred while \output is active
 
 [3
 
-]) (./section3.tex
+ <./pics/EPR400-2DOF.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 32--33
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--35
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--37
+
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[4 <./pics/EPR400-3DOF.pdf>]
 Overfull \hbox (9.12012pt too wide) has occurred while \output is active
     []
  []
@@ -1848,21 +1890,23 @@ Overfull \hbox (9.12012pt too wide) has occurred while \output is active
     []
  []
 
-[4
+[5]) (./section3.tex
+Underfull \hbox (badness 10000) in paragraph at lines 9--10
 
-]) (./section4.tex
-Overfull \hbox (9.12012pt too wide) has occurred while \output is active
-    []
  []
 
+<pics/Gantt1.pdf, id=86, 597.23125pt x 845.1575pt>
+File: pics/Gantt1.pdf Graphic file (type pdf)
+ <use pics/Gantt1.pdf>
+Package pdftex.def Info: pics/Gantt1.pdf used on input line 13.
+(pdftex.def)             Requested size: 441.01773pt x 250.1519pt.
 
-Overfull \hbox (9.12012pt too wide) has occurred while \output is active
-    []
- []
+<pics/Gantt2.pdf, id=88, 597.23125pt x 845.1575pt>
+File: pics/Gantt2.pdf Graphic file (type pdf)
+ <use pics/Gantt2.pdf>
+Package pdftex.def Info: pics/Gantt2.pdf used on input line 23.
+(pdftex.def)             Requested size: 441.01773pt x 176.60585pt.
 
-[5
-
-]) (./FirstSem.bbl)
 Overfull \hbox (9.12012pt too wide) has occurred while \output is active
     []
  []
@@ -1874,13 +1918,67 @@ Overfull \hbox (9.12012pt too wide) has occurred while \output is active
 
 [6
 
+ <./pics/Gantt1.pdf>]) (./section4.tex
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[7 <./pics/Gantt2.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 9--10
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 11--12
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 13--14
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--16
+
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[8
+
+]) (./FirstSem.bbl)
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[9
+
 ] (./FirstSem.aux) ) 
 Here is how much of TeX's memory you used:
- 40937 strings out of 494910
- 936071 string characters out of 6179836
- 1129797 words of memory out of 5000000
- 43346 multiletter control sequences out of 15000+600000
- 32153 words of font info for 123 fonts, out of 8000000 for 9000
+ 41016 strings out of 494910
+ 937233 string characters out of 6179836
+ 1129958 words of memory out of 5000000
+ 43388 multiletter control sequences out of 15000+600000
+ 36126 words of font info for 143 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  62i,18n,94p,10398b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}
@@ -1888,10 +1986,10 @@ Here is how much of TeX's memory you used:
 share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/urw/times/utmri8a.pfb>
-Output written on FirstSem.pdf (7 pages, 92233 bytes).
+Output written on FirstSem.pdf (10 pages, 199785 bytes).
 PDF statistics:
- 98 PDF objects out of 1000 (max. 8388607)
- 56 compressed objects within 1 object stream
+ 146 PDF objects out of 1000 (max. 8388607)
+ 89 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 15489 words of extra memory for PDF output out of 17280 (max. 10000000)
+ 16033 words of extra memory for PDF output out of 17280 (max. 10000000)
 
