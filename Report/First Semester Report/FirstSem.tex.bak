@@ -14,6 +14,8 @@
 \eprdate{April 2017}
 \eprsupervisor{Prof R. P. Feynman}
 \usepackage{placeins}
+\renewcommand\cftsecaftersnum{.}
+\renewcommand\thesection{\arabic{section}}
 
 \begin{document}
 
@@ -24,7 +26,7 @@
 \pagestyle{plain}
 \pagenumbering{arabic}
 \setcounter{page}{1}
-%\tableofcontents
+\tableofcontents
 %% Import the content
 \input{section1}
 \input{section2}

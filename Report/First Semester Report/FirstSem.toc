@@ -1,6 +1,6 @@
 \select@language {british}
-\contentsline {section}{\numberline {1.}Literature study}{2}
-\contentsline {section}{\numberline {2.}Approach}{3}
-\contentsline {section}{\numberline {3.}Project plan}{4}
-\contentsline {section}{\numberline {4.}Progress}{5}
-\contentsline {section}{\numberline {5.}References}{6}
+\contentsline {section}{\numberline {1}Literature study}{2}
+\contentsline {section}{\numberline {2}Approach}{4}
+\contentsline {section}{\numberline {3}Project plan}{7}
+\contentsline {section}{\numberline {4}Progress}{9}
+\contentsline {section}{\numberline {5}References}{10}
