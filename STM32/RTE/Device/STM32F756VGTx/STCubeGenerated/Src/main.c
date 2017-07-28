@@ -38,6 +38,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "stm32f7xx_hal.h"
+#include "stm32f7xx_it.h"
 
 /* USER CODE BEGIN Includes */
 
@@ -50,10 +51,15 @@ UART_HandleTypeDef huart3;
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
-unsigned char RXData[80];
-unsigned char X_Char[2];
-unsigned char Y_Char[2];
-unsigned char R_Char[2];
+unsigned char RXData[15];		//Array for Bluetooth reception
+unsigned char X_Char;				//Stores received X as Char
+unsigned char Y_Char;				//Stores received Y as Char
+unsigned char R_Char;				//Stores received R as Char
+int X_Vect =0;							//Stores received X as Int
+int Y_Vect =0;							//Stores received Y as Int
+int R_Vect =0;							//Stores received R as Int
+
+unsigned char BTRewrite[] = {'X','Y','R','\r'};		//String used for debugging
 
 /* USER CODE END PV */
 
@@ -65,8 +71,8 @@ static void MX_USART1_UART_Init(void);
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
-void Debug(char *Array, int count);
-void BluetoothInit(void);
+void Debug(char *Array, int count);													//Sends something to UART1 for debugging
+void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart);			//Sends error message with Debug()
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
@@ -102,80 +108,50 @@ int main(void)
   MX_USART1_UART_Init();
 
   /* USER CODE BEGIN 2 */
-	//BluetoothInit();
 	Debug("Init done",9);
-	//HAL_GPIO_WritePin(GPIOA,GPIO_PIN_1,SET);
-	
-	//uint8_t TransmitBuffer[32] = "A";
-	//unsigned char test = 'A';
-	//TransmitBuffer[0] = test;
-	//TransmitBuffer[1] ='B';
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 	Debug("Entering main loop",18);
-	
-	
-	
   while (1)
   {
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-		HAL_GPIO_WritePin(GPIOE,GPIO_PIN_0,GPIO_PIN_RESET);
-		HAL_UART_Receive(&huart3,RXData,20,10);
-		if (RXData[0] == 'X')
+		HAL_GPIO_WritePin(GPIOE,GPIO_PIN_0,GPIO_PIN_RESET);					//Turn blue LED off
+		HAL_UART_Receive_IT(&huart3,RXData,15);											//Receive commands via bluetooth
+		for(int i = 0;i<7;i++)
 		{
-			Debug("BT",2);
-			HAL_GPIO_WritePin(GPIOE,GPIO_PIN_0,GPIO_PIN_SET);
-			int i = 1;
-			int j = 0;
-			while (RXData[i]!='Y' && j<2)
+			//Is this a valid message?
+			if ((RXData[i] == 'X')&& (RXData[i+2] == 'Y')&&(RXData[i+4]=='R')&&(RXData[i+6]=='*'))
 			{
-				X_Char[j]=RXData[i];
-				++i;
-				++j;
-			}
-			j=0;
-			i++;
-			while (RXData[i]!='R' && j<2)
-			{
-				Y_Char[j]=RXData[i];
-				++i;
-				++j;
-			}
-			j=0;
-			i++;
-			while (RXData[i]!='*' && j<2)
-			{
-				R_Char[j]=RXData[i];
-				++i;
-				++j;
-			}
-			RXData[0]=0;
-			Debug("Check",5);
-			HAL_UART_Transmit(&huart1,X_Char,2,10);
-			Debug("X",1);
-			HAL_UART_Transmit(&huart1,Y_Char,2,10);
-			Debug("Y",1);
-			HAL_UART_Transmit(&huart1,R_Char,2,10);
-			Debug("R",1);
-			
+				//Extract the necessary commands
+				HAL_GPIO_WritePin(GPIOE,GPIO_PIN_0,GPIO_PIN_SET);
+				X_Char = RXData[i+1];
+				Y_Char = RXData[i+3];
+				R_Char = RXData[i+5];
+				
+				//Clear the array
+				for(int j = 0;j<14;j++)
+				{
+					RXData[j]=0;
+				}
+				
+				//Calculate correct vectors
+				X_Vect = X_Char - '5';
+				Y_Vect = Y_Char - '5';
+				R_Vect = R_Char - '5';
+				//Debug
+				HAL_UART_Transmit(&huart1,&X_Char,1,10);
+				HAL_UART_Transmit(&huart1,&Y_Char,1,10);
+				HAL_UART_Transmit(&huart1,&R_Char,1,10);
+				HAL_UART_Transmit(&huart1,BTRewrite,4,10);
+				}
 		}
-		HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_1); 
-		HAL_GPIO_TogglePin(GPIOB,GPIO_PIN_1);
-		HAL_GPIO_TogglePin(GPIOC,GPIO_PIN_1);
-		HAL_GPIO_TogglePin(GPIOD,GPIO_PIN_1);
-		HAL_GPIO_TogglePin(GPIOE,GPIO_PIN_1);
-		//HAL_GPIO_TogglePin(GPIOE,GPIO_PIN_0);
-		//HAL_UART_Transmit_IT(&huart1,TransmitBuffer,32);
-		//HAL_UART_Transmit_IT(&huart3,TransmitBuffer,32);
-		//Debug("Hi There",8);
-		
-		
 
+		//Toggle pin to check for stuck program
+		HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_1); 
   }
   /* USER CODE END 3 */
 
@@ -374,12 +350,11 @@ void Debug(char *Array, int count)
 	HAL_UART_Transmit(&huart1,TXBuffer,count+2,10);
 }
 
-void BluetoothInit(void)
-{
-	HAL_UART_Receive_IT(&huart3,RXData,80);
-}
-
-
+	void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
+	{
+		Debug("Bluetooth Error",15);
+	}
+	
 /* USER CODE END 4 */
 
 
@@ -397,6 +372,8 @@ void _Error_Handler(char * file, int line)
   while(1) 
   {
   }
+
+	
   /* USER CODE END Error_Handler_Debug */ 
 }
 
@@ -419,13 +396,3 @@ void assert_failed(uint8_t* file, uint32_t line)
 }
 
 #endif
-
-/**
-  * @}
-  */ 
-
-/**
-  * @}
-*/ 
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
