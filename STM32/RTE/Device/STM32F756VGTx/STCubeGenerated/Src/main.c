@@ -55,17 +55,22 @@ UART_HandleTypeDef huart3;
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
-unsigned char RXData[15];		//Array for Bluetooth reception
-unsigned char X_Char;				//Stores received X as Char
-unsigned char Y_Char;				//Stores received Y as Char
-unsigned char R_Char;				//Stores received R as Char
-int X_Vect =0;							//Stores received X as Int
-int Y_Vect =0;							//Stores received Y as Int
-int R_Vect =0;							//Stores received R as Int
-int legAngles[15];					//Stores the desired angle for each limb
-int legAngles_id[15];				//Stores the ID of each limb for sorting
-int servoOffset[15];				//Array for storing the offset of each servo
-int BTCount = 0;						//Counter for BlueTooth LED
+unsigned char RXData[15];																//Array for Bluetooth reception
+unsigned char X_Char;																		//Stores received X as Char
+unsigned char Y_Char;																		//Stores received Y as Char
+unsigned char R_Char;																		//Stores received R as Char
+int X_Vect =0;																					//Stores received X as Int
+int Y_Vect =0;																					//Stores received Y as Int
+int R_Vect =0;																					//Stores received R as Int
+int legAngles[15];																			//Stores the desired angle for each limb
+int legAngles_id[15];																		//Stores the ID of each limb for sorting
+int servoOffset[] = {300,305,300,305,285,								//Array for storing the offset of each servo
+											430,0,0,0,0,
+											-90,-112,-105,-78,-98};		
+int servoMultiplier[] = {	-360,-360,-363,-365,-360,			//Array for storing the multiplier of each servo
+													-400,0,0,0,0,
+													-360,545,490,460,500};		
+int BTCount = 0;																				//Counter for BlueTooth LED
 
 static TIM_HandleTypeDef ServoTimer;
 static TIM_HandleTypeDef ServoTimer2;
@@ -97,6 +102,7 @@ void Debug(char *Array, int count);													//Sends something to UART1 for d
 void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart);			//Sends error message with Debug()
 void SetupTimers(void);																					//Configure timers 6 and 7 for use in servo control
 void Sort(void);
+void SetServo(int servo, int degrees);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
@@ -145,6 +151,11 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+	//##################################################################################################################################
+	//**********************************************************************************************************************************
+	SetServo(6,135);
+	//**********************************************************************************************************************************
+	//##################################################################################################################################
 	Debug("Entering main loop",18);
   while (1)
   {
@@ -503,6 +514,7 @@ void SetupTimers(void)
 {
 	
 	//Timer 6
+	//50Hz Interrupt
 	ServoTimer.Instance =TIM6;
 	ServoTimer.Init.Prescaler =40000;
 	ServoTimer.Init.CounterMode = TIM_COUNTERMODE_UP;
@@ -512,10 +524,11 @@ void SetupTimers(void)
 	HAL_TIM_Base_Start_IT(&ServoTimer);
 	
 	//Timer 7
+	//Variable frequency interrupt
 	htim7.Instance =TIM7;
-	htim7.Init.Prescaler =10000;
+	htim7.Init.Prescaler =1000;
 	htim7.Init.CounterMode = TIM_COUNTERMODE_UP;
-	htim7.Init.Period =10;
+	htim7.Init.Period =160;
 	htim7.Init.RepetitionCounter = 0;
 	HAL_TIM_Base_Init(&htim7);
 	HAL_TIM_Base_Start_IT(&htim7);
@@ -572,9 +585,19 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 				BTCount = 0;
 			}
 		}
-
 	}
 	
+	void SetServo(int servo, int degrees)
+	{
+		int offset = servoOffset[servo-1];
+		int multiplier = servoMultiplier[servo-1];
+		//period of 160 is 1.5ms
+		//=>107/ms
+		//0deg = 1ms
+		//180deg = 2ms
+		legAngles[servo-1] =offset + (degrees*multiplier/180);
+		TIM7->ARR = legAngles[servo-1];
+	}
 	
 
 
