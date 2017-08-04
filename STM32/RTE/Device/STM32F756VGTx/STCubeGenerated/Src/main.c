@@ -38,13 +38,17 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "stm32f7xx_hal.h"
-#include "stm32f7xx_it.h"
 
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
+
+I2C_HandleTypeDef hi2c1;
+
+TIM_HandleTypeDef htim6;
+TIM_HandleTypeDef htim7;
 
 UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart3;
@@ -58,8 +62,23 @@ unsigned char R_Char;				//Stores received R as Char
 int X_Vect =0;							//Stores received X as Int
 int Y_Vect =0;							//Stores received Y as Int
 int R_Vect =0;							//Stores received R as Int
+int legAngles[15];					//Stores the desired angle for each limb
+int legAngles_id[15];				//Stores the ID of each limb for sorting
+int servoOffset[15];				//Array for storing the offset of each servo
+int BTCount = 0;						//Counter for BlueTooth LED
+
+static TIM_HandleTypeDef ServoTimer;
+static TIM_HandleTypeDef ServoTimer2;
 
 unsigned char BTRewrite[] = {'X','Y','R','\r'};		//String used for debugging
+
+#define BTPort GPIOE
+#define BTLEDPin GPIO_PIN_0
+#define redLEDPort GPIOB
+#define redLEDPin GPIO_PIN_9
+#define greenLEDPort GPIOB
+#define greenLEDPin GPIO_PIN_8
+
 
 /* USER CODE END PV */
 
@@ -68,11 +87,16 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART3_UART_Init(void);
 static void MX_USART1_UART_Init(void);
+static void MX_TIM6_Init(void);
+static void MX_TIM7_Init(void);
+static void MX_I2C1_Init(void);
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
 void Debug(char *Array, int count);													//Sends something to UART1 for debugging
 void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart);			//Sends error message with Debug()
+void SetupTimers(void);																					//Configure timers 6 and 7 for use in servo control
+void Sort(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
@@ -106,9 +130,17 @@ int main(void)
   MX_GPIO_Init();
   MX_USART3_UART_Init();
   MX_USART1_UART_Init();
+  MX_TIM6_Init();
+  MX_TIM7_Init();
+  MX_I2C1_Init();
 
   /* USER CODE BEGIN 2 */
+	SetupTimers();
 	Debug("Init done",9);
+	//Turn off all LEDs
+	HAL_GPIO_WritePin(GPIOE,GPIO_PIN_0,GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_9,GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_8,GPIO_PIN_SET);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -119,25 +151,25 @@ int main(void)
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-		HAL_GPIO_WritePin(GPIOE,GPIO_PIN_0,GPIO_PIN_RESET);					//Turn blue LED off
+//		HAL_GPIO_WritePin(GPIOE,GPIO_PIN_0,GPIO_PIN_SET);					//Turn blue LED off
 		HAL_UART_Receive_IT(&huart3,RXData,15);											//Receive commands via bluetooth
 		for(int i = 0;i<7;i++)
 		{
 			//Is this a valid message?
 			if ((RXData[i] == 'X')&& (RXData[i+2] == 'Y')&&(RXData[i+4]=='R')&&(RXData[i+6]=='*'))
 			{
+				//Turn Blue LED on
+				HAL_GPIO_WritePin(GPIOE,GPIO_PIN_0,GPIO_PIN_RESET);
+				BTCount = 0;
 				//Extract the necessary commands
-				HAL_GPIO_WritePin(GPIOE,GPIO_PIN_0,GPIO_PIN_SET);
 				X_Char = RXData[i+1];
 				Y_Char = RXData[i+3];
 				R_Char = RXData[i+5];
-				
 				//Clear the array
 				for(int j = 0;j<14;j++)
 				{
 					RXData[j]=0;
 				}
-				
 				//Calculate correct vectors
 				X_Vect = X_Char - '5';
 				Y_Vect = Y_Char - '5';
@@ -149,9 +181,16 @@ int main(void)
 				HAL_UART_Transmit(&huart1,BTRewrite,4,10);
 				}
 		}
+		
+		Sort();
+		
 
 		//Toggle pin to check for stuck program
 		HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_1); 
+//		HAL_GPIO_TogglePin(GPIOE,GPIO_PIN_0); 
+//		HAL_GPIO_TogglePin(GPIOB,GPIO_PIN_9); 
+//		HAL_GPIO_TogglePin(GPIOB,GPIO_PIN_8); 
+		
   }
   /* USER CODE END 3 */
 
@@ -170,7 +209,7 @@ void SystemClock_Config(void)
     */
   __HAL_RCC_PWR_CLK_ENABLE();
 
-  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE3);
+  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
 
     /**Initializes the CPU, AHB and APB busses clocks 
     */
@@ -179,10 +218,17 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
   RCC_OscInitStruct.PLL.PLLM = 10;
-  RCC_OscInitStruct.PLL.PLLN = 80;
+  RCC_OscInitStruct.PLL.PLLN = 216;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
   RCC_OscInitStruct.PLL.PLLQ = 2;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+    /**Activate the Over-Drive mode 
+    */
+  if (HAL_PWREx_EnableOverDrive() != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);
   }
@@ -196,14 +242,16 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_7) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);
   }
 
-  PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_USART1|RCC_PERIPHCLK_USART3;
+  PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_USART1|RCC_PERIPHCLK_USART3
+                              |RCC_PERIPHCLK_I2C1;
   PeriphClkInitStruct.Usart1ClockSelection = RCC_USART1CLKSOURCE_PCLK2;
   PeriphClkInitStruct.Usart3ClockSelection = RCC_USART3CLKSOURCE_PCLK1;
+  PeriphClkInitStruct.I2c1ClockSelection = RCC_I2C1CLKSOURCE_PCLK1;
   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);
@@ -219,6 +267,90 @@ void SystemClock_Config(void)
 
   /* SysTick_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
+}
+
+/* I2C1 init function */
+static void MX_I2C1_Init(void)
+{
+
+  hi2c1.Instance = I2C1;
+  hi2c1.Init.Timing = 0x00303D5B;
+  hi2c1.Init.OwnAddress1 = 0;
+  hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+  hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+  hi2c1.Init.OwnAddress2 = 0;
+  hi2c1.Init.OwnAddress2Masks = I2C_OA2_NOMASK;
+  hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
+  hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
+  if (HAL_I2C_Init(&hi2c1) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+    /**Configure Analogue filter 
+    */
+  if (HAL_I2CEx_ConfigAnalogFilter(&hi2c1, I2C_ANALOGFILTER_ENABLE) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+    /**Configure Digital filter 
+    */
+  if (HAL_I2CEx_ConfigDigitalFilter(&hi2c1, 0) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+}
+
+/* TIM6 init function */
+static void MX_TIM6_Init(void)
+{
+
+  TIM_MasterConfigTypeDef sMasterConfig;
+
+  htim6.Instance = TIM6;
+  htim6.Init.Prescaler = 0;
+  htim6.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim6.Init.Period = 0;
+  htim6.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim6) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim6, &sMasterConfig) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+}
+
+/* TIM7 init function */
+static void MX_TIM7_Init(void)
+{
+
+  TIM_MasterConfigTypeDef sMasterConfig;
+
+  htim7.Instance = TIM7;
+  htim7.Init.Prescaler = 0;
+  htim7.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim7.Init.Period = 0;
+  htim7.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim7) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim7, &sMasterConfig) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
 }
 
 /* USART1 init function */
@@ -290,7 +422,7 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1|GPIO_PIN_12|GPIO_PIN_8|GPIO_PIN_9, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOD, GPIO_PIN_1, GPIO_PIN_RESET);
@@ -312,8 +444,20 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : PB1 */
-  GPIO_InitStruct.Pin = GPIO_PIN_1;
+  /*Configure GPIO pins : PA4 PA5 PA6 PA7 */
+  GPIO_InitStruct.Pin = GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PC4 */
+  GPIO_InitStruct.Pin = GPIO_PIN_4;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PB1 PB12 PB8 PB9 */
+  GPIO_InitStruct.Pin = GPIO_PIN_1|GPIO_PIN_12|GPIO_PIN_8|GPIO_PIN_9;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -350,15 +494,91 @@ void Debug(char *Array, int count)
 	HAL_UART_Transmit(&huart1,TXBuffer,count+2,10);
 }
 
-	void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
+void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
+{
+	Debug("Bluetooth Error",15);
+}
+	
+void SetupTimers(void)
+{
+	
+	//Timer 6
+	ServoTimer.Instance =TIM6;
+	ServoTimer.Init.Prescaler =40000;
+	ServoTimer.Init.CounterMode = TIM_COUNTERMODE_UP;
+	ServoTimer.Init.Period =54;
+	ServoTimer.Init.RepetitionCounter = 0;
+	HAL_TIM_Base_Init(&ServoTimer);
+	HAL_TIM_Base_Start_IT(&ServoTimer);
+	
+	//Timer 7
+	htim7.Instance =TIM7;
+	htim7.Init.Prescaler =10000;
+	htim7.Init.CounterMode = TIM_COUNTERMODE_UP;
+	htim7.Init.Period =10;
+	htim7.Init.RepetitionCounter = 0;
+	HAL_TIM_Base_Init(&htim7);
+	HAL_TIM_Base_Start_IT(&htim7);
+	
+}
+	
+
+/** @brief Function for sorting the desired leg angles into ascending order 
+						to make timer functions simpler
+  * @param None
+  * @retval None */
+void Sort(void)
+{
+	for(int i = 0;i<15;i++)
 	{
-		Debug("Bluetooth Error",15);
+		for(int j = i+1;j<15;j++)
+		{
+			if(legAngles[i] > legAngles[j])
+			{
+				//swop the angles
+				int a = legAngles[i];
+				legAngles[i] = legAngles[j];
+				legAngles[j] = a;
+				//now swop the index
+				a = legAngles_id[i];
+				legAngles_id[i] = legAngles_id[j];
+				legAngles_id[j] = a;
+			}
+		}
+	}
+}
+
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+	{
+		
+		if(htim == &htim7){
+			//Turn off
+			HAL_GPIO_WritePin(GPIOB,GPIO_PIN_12,GPIO_PIN_RESET);
+			HAL_TIM_Base_Stop(&htim7);
+		}
+		if (htim == &htim6)
+		{
+			//50Hz Interrupt
+			//Turn all on
+			HAL_GPIO_WritePin(GPIOB,GPIO_PIN_12,GPIO_PIN_SET);
+			HAL_TIM_Base_Start(&htim7);
+			
+			//BT LED
+			++BTCount;
+			if (BTCount > 120) //20ms * 120 = 2.4s
+			{
+				//Turn LED off
+				HAL_GPIO_WritePin(BTPort,BTLEDPin,GPIO_PIN_SET);
+				BTCount = 0;
+			}
+		}
+
 	}
 	
+	
+
+
 /* USER CODE END 4 */
-
-
-
 
 /**
   * @brief  This function is executed in case of error occurrence.
@@ -396,3 +616,13 @@ void assert_failed(uint8_t* file, uint32_t line)
 }
 
 #endif
+
+/**
+  * @}
+  */ 
+
+/**
+  * @}
+*/ 
+
+/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
