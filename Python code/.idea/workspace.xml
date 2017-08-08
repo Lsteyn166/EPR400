@@ -26,7 +26,7 @@
       <file leaf-file-name="Inverse Kinematics.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Inverse Kinematics.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
+            <state relative-caret-position="85">
               <caret line="5" column="31" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="31" />
               <folding />
             </state>
@@ -36,8 +36,8 @@
       <file leaf-file-name="IK+UI.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/IK+UI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="31" column="5" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="5" />
+            <state relative-caret-position="272">
+              <caret line="23" column="21" lean-forward="false" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
               <folding>
                 <element signature="e#463#473#0" expanded="true" />
               </folding>
@@ -48,31 +48,9 @@
       <file leaf-file-name="IK+UI_MultiThread.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/IK+UI_MultiThread.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="535">
-              <caret line="398" column="11" lean-forward="false" selection-start-line="398" selection-start-column="11" selection-end-line="398" selection-end-column="11" />
-              <folding>
-                <element signature="e#529#539#0" expanded="true" />
-                <element signature="e#1922#5461#0" expanded="false" />
-                <element signature="e#5571#6815#0" expanded="false" />
-                <element signature="e#6152#6721#0" expanded="false" />
-                <element signature="e#6912#7115#0" expanded="false" />
-                <element signature="e#7212#7417#0" expanded="false" />
-                <element signature="e#7514#7719#0" expanded="false" />
-                <element signature="e#7816#8019#0" expanded="false" />
-                <element signature="e#8116#8270#0" expanded="false" />
-                <element signature="e#8367#8521#0" expanded="false" />
-                <element signature="e#8555#8705#0" expanded="false" />
-                <element signature="e#8739#9220#0" expanded="false" />
-                <element signature="e#9255#9863#0" expanded="false" />
-                <element signature="e#9961#11662#0" expanded="false" />
-                <element signature="e#11690#12865#0" expanded="false" />
-                <element signature="e#12898#13166#0" expanded="false" />
-                <element signature="e#13198#13444#0" expanded="false" />
-                <element signature="e#13473#13778#0" expanded="false" />
-                <element signature="e#13820#14895#0" expanded="false" />
-                <element signature="e#14928#15271#0" expanded="false" />
-                <element signature="e#16189#16937#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="354">
+              <caret line="412" column="42" lean-forward="true" selection-start-line="412" selection-start-column="42" selection-end-line="412" selection-end-column="42" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -104,19 +82,19 @@
       <list>
         <option value="$PROJECT_DIR$/simple_3danim.py" />
         <option value="$PROJECT_DIR$/UI test.py" />
-        <option value="$PROJECT_DIR$/Inverse Kinematics.py" />
         <option value="$PROJECT_DIR$/PlotUpdate.py" />
         <option value="$PROJECT_DIR$/IK+UI.py" />
         <option value="$PROJECT_DIR$/4 bar linkage solver.py" />
+        <option value="$PROJECT_DIR$/Inverse Kinematics.py" />
         <option value="$PROJECT_DIR$/IK+UI_MultiThread.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="40" />
-    <option name="y" value="-11" />
-    <option name="width" value="1327" />
-    <option name="height" value="780" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1296" />
+    <option name="height" value="1010" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -134,7 +112,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -150,10 +127,11 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Console Font" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="full.screen.before.presentation.mode" value="false" />
   </component>
@@ -431,12 +409,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="40" y="-11" width="1327" height="780" extended-state="6" />
+    <frame x="-8" y="-8" width="1296" height="1010" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15849057" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1578125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287037" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3263041" sideWeight="0.5066952" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3233979" sideWeight="0.49330476" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32297447" sideWeight="0.49330476" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.3397762" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287037" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -833,27 +811,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/lib/python2.7/dist-packages/matplotlib/axes/_base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="1641" column="0" lean-forward="false" selection-start-line="1641" selection-start-column="0" selection-end-line="1641" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python2.7/dist-packages/matplotlib/cbook.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="689" column="0" lean-forward="false" selection-start-line="689" selection-start-column="0" selection-end-line="689" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python2.7/dist-packages/mpl_toolkits/mplot3d/axes3d.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="1521" column="0" lean-forward="false" selection-start-line="1521" selection-start-column="0" selection-end-line="1521" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file:///usr/lib/python2.7/dist-packages/matplotlib/axes/_base.py" />
+    <entry file="file:///usr/lib/python2.7/dist-packages/matplotlib/cbook.py" />
+    <entry file="file:///usr/lib/python2.7/dist-packages/mpl_toolkits/mplot3d/axes3d.py" />
     <entry file="file://$PROJECT_DIR$/PlotUpdate.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -861,58 +821,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/4 bar linkage solver.py">
+    <entry file="file://$PROJECT_DIR$/4 bar linkage solver.py" />
+    <entry file="file://$PROJECT_DIR$/Inverse Kinematics.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        <state relative-caret-position="85">
+          <caret line="5" column="31" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/IK+UI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="31" column="5" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="5" />
+        <state relative-caret-position="272">
+          <caret line="23" column="21" lean-forward="false" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
           <folding>
             <element signature="e#463#473#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Inverse Kinematics.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="31" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/IK+UI_MultiThread.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
-          <caret line="398" column="11" lean-forward="false" selection-start-line="398" selection-start-column="11" selection-end-line="398" selection-end-column="11" />
-          <folding>
-            <element signature="e#529#539#0" expanded="true" />
-            <element signature="e#1922#5461#0" expanded="false" />
-            <element signature="e#5571#6815#0" expanded="false" />
-            <element signature="e#6152#6721#0" expanded="false" />
-            <element signature="e#6912#7115#0" expanded="false" />
-            <element signature="e#7212#7417#0" expanded="false" />
-            <element signature="e#7514#7719#0" expanded="false" />
-            <element signature="e#7816#8019#0" expanded="false" />
-            <element signature="e#8116#8270#0" expanded="false" />
-            <element signature="e#8367#8521#0" expanded="false" />
-            <element signature="e#8555#8705#0" expanded="false" />
-            <element signature="e#8739#9220#0" expanded="false" />
-            <element signature="e#9255#9863#0" expanded="false" />
-            <element signature="e#9961#11662#0" expanded="false" />
-            <element signature="e#11690#12865#0" expanded="false" />
-            <element signature="e#12898#13166#0" expanded="false" />
-            <element signature="e#13198#13444#0" expanded="false" />
-            <element signature="e#13473#13778#0" expanded="false" />
-            <element signature="e#13820#14895#0" expanded="false" />
-            <element signature="e#14928#15271#0" expanded="false" />
-            <element signature="e#16189#16937#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="354">
+          <caret line="412" column="42" lean-forward="true" selection-start-line="412" selection-start-column="42" selection-end-line="412" selection-end-column="42" />
+          <folding />
         </state>
       </provider>
     </entry>

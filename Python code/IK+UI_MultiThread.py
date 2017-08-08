@@ -396,9 +396,9 @@ def ResetLeg(leg):
     # plt.pause(0.5)
     # GUI.canvas.draw()
     #Move to reset position
-    Angle =
-    x =
-    y = -(current[2 * leg - 1])
+    #Angle =
+    #x =
+    #y = -(current[2 * leg - 1])
     X, Y = Vector(X_Vector, Y_Vector, leg, Rot_Vector, True)
     current[2*leg-2] = X
     current[2*leg-1] = Y

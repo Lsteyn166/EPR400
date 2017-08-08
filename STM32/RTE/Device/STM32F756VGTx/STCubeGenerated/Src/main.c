@@ -63,28 +63,74 @@ int X_Vect =0;																					//Stores received X as Int
 int Y_Vect =0;																					//Stores received Y as Int
 int R_Vect =0;																					//Stores received R as Int
 int legAngles[15];																			//Stores the desired angle for each limb
-int legAngles_id[15];																		//Stores the ID of each limb for sorting
+int legAngles_id[] = {1, 2, 3, 4, 5,										//Stores the ID of each limb for sorting
+											6, 7, 8, 9, 10,
+											11, 12, 13, 14, 15};
 int servoOffset[] = {300,305,300,305,285,								//Array for storing the offset of each servo
-											430,0,0,0,0,
+											430,430,450,440,442,
 											-90,-112,-105,-78,-98};		
 int servoMultiplier[] = {	-360,-360,-363,-365,-360,			//Array for storing the multiplier of each servo
-													-400,0,0,0,0,
+													-400,-400,-400,-400,-400,
 													-360,545,490,460,500};		
+int servoCount = 0;																			//Counter used for keeping track of servo interrupts
 int BTCount = 0;																				//Counter for BlueTooth LED
 
 static TIM_HandleTypeDef ServoTimer;
 static TIM_HandleTypeDef ServoTimer2;
 
-unsigned char BTRewrite[] = {'X','Y','R','\r'};		//String used for debugging
+unsigned char BTRewrite[] = {'X','Y','R','\r'};					//String used for debugging
 
-#define BTPort GPIOE
-#define BTLEDPin GPIO_PIN_0
-#define redLEDPort GPIOB
-#define redLEDPin GPIO_PIN_9
-#define greenLEDPort GPIOB
-#define greenLEDPin GPIO_PIN_8
+//Peripheral pin & port difinitions
+#define BTPort 				GPIOE
+#define BTLEDPin 			GPIO_PIN_0
+#define redLEDPort 		GPIOB
+#define redLEDPin 		GPIO_PIN_9
+#define greenLEDPort 	GPIOB
+#define greenLEDPin 	GPIO_PIN_8
 
+//Servo pin & port definitions
+#define servo1Pin 		GPIO_PIN_12
+#define servo1Port 		GPIOB
+#define servo2Pin 		GPIO_PIN_13
+#define servo2Port 		GPIOB
+#define servo3Pin 		GPIO_PIN_14
+#define servo3Port 		GPIOB
+#define servo4Pin 		GPIO_PIN_15
+#define servo4Port 		GPIOB
+#define servo5Pin 		GPIO_PIN_8
+#define servo5Port 		GPIOD
+#define servo6Pin 		GPIO_PIN_9
+#define servo6Port 		GPIOD
+#define servo7Pin 		GPIO_PIN_10
+#define servo7Port 		GPIOD
+#define servo8Pin 		GPIO_PIN_11
+#define servo8Port 		GPIOD
+#define servo9Pin 		GPIO_PIN_12
+#define servo9Port 		GPIOD
+#define servo10Pin 		GPIO_PIN_13
+#define servo10Port 	GPIOD
+#define servo11Pin 		GPIO_PIN_14
+#define servo11Port 	GPIOD
+#define servo12Pin 		GPIO_PIN_15
+#define servo12Port 	GPIOD
+#define servo13Pin 		GPIO_PIN_6
+#define servo13Port 	GPIOC
+#define servo14Pin 		GPIO_PIN_7
+#define servo14Port 	GPIOC
+#define servo15Pin 		GPIO_PIN_8
+#define servo15Port 	GPIOC
 
+uint16_t servoPinArray[] ={	servo1Pin, servo2Pin, servo3Pin,
+														servo4Pin, servo5Pin, servo6Pin,
+														servo7Pin, servo8Pin, servo9Pin,
+														servo10Pin, servo11Pin, servo12Pin,
+														servo13Pin, servo14Pin, servo15Pin};
+
+GPIO_TypeDef * servoPortArray[] = {	servo1Port, servo2Port, servo3Port,
+																		servo4Port, servo5Port, servo6Port,
+																		servo7Port, servo8Port, servo9Port,
+																		servo10Port, servo11Port, servo12Port,
+																		servo13Port, servo14Port, servo15Port};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -141,6 +187,21 @@ int main(void)
   MX_I2C1_Init();
 
   /* USER CODE BEGIN 2 */
+	SetServo(1,80);
+	SetServo(2,110);
+	SetServo(3,90);
+	SetServo(4,110);
+	SetServo(5,100);
+	SetServo(6,110);
+	SetServo(7,110);
+	SetServo(8,110);
+	SetServo(9,110);
+	SetServo(10,110);
+	SetServo(11,110);
+	SetServo(12,110);
+	SetServo(13,110);
+	SetServo(14,110);
+	SetServo(15,110);
 	SetupTimers();
 	Debug("Init done",9);
 	//Turn off all LEDs
@@ -151,11 +212,9 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-	//##################################################################################################################################
-	//**********************************************************************************************************************************
-	SetServo(6,135);
-	//**********************************************************************************************************************************
-	//##################################################################################################################################
+	//Set servo begin positions
+
+	
 	Debug("Entering main loop",18);
   while (1)
   {
@@ -193,9 +252,6 @@ int main(void)
 				}
 		}
 		
-		Sort();
-		
-
 		//Toggle pin to check for stuck program
 		HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_1); 
 //		HAL_GPIO_TogglePin(GPIOE,GPIO_PIN_0); 
@@ -427,22 +483,25 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOE_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1|GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1|GPIO_PIN_12|GPIO_PIN_8|GPIO_PIN_9, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1|GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14 
+                          |GPIO_PIN_15|GPIO_PIN_8|GPIO_PIN_9, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_1, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10|GPIO_PIN_11 
+                          |GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15 
+                          |GPIO_PIN_1, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOE, GPIO_PIN_0|GPIO_PIN_1, GPIO_PIN_RESET);
 
-  /*Configure GPIO pin : PC1 */
-  GPIO_InitStruct.Pin = GPIO_PIN_1;
+  /*Configure GPIO pins : PC1 PC6 PC7 PC8 */
+  GPIO_InitStruct.Pin = GPIO_PIN_1|GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -467,15 +526,21 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PB1 PB12 PB8 PB9 */
-  GPIO_InitStruct.Pin = GPIO_PIN_1|GPIO_PIN_12|GPIO_PIN_8|GPIO_PIN_9;
+  /*Configure GPIO pins : PB1 PB12 PB13 PB14 
+                           PB15 PB8 PB9 */
+  GPIO_InitStruct.Pin = GPIO_PIN_1|GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14 
+                          |GPIO_PIN_15|GPIO_PIN_8|GPIO_PIN_9;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : PD1 */
-  GPIO_InitStruct.Pin = GPIO_PIN_1;
+  /*Configure GPIO pins : PD8 PD9 PD10 PD11 
+                           PD12 PD13 PD14 PD15 
+                           PD1 */
+  GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10|GPIO_PIN_11 
+                          |GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15 
+                          |GPIO_PIN_1;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -512,7 +577,6 @@ void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
 	
 void SetupTimers(void)
 {
-	
 	//Timer 6
 	//50Hz Interrupt
 	ServoTimer.Instance =TIM6;
@@ -532,7 +596,6 @@ void SetupTimers(void)
 	htim7.Init.RepetitionCounter = 0;
 	HAL_TIM_Base_Init(&htim7);
 	HAL_TIM_Base_Start_IT(&htim7);
-	
 }
 	
 
@@ -563,18 +626,50 @@ void Sort(void)
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	{
-		
 		if(htim == &htim7){
-			//Turn off
-			HAL_GPIO_WritePin(GPIOB,GPIO_PIN_12,GPIO_PIN_RESET);
-			HAL_TIM_Base_Stop(&htim7);
+			//Variable frequency interrupt
+			HAL_GPIO_TogglePin(greenLEDPort,greenLEDPin);
+			++servoCount;
+			//Set period for next interrupt
+			if (servoCount < 15)
+			{
+				TIM7->ARR = (legAngles[servoCount]- legAngles[servoCount-1]);
+			}else{
+				//Stop the timer for the rest of the cycle
+				HAL_TIM_Base_Stop(&htim7);
+				servoCount = 0;
+			}
+			//Set the correct servo low
+			HAL_GPIO_WritePin(servoPortArray[servoCount] ,servoPinArray[servoCount],GPIO_PIN_RESET);
 		}
+		
 		if (htim == &htim6)
 		{
 			//50Hz Interrupt
-			//Turn all on
-			HAL_GPIO_WritePin(GPIOB,GPIO_PIN_12,GPIO_PIN_SET);
-			HAL_TIM_Base_Start(&htim7);
+			HAL_GPIO_TogglePin(redLEDPort,redLEDPin);
+			//Set all servo pins
+			HAL_GPIO_WritePin(servo1Port,servo1Pin,GPIO_PIN_SET);
+			HAL_GPIO_WritePin(servo2Port,servo2Pin,GPIO_PIN_SET);
+			HAL_GPIO_WritePin(servo3Port,servo3Pin,GPIO_PIN_SET);
+			HAL_GPIO_WritePin(servo4Port,servo4Pin,GPIO_PIN_SET);
+			HAL_GPIO_WritePin(servo5Port,servo5Pin,GPIO_PIN_SET);
+			HAL_GPIO_WritePin(servo6Port,servo6Pin,GPIO_PIN_SET);
+			HAL_GPIO_WritePin(servo7Port,servo7Pin,GPIO_PIN_SET);
+			HAL_GPIO_WritePin(servo8Port,servo8Pin,GPIO_PIN_SET);
+			HAL_GPIO_WritePin(servo9Port,servo9Pin,GPIO_PIN_SET);
+			HAL_GPIO_WritePin(servo10Port,servo10Pin,GPIO_PIN_SET);
+			HAL_GPIO_WritePin(servo11Port,servo11Pin,GPIO_PIN_SET);
+			HAL_GPIO_WritePin(servo12Port,servo12Pin,GPIO_PIN_SET);
+			HAL_GPIO_WritePin(servo13Port,servo13Pin,GPIO_PIN_SET);
+			HAL_GPIO_WritePin(servo14Port,servo14Pin,GPIO_PIN_SET);
+			HAL_GPIO_WritePin(servo15Port,servo15Pin,GPIO_PIN_SET);
+			servoCount = 0;
+			
+			
+			//Sort the servo times in ascending order
+			Sort();
+			//Set period for 1st servo
+			TIM7->ARR = legAngles[0];
 			
 			//BT LED
 			++BTCount;
@@ -583,20 +678,26 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 				//Turn LED off
 				HAL_GPIO_WritePin(BTPort,BTLEDPin,GPIO_PIN_SET);
 				BTCount = 0;
+				//Start Timer 7
+				HAL_TIM_Base_Start_IT(&htim7);
 			}
 		}
 	}
 	
 	void SetServo(int servo, int degrees)
 	{
-		int offset = servoOffset[servo-1];
-		int multiplier = servoMultiplier[servo-1];
+		//Set the servo with the correct index in the array 
+		for (int i = 0; i<15; i++)
+		{
+			if (servo == legAngles_id[i])
+			{
+				legAngles[i] =servoOffset[servo-1] + (degrees*(servoMultiplier[servo-1])/180);
+			}
+		}
 		//period of 160 is 1.5ms
 		//=>107/ms
-		//0deg = 1ms
-		//180deg = 2ms
-		legAngles[servo-1] =offset + (degrees*multiplier/180);
-		TIM7->ARR = legAngles[servo-1];
+//		legAngles[servo-1] =servoOffset[servo-1] + (degrees*(servoMultiplier[servo-1])/180);   
+//		TIM7->ARR = legAngles[servo-1];
 	}
 	
 
