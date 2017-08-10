@@ -38,6 +38,8 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "stm32f7xx_hal.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 /* USER CODE BEGIN Includes */
 
@@ -71,9 +73,11 @@ int servoOffset[] = {300,305,300,305,285,								//Array for storing the offset 
 											-90,-112,-105,-78,-98};		
 int servoMultiplier[] = {	-360,-360,-363,-365,-360,			//Array for storing the multiplier of each servo
 													-400,-400,-400,-400,-400,
-													-360,545,490,460,500};		
+													360,545,490,460,500};		
 int servoCount = 0;																			//Counter used for keeping track of servo interrupts
+char servoCountChar[2];
 int BTCount = 0;																				//Counter for BlueTooth LED
+int newPeriod = 0;
 
 static TIM_HandleTypeDef ServoTimer;
 static TIM_HandleTypeDef ServoTimer2;
@@ -188,20 +192,20 @@ int main(void)
 
   /* USER CODE BEGIN 2 */
 	SetServo(1,80);
-	SetServo(2,110);
-	SetServo(3,90);
-	SetServo(4,110);
-	SetServo(5,100);
-	SetServo(6,110);
-	SetServo(7,110);
-	SetServo(8,110);
-	SetServo(9,110);
-	SetServo(10,110);
-	SetServo(11,110);
-	SetServo(12,110);
-	SetServo(13,110);
-	SetServo(14,110);
-	SetServo(15,110);
+//	SetServo(2,110);
+//	SetServo(3,90);
+//	SetServo(4,110);
+//	SetServo(5,100);
+//	SetServo(6,110);
+//	SetServo(7,110);
+//	SetServo(8,110);
+//	SetServo(9,110);
+//	SetServo(10,110);
+//	SetServo(11,110);
+//	SetServo(12,110);
+//	SetServo(13,110);
+//	SetServo(14,110);
+//	SetServo(15,110);
 	SetupTimers();
 	Debug("Init done",9);
 	//Turn off all LEDs
@@ -626,50 +630,23 @@ void Sort(void)
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	{
-		if(htim == &htim7){
-			//Variable frequency interrupt
-			HAL_GPIO_TogglePin(greenLEDPort,greenLEDPin);
-			++servoCount;
-			//Set period for next interrupt
-			if (servoCount < 15)
-			{
-				TIM7->ARR = (legAngles[servoCount]- legAngles[servoCount-1]);
-			}else{
-				//Stop the timer for the rest of the cycle
-				HAL_TIM_Base_Stop(&htim7);
-				servoCount = 0;
-			}
-			//Set the correct servo low
-			HAL_GPIO_WritePin(servoPortArray[servoCount] ,servoPinArray[servoCount],GPIO_PIN_RESET);
-		}
 		
+		if(htim == &htim7){
+			//Turn off
+			HAL_GPIO_TogglePin(greenLEDPort,greenLEDPin);
+			HAL_GPIO_WritePin(servo1Port,servo1Pin,GPIO_PIN_RESET);
+			++servoCount;
+			
+			HAL_TIM_Base_Stop(&htim7);
+		}
 		if (htim == &htim6)
 		{
 			//50Hz Interrupt
 			HAL_GPIO_TogglePin(redLEDPort,redLEDPin);
-			//Set all servo pins
+			//Turn all on
+			
 			HAL_GPIO_WritePin(servo1Port,servo1Pin,GPIO_PIN_SET);
-			HAL_GPIO_WritePin(servo2Port,servo2Pin,GPIO_PIN_SET);
-			HAL_GPIO_WritePin(servo3Port,servo3Pin,GPIO_PIN_SET);
-			HAL_GPIO_WritePin(servo4Port,servo4Pin,GPIO_PIN_SET);
-			HAL_GPIO_WritePin(servo5Port,servo5Pin,GPIO_PIN_SET);
-			HAL_GPIO_WritePin(servo6Port,servo6Pin,GPIO_PIN_SET);
-			HAL_GPIO_WritePin(servo7Port,servo7Pin,GPIO_PIN_SET);
-			HAL_GPIO_WritePin(servo8Port,servo8Pin,GPIO_PIN_SET);
-			HAL_GPIO_WritePin(servo9Port,servo9Pin,GPIO_PIN_SET);
-			HAL_GPIO_WritePin(servo10Port,servo10Pin,GPIO_PIN_SET);
-			HAL_GPIO_WritePin(servo11Port,servo11Pin,GPIO_PIN_SET);
-			HAL_GPIO_WritePin(servo12Port,servo12Pin,GPIO_PIN_SET);
-			HAL_GPIO_WritePin(servo13Port,servo13Pin,GPIO_PIN_SET);
-			HAL_GPIO_WritePin(servo14Port,servo14Pin,GPIO_PIN_SET);
-			HAL_GPIO_WritePin(servo15Port,servo15Pin,GPIO_PIN_SET);
-			servoCount = 0;
-			
-			
-			//Sort the servo times in ascending order
-			Sort();
-			//Set period for 1st servo
-			TIM7->ARR = legAngles[0];
+			HAL_TIM_Base_Start(&htim7);
 			
 			//BT LED
 			++BTCount;
@@ -678,11 +655,144 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 				//Turn LED off
 				HAL_GPIO_WritePin(BTPort,BTLEDPin,GPIO_PIN_SET);
 				BTCount = 0;
-				//Start Timer 7
-				HAL_TIM_Base_Start_IT(&htim7);
 			}
 		}
+
 	}
+
+//void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+//	{
+//		if(htim == &htim7)
+//		{
+//			HAL_GPIO_WritePin(GPIOB,GPIO_PIN_12,GPIO_PIN_RESET);
+//			HAL_TIM_Base_Stop(&htim7);
+//		}
+////			{
+////			//Variable frequency interrupt
+////			switch (servoCount)
+////			{
+////				case 0:
+////					Debug("0",1);
+////					break;
+////				case 1:
+////					Debug("1",1);
+////					break;
+////				case 2:
+////					Debug("2",1);
+////					break;
+////				case 3:
+////					Debug("3",1);
+////					break;
+////				case 4:
+////					Debug("4",1);
+////					break;
+////				case 5:
+////					Debug("5",1);
+////					break;
+////				case 6:
+////					Debug("6",1);
+////					break;
+////				case 7:
+////					Debug("7",1);
+////					break;
+////				case 8:
+////					Debug("8",1);
+////					break;
+////				case 9:
+////					Debug("9",1);
+////					break;
+////				case 10:
+////					Debug("10",1);
+////					break;
+////				case 11:
+////					Debug("11",1);
+////					break;
+////				case 12:
+////					Debug("12",1);
+////					break;
+////				case 13:
+////					Debug("13",1);
+////					break;
+////				case 14:
+////					Debug("14",1);
+////					break;
+////				case 15:
+////					Debug("15",1);
+////					break;
+////				
+////			}
+////			
+////			++servoCount;
+////			//Set period for next interrupt
+////			if (servoCount == 1)
+////			{
+////				newPeriod = legAngles[servoCount-1];
+////			}else if (servoCount < 15)
+////			{
+////				newPeriod = (legAngles[servoCount]- legAngles[servoCount-1]);
+////				//newPeriod = legAngles [servoCount-1];
+////				while (newPeriod == 0)
+////				{
+////					HAL_GPIO_WritePin(servoPortArray[servoCount] ,servoPinArray[servoCount],GPIO_PIN_RESET);
+////					++servoCount;
+////					newPeriod = (legAngles[servoCount]- legAngles[servoCount-1]);
+////				}
+////				TIM7->CNT = 0;
+////				TIM7->ARR = 100;
+////				HAL_GPIO_TogglePin(greenLEDPort,greenLEDPin);
+////				HAL_GPIO_WritePin(servoPortArray[servoCount] ,servoPinArray[servoCount],GPIO_PIN_RESET);
+////			}else{
+////				//Stop the timer for the rest of the cycle
+////				HAL_TIM_Base_Stop(&htim7);
+////				//servoCount = 0;
+////			}
+////			//Set the correct servo low
+////			
+////		}
+//		//HAL_GPIO_TogglePin(greenLEDPort,greenLEDPin);
+
+//		
+//		if (htim == &htim6)
+//		{
+//			//50Hz Interrupt
+//			HAL_GPIO_TogglePin(redLEDPort,redLEDPin);
+//			//Set all servo pins
+//			HAL_GPIO_WritePin(servo1Port,servo1Pin,GPIO_PIN_SET);
+//			HAL_GPIO_WritePin(servo2Port,servo2Pin,GPIO_PIN_SET);
+//			HAL_GPIO_WritePin(servo3Port,servo3Pin,GPIO_PIN_SET);
+//			HAL_GPIO_WritePin(servo4Port,servo4Pin,GPIO_PIN_SET);
+//			HAL_GPIO_WritePin(servo5Port,servo5Pin,GPIO_PIN_SET);
+//			HAL_GPIO_WritePin(servo6Port,servo6Pin,GPIO_PIN_SET);
+//			HAL_GPIO_WritePin(servo7Port,servo7Pin,GPIO_PIN_SET);
+//			HAL_GPIO_WritePin(servo8Port,servo8Pin,GPIO_PIN_SET);
+//			HAL_GPIO_WritePin(servo9Port,servo9Pin,GPIO_PIN_SET);
+//			HAL_GPIO_WritePin(servo10Port,servo10Pin,GPIO_PIN_SET);
+//			HAL_GPIO_WritePin(servo11Port,servo11Pin,GPIO_PIN_SET);
+//			HAL_GPIO_WritePin(servo12Port,servo12Pin,GPIO_PIN_SET);
+//			HAL_GPIO_WritePin(servo13Port,servo13Pin,GPIO_PIN_SET);
+//			HAL_GPIO_WritePin(servo14Port,servo14Pin,GPIO_PIN_SET);
+//			HAL_GPIO_WritePin(servo15Port,servo15Pin,GPIO_PIN_SET);
+//			servoCount = 0;
+//			
+//			
+//			//Sort the servo times in ascending order
+//			//Sort();
+//			//Set period for 1st servo
+//			//TIM7->ARR = legAngles[0];
+//			
+//			//BT LED
+//			++BTCount;
+//			if (BTCount > 120) //20ms * 120 = 2.4s
+//			{
+//				//Turn LED off
+//				HAL_GPIO_WritePin(BTPort,BTLEDPin,GPIO_PIN_SET);
+//				BTCount = 0;
+//				//Start Timer 7
+//				//TIM7->CNT = 0;
+//				HAL_TIM_Base_Start_IT(&htim7);
+//			}
+//		}
+//	}
 	
 	void SetServo(int servo, int degrees)
 	{
@@ -699,8 +809,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 //		legAngles[servo-1] =servoOffset[servo-1] + (degrees*(servoMultiplier[servo-1])/180);   
 //		TIM7->ARR = legAngles[servo-1];
 	}
-	
-
 
 /* USER CODE END 4 */
 
