@@ -38,8 +38,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "stm32f7xx_hal.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 /* USER CODE BEGIN Includes */
 
@@ -69,7 +67,7 @@ int legAngles_id[] = {1, 2, 3, 4, 5,										//Stores the ID of each limb for s
 											6, 7, 8, 9, 10,
 											11, 12, 13, 14, 15};
 int servoOffset[] = {300,305,300,305,285,								//Array for storing the offset of each servo
-											430,430,450,440,442,
+											430,460,450,440,442,
 											-90,-112,-105,-78,-98};		
 int servoMultiplier[] = {	-360,-360,-363,-365,-360,			//Array for storing the multiplier of each servo
 													-400,-400,-400,-400,-400,
@@ -85,12 +83,14 @@ static TIM_HandleTypeDef ServoTimer2;
 unsigned char BTRewrite[] = {'X','Y','R','\r'};					//String used for debugging
 
 //Peripheral pin & port difinitions
-#define BTPort 				GPIOE
-#define BTLEDPin 			GPIO_PIN_0
-#define redLEDPort 		GPIOB
-#define redLEDPin 		GPIO_PIN_9
-#define greenLEDPort 	GPIOB
-#define greenLEDPin 	GPIO_PIN_8
+#define BTPort 					GPIOE
+#define BTLEDPin 				GPIO_PIN_0
+#define redLEDPort 			GPIOB
+#define redLEDPin 			GPIO_PIN_9
+#define greenLEDPort 		GPIOB
+#define greenLEDPin 		GPIO_PIN_8
+#define servoPowerPort	GPIOC
+#define servoPowerPin		GPIO_PIN_9
 
 //Servo pin & port definitions
 #define servo1Pin 		GPIO_PIN_12
@@ -191,21 +191,21 @@ int main(void)
   MX_I2C1_Init();
 
   /* USER CODE BEGIN 2 */
-	SetServo(1,80);
-	SetServo(2,110);
+	SetServo(1,90);
+	SetServo(2,90);
 	SetServo(3,90);
-	SetServo(4,110);
-	SetServo(5,100);
-	SetServo(6,110);
-	SetServo(7,110);
-	SetServo(8,110);
-	SetServo(9,110);
-	SetServo(10,110);
-	SetServo(11,110);
-	SetServo(12,110);
-	SetServo(13,110);
-	SetServo(14,110);
-	SetServo(15,110);
+	SetServo(4,90);
+	SetServo(5,90);
+	SetServo(6,160);
+	SetServo(7,160);
+	SetServo(8,160);
+	SetServo(9,160);
+	SetServo(10,160);
+	SetServo(11,90);
+	SetServo(12,90);
+	SetServo(13,90);
+	SetServo(14,90);
+	SetServo(15,90);
 	SetupTimers();
 	Debug("Init done",9);
 	//Turn off all LEDs
@@ -233,7 +233,8 @@ int main(void)
 			if ((RXData[i] == 'X')&& (RXData[i+2] == 'Y')&&(RXData[i+4]=='R')&&(RXData[i+6]=='*'))
 			{
 				//Turn Blue LED on
-				HAL_GPIO_WritePin(GPIOE,GPIO_PIN_0,GPIO_PIN_RESET);
+				HAL_GPIO_WritePin(BTPort,BTLEDPin,GPIO_PIN_RESET);
+				HAL_GPIO_WritePin(servoPowerPort,servoPowerPin,GPIO_PIN_SET);
 				BTCount = 0;
 				//Extract the necessary commands
 				X_Char = RXData[i+1];
@@ -487,7 +488,8 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOE_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1|GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1|GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8 
+                          |GPIO_PIN_9, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET);
@@ -504,8 +506,10 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOE, GPIO_PIN_0|GPIO_PIN_1, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : PC1 PC6 PC7 PC8 */
-  GPIO_InitStruct.Pin = GPIO_PIN_1|GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8;
+  /*Configure GPIO pins : PC1 PC6 PC7 PC8 
+                           PC9 */
+  GPIO_InitStruct.Pin = GPIO_PIN_1|GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8 
+                          |GPIO_PIN_9;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -633,8 +637,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		
 		if(htim == &htim7){
 			//Turn off
-			HAL_GPIO_TogglePin(greenLEDPort,greenLEDPin);
-			//HAL_GPIO_WritePin(servo1Port,servo1Pin,GPIO_PIN_RESET);
+			//HAL_GPIO_TogglePin(greenLEDPort,greenLEDPin);
 			++servoCount;
 //			if (servoCount == 1)
 //			{
@@ -644,15 +647,21 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			if (servoCount < 15)
 			{
 				newPeriod = (legAngles[servoCount]- legAngles[servoCount-1]);
+//				newPeriod = (legAngles[servoCount]);
 				
 				while (newPeriod == 0)
 				{
 					HAL_GPIO_WritePin(servoPortArray[legAngles_id[servoCount-1]-1] ,servoPinArray[legAngles_id[servoCount-1]-1],GPIO_PIN_RESET);
 					++servoCount;
 					newPeriod = (legAngles[servoCount]- legAngles[servoCount-1]);
+//					newPeriod = (legAngles[servoCount]);
 				}
-				TIM7->CNT = 0;
-				TIM7->ARR = newPeriod;
+				//TIM7->CNT = 0;
+				if (newPeriod>1)
+				{
+					--newPeriod;
+				}
+				TIM7->ARR = (newPeriod);
 				HAL_GPIO_TogglePin(greenLEDPort,greenLEDPin);
 				HAL_GPIO_WritePin(servoPortArray[legAngles_id[servoCount-1]-1] ,servoPinArray[legAngles_id[servoCount-1]-1],GPIO_PIN_RESET);
 //				HAL_GPIO_WritePin(servoPortArray[servoCount-1] ,servoPinArray[servoCount-1],GPIO_PIN_RESET);
@@ -669,7 +678,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		if (htim == &htim6)
 		{
 			//50Hz Interrupt
-			HAL_GPIO_TogglePin(redLEDPort,redLEDPin);
+			//HAL_GPIO_TogglePin(redLEDPort,redLEDPin);
 			//Turn all on
 			HAL_GPIO_WritePin(servo1Port,servo1Pin,GPIO_PIN_SET);
 			HAL_GPIO_WritePin(servo2Port,servo2Pin,GPIO_PIN_SET);
@@ -707,6 +716,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			{
 				//Turn LED off
 				HAL_GPIO_WritePin(BTPort,BTLEDPin,GPIO_PIN_SET);
+				HAL_GPIO_WritePin(servoPowerPort,servoPowerPin,GPIO_PIN_RESET);
 				BTCount = 0;
 			}
 		}
