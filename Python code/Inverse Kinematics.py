@@ -14,15 +14,15 @@ import mpl_toolkits.mplot3d.art3d as art3d
 X=0                       #Result variables
 Y=0
 Z=0
-Z_body=0.5                  #Input variables
+Z_body=30                  #Input variables
 Theta=90
 Phi=0
 Alpha=0
 Reach=0
-A=1
-B=1
-C=1
-Radius=1
+A=50
+B=106
+C=130
+Radius=90
 Leg1MountAngle=0
 AbsDistance1=0
 
@@ -58,6 +58,9 @@ def IK(X,Y,Z,leg):
     ""
     "This function calculates the servo positions required for specific coordinates"
     #Call the translatiom function
+    X = 10
+    Y = 200
+    Z = 0
     Theta = math.atan2(X, Y)  # Calculate Theta
     # Theta1=math.degrees(Theta1)
     print "Theta",leg,"=",math.degrees(Theta)

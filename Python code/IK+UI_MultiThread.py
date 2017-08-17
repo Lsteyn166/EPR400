@@ -321,6 +321,7 @@ def Rotate(xi, yi, angle):
 def RotateLeg(x, y, leg):
     ""
     "This function rotates the coordinates of a specific leg to its required position"
+
     Angle = math.radians((leg - 1) * 72)
     X = x * math.cos(Angle) - y * math.sin(Angle)
     Y = x * math.sin(Angle) + y * math.cos(Angle)

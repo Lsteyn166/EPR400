@@ -38,6 +38,8 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "stm32f7xx_hal.h"
+#include <math.h>
+#include <stdbool.h>
 
 /* USER CODE BEGIN Includes */
 
@@ -81,6 +83,31 @@ static TIM_HandleTypeDef ServoTimer;
 static TIM_HandleTypeDef ServoTimer2;
 
 unsigned char BTRewrite[] = {'X','Y','R','\r'};					//String used for debugging
+
+struct servos {
+	int theta;
+	int phi;
+	int alpha;
+};
+
+struct coordinates{
+	double x;
+	double y;
+	double z;
+};
+
+double rad2deg = 57.29577951308232;
+double A_length = 50;
+double B_length = 106;
+double C_length = 130;
+double z_body = 30;
+double robotRadius = 90;
+
+bool resetStatus[5];																		//Array used to store reset status of each leg
+
+double X_Vector = 0;																		//Global movement vectors
+double Y_Vector = 0;
+double R_Vector = 0;	
 
 //Peripheral pin & port difinitions
 #define BTPort 					GPIOE
@@ -148,11 +175,14 @@ static void MX_I2C1_Init(void);
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
-void Debug(char *Array, int count);													//Sends something to UART1 for debugging
-void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart);			//Sends error message with Debug()
-void SetupTimers(void);																					//Configure timers 6 and 7 for use in servo control
-void Sort(void);
-void SetServo(int servo, int degrees);
+void Debug(char *Array, int count);														//Sends something to UART1 for debugging
+void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart);				//Sends error message with Debug()
+void SetupTimers(void);																				//Configure timers 6 and 7 for use in servo control
+void Sort(void);																							//Sorts timer values into ascending order
+void SetServo(int servo, int degrees);												//Sets the timer value for a servo from a degree value
+struct servos IK( struct coordinates input);									//Inverse Kinematics function
+void CheckBounds(void);																				//Check if legs need to be reset
+struct coordinates Rotate(double x, double y, double angle);	//Rotate coordinates about an angle
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
@@ -259,6 +289,16 @@ int main(void)
 		
 		//Toggle pin to check for stuck program
 		HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_1); 
+		
+		//Do leg stuff
+		struct coordinates leg1;
+		struct servos leg1_angles;
+		leg1.x = 10;
+		leg1.y = 200;
+		leg1.z = 0;
+		leg1_angles = IK(leg1);
+		struct coordinates leg2;
+		leg2 = Rotate(1,1,90);
 		
   }
   /* USER CODE END 3 */
@@ -721,6 +761,78 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 				legAngles[i] =servoOffset[servo-1] + (degrees*(servoMultiplier[servo-1])/180);
 			}
 		}
+	}
+	
+	struct servos IK( struct coordinates input)
+	{
+		//make the return struct
+		struct servos result;
+		//Calculate theta
+		double theta = atan2(input.x,input.y);
+		//Calculate coordinates of joint 2
+		double x = A_length * sin(theta);
+		double y = A_length * cos(theta);
+		//horizontal distance from joint 1 to foot
+		double reach = sqrt(pow(input.x-x,2)+pow(input.y-y,2));
+		//Absolute distance between joint 2 and foot
+		double twoToFoot = sqrt(pow(input.x-x,2)+pow(input.y-y,2) +pow(input.z-z_body,2));
+		//perform Cosine rule to get alpha
+	  double f =((pow(B_length ,2) + pow(C_length,2) - pow(twoToFoot ,2))/(2*B_length*C_length));
+		double d = acos(f);
+		double alpha =(rad2deg * d) + 0.5;		//+0.5 for rounding
+		result.alpha = (int)alpha;
+		//use sine rule to get phi
+		double c = asin(C_length * sin(d) / twoToFoot);
+		double e = atan2(reach ,z_body-input.z);
+		double phi = 270 - c*rad2deg - e*rad2deg + 0.5; // +0.5 for rounding
+		result.phi = (int)phi;
+		//convert theta to degrees. Add 0.5 for rounding
+		theta = (theta * rad2deg) + 0.5;
+		result.theta = (int)theta;
+		
+		return result;
+	}
+	
+	void CheckBounds(void)
+	{
+		for(int i = 0 ; i<5 ; i++)
+		{
+			//
+			if ( legAngles[i+1] < 50 || legAngles[i+1] > 120		// 50 < theta < 120
+				|| legAngles[i+6] < 90 || legAngles[i+6] > 170		// 90 < phi   < 170
+				|| legAngles[i+11]< 70 || legAngles[i+11]> 130)		// 70 < alpha < 130
+			{
+				resetStatus[i] = true;				
+			}else{
+				resetStatus[i] = false;
+			}
+		}			
+	}
+	
+	struct coordinates Rotate(double x, double y, double angle)
+	{
+		//Create output struct
+		struct coordinates result;
+		//convert angle to radians
+		angle = angle/rad2deg;
+		//calculate return values
+		result.x = x * cos(angle) - y * sin(angle);
+		result.y = x * sin(angle) + y * cos(angle);
+		
+		return result;		
+	}
+	
+	void Vector(void)
+	{
+		double trajectory = atan2(Y_Vector,X_Vector);
+		for(int leg = 0; leg < 5; leg++)
+		{
+			//Rotateleg
+			struct coordinates neutral = Rotate(0,120,leg*72);
+			
+		}
+		
+		
 	}
 
 /* USER CODE END 4 */

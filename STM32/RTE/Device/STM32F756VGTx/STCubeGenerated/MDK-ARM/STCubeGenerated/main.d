@@ -32,3 +32,5 @@ stcubegenerated\main.o: ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim.h
 stcubegenerated\main.o: ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim_ex.h
 stcubegenerated\main.o: ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart.h
 stcubegenerated\main.o: ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart_ex.h
+stcubegenerated\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+stcubegenerated\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
