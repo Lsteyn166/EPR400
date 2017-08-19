@@ -109,6 +109,12 @@ double X_Vector = 0;																		//Global movement vectors
 double Y_Vector = 0;
 double R_Vector = 0;	
 
+double destination[2][5];																//2D array that stores X([0]) and Y([1]) values 
+																												//for the destination of each foot
+double currentPosition[2][5];														//2D array that stores X and Y values for the 
+																												//current position of each foot
+double translateLeg[2][5];															//Stores coordinates of joint 1 for each leg.
+																												//Replaces TranslateLeg()
 //Peripheral pin & port difinitions
 #define BTPort 					GPIOE
 #define BTLEDPin 				GPIO_PIN_0
@@ -183,6 +189,7 @@ void SetServo(int servo, int degrees);												//Sets the timer value for a s
 struct servos IK( struct coordinates input);									//Inverse Kinematics function
 void CheckBounds(void);																				//Check if legs need to be reset
 struct coordinates Rotate(double x, double y, double angle);	//Rotate coordinates about an angle
+void TranslateLeg(void);																			//Generates constants at beginning of program
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
@@ -221,6 +228,7 @@ int main(void)
   MX_I2C1_Init();
 
   /* USER CODE BEGIN 2 */
+	//Set servo begin positions
 	SetServo(1,90);
 	SetServo(2,90);
 	SetServo(3,90);
@@ -236,6 +244,7 @@ int main(void)
 	SetServo(13,70);
 	SetServo(14,70);
 	SetServo(15,70);
+	TranslateLeg();
 	SetupTimers();
 	Debug("Init done",9);
 	//Turn off all LEDs except green
@@ -246,9 +255,9 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-	//Set servo begin positions
 
-	
+
+	TranslateLeg();
 	Debug("Entering main loop",18);
   while (1)
   {
@@ -602,6 +611,12 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
+/**
+  * @brief  This function sends a string to UART1 to be received in a terminal
+	* @param  *Array is a pointer to the string
+						count is an int equal to the number of characters in the string
+  * @retval None
+  */
 void Debug(char *Array, int count)
 {
 	uint8_t TXBuffer[count+1];
@@ -615,11 +630,21 @@ void Debug(char *Array, int count)
 	HAL_UART_Transmit(&huart1,TXBuffer,count+2,10);
 }
 
+/**
+  * @brief  This function is executed in the case of an error with the UART modules
+	* @param  *huart is a handle of the UART module in question
+  * @retval None
+  */
 void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
 {
 	Debug("Bluetooth Error",15);
 }
-	
+
+/**
+  * @brief  This function configures the timers used in generating the servo signals
+	* @param  None
+  * @retval None
+  */
 void SetupTimers(void)
 {
 	//Timer 6
@@ -669,6 +694,11 @@ void Sort(void)
 	}
 }
 
+/**
+  * @brief  This function executes when a timer interrupts. It is used to generate servo signals
+	* @param  *htim is a handle of the timer module that triggered the interrupt
+  * @retval None
+  */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	{
 		
@@ -750,90 +780,155 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		}
 	}
 
-	
-	void SetServo(int servo, int degrees)
+
+/**
+  * @brief  This function calculates the required timer values for each of the servos
+	* @param  servo is an int in the range 1:15 corresponding to a specific joint
+						degrees is an int in the range 0:180 for the required position of the specific servo
+  * @retval None
+  */	
+void SetServo(int servo, int degrees)
+{
+	//Set the servo with the correct index in the array 
+	for (int i = 0; i<15; i++)
 	{
-		//Set the servo with the correct index in the array 
-		for (int i = 0; i<15; i++)
+		if (servo == legAngles_id[i])
 		{
-			if (servo == legAngles_id[i])
-			{
-				legAngles[i] =servoOffset[servo-1] + (degrees*(servoMultiplier[servo-1])/180);
-			}
+			legAngles[i] =servoOffset[servo-1] + (degrees*(servoMultiplier[servo-1])/180);
 		}
 	}
+}
+
+/**
+  * @brief  This function does the inverse kinematic calculations for a specific leg
+	* @param  input is a struct of type coordinates with members x, y and z
+							corresponding to the required position of the foot relative to the hip.
+  * @retval servos is a struct with members theta, phi and alpha corresponding with the 
+							resulting angles required.
+  */
+struct servos IK( struct coordinates input)
+{
+	//make the return struct
+	struct servos result;
+	//Calculate theta
+	double theta = atan2(input.x,input.y);
+	//Calculate coordinates of joint 2
+	double x = A_length * sin(theta);
+	double y = A_length * cos(theta);
+	//horizontal distance from joint 1 to foot
+	double reach = sqrt(pow(input.x-x,2)+pow(input.y-y,2));
+	//Absolute distance between joint 2 and foot
+	double twoToFoot = sqrt(pow(input.x-x,2)+pow(input.y-y,2) +pow(input.z-z_body,2));
+	//perform Cosine rule to get alpha
+	double f =((pow(B_length ,2) + pow(C_length,2) - pow(twoToFoot ,2))/(2*B_length*C_length));
+	double d = acos(f);
+	double alpha =(rad2deg * d) + 0.5;		//+0.5 for rounding
+	result.alpha = (int)alpha;
+	//use sine rule to get phi
+	double c = asin(C_length * sin(d) / twoToFoot);
+	double e = atan2(reach ,z_body-input.z);
+	double phi = 270 - c*rad2deg - e*rad2deg + 0.5; // +0.5 for rounding
+	result.phi = (int)phi;
+	//convert theta to degrees. Add 0.5 for rounding
+	theta = (theta * rad2deg) + 0.5;
+	result.theta = (int)theta;
 	
-	struct servos IK( struct coordinates input)
+	return result;
+}
+
+/**
+  * @brief  This function checks that all legs are within the boundaries specified and
+							writes the results in a global array
+	* @param  None
+  * @retval None
+  */
+void CheckBounds(void)
+{
+	for(int i = 0 ; i<5 ; i++)
 	{
-		//make the return struct
-		struct servos result;
-		//Calculate theta
-		double theta = atan2(input.x,input.y);
-		//Calculate coordinates of joint 2
-		double x = A_length * sin(theta);
-		double y = A_length * cos(theta);
-		//horizontal distance from joint 1 to foot
-		double reach = sqrt(pow(input.x-x,2)+pow(input.y-y,2));
-		//Absolute distance between joint 2 and foot
-		double twoToFoot = sqrt(pow(input.x-x,2)+pow(input.y-y,2) +pow(input.z-z_body,2));
-		//perform Cosine rule to get alpha
-	  double f =((pow(B_length ,2) + pow(C_length,2) - pow(twoToFoot ,2))/(2*B_length*C_length));
-		double d = acos(f);
-		double alpha =(rad2deg * d) + 0.5;		//+0.5 for rounding
-		result.alpha = (int)alpha;
-		//use sine rule to get phi
-		double c = asin(C_length * sin(d) / twoToFoot);
-		double e = atan2(reach ,z_body-input.z);
-		double phi = 270 - c*rad2deg - e*rad2deg + 0.5; // +0.5 for rounding
-		result.phi = (int)phi;
-		//convert theta to degrees. Add 0.5 for rounding
-		theta = (theta * rad2deg) + 0.5;
-		result.theta = (int)theta;
-		
-		return result;
-	}
-	
-	void CheckBounds(void)
-	{
-		for(int i = 0 ; i<5 ; i++)
+		//
+		if ( legAngles[i+1] < 50 || legAngles[i+1] > 120		// 50 < theta < 120
+			|| legAngles[i+6] < 90 || legAngles[i+6] > 170		// 90 < phi   < 170
+			|| legAngles[i+11]< 70 || legAngles[i+11]> 130)		// 70 < alpha < 130
 		{
-			//
-			if ( legAngles[i+1] < 50 || legAngles[i+1] > 120		// 50 < theta < 120
-				|| legAngles[i+6] < 90 || legAngles[i+6] > 170		// 90 < phi   < 170
-				|| legAngles[i+11]< 70 || legAngles[i+11]> 130)		// 70 < alpha < 130
-			{
-				resetStatus[i] = true;				
-			}else{
-				resetStatus[i] = false;
-			}
-		}			
-	}
-	
-	struct coordinates Rotate(double x, double y, double angle)
-	{
-		//Create output struct
-		struct coordinates result;
-		//convert angle to radians
-		angle = angle/rad2deg;
-		//calculate return values
-		result.x = x * cos(angle) - y * sin(angle);
-		result.y = x * sin(angle) + y * cos(angle);
-		
-		return result;		
-	}
-	
-	void Vector(void)
-	{
-		double trajectory = atan2(Y_Vector,X_Vector);
-		for(int leg = 0; leg < 5; leg++)
-		{
-			//Rotateleg
-			struct coordinates neutral = Rotate(0,120,leg*72);
-			
+			resetStatus[i] = true;				
+		}else{
+			resetStatus[i] = false;
 		}
-		
-		
+	}			
+}
+
+/**
+  * @brief  This function rotates the given coordinates about the origin through a given angle 
+	* @param  x,y are doubles corresponding to the coordinates
+						angle is a double in degrees
+  * @retval a coordinates struct with members x, y and z. z is not used in this case.
+  */
+struct coordinates Rotate(double x, double y, double angle)
+{
+	//Create output struct
+	struct coordinates result;
+	//convert angle to radians
+	angle = angle/rad2deg;
+	//calculate return values
+	result.x = x * cos(angle) - y * sin(angle);
+	result.y = x * sin(angle) + y * cos(angle);
+	
+	return result;
+}
+
+/**
+  * @brief  This function calculates the normalized position of a leg given the 
+	* @param  None
+  * @retval None
+  */
+void Vector(void)
+{
+	//Make the trajectory polar with a magnitude and angle
+	double trajectory = atan2(-Y_Vector,-X_Vector);
+	double magnitude = sqrt(pow(X_Vector,2)+pow(Y_Vector,2));
+	//Match the trajectory to each leg
+	for(int leg = 0; leg < 5; leg++)
+	{
+		//Translation components
+		struct coordinates neutral = Rotate(0,120,leg*72);
+		struct coordinates offset= Rotate(robotRadius,0,leg*72);
+		neutral.x = neutral.x + offset.x;
+		neutral.y = neutral.y + offset.y;
+		destination[0][leg] = neutral.x + magnitude*cos(trajectory) + translateLeg[0][leg];
+		destination[1][leg] = neutral.y + magnitude*sin(trajectory) + translateLeg[1][leg];
+		//+ Rotation
+		struct coordinates temp = Rotate(destination[0][leg],destination[1][leg],-2*R_Vector);
+		destination[0][leg] = temp.x + translateLeg[0][leg];
+		destination[1][leg] = temp.y + translateLeg[1][leg];
 	}
+}
+
+/**
+  * @brief  This function 
+	* @param  None
+  * @retval None
+  */	
+void TranslateLeg(void)
+{
+	for(int leg = 0; leg < 5; leg++)
+	{
+		translateLeg[0][leg] = robotRadius * cos(leg*72/rad2deg);
+		translateLeg[1][leg] = robotRadius * sin(leg*72/rad2deg);
+	}
+}
+
+/**
+  * @brief  This function resets a leg if it is out of bounds
+	* @param  leg is an int in the range 1:5
+  * @retval None
+  */
+void ResetLeg(int leg)
+{
+	//Lift up the leg where it is currently
+	struct coordinates lift;
+	lift.x = destination
+}
 
 /* USER CODE END 4 */
 
