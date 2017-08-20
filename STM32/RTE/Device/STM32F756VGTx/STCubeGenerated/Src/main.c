@@ -190,6 +190,9 @@ struct servos IK( struct coordinates input);									//Inverse Kinematics functi
 void CheckBounds(void);																				//Check if legs need to be reset
 struct coordinates Rotate(double x, double y, double angle);	//Rotate coordinates about an angle
 void TranslateLeg(void);																			//Generates constants at beginning of program
+struct coordinates Vector(double x, double y, int leg, bool offset);
+
+
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
@@ -878,30 +881,47 @@ struct coordinates Rotate(double x, double y, double angle)
 }
 
 /**
-  * @brief  This function calculates the normalized position of a leg given the 
-	* @param  None
-  * @retval None
+  * @brief  This function calculates the normalized position of a leg from the 
+							given movement vectors
+	* @param	x is a double with the X vector
+						y iss a double with the Y vector
+						leg is an int in the range 1:5
+						offset is a bool indicating whether the coordinates should be
+							denormalized
+  * @retval a struct of type coordinates. The z member is unused
   */
-void Vector(void)
+struct coordinates Vector(double x, double y, int leg, bool offset)
 {
+	//Create return struct
+	struct coordinates result;
 	//Make the trajectory polar with a magnitude and angle
-	double trajectory = atan2(-Y_Vector,-X_Vector);
-	double magnitude = sqrt(pow(X_Vector,2)+pow(Y_Vector,2));
-	//Match the trajectory to each leg
-	for(int leg = 0; leg < 5; leg++)
+	double trajectory = atan2(y,x);
+	double magnitude = sqrt(pow(x,2)+pow(y,2));
+	//Match the trajectory to the leg
+	struct coordinates neutral;
+	//Translation components
+	if (offset)
 	{
-		//Translation components
-		struct coordinates neutral = Rotate(0,120,leg*72);
+		neutral = Rotate(0,120,leg*72);
 		struct coordinates offset= Rotate(robotRadius,0,leg*72);
 		neutral.x = neutral.x + offset.x;
 		neutral.y = neutral.y + offset.y;
-		destination[0][leg] = neutral.x + magnitude*cos(trajectory) + translateLeg[0][leg];
-		destination[1][leg] = neutral.y + magnitude*sin(trajectory) + translateLeg[1][leg];
-		//+ Rotation
-		struct coordinates temp = Rotate(destination[0][leg],destination[1][leg],-2*R_Vector);
-		destination[0][leg] = temp.x + translateLeg[0][leg];
-		destination[1][leg] = temp.y + translateLeg[1][leg];
+	}else{
+		neutral.x = 0;
+		neutral.y = 0;
 	}
+	result.x = neutral.x + magnitude*cos(trajectory) + translateLeg[0][leg-1];
+	result.y = neutral.y + magnitude*sin(trajectory) + translateLeg[1][leg-1];
+	//+ Rotation
+	struct coordinates temp = Rotate(result.x,result.y,-2*R_Vector);
+	result.x = temp.x + translateLeg[0][leg-1];
+	result.y = temp.y + translateLeg[1][leg-1];
+	if (offset)
+	{
+		destination[0][leg-1] = result.x;
+		destination[1][leg-1] = result.y;
+	}
+	return result;
 }
 
 /**
@@ -927,7 +947,13 @@ void ResetLeg(int leg)
 {
 	//Lift up the leg where it is currently
 	struct coordinates lift;
-	lift.x = destination
+	lift.x = destination[0][leg-1];
+	lift.y = destination[1][leg-1];
+	lift.z = 30;
+	struct servos leg_up = IK(lift);
+	//Send this to servos and wait
+	//Now move the leg over to the new position
+	//struct coordinates reset = Vector(
 }
 
 /* USER CODE END 4 */
