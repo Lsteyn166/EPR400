@@ -68,10 +68,10 @@ int legAngles[15];																			//Stores the desired angle for each limb
 int legAngles_id[] = {1, 2, 3, 4, 5,										//Stores the ID of each limb for sorting
 											6, 7, 8, 9, 10,
 											11, 12, 13, 14, 15};
-int servoOffset[] = {300,305,300,305,285,								//Array for storing the offset of each servo
+int servoOffset[] = {300,315,300,305,295,								//Array for storing the offset of each servo
 											430,460,450,440,442,
 											-110,-112,-105,-78,-98};		
-int servoMultiplier[] = {	-360,-360,-363,-365,-360,			//Array for storing the multiplier of each servo
+int servoMultiplier[] = {	-360,-380,-363,-365,-370,			//Array for storing the multiplier of each servo
 													-400,-400,-400,-400,-400,
 													480,545,490,460,500};		
 int servoCount = 0;																			//Counter used for keeping track of servo interrupts
@@ -101,7 +101,7 @@ double A_length = 50;
 double B_length = 106;
 double C_length = 130;
 double z_body = 30;
-double robotRadius = 90;
+double robotRadius = 90;   
 
 bool resetStatus[5];																		//Array used to store reset status of each leg
 
@@ -191,7 +191,7 @@ void CheckBounds(void);																				//Check if legs need to be reset
 struct coordinates Rotate(double x, double y, double angle);	//Rotate coordinates about an angle
 void TranslateLeg(void);																			//Generates constants at beginning of program
 struct coordinates Vector(double x, double y, int leg, bool offset);
-
+void StartPosition(void);																			//Resets robot to default position
 
 /* USER CODE END PFP */
 
@@ -231,24 +231,11 @@ int main(void)
   MX_I2C1_Init();
 
   /* USER CODE BEGIN 2 */
-	//Set servo begin positions
-	SetServo(1,90);
-	SetServo(2,90);
-	SetServo(3,90);
-	SetServo(4,90);
-	SetServo(5,90);
-	SetServo(6,160);
-	SetServo(7,160);
-	SetServo(8,160);
-	SetServo(9,160);
-	SetServo(10,160);
-	SetServo(11,70);
-	SetServo(12,70);
-	SetServo(13,70);
-	SetServo(14,70);
-	SetServo(15,70);
-	TranslateLeg();
 	SetupTimers();
+	StartPosition();
+
+	TranslateLeg();
+
 	Debug("Init done",9);
 	//Turn off all LEDs except green
 	HAL_GPIO_WritePin(BTPort,BTLEDPin,GPIO_PIN_SET);
@@ -258,9 +245,6 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-
-
-	TranslateLeg();
 	Debug("Entering main loop",18);
   while (1)
   {
@@ -302,15 +286,13 @@ int main(void)
 		//Toggle pin to check for stuck program
 		HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_1); 
 		
+		
 		//Do leg stuff
-		struct coordinates leg1;
-		struct servos leg1_angles;
-		leg1.x = 10;
-		leg1.y = 200;
-		leg1.z = 0;
-		leg1_angles = IK(leg1);
-		struct coordinates leg2;
-		leg2 = Rotate(1,1,90);
+		struct coordinates leg1 = Vector(-X_Vect*10,-Y_Vect*10,1,true);
+		struct servos leg1_servo = IK(leg1);
+		SetServo(1,leg1_servo.theta);
+		SetServo(6,leg1_servo.phi);
+		SetServo(11,leg1_servo.alpha);
 		
   }
   /* USER CODE END 3 */
@@ -902,10 +884,10 @@ struct coordinates Vector(double x, double y, int leg, bool offset)
 	//Translation components
 	if (offset)
 	{
-		neutral = Rotate(0,120,leg*72);
-		struct coordinates offset= Rotate(robotRadius,0,leg*72);
-		neutral.x = neutral.x + offset.x;
-		neutral.y = neutral.y + offset.y;
+		neutral = Rotate(270,0,(leg-1)*72);
+		struct coordinates offset= Rotate(robotRadius,0,(leg-1)*72);
+		neutral.x = neutral.x - offset.x;
+		neutral.y = neutral.y - offset.y;
 	}else{
 		neutral.x = 0;
 		neutral.y = 0;
@@ -914,8 +896,8 @@ struct coordinates Vector(double x, double y, int leg, bool offset)
 	result.y = neutral.y + magnitude*sin(trajectory) + translateLeg[1][leg-1];
 	//+ Rotation
 	struct coordinates temp = Rotate(result.x,result.y,-2*R_Vector);
-	result.x = temp.x + translateLeg[0][leg-1];
-	result.y = temp.y + translateLeg[1][leg-1];
+	result.x = temp.x - translateLeg[0][leg-1];
+	result.y = temp.y - translateLeg[1][leg-1];
 	if (offset)
 	{
 		destination[0][leg-1] = result.x;
@@ -953,9 +935,35 @@ void ResetLeg(int leg)
 	struct servos leg_up = IK(lift);
 	//Send this to servos and wait
 	//Now move the leg over to the new position
-	//struct coordinates reset = Vector(
+	struct coordinates reset = Vector(X_Vector,Y_Vector,leg,true);
+	reset.z = 30;
+	struct servos leg_reset = IK(reset);
+	//Send this to servos and wait
+	//Now put down the leg where it is
+	reset.z = 0;
+	leg_reset = IK(reset);
+	//Send this to the servos and wait
 }
 
+void StartPosition(void)
+{
+	//Set servo begin positions
+	SetServo(1,90);
+	SetServo(2,90);
+	SetServo(3,90);
+	SetServo(4,90);
+	SetServo(5,90);
+	SetServo(6,100);
+	SetServo(7,100);
+	SetServo(8,100);
+	SetServo(9,100);
+	SetServo(10,100);
+	SetServo(11,90);
+	SetServo(12,90);
+	SetServo(13,90);
+	SetServo(14,90);
+	SetServo(15,90);
+}
 /* USER CODE END 4 */
 
 /**
