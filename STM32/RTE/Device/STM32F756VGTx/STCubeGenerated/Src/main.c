@@ -40,6 +40,7 @@
 #include "stm32f7xx_hal.h"
 
 /* USER CODE BEGIN Includes */
+#include <math.h>
 #include <stdbool.h>
 
 /* USER CODE END Includes */
