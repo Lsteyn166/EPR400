@@ -950,10 +950,9 @@ Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M7.fp.sp --apcs=
 interwork --depend=stcubegenerated\startup_stm32f756xx.d -ostcubegenerated\star
 tup_stm32f756xx.o -I.\RTE\_STCubeGenerated -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.
 1\CMSIS\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.9.0\Drivers\CMSIS\De
-vice\ST\STM32F7xx\Include --predefine="__EVAL SETA 1" --predefine="__MICROLIB S
-ETA 1" --predefine="__UVISION_VERSION SETA 523" --predefine="_RTE_ SETA 1" --pr
-edefine="STM32F756xx SETA 1" --list=startup_stm32f756xx.lst startup_stm32f756xx
-.s
+vice\ST\STM32F7xx\Include --predefine="__MICROLIB SETA 1" --predefine="__UVISIO
+N_VERSION SETA 523" --predefine="_RTE_ SETA 1" --predefine="STM32F756xx SETA 1"
+ --list=startup_stm32f756xx.lst startup_stm32f756xx.s
 
 
 
@@ -2203,4 +2202,4 @@ Symbol: __main
       At line 206 in file startup_stm32f756xx.s
 Comment: __main used once
 2 symbols
-463 symbols in table
+462 symbols in table

@@ -38,10 +38,9 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "stm32f7xx_hal.h"
-#include <math.h>
-#include <stdbool.h>
 
 /* USER CODE BEGIN Includes */
+#include <stdbool.h>
 
 /* USER CODE END Includes */
 
@@ -100,7 +99,7 @@ double rad2deg = 57.29577951308232;
 double A_length = 50;
 double B_length = 106;
 double C_length = 130;
-double z_body = 30;
+double z_body = 50;
 double robotRadius = 90;   
 
 bool resetStatus[5];																		//Array used to store reset status of each leg
@@ -288,11 +287,15 @@ int main(void)
 		
 		
 		//Do leg stuff
-		struct coordinates leg1 = Vector(-X_Vect*10,-Y_Vect*10,1,true);
-		struct servos leg1_servo = IK(leg1);
-		SetServo(1,leg1_servo.theta);
-		SetServo(6,leg1_servo.phi);
-		SetServo(11,leg1_servo.alpha);
+		for (int leg = 1; leg <6; leg++)
+		{
+			struct coordinates leg_Vector = Vector(-X_Vect*5,-Y_Vect*5,leg,true);
+			struct servos leg_servo = IK(leg_Vector);
+			SetServo(leg,leg_servo.theta);
+			SetServo(leg+5,leg_servo.phi);
+			SetServo(leg+10,leg_servo.alpha);
+		}
+		
 		
   }
   /* USER CODE END 3 */
@@ -377,7 +380,7 @@ static void MX_I2C1_Init(void)
 {
 
   hi2c1.Instance = I2C1;
-  hi2c1.Init.Timing = 0x00303D5B;
+  hi2c1.Init.Timing = 0x20404768;
   hi2c1.Init.OwnAddress1 = 0;
   hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
   hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
@@ -816,7 +819,7 @@ struct servos IK( struct coordinates input)
 	result.phi = (int)phi;
 	//convert theta to degrees. Add 0.5 for rounding
 	theta = (theta * rad2deg) + 0.5;
-	result.theta = (int)theta;
+	result.theta = 180-(int)theta;
 	
 	return result;
 }
@@ -895,9 +898,9 @@ struct coordinates Vector(double x, double y, int leg, bool offset)
 	result.x = neutral.x + magnitude*cos(trajectory) + translateLeg[0][leg-1];
 	result.y = neutral.y + magnitude*sin(trajectory) + translateLeg[1][leg-1];
 	//+ Rotation
-	struct coordinates temp = Rotate(result.x,result.y,-2*R_Vector);
-	result.x = temp.x - translateLeg[0][leg-1];
-	result.y = temp.y - translateLeg[1][leg-1];
+	struct coordinates temp = Rotate(result.x,result.y,-(leg-1)*72);
+	result.x = temp.x - translateLeg[0][0];
+	result.y = temp.y - translateLeg[1][0];
 	if (offset)
 	{
 		destination[0][leg-1] = result.x;

@@ -1,5 +1,7 @@
 #MicroXplorer Configuration settings - do not modify
 File.Version=6
+I2C1.IPParameters=Timing
+I2C1.Timing=0x20404768
 KeepUserPlacement=false
 Mcu.Family=STM32F7
 Mcu.IP0=CORTEX_M7
