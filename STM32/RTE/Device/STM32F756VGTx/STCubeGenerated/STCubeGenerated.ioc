@@ -72,7 +72,6 @@ NVIC.SVCall_IRQn=true\:0\:0\:false\:false\:true
 NVIC.SysTick_IRQn=true\:0\:0\:false\:false\:true
 NVIC.TIM6_DAC_IRQn=true\:0\:0\:false\:false\:true
 NVIC.TIM7_IRQn=true\:0\:0\:false\:false\:true
-NVIC.USART1_IRQn=true\:0\:0\:false\:false\:true
 NVIC.USART3_IRQn=true\:0\:0\:false\:false\:true
 NVIC.UsageFault_IRQn=true\:0\:0\:false\:false\:true
 PA1.Locked=true
