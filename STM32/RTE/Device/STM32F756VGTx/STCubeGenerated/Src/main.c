@@ -65,9 +65,14 @@ int X_Vect =0;																					//Stores received X as Int
 int Y_Vect =0;																					//Stores received Y as Int
 int R_Vect =0;																					//Stores received R as Int
 int legAngles[15];																			//Stores the desired angle for each limb
+int legAngles_buffer[15];																//Buffer for above
 int legAngles_id[] = {1, 2, 3, 4, 5,										//Stores the ID of each limb for sorting
 											6, 7, 8, 9, 10,
 											11, 12, 13, 14, 15};
+int legAngles_id_buffer[] = { 1, 2, 3, 4, 5,	
+															6, 7, 8, 9, 10,
+															11, 12, 13, 14, 15};
+
 int servoOffset[] = {300,315,300,305,295,								//Array for storing the offset of each servo
 											430,460,450,440,442,
 											-110,-112,-105,-78,-98};		
@@ -115,6 +120,7 @@ double currentPosition[2][5];														//2D array that stores X and Y values
 																												//current position of each foot
 double translateLeg[2][5];															//Stores coordinates of joint 1 for each leg.
 																												//Replaces TranslateLeg()
+bool legAngleFlag = false;															//True when busy writing to legAngles
 //Peripheral pin & port difinitions
 #define BTPort 					GPIOE
 #define BTLEDPin 				GPIO_PIN_0
@@ -239,8 +245,8 @@ int main(void)
 	Debug("Init done",9);
 	//Turn off all LEDs except green
 	HAL_GPIO_WritePin(BTPort,BTLEDPin,GPIO_PIN_SET);
-	HAL_GPIO_WritePin(greenLEDPort,greenLEDPin,GPIO_PIN_SET);
-	HAL_GPIO_WritePin(redLEDPort,redLEDPin,GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(greenLEDPort,greenLEDPin,GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(redLEDPort,redLEDPin,GPIO_PIN_SET);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -292,12 +298,20 @@ int main(void)
 		{
 			struct coordinates leg_Vector = Vector(-X_Vect*5,-Y_Vect*5,leg,true);
 			struct servos leg_servo = IK(leg_Vector);
+			
 			SetServo(leg,leg_servo.theta);
 			SetServo(leg+5,leg_servo.phi);
 			SetServo(leg+10,leg_servo.alpha);
 		}
-		
-		
+		//Sort the servo times in ascending order
+		Sort();		
+		legAngleFlag = true;
+		for (int n = 0; n<15 ;n++)
+		{
+			legAngles[n] = legAngles_buffer[n];
+			legAngles_id[n] = legAngles_id_buffer[n];
+		}
+		legAngleFlag = false;
   }
   /* USER CODE END 3 */
 
@@ -668,16 +682,16 @@ void Sort(void)
 	{
 		for(int j = i+1;j<15;j++)
 		{
-			if(legAngles[i] > legAngles[j])
+			if(legAngles_buffer[i] > legAngles_buffer[j])
 			{
 				//swop the angles
-				int a = legAngles[i];
-				legAngles[i] = legAngles[j];
-				legAngles[j] = a;
+				int a = legAngles_buffer[i];
+				legAngles_buffer[i] = legAngles_buffer[j];
+				legAngles_buffer[j] = a;
 				//now swop the index
-				a = legAngles_id[i];
-				legAngles_id[i] = legAngles_id[j];
-				legAngles_id[j] = a;
+				a = legAngles_id_buffer[i];
+				legAngles_id_buffer[i] = legAngles_id_buffer[j];
+				legAngles_id_buffer[j] = a;
 			}
 		}
 	}
@@ -692,9 +706,13 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	{
 		
 		if(htim == &htim7){
+			if (legAngleFlag)
+			{
+				
+			}
+			HAL_GPIO_TogglePin(greenLEDPort,greenLEDPin);
 			//Turn off
-			++servoCount;
-			
+			++servoCount;			
 			if (servoCount < 15)
 			{
 				newPeriod = (legAngles[servoCount]- legAngles[servoCount-1]);
@@ -723,7 +741,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		if (htim == &htim6)
 		{
 			//50Hz Interrupt
-			//HAL_GPIO_TogglePin(redLEDPort,redLEDPin);
+			HAL_GPIO_TogglePin(redLEDPort,redLEDPin);
 			//Turn all on
 			HAL_GPIO_WritePin(servo1Port,servo1Pin,GPIO_PIN_SET);
 			HAL_GPIO_WritePin(servo2Port,servo2Pin,GPIO_PIN_SET);
@@ -741,8 +759,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			HAL_GPIO_WritePin(servo14Port,servo14Pin,GPIO_PIN_SET);
 			HAL_GPIO_WritePin(servo15Port,servo15Pin,GPIO_PIN_SET);
 			
-			//Sort the servo times in ascending order
-			Sort();
+
 			//Set period for 1st servo
 			newPeriod = legAngles[servoCount];
 			while (newPeriod == 0)
@@ -763,8 +780,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 				HAL_GPIO_WritePin(BTPort,BTLEDPin,GPIO_PIN_SET);
 				HAL_GPIO_WritePin(servoPowerPort,servoPowerPin,GPIO_PIN_RESET);
 				BTCount = 0;
-				HAL_GPIO_TogglePin(greenLEDPort,greenLEDPin);
-				HAL_GPIO_TogglePin(redLEDPort,redLEDPin);
+//				HAL_GPIO_TogglePin(greenLEDPort,greenLEDPin);
+//				HAL_GPIO_TogglePin(redLEDPort,redLEDPin);
 			}
 		}
 	}
@@ -781,10 +798,12 @@ void SetServo(int servo, int degrees)
 	//Set the servo with the correct index in the array 
 	for (int i = 0; i<15; i++)
 	{
-		if (servo == legAngles_id[i])
+		if (servo == legAngles_id_buffer[i])
 		{
-			legAngles[i] =servoOffset[servo-1] + (degrees*(servoMultiplier[servo-1])/180);
+			legAngles_buffer[i] =servoOffset[servo-1] + (degrees*(servoMultiplier[servo-1])/180);
+			return;
 		}
+		int m = 0;
 	}
 }
 
