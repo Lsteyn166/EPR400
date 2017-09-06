@@ -28,14 +28,9 @@ Project File Date:  08/18/2017
 *** Using Compiler 'V5.06 update 4 (build 422)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
 compiling main.c...
-RTE\Device\STM32F756VGTx\STCubeGenerated\Src\main.c(307): warning:  #550-D: variable "leg1_angles"  was set but never used
-                struct servos leg1_angles;
-RTE\Device\STM32F756VGTx\STCubeGenerated\Src\main.c(312): warning:  #550-D: variable "leg2"  was set but never used
-                struct coordinates leg2;
-RTE\Device\STM32F756VGTx\STCubeGenerated\Src\main.c: 2 warnings, 0 errors
 linking...
-Program Size: Code=27774 RO-data=1258 RW-data=396 ZI-data=2508  
-".\Objects\EPR400.axf" - 0 Error(s), 2 Warning(s).
+Program Size: Code=28874 RO-data=1262 RW-data=524 ZI-data=2628  
+".\Objects\EPR400.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -53,13 +48,13 @@ Package Vendor: Keil
    * Component: Startup Version: 1.2.0
    * Component: DMA Version: 1.2.0
    * Component: PWR Version: 1.2.0
-   * Component: RCC Version: 1.2.0
-   * Component: Common Version: 1.2.0
-   * Component: I2C Version: 1.2.0
-   * Component: Cortex Version: 1.2.0
    * Component: GPIO Version: 1.2.0
-   * Component: TIM Version: 1.2.0
+   * Component: I2C Version: 1.2.0
+   * Component: Common Version: 1.2.0
+   * Component: Cortex Version: 1.2.0
+   * Component: RCC Version: 1.2.0
    * Component: UART Version: 1.2.0
+   * Component: TIM Version: 1.2.0
 
 Package Vendor: Keil
                 project-path/Keil.FrameworkCubeMX.1.0.0.pack
@@ -82,50 +77,50 @@ Package Vendor: Keil
    * Component: ::Device:STM32Cube Framework:1.0.0 (API)
 
    * Component: Keil::Device:Startup:1.2.0
-      Source file:   Drivers\CMSIS\Device\ST\STM32F7xx\Source\Templates\arm\startup_stm32f756xx.s
       Include file:  Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f7xx.h
-      Source file:   MDK\Device\Source\ARM\STM32F7xx_OTP.s
       Source file:   MDK\Device\Source\ARM\STM32F7xx_OPT.s
+      Source file:   MDK\Device\Source\ARM\STM32F7xx_OTP.s
+      Source file:   Drivers\CMSIS\Device\ST\STM32F7xx\Source\Templates\arm\startup_stm32f756xx.s
       Source file:   Drivers\CMSIS\Device\ST\STM32F7xx\Source\Templates\system_stm32f7xx.c
 
    * Component: Keil::Device:STM32Cube HAL:DMA:1.2.0
-      Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_dma.c
       Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_dma_ex.c
+      Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_dma.c
 
    * Component: Keil::Device:STM32Cube HAL:PWR:1.2.0
       Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_pwr.c
       Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_pwr_ex.c
 
-   * Component: Keil::Device:STM32Cube HAL:RCC:1.2.0
-      Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_rcc.c
-      Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_rcc_ex.c
-
-   * Component: Keil::Device:STM32Cube HAL:Common:1.2.0
-      Include file:  Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h
-      Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal.c
+   * Component: Keil::Device:STM32Cube HAL:GPIO:1.2.0
+      Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_gpio.c
 
    * Component: Keil::Device:STM32Cube HAL:I2C:1.2.0
       Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_i2c_ex.c
       Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_i2c.c
 
+   * Component: Keil::Device:STM32Cube HAL:Common:1.2.0
+      Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal.c
+      Include file:  Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h
+
    * Component: Keil::Device:STM32Cube HAL:Cortex:1.2.0
       Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_cortex.c
 
-   * Component: Keil::Device:STM32Cube HAL:GPIO:1.2.0
-      Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_gpio.c
+   * Component: Keil::Device:STM32Cube HAL:RCC:1.2.0
+      Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_rcc_ex.c
+      Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_rcc.c
+
+   * Component: Keil::Device:STM32Cube HAL:UART:1.2.0
+      Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_uart.c
 
    * Component: Keil::Device:STM32Cube HAL:TIM:1.2.0
       Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_tim_ex.c
       Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_tim.c
 
-   * Component: Keil::Device:STM32Cube HAL:UART:1.2.0
-      Source file:   Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_uart.c
-
    * Component: Keil::Device:STM32Cube Framework:STM32CubeMX:1.0.0
       Include file:  MX_Device.h
-      Source file:   STCubeGenerated\Src\stm32f7xx_hal_msp.c
       Include file:  STCubeGenerated\Inc\stm32f7xx_hal_conf.h
-Build Time Elapsed:  00:00:10
+      Source file:   STCubeGenerated\Src\stm32f7xx_hal_msp.c
+Build Time Elapsed:  00:00:07
 </pre>
 </body>
 </html>

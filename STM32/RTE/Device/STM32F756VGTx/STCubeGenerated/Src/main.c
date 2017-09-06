@@ -64,14 +64,16 @@ unsigned char R_Char;																		//Stores received R as Char
 int X_Vect =0;																					//Stores received X as Int
 int Y_Vect =0;																					//Stores received Y as Int
 int R_Vect =0;																					//Stores received R as Int
-int legAngles[15];																			//Stores the desired angle for each limb
-int legAngles_buffer[15];																//Buffer for above
-int legAngles_id[] = {1, 2, 3, 4, 5,										//Stores the ID of each limb for sorting
+int legAngles[3][15];																		//Stores the desired angle for each limb
+int legAngles_id[3][15] = {{1, 2, 3, 4, 5,							//Stores the ID of each limb for sorting
 											6, 7, 8, 9, 10,
-											11, 12, 13, 14, 15};
-int legAngles_id_buffer[] = { 1, 2, 3, 4, 5,	
-															6, 7, 8, 9, 10,
-															11, 12, 13, 14, 15};
+											11, 12, 13, 14, 15},
+											{1, 2, 3, 4, 5,										
+											6, 7, 8, 9, 10,
+											11, 12, 13, 14, 15},
+											{1, 2, 3, 4, 5,										
+											6, 7, 8, 9, 10,
+											11, 12, 13, 14, 15}};
 
 int servoOffset[] = {300,315,300,305,295,								//Array for storing the offset of each servo
 											430,460,450,440,442,
@@ -121,6 +123,7 @@ double currentPosition[2][5];														//2D array that stores X and Y values
 double translateLeg[2][5];															//Stores coordinates of joint 1 for each leg.
 																												//Replaces TranslateLeg()
 bool legAngleFlag = false;															//True when busy writing to legAngles
+int bufferLevel;																				//Used to select between levels in buffer
 //Peripheral pin & port difinitions
 #define BTPort 					GPIOE
 #define BTLEDPin 				GPIO_PIN_0
@@ -303,15 +306,24 @@ int main(void)
 			SetServo(leg+5,leg_servo.phi);
 			SetServo(leg+10,leg_servo.alpha);
 		}
+		//Set a flag while editing these registers
+		legAngleFlag = true;
 		//Sort the servo times in ascending order
 		Sort();		
-		legAngleFlag = true;
+		//Copy the results into buffer level 2
+				for (int n = 0; n<15 ;n++)
+		{
+			legAngles[1][n] = legAngles[0][n];
+			legAngles_id[1][n] = legAngles_id[0][n];
+		}
+		//Clear busy flag
+		legAngleFlag = false;
+		//Copy into buffer level 3
 		for (int n = 0; n<15 ;n++)
 		{
-			legAngles[n] = legAngles_buffer[n];
-			legAngles_id[n] = legAngles_id_buffer[n];
+			legAngles[2][n] = legAngles[1][n];
+			legAngles_id[2][n] = legAngles_id[1][n];
 		}
-		legAngleFlag = false;
   }
   /* USER CODE END 3 */
 
@@ -682,16 +694,16 @@ void Sort(void)
 	{
 		for(int j = i+1;j<15;j++)
 		{
-			if(legAngles_buffer[i] > legAngles_buffer[j])
+			if(legAngles[0][i] > legAngles[0][j])
 			{
 				//swop the angles
-				int a = legAngles_buffer[i];
-				legAngles_buffer[i] = legAngles_buffer[j];
-				legAngles_buffer[j] = a;
+				int a = legAngles[0][i];
+				legAngles[0][i] = legAngles[0][j];
+				legAngles[0][j] = a;
 				//now swop the index
-				a = legAngles_id_buffer[i];
-				legAngles_id_buffer[i] = legAngles_id_buffer[j];
-				legAngles_id_buffer[j] = a;
+				a = legAngles_id[0][i];
+				legAngles_id[0][i] = legAngles_id[0][j];
+				legAngles_id[0][j] = a;
 			}
 		}
 	}
@@ -706,33 +718,37 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	{
 		
 		if(htim == &htim7){
-			if (legAngleFlag)
+			if(legAngleFlag == true)
 			{
-				
+				bufferLevel = 2;
+			}else{
+				bufferLevel = 0;
 			}
 			HAL_GPIO_TogglePin(greenLEDPort,greenLEDPin);
 			//Turn off
 			++servoCount;			
 			if (servoCount < 15)
 			{
-				newPeriod = (legAngles[servoCount]- legAngles[servoCount-1]);
+				newPeriod = (legAngles[bufferLevel][servoCount]- legAngles[bufferLevel][servoCount-1]);
 				
 				while (newPeriod == 0)
 				{
-					HAL_GPIO_WritePin(servoPortArray[legAngles_id[servoCount-1]-1] ,servoPinArray[legAngles_id[servoCount-1]-1],GPIO_PIN_RESET);
+					HAL_GPIO_WritePin(servoPortArray[legAngles_id[bufferLevel][servoCount-1]-1] ,servoPinArray[legAngles_id[bufferLevel][servoCount-1]-1],GPIO_PIN_RESET);
 					++servoCount;
-					newPeriod = (legAngles[servoCount]- legAngles[servoCount-1]);
+					newPeriod = (legAngles[bufferLevel][servoCount]- legAngles[bufferLevel][servoCount-1]);
 				}
-				//TIM7->CNT = 0;
+//				TIM7->CNT = 0;
+				
+				//Adjust for time lost in this subroutine
 				if (newPeriod>1)
 				{
 					--newPeriod;
 				}
 				TIM7->ARR = (newPeriod);
-				HAL_GPIO_WritePin(servoPortArray[legAngles_id[servoCount-1]-1] ,servoPinArray[legAngles_id[servoCount-1]-1],GPIO_PIN_RESET);
+				HAL_GPIO_WritePin(servoPortArray[legAngles_id[bufferLevel][servoCount-1]-1] ,servoPinArray[legAngles_id[bufferLevel][servoCount-1]-1],GPIO_PIN_RESET);
 			}else{
 				//Turn off servo 15
-				HAL_GPIO_WritePin(servoPortArray[legAngles_id[14]-1] ,servoPinArray[legAngles_id[14]-1],GPIO_PIN_RESET);
+				HAL_GPIO_WritePin(servoPortArray[legAngles_id[bufferLevel][14]-1] ,servoPinArray[legAngles_id[bufferLevel][14]-1],GPIO_PIN_RESET);
 				//Stop the timer for the rest of the cycle
 				HAL_TIM_Base_Stop(&htim7);
 				servoCount = 0;
@@ -760,12 +776,18 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			HAL_GPIO_WritePin(servo15Port,servo15Pin,GPIO_PIN_SET);
 			
 
+			if(legAngleFlag == true)
+			{
+				bufferLevel = 2;
+			}else{
+				bufferLevel = 0;
+			}
 			//Set period for 1st servo
-			newPeriod = legAngles[servoCount];
+			newPeriod = legAngles[bufferLevel][servoCount];
 			while (newPeriod == 0)
 			{
 				++servoCount;
-				newPeriod = legAngles[servoCount];
+				newPeriod = legAngles[bufferLevel][servoCount];
 			}
 				
 			TIM7->ARR = newPeriod;
@@ -798,12 +820,11 @@ void SetServo(int servo, int degrees)
 	//Set the servo with the correct index in the array 
 	for (int i = 0; i<15; i++)
 	{
-		if (servo == legAngles_id_buffer[i])
+		if (servo == legAngles_id[0][i])
 		{
-			legAngles_buffer[i] =servoOffset[servo-1] + (degrees*(servoMultiplier[servo-1])/180);
+			legAngles[0][i] =servoOffset[servo-1] + (degrees*(servoMultiplier[servo-1])/180);
 			return;
 		}
-		int m = 0;
 	}
 }
 
@@ -855,9 +876,9 @@ void CheckBounds(void)
 	for(int i = 0 ; i<5 ; i++)
 	{
 		//
-		if ( legAngles[i+1] < 50 || legAngles[i+1] > 120		// 50 < theta < 120
-			|| legAngles[i+6] < 90 || legAngles[i+6] > 170		// 90 < phi   < 170
-			|| legAngles[i+11]< 70 || legAngles[i+11]> 130)		// 70 < alpha < 130
+		if ( legAngles[0][i+1] < 50 || legAngles[0][i+1] > 120		// 50 < theta < 120
+			|| legAngles[0][i+6] < 90 || legAngles[0][i+6] > 170		// 90 < phi   < 170
+			|| legAngles[0][i+11]< 70 || legAngles[0][i+11]> 130)		// 70 < alpha < 130
 		{
 			resetStatus[i] = true;				
 		}else{
