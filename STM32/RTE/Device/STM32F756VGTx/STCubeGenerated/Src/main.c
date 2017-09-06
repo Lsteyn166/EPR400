@@ -745,6 +745,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 					--newPeriod;
 				}
 				TIM7->ARR = (newPeriod);
+				char newPeriodChar = (char)servoCount; 
+				Debug(&newPeriodChar,2);
 				HAL_GPIO_WritePin(servoPortArray[legAngles_id[bufferLevel][servoCount-1]-1] ,servoPinArray[legAngles_id[bufferLevel][servoCount-1]-1],GPIO_PIN_RESET);
 			}else{
 				//Turn off servo 15
@@ -753,9 +755,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 				HAL_TIM_Base_Stop(&htim7);
 				servoCount = 0;
 			}
-		}
-		if (htim == &htim6)
+		}else if (htim == &htim6)
 		{
+			servoCount = 0;
 			//50Hz Interrupt
 			HAL_GPIO_TogglePin(redLEDPort,redLEDPin);
 			//Turn all on
@@ -792,7 +794,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 				
 			TIM7->ARR = newPeriod;
 			//Start the timer
-			HAL_TIM_Base_Start(&htim7);
+			HAL_TIM_Base_Start_IT(&htim7);
 			
 			//BT LED
 			++BTCount;
@@ -805,6 +807,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 //				HAL_GPIO_TogglePin(greenLEDPort,greenLEDPin);
 //				HAL_GPIO_TogglePin(redLEDPort,redLEDPin);
 			}
+		}else{
+			Debug("Timer Interrupt Error",21);
 		}
 	}
 
