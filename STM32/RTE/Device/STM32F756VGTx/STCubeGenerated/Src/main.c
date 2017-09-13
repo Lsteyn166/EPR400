@@ -124,6 +124,7 @@ double translateLeg[2][5];															//Stores coordinates of joint 1 for eac
 																												//Replaces TranslateLeg()
 bool legAngleFlag = false;															//True when busy writing to legAngles
 int bufferLevel;																				//Used to select between levels in buffer
+int Dummy = 0;
 //Peripheral pin & port difinitions
 #define BTPort 					GPIOE
 #define BTLEDPin 				GPIO_PIN_0
@@ -308,6 +309,7 @@ int main(void)
 		}
 		//Set a flag while editing these registers
 		legAngleFlag = true;
+		Dummy = 1;
 		//Sort the servo times in ascending order
 		Sort();		
 		//Copy the results into buffer level 2
@@ -318,6 +320,7 @@ int main(void)
 		}
 		//Clear busy flag
 		legAngleFlag = false;
+		Dummy = 0;
 		//Copy into buffer level 3
 		for (int n = 0; n<15 ;n++)
 		{
@@ -722,7 +725,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			{
 				bufferLevel = 2;
 			}else{
-				bufferLevel = 0;
+				bufferLevel = 1;
 			}
 			HAL_GPIO_TogglePin(greenLEDPort,greenLEDPin);
 			//Turn off
@@ -744,15 +747,21 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 				{
 					--newPeriod;
 				}
+				if (newPeriod < 0)
+				{
+					newPeriod = 0;
+				}
 				TIM7->ARR = (newPeriod);
-				char newPeriodChar = (char)servoCount; 
-				Debug(&newPeriodChar,2);
 				HAL_GPIO_WritePin(servoPortArray[legAngles_id[bufferLevel][servoCount-1]-1] ,servoPinArray[legAngles_id[bufferLevel][servoCount-1]-1],GPIO_PIN_RESET);
 			}else{
 				//Turn off servo 15
 				HAL_GPIO_WritePin(servoPortArray[legAngles_id[bufferLevel][14]-1] ,servoPinArray[legAngles_id[bufferLevel][14]-1],GPIO_PIN_RESET);
 				//Stop the timer for the rest of the cycle
 				HAL_TIM_Base_Stop(&htim7);
+				if (servoCount != 0xF)
+				{
+					Debug("servoCount Error",16);
+				}
 				servoCount = 0;
 			}
 		}else if (htim == &htim6)
@@ -782,11 +791,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			{
 				bufferLevel = 2;
 			}else{
-				bufferLevel = 0;
+				bufferLevel = 1;
 			}
 			//Set period for 1st servo
 			newPeriod = legAngles[bufferLevel][servoCount];
-			while (newPeriod == 0)
+			while (newPeriod == 0 && servoCount < 16)
 			{
 				++servoCount;
 				newPeriod = legAngles[bufferLevel][servoCount];
@@ -794,7 +803,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 				
 			TIM7->ARR = newPeriod;
 			//Start the timer
-			HAL_TIM_Base_Start_IT(&htim7);
+			HAL_TIM_Base_Start(&htim7);
 			
 			//BT LED
 			++BTCount;
