@@ -58,6 +58,7 @@ UART_HandleTypeDef huart3;
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
 unsigned char RXData[15];																//Array for Bluetooth reception
+unsigned char RXDataBuffer[15];													//Temp buffer for above
 unsigned char X_Char;																		//Stores received X as Char
 unsigned char Y_Char;																		//Stores received Y as Char
 unsigned char R_Char;																		//Stores received R as Char
@@ -202,6 +203,7 @@ struct coordinates Rotate(double x, double y, double angle);	//Rotate coordinate
 void TranslateLeg(void);																			//Generates constants at beginning of program
 struct coordinates Vector(double x, double y, int leg, bool offset);
 void StartPosition(void);																			//Resets robot to default position
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart);			//ISR for when bluetooth communication is received.
 
 /* USER CODE END PFP */
 
@@ -256,13 +258,13 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 	Debug("Entering main loop",18);
+	HAL_UART_Receive_IT(&huart3,RXDataBuffer,15);											//Receive commands via bluetooth
   while (1)
   {
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-//		HAL_GPIO_WritePin(GPIOE,GPIO_PIN_0,GPIO_PIN_SET);					//Turn blue LED off
-		HAL_UART_Receive_IT(&huart3,RXData,15);											//Receive commands via bluetooth
+
 		for(int i = 0;i<7;i++)
 		{
 			//Is this a valid message?
@@ -655,7 +657,16 @@ void Debug(char *Array, int count)
   */
 void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
 {
-	Debug("Bluetooth Error",15);
+	if (huart == &huart3)
+	{
+		Debug("Bluetooth Error",15);
+	}else if (huart == &huart1)
+	{
+		Debug("Serial Error",12);
+	}else{
+		Debug("UART error",10);
+	}
+	
 }
 
 /**
@@ -1029,6 +1040,15 @@ void StartPosition(void)
 	SetServo(13,90);
 	SetServo(14,90);
 	SetServo(15,90);
+}
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+	for (int i = 0;i<16;i++)
+	{
+		RXData[i] = RXDataBuffer[i];
+	}
+	HAL_UART_Receive_IT(&huart3,RXDataBuffer,15);											//Receive commands via bluetooth
 }
 /* USER CODE END 4 */
 
