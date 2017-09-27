@@ -747,7 +747,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 				{
 					--newPeriod;
 				}
-				if (newPeriod < 0)
+				if (newPeriod < 0 || newPeriod > 400)
 				{
 					newPeriod = 0;
 				}
@@ -795,12 +795,21 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			}
 			//Set period for 1st servo
 			newPeriod = legAngles[bufferLevel][servoCount];
+			if (newPeriod < 0 || newPeriod > 400)
+				{
+					newPeriod = 0;
+				}
 			while (newPeriod == 0 && servoCount < 16)
 			{
 				++servoCount;
 				newPeriod = legAngles[bufferLevel][servoCount];
+				if (newPeriod < 0 || newPeriod > 400)
+				{
+					newPeriod = 0;
+				}
 			}
 				
+			
 			TIM7->ARR = newPeriod;
 			//Start the timer
 			HAL_TIM_Base_Start(&htim7);
