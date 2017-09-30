@@ -126,6 +126,7 @@ double translateLeg[2][5];															//Stores coordinates of joint 1 for eac
 bool legAngleFlag = false;															//True when busy writing to legAngles
 int bufferLevel;																				//Used to select between levels in buffer
 int Dummy = 0;
+int time = 0;																						//Keeps timing of robot movement for speed calculations
 //Peripheral pin & port difinitions
 #define BTPort 					GPIOE
 #define BTLEDPin 				GPIO_PIN_0
@@ -249,10 +250,10 @@ int main(void)
 	TranslateLeg();
 
 	Debug("Init done",9);
-	//Turn off all LEDs except green
+	//Turn off all LEDs except red
 	HAL_GPIO_WritePin(BTPort,BTLEDPin,GPIO_PIN_SET);
-	HAL_GPIO_WritePin(greenLEDPort,greenLEDPin,GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(redLEDPort,redLEDPin,GPIO_PIN_SET);
+	HAL_GPIO_WritePin(greenLEDPort,greenLEDPin,GPIO_PIN_SET);
+	HAL_GPIO_WritePin(redLEDPort,redLEDPin,GPIO_PIN_RESET);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -738,7 +739,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			}else{
 				bufferLevel = 1;
 			}
-			HAL_GPIO_TogglePin(greenLEDPort,greenLEDPin);
 			//Turn off
 			++servoCount;			
 			if (servoCount < 15)
@@ -751,8 +751,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 					++servoCount;
 					newPeriod = (legAngles[bufferLevel][servoCount]- legAngles[bufferLevel][servoCount-1]);
 				}
-//				TIM7->CNT = 0;
-				
 				//Adjust for time lost in this subroutine
 				if (newPeriod>1)
 				{
@@ -779,7 +777,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		{
 			servoCount = 0;
 			//50Hz Interrupt
-			HAL_GPIO_TogglePin(redLEDPort,redLEDPin);
 			//Turn all on
 			HAL_GPIO_WritePin(servo1Port,servo1Pin,GPIO_PIN_SET);
 			HAL_GPIO_WritePin(servo2Port,servo2Pin,GPIO_PIN_SET);
