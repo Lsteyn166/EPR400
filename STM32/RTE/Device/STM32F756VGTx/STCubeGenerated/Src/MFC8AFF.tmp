@@ -115,7 +115,7 @@ double rad2deg = 57.29577951308232;
 double A_length = 50;
 double B_length = 106;
 double C_length = 130;
-double z_body = 70;
+double z_body = 50;
 double robotRadius = 90;   
 
 bool resetStatus[5];																		//Array used to store reset status of each leg
@@ -206,17 +206,14 @@ void SetupTimers(void);																				//Configure timers 6 and 7 for use in
 void Sort(void);																							//Sorts timer values into ascending order
 void SetServo(int servo, int degrees);												//Sets the timer value for a servo from a degree value
 struct servos IK( struct coordinates input);									//Inverse Kinematics function
-bool CheckBounds(struct servos leg);													//Check if legs need to be reset
+void CheckBounds(void);																				//Check if legs need to be reset
 struct coordinates Rotate(double x, double y, double angle);	//Rotate coordinates about an angle
 void TranslateLeg(void);																			//Generates constants at beginning of program
 struct coordinates Vector(double x, double y, int leg, bool offset);
 void StartPosition(void);																			//Resets robot to default position
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart);			//ISR for when bluetooth communication is received.
-void BTDecrypt(void);																//Resturns vectors sent from android
+struct vectors BTDecrypt(void);																//Resturns vectors sent from android
 void ServoUpdate(void);																				//Moves entire buffer over at once to servos
-void Delay(int a);																						//Delays program for a cycles of 20ms
-void ResetLeg(int leg);																				//Moves the specified leg back to its origin
-void DestinationUpdate(int leg);															//Calculates the new destination from the input vectors and the current values
 
 /* USER CODE END PFP */
 
@@ -268,12 +265,13 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 	Debug("Entering main loop",18);
-	HAL_UART_Receive_IT(&huart3,RXDataBuffer,15);											//Receive commands via bluetooth in interrupt mode
+	HAL_UART_Receive_IT(&huart3,RXDataBuffer,15);											//Receive commands via bluetooth
   while (1)
   {
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
+		
 		//Turn off all LEDs except red
 		HAL_GPIO_WritePin(BTPort,BTLEDPin,GPIO_PIN_SET);
 		HAL_GPIO_WritePin(greenLEDPort,greenLEDPin,GPIO_PIN_SET);
@@ -295,91 +293,42 @@ int main(void)
 		//Turn on power to servos
 		HAL_GPIO_WritePin(servoPowerPort,servoPowerPin,GPIO_PIN_SET);
 		//Delay for 1 second to get things started
-		Delay(10);
-		//Put legs in the 0,0,50 position one at a time
+		time = 0;
+		while(time < 50)
+		{
+			//wait here for 1 second to pass
+		}
+		//Do leg stuff
 		for (int leg = 1; leg <6; leg++)
 		{
 			struct coordinates leg_Vector = Vector(0,0,leg,true);
-			leg_Vector.z = 50;			//Lift legs above ground
+			leg_Vector.z = 0;
 			struct servos leg_servo = IK(leg_Vector);
 			
 			SetServo(leg,leg_servo.theta);
 			SetServo(leg+5,leg_servo.phi);
 			SetServo(leg+10,leg_servo.alpha);
-			ServoUpdate();
-			Delay(10);
 		}
-		//Slowly raise the body
-		for (int height = 50 ; height >0 ; --height)
+		ServoUpdate();
+	
+		while(1)
 		{
-			for (int leg = 1; leg <6; leg++)
-			{
-				struct coordinates leg_Vector = Vector(0,0,leg,true);
-				leg_Vector.z = height;			//Lift legs above ground
-				struct servos leg_servo = IK(leg_Vector);
-				
-				SetServo(leg,leg_servo.theta);
-				SetServo(leg+5,leg_servo.phi);
-				SetServo(leg+10,leg_servo.alpha);
-				ServoUpdate();
-			}
-			Delay(2);
+			
 		}
-		//Turn off all LEDs except green
-		HAL_GPIO_WritePin(BTPort,BTLEDPin,GPIO_PIN_SET);
-		HAL_GPIO_WritePin(greenLEDPort,greenLEDPin,GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(redLEDPort,redLEDPin,GPIO_PIN_SET);
-		Debug("Ready...",8);
-		
-		//This is the main part that executes while the bluetooth is connected
-		while(BTon)
-		{
-			//Get the vectors from the last transmitted message
-			BTDecrypt();
-			//Perform inverse kinematics
-			for (int leg = 1; leg <6; leg++)
-			{
-//				struct coordinates leg_Vector = Vector(-X_Vect,-Y_Vect,leg,true);  //!!!!!!!!!This does not accumulate!!!!!!!!!!!!!!!!!!!!!!			
-				DestinationUpdate(leg);
-				struct coordinates leg_Vector;
-				leg_Vector.x = currentPosition[0][leg-1];
-				leg_Vector.y = currentPosition[1][leg-1];
-				leg_Vector.z = 0;
-				struct servos leg_servo = IK(leg_Vector);
-				//Check if this is out ouf bounds
-				if (CheckBounds(leg_servo))
-				{
-					resetStatus[leg-1] = true;
-				}else{
-					resetStatus[leg-1] = false;
-				}
-				SetServo(leg,leg_servo.theta);
-				SetServo(leg+5,leg_servo.phi);
-				SetServo(leg+10,leg_servo.alpha);
-			}
-			//Reset legs if necessary
-			for (int leg = 1; leg < 6; leg++)
-			{
-				if (resetStatus[leg-1] == true)
-				{
-					//Turn on all LEDs (white)
-					HAL_GPIO_WritePin(BTPort,BTLEDPin,GPIO_PIN_RESET);
-					HAL_GPIO_WritePin(greenLEDPort,greenLEDPin,GPIO_PIN_RESET);
-					HAL_GPIO_WritePin(redLEDPort,redLEDPin,GPIO_PIN_RESET);
-					//Reset leg
-					ResetLeg(leg);
-				}
-			}
-			//Move the legs to where we want them
-			ServoUpdate();
-			//Turn off all LEDs except green
-			HAL_GPIO_WritePin(BTPort,BTLEDPin,GPIO_PIN_SET);
-			HAL_GPIO_WritePin(greenLEDPort,greenLEDPin,GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(redLEDPort,redLEDPin,GPIO_PIN_SET);
-		}
+		//Toggle pin to check for stuck program
+		HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_1); 
 		
 		
-
+//		//Do leg stuff
+//		for (int leg = 1; leg <6; leg++)
+//		{
+//			struct coordinates leg_Vector = Vector(-X_Vect*5,-Y_Vect*5,leg,true);
+//			struct servos leg_servo = IK(leg_Vector);
+//			
+//			SetServo(leg,leg_servo.theta);
+//			SetServo(leg+5,leg_servo.phi);
+//			SetServo(leg+10,leg_servo.alpha);
+//		}
   }
   /* USER CODE END 3 */
 
@@ -825,8 +774,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			}
 		}else if (htim == &htim6)
 		{
-			servoCount = 0;
 			++time;
+			servoCount = 0;
 			//50Hz Interrupt
 			//Turn all on
 			HAL_GPIO_WritePin(servo1Port,servo1Pin,GPIO_PIN_SET);
@@ -879,6 +828,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			{
 				//Assume BT is disconnected
 				BTon = false;
+				//Turn LED off
+				HAL_GPIO_WritePin(BTPort,BTLEDPin,GPIO_PIN_SET);
 				//HAL_GPIO_WritePin(servoPowerPort,servoPowerPin,GPIO_PIN_RESET);
 				BTCount = 0;
 //				HAL_GPIO_TogglePin(greenLEDPort,greenLEDPin);
@@ -951,16 +902,20 @@ struct servos IK( struct coordinates input)
 	* @param  None
   * @retval None
   */
-bool CheckBounds(struct servos leg)
+void CheckBounds(void)
 {
-	if ( leg.theta < 50 || leg.theta > 120		// 50 < theta < 120
-		|| leg.phi < 90 || leg.phi > 170		// 90 < phi   < 170
-		|| leg.alpha < 70 || leg.alpha> 130)		// 70 < alpha < 130
+	for(int i = 0 ; i<5 ; i++)
 	{
-		return true;				
-	}else{
-		return false;
-	}
+		//
+		if ( legAngles[0][i+1] < 50 || legAngles[0][i+1] > 120		// 50 < theta < 120
+			|| legAngles[0][i+6] < 90 || legAngles[0][i+6] > 170		// 90 < phi   < 170
+			|| legAngles[0][i+11]< 70 || legAngles[0][i+11]> 130)		// 70 < alpha < 130
+		{
+			resetStatus[i] = true;				
+		}else{
+			resetStatus[i] = false;
+		}
+	}			
 }
 
 /**
@@ -1020,7 +975,6 @@ struct coordinates Vector(double x, double y, int leg, bool offset)
 	result.y = temp.y - translateLeg[1][0];
 	if (offset)
 	{
-		//save the destination for  use in reset leg function later.
 		destination[0][leg-1] = result.x;
 		destination[1][leg-1] = result.y;
 	}
@@ -1050,39 +1004,20 @@ void ResetLeg(int leg)
 {
 	//Lift up the leg where it is currently
 	struct coordinates lift;
-	lift.x = destination[0][leg-1];		//destination array is updated automatically when the vector function is used.
+	lift.x = destination[0][leg-1];
 	lift.y = destination[1][leg-1];
 	lift.z = 30;
 	struct servos leg_up = IK(lift);
 	//Send this to servos and wait
-	SetServo(leg,leg_up.theta);
-	SetServo(leg+5,leg_up.phi);
-	SetServo(leg+10,leg_up.alpha);
-	ServoUpdate();
-	Delay(10);
 	//Now move the leg over to the new position
 	struct coordinates reset = Vector(X_Vector,Y_Vector,leg,true);
 	reset.z = 30;
-	destination[0][leg-1] = reset.x;
-	destination[1][leg-1] = reset.y;
-	currentPosition[0][leg-1] = reset.x;
-	currentPosition[1][leg-1] = reset.y;
 	struct servos leg_reset = IK(reset);
 	//Send this to servos and wait
-	SetServo(leg,leg_reset.theta);
-	SetServo(leg+5,leg_reset.phi);
-	SetServo(leg+10,leg_reset.alpha);
-	ServoUpdate();
-	Delay(10);	
 	//Now put down the leg where it is
 	reset.z = 0;
 	leg_reset = IK(reset);
 	//Send this to the servos and wait
-	SetServo(leg,leg_reset.theta);
-	SetServo(leg+5,leg_reset.phi);
-	SetServo(leg+10,leg_reset.alpha);
-	ServoUpdate();
-	Delay(10);
 }
 
 void StartPosition(void)
@@ -1103,8 +1038,6 @@ void StartPosition(void)
 	SetServo(13,90);
 	SetServo(14,90);
 	SetServo(15,90);
-	ServoUpdate();
-	Delay(10);
 }
 /**
   * @brief  This is an Interrupt service routine for when bluetooth communication is finished
@@ -1121,9 +1054,11 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 	HAL_UART_Receive_IT(&huart3,RXDataBuffer,15);											//Receive commands via bluetooth
 }
 
-void BTDecrypt(void)
+struct vectors BTDecrypt(void)
 {
+	struct vectors result;
 	//Bluetooth reception decryption
+	result.valid = false;
 		for(int i = 0;i<7;i++)
 		{
 			//Is this a valid message?
@@ -1144,9 +1079,10 @@ void BTDecrypt(void)
 					RXData[j]=0;
 				}
 				//Calculate correct vectors
-				X_Vect = X_Char - '5';
-				Y_Vect = Y_Char - '5';
-				R_Vect = R_Char - '5';
+				result.X = X_Char - '5';
+				result.Y = Y_Char - '5';
+				result.R = R_Char - '5';
+				result.valid = true;
 				//Debug
 				HAL_UART_Transmit(&huart1,&X_Char,1,10);
 				HAL_UART_Transmit(&huart1,&Y_Char,1,10);
@@ -1154,6 +1090,7 @@ void BTDecrypt(void)
 				HAL_UART_Transmit(&huart1,BTRewrite,4,10);
 				}
 		}
+		return result;
 }
 
 void ServoUpdate(void)
@@ -1176,29 +1113,6 @@ void ServoUpdate(void)
 	legAngles[2][n] = legAngles[1][n];
 	legAngles_id[2][n] = legAngles_id[1][n];
 	}
-}
-
-void Delay(int a)
-{
-	time = 0;
-	while(time < a)
-	{
-		//wait here till delay value is reached.
-	}
-}
-
-void DestinationUpdate(int leg)
-{
-	//Move destination to current
-	currentPosition[0][leg-1] = destination[0][leg-1];
-	currentPosition[1][leg-1] = destination[1][leg-1];
-	//Vector to add to this
-//	struct coordinates leg_Vector = Vector(-X_Vect,-Y_Vect,leg,true);
-//	leg_Vector.z = 0;
-	struct coordinates newVector = Vector(-X_Vect,-Y_Vect,leg,false);
-	//Destination = current + new
-	destination[0][leg-1] = newVector.x + currentPosition[0][leg-1];
-	destination[1][leg-1] = newVector.y + currentPosition[1][leg-1];
 }
 /* USER CODE END 4 */
 

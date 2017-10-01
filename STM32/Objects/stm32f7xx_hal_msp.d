@@ -1,4 +1,4 @@
-.\objects\stm32f7xx_hal_msp.o: \\VBOXSVR\Shared\UP\EPR400\STM32\RTE\Device\STM32F756VGTx\STCubeGenerated\Src\stm32f7xx_hal_msp.c
+.\objects\stm32f7xx_hal_msp.o: E:\UP\EPR400\STM32\RTE\Device\STM32F756VGTx\STCubeGenerated\Src\stm32f7xx_hal_msp.c
 .\objects\stm32f7xx_hal_msp.o: C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.9.0\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h
 .\objects\stm32f7xx_hal_msp.o: .\RTE\Device\STM32F756VGTx\STCubeGenerated\Inc\stm32f7xx_hal_conf.h
 .\objects\stm32f7xx_hal_msp.o: .\RTE\Device\STM32F756VGTx\STCubeGenerated\Inc\main.h

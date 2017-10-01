@@ -15,9 +15,9 @@
 ".\objects\stm32f7xx_hal_tim.o"
 ".\objects\stm32f7xx_hal_tim_ex.o"
 ".\objects\stm32f7xx_hal_uart.o"
+".\objects\stm32f7xx_hal_msp.o"
 ".\objects\startup_stm32f756xx.o"
 ".\objects\system_stm32f7xx.o"
-".\objects\stm32f7xx_hal_msp.o"
 --ro-base 0x08000000 --entry 0x08000000 --rw-base 0x20010000 --entry Reset_Handler --first __Vectors --strict --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list ".\Listings\EPR400.map" -o .\Objects\EPR400.axf
