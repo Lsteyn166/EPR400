@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.29)  8 OCT 2017 10:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.29)  8 OCT 2017 21:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**FirstSem.tex
-(./FirstSem.tex
+**Final.tex
+(./Final.tex
 LaTeX2e <2016/02/01>
 Babel <3.9q> and hyphenation patterns for 5 language(s) loaded.
 (./epr400.cls
@@ -1572,8 +1572,8 @@ e
 ))))
 (/usr/share/texlive/texmf-dist/tex/latex/placeins/placeins.sty
 Package: placeins 2005/04/18  v 2.2
-) (./FirstSem.aux)
-\openout1 = `FirstSem.aux'.
+) (./Final.aux)
+\openout1 = `Final.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
 LaTeX Font Info:    ... okay on input line 20.
@@ -1590,7 +1590,8 @@ LaTeX Font Info:    ... okay on input line 20.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 20.
 LaTeX Font Info:    ... okay on input line 20.
 LaTeX Font Info:    Try loading font information for T1+ptm on input line 20.
- (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )
 *geometry* driver: auto-detecting
@@ -1600,18 +1601,18 @@ File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 * paper: a4paper
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
-* modes: includefoot 
+* modes: includehead includefoot 
 * h-part:(L,W,R)=(85.35826pt, 441.01773pt, 71.13188pt)
 * v-part:(T,H,B)=(71.13188pt, 702.78308pt, 71.13188pt)
 * \paperwidth=597.50787pt
 * \paperheight=845.04684pt
 * \textwidth=441.01773pt
-* \textheight=672.78308pt
+* \textheight=635.78308pt
 * \oddsidemargin=13.08827pt
 * \evensidemargin=13.08827pt
 * \topmargin=-1.1381pt
-* \headheight=0.0pt
-* \headsep=0.0pt
+* \headheight=12.0pt
+* \headsep=25.0pt
 * \topskip=12.0pt
 * \footskip=30.0pt
 * \marginparwidth=35.0pt
@@ -1673,52 +1674,45 @@ s been generated with the most recent feature set (\pgfplotsset{compat=1.13}).
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-<Coverpage.pdf, id=29, 614.295pt x 794.97pt>
-File: Coverpage.pdf Graphic file (type pdf)
- <use Coverpage.pdf>
-Package pdftex.def Info: Coverpage.pdf used on input line 23.
-(pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
-File: Coverpage.pdf Graphic file (type pdf)
-
-<use Coverpage.pdf>
-Package pdftex.def Info: Coverpage.pdf used on input line 23.
-(pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
- <Coverpage.pdf, id=32, page=1, 614.295pt x 794.97pt>
-File: Coverpage.pdf Graphic file (type pdf)
-
-<use Coverpage.pdf, page 1>
-Package pdftex.def Info: Coverpage.pdf, page1 used on input line 23.
-(pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
-File: Coverpage.pdf Graphic file (type pdf)
- <use Coverpage.pdf, page 1>
-Package pdftex.def Info: Coverpage.pdf, page1 used on input line 23.
-(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
-File: Coverpage.pdf Graphic file (type pdf)
-
-<use Coverpage.pdf, page 1>
-Package pdftex.def Info: Coverpage.pdf, page1 used on input line 23.
-(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
-File: Coverpage.pdf Graphic file (type pdf)
- <use Coverpage.pdf, page 1>
-Package pdftex.def Info: Coverpage.pdf, page1 used on input line 23.
-(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
-File: Coverpage.pdf Graphic file (type pdf)
-
-<use Coverpage.pdf, page 1>
-Package pdftex.def Info: Coverpage.pdf, page1 used on input line 23.
-(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
- [1
-
- <./Coverpage.pdf>]
-LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 29.
- (./FirstSem.toc
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 2.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 23.
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <20.74> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 23.
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17.28> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 23.
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./Part1.tex
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <24> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 1.
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--5
+
+ []
+
+)
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[1
+
+] (./Final.toc
 LaTeX Font Info:    Try loading font information for OT1+ztmcm on input line 2.
 
-
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
 File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
 )
 Package microtype Info: Loading generic settings for font family
@@ -1770,9 +1764,16 @@ LaTeX Font Info:    Try loading font information for U+wasy on input line 2.
 File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
 ))
 \tf@toc=\write4
-\openout4 = `FirstSem.toc'.
+\openout4 = `Final.toc'.
 
- (./section1.tex
+ (./Part2.tex
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
 Overfull \hbox (9.12012pt too wide) has occurred while \output is active
     []
  []
@@ -1782,38 +1783,31 @@ Overfull \hbox (9.12012pt too wide) has occurred while \output is active
     []
  []
 
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <16> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 12.
+[2]) (./Final.bbl
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--15
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
 
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 16--17
-
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
  []
 
+[1
 
-Underfull \hbox (badness 10000) in paragraph at lines 18--19
+])
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 20--21
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 22--23
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 24--25
-
- []
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
 
 
 Overfull \hbox (9.12012pt too wide) has occurred while \output is active
@@ -1827,186 +1821,23 @@ Overfull \hbox (9.12012pt too wide) has occurred while \output is active
 
 [2
 
-]
-Underfull \hbox (badness 10000) in paragraph at lines 26--27
-
- []
-
-
-Overfull \hbox (9.12012pt too wide) has occurred while \output is active
-    []
- []
-
-
-Overfull \hbox (9.12012pt too wide) has occurred while \output is active
-    []
- []
-
-[3]) (./section2.tex
-Underfull \hbox (badness 10000) in paragraph at lines 8--9
-
- []
-
-<pics/EPR400-2DOF.pdf, id=70, 252.945pt x 233.87375pt>
-File: pics/EPR400-2DOF.pdf Graphic file (type pdf)
-
-<use pics/EPR400-2DOF.pdf>
-Package pdftex.def Info: pics/EPR400-2DOF.pdf used on input line 15.
-(pdftex.def)             Requested size: 202.35626pt x 187.09923pt.
-
-<pics/EPR400-3DOF.pdf, id=71, 293.095pt x 294.09875pt>
-File: pics/EPR400-3DOF.pdf Graphic file (type pdf)
-
-<use pics/EPR400-3DOF.pdf>
-Package pdftex.def Info: pics/EPR400-3DOF.pdf used on input line 26.
-(pdftex.def)             Requested size: 234.4763pt x 235.27931pt.
-
-Overfull \hbox (9.12012pt too wide) has occurred while \output is active
-    []
- []
-
-
-Overfull \hbox (9.12012pt too wide) has occurred while \output is active
-    []
- []
-
-[4
-
- <./pics/EPR400-2DOF.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 32--33
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 34--35
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 36--37
-
- []
-
-
-Overfull \hbox (9.12012pt too wide) has occurred while \output is active
-    []
- []
-
-
-Overfull \hbox (9.12012pt too wide) has occurred while \output is active
-    []
- []
-
-[5 <./pics/EPR400-3DOF.pdf>]
-Overfull \hbox (9.12012pt too wide) has occurred while \output is active
-    []
- []
-
-
-Overfull \hbox (9.12012pt too wide) has occurred while \output is active
-    []
- []
-
-[6]) (./section3.tex
-Underfull \hbox (badness 10000) in paragraph at lines 9--10
-
- []
-
-<pics/Gantt1.pdf, id=90, 597.23125pt x 845.1575pt>
-File: pics/Gantt1.pdf Graphic file (type pdf)
- <use pics/Gantt1.pdf>
-Package pdftex.def Info: pics/Gantt1.pdf used on input line 13.
-(pdftex.def)             Requested size: 441.01773pt x 250.1519pt.
-
-<pics/Gantt2.pdf, id=92, 597.23125pt x 845.1575pt>
-File: pics/Gantt2.pdf Graphic file (type pdf)
- <use pics/Gantt2.pdf>
-Package pdftex.def Info: pics/Gantt2.pdf used on input line 23.
-(pdftex.def)             Requested size: 441.01773pt x 176.60585pt.
-
-Overfull \hbox (9.12012pt too wide) has occurred while \output is active
-    []
- []
-
-
-Overfull \hbox (9.12012pt too wide) has occurred while \output is active
-    []
- []
-
-[7
-
- <./pics/Gantt1.pdf>]) (./section4.tex
-Overfull \hbox (9.12012pt too wide) has occurred while \output is active
-    []
- []
-
-
-Overfull \hbox (9.12012pt too wide) has occurred while \output is active
-    []
- []
-
-[8 <./pics/Gantt2.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 9--10
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 11--12
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 13--14
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 15--16
-
- []
-
-
-Overfull \hbox (9.12012pt too wide) has occurred while \output is active
-    []
- []
-
-
-Overfull \hbox (9.12012pt too wide) has occurred while \output is active
-    []
- []
-
-[9
-
-]) (./FirstSem.bbl)
-Overfull \hbox (9.12012pt too wide) has occurred while \output is active
-    []
- []
-
-
-Overfull \hbox (9.12012pt too wide) has occurred while \output is active
-    []
- []
-
-[10
-
-] (./FirstSem.aux) ) 
+] (./Final.aux) ) 
 Here is how much of TeX's memory you used:
- 41018 strings out of 494910
- 937307 string characters out of 6179836
- 1129915 words of memory out of 5000000
- 43392 multiletter control sequences out of 15000+600000
- 40313 words of font info for 142 fonts, out of 8000000 for 9000
+ 40890 strings out of 494910
+ 935791 string characters out of 6179836
+ 1119829 words of memory out of 5000000
+ 43355 multiletter control sequences out of 15000+600000
+ 42086 words of font info for 90 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 62i,18n,94p,10398b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/urw/times/utmri8a.pfb>
-Output written on FirstSem.pdf (11 pages, 201917 bytes).
+ 62i,11n,94p,10395b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</u
+sr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/urw/times/utmri8a.pfb>
+Output written on Final.pdf (5 pages, 37202 bytes).
 PDF statistics:
- 149 PDF objects out of 1000 (max. 8388607)
- 91 compressed objects within 1 object stream
+ 60 PDF objects out of 1000 (max. 8388607)
+ 33 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 17057 words of extra memory for PDF output out of 17280 (max. 10000000)
+ 21613 words of extra memory for PDF output out of 24883 (max. 10000000)
 

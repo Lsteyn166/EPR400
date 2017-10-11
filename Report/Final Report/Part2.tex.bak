@@ -1,0 +1,6 @@
+\section*{Part 2.}
+\addcontentsline{toc}{section}{Part 2}
+\markright{Part 2.}
+\pagenumbering{arabic}
+
+\cite{Hidayat:Autonomous}

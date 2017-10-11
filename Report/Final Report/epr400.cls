@@ -20,7 +20,7 @@
 
 %% Use the "geometry" package to maximize page usage whilst retaining enough
 %%   margin space for staples and editorial notes.
-\RequirePackage[a4paper,includefoot,nohead,
+\RequirePackage[a4paper,includefoot,includehead,
                 top=25mm,left=30mm,right=25mm,bottom=25mm
                ]{geometry}
 
@@ -146,7 +146,7 @@
 %% Redefine the bibliography environment so that the title is displayed
 %%   using the standard section command, but made uppercase as is required.
 \renewenvironment{thebibliography}[1]
-     {\section{\refname}%
+     {\section*{\refname}%
       \@mkboth{\refname}{\refname}%
       \list{\@biblabel{\@arabic\c@enumiv}}%
            {\settowidth\labelwidth{\@biblabel{#1}}%
@@ -326,11 +326,11 @@
 \newcommand{\sectionbreak}{\clearpage}
 
 %% Section heading setup, per the EPR400/2 style guidelines.
-\renewcommand\thesection{\arabic{section}.}
+\renewcommand\thesection{\arabic{section}}
 \renewcommand\thesubsection{\arabic{section}.\arabic{subsection}}
 \RequirePackage[bf,calcwidth,compact]{titlesec}
 \titleformat{\section}[frame]
-{\fontsize{16pt}{18.6pt}\selectfont\bfseries} {} {5pt} {\thesection\quad}
+{\fontsize{24pt}{28.8pt}\selectfont\bfseries} {} {5pt} {}%{\thesection\quad}
 \titlespacing*{\section}{0pt}{*3}{*3}
 \titleformat{\subsection}[display]
 {\fontsize{14pt}{16.8pt}\selectfont\bfseries} {} {5pt} {\thesubsection\quad}
@@ -342,6 +342,9 @@
 \newcommand{\secunderline}[1]{
     \underline{\smash{\fontsize{14pt}{14pt}\selectfont\bfseries{#1}}}}
 
+
+
+  
 %% Caption setup
 \RequirePackage[hang]{caption}
 \DeclareCaptionFormat{capformat}{#1#2 #3}

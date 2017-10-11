@@ -1,0 +1,52 @@
+%%
+%%  Department of Electrical, Electronic and Computer Engineering.
+%%  EPR400/2 Project Proposal - Main File.
+%%  Copyright (C) 2011-2017 University of Pretoria.
+%%
+
+\documentclass{epr400}
+
+%% EDIT: Replace the following with your information.
+\eprtitle{Design of a holonomic five legged robot}
+\eprcode{EPR400}
+\eprcandidatename{L. Steyn}
+\eprstudentnumber{04496486}
+\eprdate{November 2017}
+\eprsupervisor{Dr. J.D. Le Roux}
+\usepackage{placeins}
+\renewcommand\cftsecaftersnum{.}
+%\renewcommand\thesection{\arabic{section}}
+
+\begin{document}
+
+%% Include the required cover page 
+\maketitlepage
+%% Reset the page style and page count.
+\pagestyle{fancy}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\lhead{L Steyn}
+\rhead{\rightmark}
+\fancyfoot[R]{\thepage}
+\renewcommand{\sectionmark}[1]{ \markright{#1}{} }
+\pagenumbering{roman}
+\setcounter{page}{1}
+%Import preamble
+\input{Part1}
+%Import TOC
+\newpage
+\markright{Part 1. Preamble}
+\tableofcontents
+\thispagestyle{fancy}
+%% Import the content
+\input{Part2}
+
+
+%% Use the IEEE Transactions style for the references.
+\bibliographystyle{IEEEtran}
+\bibliography{Final}
+\addcontentsline{toc}{section}{References}
+
+\end{document}
+
+%% End of File.
