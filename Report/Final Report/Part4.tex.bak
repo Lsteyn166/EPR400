@@ -1,0 +1,82 @@
+\newpage
+%Change formatting for tis section
+\pagenumbering{arabic}
+\titleformat{\section}[frame]
+{\fontsize{24pt}{28.8pt}\selectfont\bfseries} {} {5pt} {}
+\titleformat{\subsection}[display]
+{\fontsize{18pt}{21.6pt}\selectfont\bfseries} {} {5pt} {\thesubsection\quad}
+\titleformat{\subsubsection}[display]
+{\fontsize{14pt}{16.8pt}\selectfont\bfseries} {} {5pt} {\thesubsubsection\quad}
+\renewcommand\thesubsection{\arabic{subsection}.}
+\renewcommand\thesubsubsection{\arabic{subsection}.\arabic{subsubsection}}
+\rhead{\rightmark}
+
+%Start
+\section*{Part 4. Main report}
+\addcontentsline{toc}{section}{Part 4. Main report}
+\markright{Part 4. Main report}
+\secun{Literature study}
+
+
+\secun{Approach}
+
+\subsubsection{Design alternatives}
+
+\subsubsection{Preferred solution}
+
+
+\secun{Design and implementation}
+
+\subsubsection{Theoretical Analysis}
+
+\subsubsection{Modelling}
+
+\subsubsection{Simulation}
+
+\subsubsection{Optimisation}
+
+\subsubsection{Hardware design}
+
+\subsubsection{Hardware implementation}
+
+\subsubsection{Software design}
+
+\subsubsection{Software implementation}
+
+\subsubsection{Design summary}
+
+
+\secun{Results}
+
+\subsubsection{Summary of results achieved}
+
+\begin{tabular}{|p{5cm}|p{5cm}|p{5cm}|}
+\hline
+\textbf{Description of requirement or 
+specification
+(intended outcome)} & \textbf{Actual outcome}& \textbf{Location in report}\\
+\hline
+\multicolumn{3}{|l|}{}\\
+\multicolumn{3}{|l|}{\textbf{Mission requirements of the product}}\\
+\hline
+1&2&3\\
+\hline
+\multicolumn{3}{|l|}{}\\
+\multicolumn{3}{|l|}{\textbf{Field conditions}}\\
+\hline
+1&2&3\\
+\hline
+\multicolumn{3}{|l|}{}\\
+\multicolumn{3}{|l|}{\textbf{Specifications}}\\
+\hline
+1&2&3\\
+\hline
+\multicolumn{3}{|l|}{}\\
+\multicolumn{3}{|l|}{\textbf{Deliverables}}\\
+\hline
+1&2&3\\
+\hline
+
+\end{tabular}
+
+\subsubsection{Qualification tests}

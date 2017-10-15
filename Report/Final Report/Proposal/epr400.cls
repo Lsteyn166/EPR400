@@ -20,7 +20,7 @@
 
 %% Use the "geometry" package to maximize page usage whilst retaining enough
 %%   margin space for staples and editorial notes.
-\RequirePackage[a4paper,includefoot,includehead,
+\RequirePackage[a4paper,includefoot,nohead,
                 top=25mm,left=30mm,right=25mm,bottom=25mm
                ]{geometry}
 
@@ -146,7 +146,7 @@
 %% Redefine the bibliography environment so that the title is displayed
 %%   using the standard section command, but made uppercase as is required.
 \renewenvironment{thebibliography}[1]
-     {\section*{\refname}%
+     {\section{\refname}%
       \@mkboth{\refname}{\refname}%
       \list{\@biblabel{\@arabic\c@enumiv}}%
            {\settowidth\labelwidth{\@biblabel{#1}}%
@@ -326,29 +326,22 @@
 \newcommand{\sectionbreak}{\clearpage}
 
 %% Section heading setup, per the EPR400/2 style guidelines.
-\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesection{\arabic{section}.}
 \renewcommand\thesubsection{\arabic{section}.\arabic{subsection}}
 \RequirePackage[bf,calcwidth,compact]{titlesec}
 \titleformat{\section}[frame]
-{\fontsize{24pt}{28.8pt}\selectfont\bfseries} {} {5pt} {}%{\thesection\quad}
+{\fontsize{16pt}{18.6pt}\selectfont\bfseries} {} {5pt} {\thesection\quad}
 \titlespacing*{\section}{0pt}{*3}{*3}
 \titleformat{\subsection}[display]
-{\fontsize{14pt}{16.8pt}\selectfont\bfseries} {} {5pt} {}%{\thesubsection\quad}
+{\fontsize{14pt}{16.8pt}\selectfont\bfseries} {} {5pt} {\thesubsection\quad}
 \titlespacing*{\subsection}{0pt}{-1ex}{*0}
 \titleformat{\subsubsection}[display]
-{\fontsize{12pt}{14.4pt}\selectfont\slshape\bfseries} {} {5pt} {}%{\thesubsubsection\quad}
+{\fontsize{12pt}{14.4pt}\selectfont\slshape\bfseries} {} {5pt} {\thesubsubsection\quad}
 \titlespacing*{\subsubsection}{0pt}{*0}{*0}
 
 \newcommand{\secunderline}[1]{
     \underline{\smash{\fontsize{14pt}{14pt}\selectfont\bfseries{#1}}}}
-    
-\newcommand{\secun}[1]{\newpage \begin{mdframed}[topline = false, bottomline = true, rightline = false, leftline = false]
-\subsection{#1}
-\end{mdframed}}
 
-
-
-  
 %% Caption setup
 \RequirePackage[hang]{caption}
 \DeclareCaptionFormat{capformat}{#1#2 #3}
@@ -371,7 +364,7 @@
 \RequirePackage{tocloft}
 \setlength{\cftbeforetoctitleskip}{0 pt}
 \setlength{\cftaftertoctitleskip}{4ex}
-%\renewcommand{\cfttoctitlefont}{\bfseries\fontsize{18pt}{21.6pt}\fontfamily{cmr}\selectfont\sectionrule{0ex}{0pt}{-1ex}{1pt}}
+\renewcommand{\cfttoctitlefont}{\bfseries\fontsize{18pt}{21.6pt}\fontfamily{cmr}\selectfont\sectionrule{0ex}{0pt}{-1ex}{1pt}}
 
 % Space below captions
 \setlength{\belowcaptionskip}{10 pt}
@@ -483,10 +476,7 @@
 }
 
 % Less detailed TOC
-\setcounter{tocdepth}{3}
-%No dots in toc
-\renewcommand{\cftdot}{}
-%\renewcommand{\cftsecafterpnum}{\text{  }}
+\setcounter{tocdepth}{2}
 
 %% Set to single line spacing as required.
 \renewcommand{\baselinestretch}{1.0}

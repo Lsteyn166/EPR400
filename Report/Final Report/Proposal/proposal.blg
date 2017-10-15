@@ -1,61 +1,56 @@
 This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
-The top-level auxiliary file: Final.aux
+The top-level auxiliary file: proposal.aux
 The style file: IEEEtran.bst
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-Database file #1: Final.bib
-Warning--I didn't find a database entry for "parallel:1"
-Warning--I didn't find a database entry for "Omni:1"
-Warning--I didn't find a database entry for "LS3"
-Warning--I didn't find a database entry for "BigDog"
+Database file #1: proposal.bib
 -- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
 
 Done.
-You've used 1 entry,
+You've used 4 entries,
             4087 wiz_defined-function locations,
-            849 strings with 7830 characters,
-and the built_in function-call counts, 535 in all, are:
-= -- 32
-> -- 13
-< -- 0
-+ -- 6
-- -- 3
-* -- 38
-:= -- 104
-add.period$ -- 2
-call.type$ -- 1
-change.case$ -- 1
+            863 strings with 8222 characters,
+and the built_in function-call counts, 1931 in all, are:
+= -- 151
+> -- 43
+< -- 2
++ -- 20
+- -- 10
+* -- 95
+:= -- 357
+add.period$ -- 10
+call.type$ -- 4
+change.case$ -- 6
 chr.to.int$ -- 0
-cite$ -- 1
-duplicate$ -- 39
-empty$ -- 41
-format.name$ -- 4
-if$ -- 99
+cite$ -- 4
+duplicate$ -- 149
+empty$ -- 157
+format.name$ -- 13
+if$ -- 407
 int.to.chr$ -- 0
-int.to.str$ -- 1
-missing$ -- 7
-newline$ -- 26
-num.names$ -- 1
-pop$ -- 19
+int.to.str$ -- 4
+missing$ -- 34
+newline$ -- 39
+num.names$ -- 4
+pop$ -- 87
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 32
+skip$ -- 141
 stack$ -- 0
-substring$ -- 1
-swap$ -- 22
-text.length$ -- 0
+substring$ -- 6
+swap$ -- 103
+text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 1
+type$ -- 4
 warning$ -- 0
-while$ -- 1
-width$ -- 2
-write$ -- 30
-(There were 4 warnings)
+while$ -- 4
+width$ -- 5
+write$ -- 62

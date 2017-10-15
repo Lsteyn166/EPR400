@@ -36,16 +36,17 @@
 %Import TOC
 \newpage
 \markright{Part 1. Preamble}
+\setlength{\cftsubsecnumwidth}{1em}
+\setlength{\cftsubsubsecnumwidth}{2em}
+\tocloftpagestyle{fancy}
 \tableofcontents
-\thispagestyle{fancy}
 %List of abbreviations
 \input{ListOfAbbreviations}
 %% Import the content
 \input{Part2}
-%\input{Part3}
+\input{Part3}
 %Main report
-\pagenumbering{arabic}
-%\input{Part4}
+\input{Part4}
 %Just cite something for bibTex to work
 \cite{Hidayat:Autonomous}
 

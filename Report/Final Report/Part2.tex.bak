@@ -1,9 +1,15 @@
 \section*{Part 2. Summary}
-\addcontentsline{toc}{section}{Part 2}
+\addcontentsline{toc}{section}{Part 2. Summary}
 \markright{Part 2. Summary}
 \newpage
 This report documents the development of a robot intended for exploration in unknown terrain by moving holonomically and using legs for locomotion.\\
 
 \subsubsection*{What has been done}
 \addcontentsline{toc}{subsection}{What has been done}
+
+\subsubsection*{What has been acieved}
+\addcontentsline{toc}{subsection}{What has been achieved}
+
+\subsubsection*{Findings}
+\addcontentsline{toc}{subsection}{Findings}
 
