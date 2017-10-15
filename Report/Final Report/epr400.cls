@@ -333,10 +333,10 @@
 {\fontsize{24pt}{28.8pt}\selectfont\bfseries} {} {5pt} {}%{\thesection\quad}
 \titlespacing*{\section}{0pt}{*3}{*3}
 \titleformat{\subsection}[display]
-{\fontsize{14pt}{16.8pt}\selectfont\bfseries} {} {5pt} {\thesubsection\quad}
+{\fontsize{14pt}{16.8pt}\selectfont\bfseries} {} {5pt} {}%{\thesubsection\quad}
 \titlespacing*{\subsection}{0pt}{-1ex}{*0}
 \titleformat{\subsubsection}[display]
-{\fontsize{12pt}{14.4pt}\selectfont\slshape\bfseries} {} {5pt} {\thesubsubsection\quad}
+{\fontsize{12pt}{14.4pt}\selectfont\slshape\bfseries} {} {5pt} {}%{\thesubsubsection\quad}
 \titlespacing*{\subsubsection}{0pt}{*0}{*0}
 
 \newcommand{\secunderline}[1]{

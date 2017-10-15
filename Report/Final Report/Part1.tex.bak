@@ -1,8 +1,49 @@
 \section*{Part 1. Preamble}
 \markright{Part 1. Preamble}
 
-This report is a description of the work I completed during the year on my final year project, Design of a holonomic five legged robot.\\
+This report is a description of the work I completed during the year on my final year project, Design of a holonomic five legged robot.
 
-This report contains a copy of my approved project proposal and documentation on the technical parts of my project. These can be found in parts 3 and 4 respectively. The technical documentation contains a detailed recording of the steps taken to overcome design challenges. This includes circuit diagrams, algorithm flowcharts and test results. This section appears on the CD that accompanies this printed report.//
+This report contains a copy of my approved project proposal and documentation on the technical parts of my project. These can be found in parts 3 and 4 respectively. The technical documentation contains a detailed recording of the steps taken to overcome design challenges. This includes circuit diagrams, algorithm flowcharts and test results. This section appears on the CD that accompanies this printed report.
 
+This project does not build on any previous project. Instead it is a completely different approach to the holonomic exploration robot problem that was also addressed in earlier years. Although this project has a similar goal to that of previous years, it does not build on these as the locomotion is completely different.
 
+This document has been language edited by a knowledgeable person. By submitting this document in its present form, I declare that this is the written material that I wish to be examined on.\\
+
+My language editor was \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\\
+
+\begin{tabular}[t]{@{}l} 
+ \\ \hline \textit{Language editor signature}
+\end{tabular}
+\hfill% move it to the right
+\begin{tabular}[t]{l@{}}
+\\ \hline \textit{\hspace{15mm} Date \hspace{15mm}   } 
+\end{tabular}
+
+I,\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_  understand  what  plagiarism  is  and  
+have  carefully  studied  the  plagiarism  policy  of  the  University.  I  
+hereby declare that all the work described in this report is my own, 
+except  where  explicitly  indicated 
+otherwise.  Although  I  may  have  
+discussed the design and investigation with my study leader, fellow 
+students  or  consulted  various  books,  articles  or  the  internet,  the  
+design/investigative work is my own. I have mastered the design and I 
+have made all the required calculations in my lab book (and/or they are  reflected  in  this  report)  to  authenticate  this.  I  am  not  
+presenting a complete solution of someone else. 
+Wherever  I  have  used  information  from  other  sources,  I  have  given  
+credit by proper and complete referencing of the source material so 
+that  it  can  be  clearly  discerned  what  is  my  own  work  and  what  was  
+quoted from other sources. I acknowledge that failure to comply with 
+the   instructions   regarding   referencing   will   be   regarded   as   
+plagiarism.  If there is any doubt about the authenticity of my work, 
+I am willing to attend an oral ancillary examination/evaluation about 
+the work. 
+I  certify  that  the  Project  Proposal  appearing  as  the  Introduction  
+section  of  the  report  is  a  verbatim  copy  of  the  approved  Project
+Proposal. \\
+\begin{tabular}[t]{@{}l} 
+ \\ \hline \textit{L. Steyn}
+\end{tabular}
+\hfill% move it to the right
+\begin{tabular}[t]{l@{}}
+\\ \hline \textit{\hspace{15mm} Date \hspace{15mm}   } 
+\end{tabular}

@@ -12,7 +12,7 @@
 \eprcandidatename{L. Steyn}
 \eprstudentnumber{04496486}
 \eprdate{November 2017}
-\eprsupervisor{Dr. D. le Roux}
+\eprsupervisor{Dr. J.D. Le Roux}
 \usepackage{placeins}
 \renewcommand\cftsecaftersnum{.}
 %\renewcommand\thesection{\arabic{section}}
@@ -38,9 +38,16 @@
 \markright{Part 1. Preamble}
 \tableofcontents
 \thispagestyle{fancy}
+%List of abbreviations
+\input{ListOfAbbreviations}
 %% Import the content
 \input{Part2}
-
+%\input{Part3}
+%Main report
+\pagenumbering{arabic}
+%\input{Part4}
+%Just cite something for bibTex to work
+\cite{Hidayat:Autonomous}
 
 %% Use the IEEE Transactions style for the references.
 \bibliographystyle{IEEEtran}
