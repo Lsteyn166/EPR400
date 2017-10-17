@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.29)  15 OCT 2017 20:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.29)  17 OCT 2017 23:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1577,27 +1577,1072 @@ Package: placeins 2005/04/18  v 2.2
 Package: filecontents 2011/10/08 v1.3 Create an external file from within a LaT
 eX document
 )
+(/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex.sty
+Package: biblatex 2016/03/03 v3.3 programmable bibliographies (PK/JW/AB)
 
-! LaTeX Error: File `biblatex.sty' not found.
+(/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex_legacy.sty
+Package: biblatex_legacy 2016/03/03 v3.3 programmable bibliographies (bibtex) (
+PK/JW/AB)
 
-Type X to quit or <RETURN> to proceed,
-or enter new name. (Default extension: sty)
+(/usr/share/texlive/texmf-dist/tex/latex/logreq/logreq.sty
+Package: logreq 2010/08/04 v1.0 xml request logger
+\lrq@indent=\count292
 
-Enter file name: 
-! Emergency stop.
-<read *> 
-         
-l.20 ^^M
-        
-*** (cannot \read from terminal in nonstop modes)
+(/usr/share/texlive/texmf-dist/tex/latex/logreq/logreq.def
+File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
+))
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+\c@tabx@nest=\count293
+\c@listtotal=\count294
+\c@listcount=\count295
+\c@liststart=\count296
+\c@liststop=\count297
+\c@citecount=\count298
+\c@citetotal=\count299
+\c@multicitecount=\count300
+\c@multicitetotal=\count301
+\c@instcount=\count302
+\c@maxnames=\count303
+\c@minnames=\count304
+\c@maxitems=\count305
+\c@minitems=\count306
+\c@citecounter=\count307
+\c@savedcitecounter=\count308
+\c@uniquelist=\count309
+\c@uniquename=\count310
+\c@refsection=\count311
+\c@refsegment=\count312
+\c@maxextrayear=\count313
+\c@maxextraalpha=\count314
+\c@abbrvpenalty=\count315
+\c@highnamepenalty=\count316
+\c@lownamepenalty=\count317
+\c@maxparens=\count318
+\c@parenlevel=\count319
+\blx@tempcnta=\count320
+\blx@tempcntb=\count321
+\blx@tempcntc=\count322
+\blx@maxsection=\count323
+\blx@maxsegment=\count324
+\blx@notetype=\count325
+\blx@parenlevel@text=\count326
+\blx@parenlevel@foot=\count327
+\labelnumberwidth=\skip181
+\labelalphawidth=\skip182
+\shorthandwidth=\skip183
+\biblabelsep=\skip184
+\bibitemsep=\skip185
+\bibnamesep=\skip186
+\bibinitsep=\skip187
+\bibparsep=\skip188
+\bibhang=\skip189
+\blx@auxin=\read3
+\blx@auxout=\write4
+\c@mincomprange=\count328
+\c@maxcomprange=\count329
+\c@mincompwidth=\count330
+\c@labelname=\count331
+\c@savedlabelname=\count332
+\c@author=\count333
+\c@savedauthor=\count334
+\c@shortauthor=\count335
+\c@savedshortauthor=\count336
+\c@editor=\count337
+\c@savededitor=\count338
+\c@editora=\count339
+\c@savededitora=\count340
+\c@editorb=\count341
+\c@savededitorb=\count342
+\c@editorc=\count343
+\c@savededitorc=\count344
+\c@shorteditor=\count345
+\c@savedshorteditor=\count346
+\c@bookauthor=\count347
+\c@savedbookauthor=\count348
+\c@translator=\count349
+\c@savedtranslator=\count350
+\c@annotator=\count351
+\c@savedannotator=\count352
+\c@commentator=\count353
+\c@savedcommentator=\count354
+\c@introduction=\count355
+\c@savedintroduction=\count356
+\c@foreword=\count357
+\c@savedforeword=\count358
+\c@afterword=\count359
+\c@savedafterword=\count360
+\c@holder=\count361
+\c@savedholder=\count362
+\c@namea=\count363
+\c@savednamea=\count364
+\c@nameb=\count365
+\c@savednameb=\count366
+\c@namec=\count367
+\c@savednamec=\count368
+\c@institution=\count369
+\c@savedinstitution=\count370
+\c@language=\count371
+\c@savedlanguage=\count372
+\c@location=\count373
+\c@savedlocation=\count374
+\c@organization=\count375
+\c@savedorganization=\count376
+\c@origlocation=\count377
+\c@savedoriglocation=\count378
+\c@origpublisher=\count379
+\c@savedorigpublisher=\count380
+\c@pageref=\count381
+\c@savedpageref=\count382
+\c@publisher=\count383
+\c@savedpublisher=\count384
+\c@lista=\count385
+\c@savedlista=\count386
+\c@listb=\count387
+\c@savedlistb=\count388
+\c@listc=\count389
+\c@savedlistc=\count390
+\c@listd=\count391
+\c@savedlistd=\count392
+\c@liste=\count393
+\c@savedliste=\count394
+\c@listf=\count395
+\c@savedlistf=\count396
+Package biblatex Info: Trying to load compatibility code...
+Package biblatex Info: ... file 'blx-compat.def' found.
 
- 
+(/usr/share/texlive/texmf-dist/tex/latex/biblatex/blx-compat.def
+File: blx-compat.def 2016/03/03 v3.3 biblatex compatibility (PK/JW/AB)
+)
+Package biblatex Info: Trying to load generic definitions...
+Package biblatex Info: ... file 'biblatex_legacy.def' found.
+
+(/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex_legacy.def
+File: biblatex_legacy.def 
+\c@textcitecount=\count397
+\c@textcitetotal=\count398
+\c@textcitemaxnames=\count399
+\c@biburlnumpenalty=\count400
+\c@biburlucpenalty=\count401
+\c@biburllcpenalty=\count402
+\c@smartand=\count403
+)
+Package biblatex Info: Trying to load bibliography style 'ieee'...
+Package biblatex Info: ... file 'ieee.bbx' found.
+
+(/usr/share/texlive/texmf-dist/tex/latex/biblatex-ieee/ieee.bbx
+File: ieee.bbx 2015/03/12 v1.1k biblatex bibliography style
+Package biblatex Info: Trying to load bibliography style 'numeric-comp'...
+Package biblatex Info: ... file 'numeric-comp.bbx' found.
+
+(/usr/share/texlive/texmf-dist/tex/latex/biblatex/bbx/numeric-comp.bbx
+File: numeric-comp.bbx 2016/03/03 v3.3 biblatex bibliography style (PK/JW/AB)
+Package biblatex Info: Trying to load bibliography style 'numeric'...
+Package biblatex Info: ... file 'numeric.bbx' found.
+
+(/usr/share/texlive/texmf-dist/tex/latex/biblatex/bbx/numeric.bbx
+File: numeric.bbx 2016/03/03 v3.3 biblatex bibliography style (PK/JW/AB)
+Package biblatex Info: Trying to load bibliography style 'standard'...
+Package biblatex Info: ... file 'standard.bbx' found.
+
+(/usr/share/texlive/texmf-dist/tex/latex/biblatex/bbx/standard.bbx
+File: standard.bbx 2016/03/03 v3.3 biblatex bibliography style (PK/JW/AB)
+\c@bbx:relatedcount=\count404
+\c@bbx:relatedtotal=\count405
+)))
+
+Package biblatex Warning: 'firstinits' option is deprecated, use 'giveninits' i
+nstead.
+
+)
+Package biblatex Info: Trying to load citation style 'ieee'...
+Package biblatex Info: ... file 'ieee.cbx' found.
+ (/usr/share/texlive/texmf-dist/tex/latex/biblatex-ieee/ieee.cbx
+File: ieee.cbx 2015/03/12 v1.1k biblatex citation style
+Package biblatex Info: Trying to load citation style 'numeric-comp'...
+Package biblatex Info: ... file 'numeric-comp.cbx' found.
+
+(/usr/share/texlive/texmf-dist/tex/latex/biblatex/cbx/numeric-comp.cbx
+File: numeric-comp.cbx 2016/03/03 v3.3 biblatex citation style (PK/JW/AB)
+\c@cbx@tempcnta=\count406
+\c@cbx@tempcntb=\count407
+Package biblatex Info: Redefining '\cite'.
+Package biblatex Info: Redefining '\parencite'.
+Package biblatex Info: Redefining '\footcite'.
+Package biblatex Info: Redefining '\footcitetext'.
+Package biblatex Info: Redefining '\smartcite'.
+Package biblatex Info: Redefining '\supercite'.
+Package biblatex Info: Redefining '\textcite'.
+Package biblatex Info: Redefining '\textcites'.
+Package biblatex Info: Redefining '\cites'.
+Package biblatex Info: Redefining '\parencites'.
+Package biblatex Info: Redefining '\smartcites'.
+)
+Package biblatex Info: Redefining '\cite'.
+Package biblatex Info: Redefining '\cites'.
+)
+Package biblatex Info: Trying to load configuration file...
+Package biblatex Info: ... file 'biblatex.cfg' found.
+
+(/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex.cfg
+File: biblatex.cfg 
+)))
+Package biblatex Info: Trying to load language 'british'...
+Package biblatex Info: ... file 'british.lbx' found.
+
+(/usr/share/texlive/texmf-dist/tex/latex/biblatex/lbx/british.lbx
+File: british.lbx 2016/03/03 v3.3 biblatex localization (PK/JW/AB)
+Package biblatex Info: Trying to load language 'english'...
+Package biblatex Info: ... file 'english.lbx' found.
+
+(/usr/share/texlive/texmf-dist/tex/latex/biblatex/lbx/english.lbx
+File: english.lbx 2016/03/03 v3.3 biblatex localization (PK/JW/AB)
+))
+
+Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
+(biblatex)                Loading 'csquotes' recommended.
+
+\@quotelevel=\count408
+\@quotereset=\count409
+(./Final.aux)
+\openout1 = `Final.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 24.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd
+File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
+)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: includehead includefoot 
+* h-part:(L,W,R)=(85.35826pt, 441.01773pt, 71.13188pt)
+* v-part:(T,H,B)=(71.13188pt, 702.78308pt, 71.13188pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=441.01773pt
+* \textheight=635.78308pt
+* \oddsidemargin=13.08827pt
+* \evensidemargin=13.08827pt
+* \topmargin=-1.1381pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=35.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count410
+\scratchdimen=\dimen308
+\scratchbox=\box119
+\nofMPsegments=\count411
+\nofMParguments=\count412
+\everyMPshowfont=\toks55
+\MPscratchCnt=\count413
+\MPscratchDim=\dimen309
+\MPnumerator=\count414
+\makeMPintoPDFobject=\count415
+\everyMPtoPDFconversion=\toks56
+)
+LaTeX Info: Redefining \microtypecontext on input line 24.
+Package microtype Info: Generating PDF output.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using default protrusion set `alltext'.
+Package microtype Info: Automatic font expansion enabled (level 2),
+(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
+Package microtype Info: Using default expansion set `basictext'.
+Package microtype Info: Tracking enabled.
+Package microtype Info: Using default tracking set `smallcaps'.
+Package microtype Info: Adjustment of interword spacing enabled.
+Package microtype Info: Using default spacing set `basictext'.
+Package microtype Info: Adjustment of character kerning enabled.
+Package microtype Info: Using default kerning set `alltext'.
+ (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-ptm.cfg
+File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
+)
+\AtBeginShipoutBox=\box120
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/pdflscape.sty
+Package: pdflscape 2008/08/11 v0.10 Display of landscape pages in PDF (HO)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/lscape.sty
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 80.
+)
+ABD: EveryShipout initializing macros
+Package pgfplots notification 'compat/show suggested version=true': document ha
+s been generated with the most recent feature set (\pgfplotsset{compat=1.13}).
+
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+Package biblatex Info: No input encoding detected.
+(biblatex)             Assuming 'ascii'.
+Package biblatex Info: Automatic encoding selection.
+(biblatex)             Assuming data encoding 'ascii'.
+\openout4 = `Final-blx.bib'.
+
+Package biblatex Info: Trying to load bibliographic data...
+Package biblatex Info: ... file 'Final.bbl' found.
+(./Final.bbl
+
+Package biblatex Warning: BibTeX reported the following issues
+(biblatex)                with 'Jain:Odometry':
+(biblatex)                - Invalid format of field 'month'.
+
+
+Package biblatex Warning: BibTeX reported the following issues
+(biblatex)                with 'Hyeon:Reflex':
+(biblatex)                - Invalid format of field 'month'.
+
+)
+Package biblatex Info: ... file 'Final1-blx.bbl' found.
+ (./Final1-blx.bbl
+
+Package biblatex Warning: BibTeX reported the following issues
+(biblatex)                with 'parallel:1':
+(biblatex)                - Invalid format of field 'month'.
+
+
+Package biblatex Warning: BibTeX reported the following issues
+(biblatex)                with 'Omni:1':
+(biblatex)                - Invalid format of field 'month'.
+
+)
+Package biblatex Info: Reference section=0 on input line 24.
+Package biblatex Info: Reference segment=0 on input line 24.
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 27.
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <20.74> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 27.
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17.28> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 27.
+ [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./Part1.tex
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <24> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 1.
+
+Underfull \hbox (badness 10000) in paragraph at lines 10--11
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 12--13
+
+ []
+
+LaTeX Font Info:    Try loading font information for OT1+ztmcm on input line 14
+.
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
+File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
+)
+Package microtype Info: Loading generic settings for font family
+(microtype)             `ztmcm' (encoding: OT1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+LaTeX Font Info:    Try loading font information for OML+ztmcm on input line 14
+.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omlztmcm.fd
+File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
+)
+LaTeX Font Info:    Try loading font information for OMS+ztmcm on input line 14
+.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsztmcm.fd
+File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
+)
+LaTeX Font Info:    Try loading font information for OMX+ztmcm on input line 14
+.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omxztmcm.fd
+File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
+)
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 14.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 14.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 14.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 14.
+
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-eur.cfg
+File: mt-eur.cfg 2006/07/31 v1.1 microtype config. file: AMS Euler Roman (RS)
+)
+LaTeX Font Info:    Try loading font information for U+wasy on input line 14.
+
+(/usr/share/texlive/texmf-dist/tex/latex/wasysym/uwasy.fd
+File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
+))
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[1
+
+] (./Final.toc)
+\tf@toc=\write5
+\openout5 = `Final.toc'.
+
+ (./ListOfAbbreviations.tex
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[2]) (./Part2.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--1
+
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[3]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[4
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 5--6
+
+ []
+
+LaTeX Font Info:    Font shape `T1/ptm/bx/sl' in size <12> not available
+(Font)              Font shape `T1/ptm/b/sl' tried instead on input line 7.
+) (./Part3.tex
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[5]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[6
+
+]
+Package biblatex Info: Reference section=1 on input line 18.
+\openout4 = `Final1-blx.aux'.
+
+Package biblatex Info: Setting label 'refsection:1' on input line 18.
+ (./section1.tex) (./section2.tex
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[7
+
+]
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 10.
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <18> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 12.
+LaTeX Font Info:    Try loading font information for TS1+ptm on input line 14.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+)
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[8
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 40--41
+
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[9]) (./section3.tex
+<Proposal/FunctionalDiagram.pdf, id=65, 519.9425pt x 293.095pt>
+File: Proposal/FunctionalDiagram.pdf Graphic file (type pdf)
+
+<use Proposal/FunctionalDiagram.pdf>
+Package pdftex.def Info: Proposal/FunctionalDiagram.pdf used on input line 14.
+(pdftex.def)             Requested size: 415.95457pt x 234.4763pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[10
+
+ <./Proposal/FunctionalDiagram.pdf>]) (./section4.tex
+Underfull \hbox (badness 10000) in paragraph at lines 15--15
+[]|\T1/ptm/b/n/12 SPECIFICATION (IN
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 16--16
+[]|\T1/ptm/b/n/12 ORIGIN OR MO-TIV-A-
+ []
+
+
+Underfull \hbox (badness 2409) in paragraph at lines 17--19
+[]|\T1/ptm/b/n/12 HOW WILL YOU CON-
+ []
+
+
+Underfull \hbox (badness 3098) in paragraph at lines 17--19
+\T1/ptm/b/n/12 TEM COM-PLIES WITH
+ []
+
+
+Underfull \hbox (badness 1377) in paragraph at lines 20--21
+[]|\T1/ptm/m/n/12 (+20) Proving that the ro-bot can
+ []
+
+
+Underfull \hbox (badness 6526) in paragraph at lines 32--33
+[]|\T1/ptm/m/n/12 (+20) 100mm/s is a reas-on-able
+ []
+
+
+Overfull \hbox (23.37358pt too wide) in alignment at lines 13--40
+ [] [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 40
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[11
+
+]
+Underfull \hbox (badness 3000) in paragraph at lines 50--51
+[]|\T1/ptm/b/n/12 SPECIFICATION (IN MEAS-UR-ABLE
+ []
+
+
+Overfull \hbox (10.97357pt too wide) in alignment at lines 47--65
+ [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 65
+ []
+
+
+Overfull \hbox (10.97357pt too wide) in alignment at lines 71--85
+ [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 85
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[12]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[13]) (./section5.tex
+Underfull \hbox (badness 10000) in paragraph at lines 15--15
+[]|\T1/ptm/b/n/12 DESIGNED AND
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--15
+\T1/ptm/b/n/12 IM-PLE-MEN-TED
+ []
+
+
+Underfull \hbox (badness 7685) in paragraph at lines 23--24
+[]|\T1/ptm/m/n/12 (+20) Wireless mod-ule for com-mu-nic-a-tion
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 35
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[14
+
+]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[15])
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 27.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+)
+Package microtype Info: Loading generic settings for font family
+(microtype)             `pcr' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+Package biblatex Info: Reference section=0 on input line 28.
+) (./Part4.tex
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[16]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[17
+
+]
+Package mdframed Info: Not enough space on this page on input line 19.
+ (./Lit.tex
+Underfull \hbox (badness 10000) in paragraph at lines 4--5
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 6--7
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--9
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 10--11
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 12--13
+
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[1]
+Underfull \hbox (badness 10000) in paragraph at lines 14--15
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 16--17
+
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[2])
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[3]
+Package mdframed Info: Not enough space on this page on input line 23.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[4]
+Package mdframed Info: Not enough space on this page on input line 30.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[5]
+Package mdframed Info: Not enough space on this page on input line 51.
+
+Underfull \hbox (badness 4621) in paragraph at lines 58--58
+\T1/ptm/b/n/12 or spe-cific-a-tion (in-ten-ded
+ []
+
+
+Overfull \hbox (23.37358pt too wide) in paragraph at lines 55--82
+[] 
+ []
+
+)
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[6]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[7] (./Final.aux)
+Package logreq Info: Writing requests to 'Final.run.xml'.
+\openout1 = `Final.run.xml'.
+
+ )
+(\end occurred when \iftrue on line 24 was incomplete) 
 Here is how much of TeX's memory you used:
- 40022 strings out of 494910
- 920203 string characters out of 6179836
- 1110449 words of memory out of 5000000
- 42613 multiletter control sequences out of 15000+600000
- 5392 words of font info for 18 fonts, out of 8000000 for 9000
+ 45700 strings out of 494910
+ 1019540 string characters out of 6179836
+ 1446379 words of memory out of 5000000
+ 47953 multiletter control sequences out of 15000+600000
+ 62918 words of font info for 174 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 62i,1n,94p,10395b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
-!  ==> Fatal error occurred, no output PDF file produced!
+ 62i,11n,94p,10395b,1559s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf
+-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/ur
+w/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8
+a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Final.pdf (25 pages, 145016 bytes).
+PDF statistics:
+ 137 PDF objects out of 1000 (max. 8388607)
+ 87 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 27250 words of extra memory for PDF output out of 29859 (max. 10000000)
+

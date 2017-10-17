@@ -16,8 +16,11 @@
 \usepackage{placeins}
 \renewcommand\cftsecaftersnum{.}
 \usepackage{filecontents}
-\usepackage{biblatex}
+\usepackage[backend = bibtex8, style=ieee]{biblatex}
+%% Use the IEEE Transactions style for the references.
+\bibliography{Final}
 
+%\bibliographystyle{ieeetr}
 \begin{document}
 
 %% Include the required cover page 
@@ -51,10 +54,8 @@
 %Just cite something for bibTex to work
 \cite{Hidayat:Autonomous}
 
-%% Use the IEEE Transactions style for the references.
-\bibliographystyle{IEEEtran}
-\bibliography{Final}
-\addcontentsline{toc}{section}{References}
+\printbibliography[heading=subbibnumbered]
+
 
 \end{document}
 

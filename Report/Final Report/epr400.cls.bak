@@ -137,7 +137,7 @@
     {References}%
 }
 
-%% Remove the "Bibliography" so that the section header can be used.
+% Remove the "Bibliography" so that the section header can be used.
 \addto\captionsbritish{%
   \renewcommand{\refname}%
     {References}%

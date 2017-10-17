@@ -15,9 +15,14 @@ This section contains the problem identification in the form of the complete app
 \renewcommand\thesubsubsection{\arabic{subsection}.\arabic{subsubsection}}
 \rhead{Part 3. Project Proposal}
 
-\input{Proposal/section1}
-\input{Proposal/section2}
-\input{Proposal/section3}
-\input{Proposal/section4}
-\input{Proposal/section5}
-\input{Proposal/section6}
+\begin{refsection}
+\input{section1}
+\input{section2}
+\input{section3}
+\input{section4}
+\input{section5}
+\setcounter{subsection}{5}
+\titleformat{\subsection}[frame]
+{\fontsize{12pt}{14.4pt}\selectfont\bfseries} {} {5pt} {\thesubsection\quad}
+\printbibliography[heading=subbibnumbered]
+\end{refsection}

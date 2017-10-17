@@ -1,0 +1,123 @@
+% $ biblatex auxiliary file $
+% $ biblatex version 2.6 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\entry{parallel:1}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Reeds}{R.}%
+     {J.A.}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Shepp}{S.}%
+     {L.A.}{L.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{RJSL1}
+  \strng{fullhash}{RJSL1}
+  \field{title}{Optimal paths for a car that goes both forwards and backwards}
+  \field{volume}{145}
+  \field{journaltitle}{Pacific Journal of Mathematics}
+  \field{year}{1990}
+  \warn{\item Invalid format of field 'month'}
+\endentry
+
+\entry{Omni:1}{article}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Tadakuma}{T.}%
+     {K.}{K.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Tadakuma}{T.}%
+     {R.}{R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Berengeres}{B.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{TKTRBJ1}
+  \strng{fullhash}{TKTRBJ1}
+  \field{title}{Development of holonomic omnidirectional Vehicle with
+  Omni-Ball: spherical wheels}
+  \field{volume}{2007}
+  \field{journaltitle}{Intellegent Robots and Systems}
+  \field{year}{2007}
+  \warn{\item Invalid format of field 'month'}
+\endentry
+
+\entry{LS3}{online}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Dynamics}{D.}%
+     {Boston}{B.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{DB1}
+  \strng{fullhash}{DB1}
+  \field{note}{Accessed 2017-04-12}
+  \field{title}{LS3 - Legged Squad Support Systems}
+  \verb{url}
+  \verb http://www.bostondynamics.com/robot-ls3.html
+  \endverb
+  \field{year}{2012}
+\endentry
+
+\entry{BigDog}{online}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Raibert}{R.}%
+     {M.}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Bankespoor}{B.}%
+     {K.}{K.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Nelson}{N.}%
+     {G.}{G.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Playter}{P.}%
+     {R.}{R.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{RMBKNG+1}
+  \strng{fullhash}{RMBKNGPR1}
+  \field{note}{Accessed 2017-04-12}
+  \field{title}{BigDog, the Rough-Terrain Quaduped Robot}
+  \verb{url}
+  \verb http://www.bostondynamics.com/img/BigDog-IFAC-Apr-8-2008.pdf
+  \endverb
+  \field{year}{2008}
+\endentry
+
+\lossort
+\endlossort
+
+\endinput

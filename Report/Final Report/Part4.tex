@@ -1,6 +1,7 @@
 \newpage
+\setcounter{subsection}{0}
 %Change formatting for tis section
-\pagenumbering{arabic}
+
 \titleformat{\section}[frame]
 {\fontsize{24pt}{28.8pt}\selectfont\bfseries} {} {5pt} {}
 \titleformat{\subsection}[display]
@@ -16,7 +17,8 @@
 \addcontentsline{toc}{section}{Part 4. Main report}
 \markright{Part 4. Main report}
 \secun{Literature study}
-
+\pagenumbering{arabic}
+\input{Lit.tex}
 
 \secun{Approach}
 
@@ -52,8 +54,7 @@
 
 \begin{tabular}{|p{5cm}|p{5cm}|p{5cm}|}
 \hline
-\textbf{Description of requirement or 
-specification
+\textbf{Description of requirement or specification
 (intended outcome)} & \textbf{Actual outcome}& \textbf{Location in report}\\
 \hline
 \multicolumn{3}{|l|}{}\\
