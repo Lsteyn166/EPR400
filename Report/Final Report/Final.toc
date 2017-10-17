@@ -1,39 +1,31 @@
 \select@language {british}
-\contentsline {section}{Part 2. Summary}{v}
-\contentsline {subsection}{What has been done}{vi}
-\contentsline {subsection}{What has been achieved}{vi}
-\contentsline {subsection}{Findings}{vi}
-\contentsline {section}{Part 3. Project identification: approved Project Proposal}{vii}
-\contentsline {section}{\numberline {1}Problem statement}{viii}
-\contentsline {section}{\numberline {2}Project requirements}{ix}
-\contentsline {subsection}{\numberline {1.}Mission requirements of the product}{ix}
-\contentsline {subsection}{\numberline {2.}Student tasks: design}{ix}
-\contentsline {subsection}{\numberline {3.}Research questions}{x}
-\contentsline {subsection}{\numberline {4.}Student tasks: experimental work}{x}
-\contentsline {section}{\numberline {3}Functional analysis}{xi}
-\contentsline {section}{\numberline {4}Specifications}{xii}
-\contentsline {subsection}{\numberline {1.}Mission-critical system specifications}{xii}
-\contentsline {subsection}{\numberline {2.}Field conditions}{xiii}
-\contentsline {subsection}{\numberline {3.}Functional unit specifications}{xiii}
-\contentsline {section}{\numberline {5}Deliverables}{xv}
-\contentsline {subsection}{\numberline {1.}Technical deliverables}{xv}
-\contentsline {subsection}{\numberline {2.}Demonstration at the examination}{xv}
+\contentsline {section}{Part 2. Summary}{iv}
+\contentsline {subsection}{What has been done}{v}
+\contentsline {subsection}{What has been achieved}{v}
+\contentsline {subsection}{Findings}{v}
+\contentsline {section}{Part 3. Project identification: approved Project Proposal}{vi}
+\contentsline {subsection}{1. Problem statement}{vii}
+\contentsline {subsection}{2. Project requirements}{viii}
+\contentsline {subsection}{3. Functional analysis}{x}
+\contentsline {subsection}{4. Specifications}{xi}
+\contentsline {subsection}{5. Deliverables}{xiv}
+\contentsline {subsection}{6. References}{xvi}
 \contentsline {section}{Part 4. Main report}{1}
-\contentsline {subsection}{\numberline {3.}Literature study}{2}
-\contentsline {subsection}{\numberline {4.}Approach}{3}
-\contentsline {subsubsection}{\numberline {4.1}Design alternatives}{3}
-\contentsline {subsubsection}{\numberline {4.2}Preferred solution}{3}
-\contentsline {subsection}{\numberline {5.}Design and implementation}{4}
-\contentsline {subsubsection}{\numberline {5.1}Theoretical Analysis}{4}
-\contentsline {subsubsection}{\numberline {5.2}Modelling}{4}
-\contentsline {subsubsection}{\numberline {5.3}Simulation}{4}
-\contentsline {subsubsection}{\numberline {5.4}Optimisation}{4}
-\contentsline {subsubsection}{\numberline {5.5}Hardware design}{4}
-\contentsline {subsubsection}{\numberline {5.6}Hardware implementation}{4}
-\contentsline {subsubsection}{\numberline {5.7}Software design}{4}
-\contentsline {subsubsection}{\numberline {5.8}Software implementation}{4}
-\contentsline {subsubsection}{\numberline {5.9}Design summary}{4}
-\contentsline {subsection}{\numberline {6.}Results}{5}
-\contentsline {subsubsection}{\numberline {6.1}Summary of results achieved}{5}
-\contentsline {subsubsection}{\numberline {6.2}Qualification tests}{5}
+\contentsline {subsection}{\numberline {1.}Literature study}{2}
+\contentsline {subsection}{\numberline {2.}Approach}{3}
+\contentsline {subsubsection}{\numberline {2.1}Design alternatives}{3}
+\contentsline {subsubsection}{\numberline {2.2}Preferred solution}{3}
+\contentsline {subsection}{\numberline {3.}Design and implementation}{4}
+\contentsline {subsubsection}{\numberline {3.1}Theoretical Analysis}{4}
+\contentsline {subsubsection}{\numberline {3.2}Modelling}{4}
+\contentsline {subsubsection}{\numberline {3.3}Simulation}{4}
+\contentsline {subsubsection}{\numberline {3.4}Optimisation}{4}
+\contentsline {subsubsection}{\numberline {3.5}Hardware design}{4}
+\contentsline {subsubsection}{\numberline {3.6}Hardware implementation}{4}
+\contentsline {subsubsection}{\numberline {3.7}Software design}{4}
+\contentsline {subsubsection}{\numberline {3.8}Software implementation}{4}
+\contentsline {subsubsection}{\numberline {3.9}Design summary}{4}
+\contentsline {subsection}{\numberline {4.}Results}{5}
+\contentsline {subsubsection}{\numberline {4.1}Summary of results achieved}{5}
+\contentsline {subsubsection}{\numberline {4.2}Qualification tests}{5}
 \contentsline {section}{References}{6}

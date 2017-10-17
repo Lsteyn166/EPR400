@@ -4,7 +4,8 @@
 %%  Copyright (C) 2011-2017 University of Pretoria.
 %%
 
-\section{Problem statement}
+\section*{1. Problem statement}
+\addcontentsline{toc}{subsection}{1. Problem statement}
 
 \textbf{Motivation.}
 Robots used for exploration need to be highly manoeuvrable to cross terrain not possible for humans and cars. The motivation for this project is to develop a robot using five legs, capable of crossing rough terrain, that can move holonomically. A robot like this can be used to explore autonomously and can also be used to carry supplies or equipment to remote places.

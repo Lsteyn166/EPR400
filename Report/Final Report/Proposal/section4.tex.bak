@@ -4,9 +4,10 @@
 %%  Copyright (C) 2011-2017 University of Pretoria.
 %%
 
-\section{Specifications}
+\section*{4. Specifications}
+\addcontentsline{toc}{subsection}{4. Specifications}
 
-\subsection{Mission-critical system specifications}
+\subsection*{Mission-critical system specifications}
 
 \begin{center}
 \begin{longtable}{|p{5cm}|p{5cm}|p{5cm}|}
@@ -40,7 +41,7 @@
 \end{center}
 
 \vspace{1cm}
-\subsection{Field conditions}
+\subsection*{Field conditions}
 
 \begin{center}
 \begin{longtable}{|p{7.5cm}|p{7.5cm}|}
@@ -64,7 +65,7 @@
 \end{longtable}
 \end{center}
 
-\subsection{Functional unit specifications}
+\subsection*{Functional unit specifications}
 
 \begin{center}
 \begin{longtable}{|p{7.5cm}|p{7.5cm}|}

@@ -15,7 +15,8 @@
 \eprsupervisor{Dr. J.D. Le Roux}
 \usepackage{placeins}
 \renewcommand\cftsecaftersnum{.}
-%\renewcommand\thesection{\arabic{section}}
+\usepackage{filecontents}
+\usepackage{biblatex}
 
 \begin{document}
 

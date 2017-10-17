@@ -4,11 +4,12 @@
 %%  Copyright (C) 2011-2017 University of Pretoria.
 %%
 
-\section{Project requirements}
+\section*{2. Project requirements}
+\addcontentsline{toc}{subsection}{2. Project requirements}
 
 \secunderline{ELO 3: Design part of the project}
 
-\subsection{Mission requirements of the product}A five legged holonomic robot will be built in this project. The requirements of the robot that would determine whether the project is successful can be summarized in the list below.
+\subsection*{Mission requirements of the product}A five legged holonomic robot will be built in this project. The requirements of the robot that would determine whether the project is successful can be summarized in the list below.
 \begin{itemize}
 \item The robot should be able to move in any direction from a stationary position.
 \item The robot should be able to rotate about its own axis while remaining in the same position.
@@ -18,7 +19,7 @@
 \item The robot should be able to move on both flat and slanted surfaces.
 \end{itemize}
 
-\subsection{Student tasks: design}
+\subsection*{Student tasks: design}
 The tasks that are vital to ensuring that the product meets the mission critical requirements are listed below.
 \begin{itemize}
 \item The mathematical analysis and design for the movement of the legs should be done on paper.
@@ -32,10 +33,10 @@ The tasks that are vital to ensuring that the product meets the mission critical
 \vspace{5em}
 \secunderline{ELO 4: Investigative part of the project}
 
-\subsection{Research questions}
+\subsection*{Research questions}
 The investigative section on this project will focus on the amount of legs of a legged robot and the effect on stability. Do five legs provide more stability when walking on slippery surfaces? Can the robot still work without some of its legs?
 
-\subsection{Student tasks: experimental work}
+\subsection*{Student tasks: experimental work}
 The experiments that will be conducted to address the research questions above are listed below.\\
 
 An experimental setup to test the ability of the robot to move on a variety of surfaces is required.
