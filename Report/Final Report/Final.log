@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.29)  17 OCT 2017 23:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.29)  21 OCT 2017 00:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1806,7 +1806,11 @@ Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 
 \@quotelevel=\count408
 \@quotereset=\count409
-(./Final.aux)
+(./Final.aux
+
+LaTeX Warning: Label `fig:Leg_design' multiply defined.
+
+)
 \openout1 = `Final.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
@@ -2537,7 +2541,7 @@ Overfull \hbox (9.12012pt too wide) has occurred while \output is active
 
 [3]
 Package mdframed Info: Not enough space on this page on input line 23.
-
+ (./App.tex)
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -2555,7 +2559,17 @@ Overfull \hbox (9.12012pt too wide) has occurred while \output is active
  []
 
 [4]
-Package mdframed Info: Not enough space on this page on input line 30.
+Package mdframed Info: Not enough space on this page on input line 26.
+ (./Back.tex
+Underfull \hbox (badness 10000) in paragraph at lines 1--2
+
+ []
+
+<pics/2DOF.pdf, id=108, 252.945pt x 233.87375pt>
+File: pics/2DOF.pdf Graphic file (type pdf)
+ <use pics/2DOF.pdf>
+Package pdftex.def Info: pics/2DOF.pdf used on input line 7.
+(pdftex.def)             Requested size: 252.94438pt x 233.87315pt.
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2573,15 +2587,176 @@ Overfull \hbox (9.12012pt too wide) has occurred while \output is active
     []
  []
 
-[5]
-Package mdframed Info: Not enough space on this page on input line 51.
+[5 <./pics/2DOF.pdf>] <pics/3DOF.pdf, id=115, 293.095pt x 294.09875pt>
+File: pics/3DOF.pdf Graphic file (type pdf)
 
-Underfull \hbox (badness 4621) in paragraph at lines 58--58
+<use pics/3DOF.pdf>
+Package pdftex.def Info: pics/3DOF.pdf used on input line 16.
+(pdftex.def)             Requested size: 293.09427pt x 294.09802pt.
+
+<pics/Body_layout_hex.pdf, id=116, 246.9225pt x 263.98625pt>
+File: pics/Body_layout_hex.pdf Graphic file (type pdf)
+
+<use pics/Body_layout_hex.pdf>
+Package pdftex.def Info: pics/Body_layout_hex.pdf used on input line 27.
+(pdftex.def)             Requested size: 246.92188pt x 263.9856pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[6 <./pics/3DOF.pdf>]
+
+LaTeX Warning: Reference `fig:Body_layout' on page 7 undefined on input line 34
+.
+
+<pics/Body_Layout.pdf, id=123, 338.26375pt x 326.21875pt>
+File: pics/Body_Layout.pdf Graphic file (type pdf)
+
+<use pics/Body_Layout.pdf>
+Package pdftex.def Info: pics/Body_Layout.pdf used on input line 39.
+(pdftex.def)             Requested size: 338.26291pt x 326.21794pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[7 <./pics/Body_layout_hex.pdf>]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[8 <./pics/Body_Layout.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 51--52
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 53--54
+
+ []
+
+) (./Theory.tex <pics/Leg_design.pdf, id=147, 330.23375pt x 231.86626pt>
+File: pics/Leg_design.pdf Graphic file (type pdf)
+
+<use pics/Leg_design.pdf>
+Package pdftex.def Info: pics/Leg_design.pdf used on input line 4.
+(pdftex.def)             Requested size: 330.23293pt x 231.86568pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[9] <pics/Leg_design_2.pdf, id=151, 344.28625pt x 106.3975pt>
+File: pics/Leg_design_2.pdf Graphic file (type pdf)
+
+<use pics/Leg_design_2.pdf>
+Package pdftex.def Info: pics/Leg_design_2.pdf used on input line 13.
+(pdftex.def)             Requested size: 344.2854pt x 106.39723pt.
+)
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[10 <./pics/Leg_design.pdf> <./pics/Leg_design_2.pdf
+
+pdfTeX warning: pdflatex (file ./pics/Leg_design_2.pdf): PDF inclusion: multipl
+e pdfs with page group included in a single page
+>]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+
+Overfull \hbox (9.12012pt too wide) has occurred while \output is active
+    []
+ []
+
+[11]
+Package mdframed Info: Not enough space on this page on input line 48.
+
+Underfull \hbox (badness 4621) in paragraph at lines 55--55
 \T1/ptm/b/n/12 or spe-cific-a-tion (in-ten-ded
  []
 
 
-Overfull \hbox (23.37358pt too wide) in paragraph at lines 55--82
+Overfull \hbox (23.37358pt too wide) in paragraph at lines 52--79
 [] 
  []
 
@@ -2602,7 +2777,7 @@ Overfull \hbox (9.12012pt too wide) has occurred while \output is active
     []
  []
 
-[6]
+[12]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -2619,30 +2794,37 @@ Overfull \hbox (9.12012pt too wide) has occurred while \output is active
     []
  []
 
-[7] (./Final.aux)
+[13] (./Final.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package logreq Info: Writing requests to 'Final.run.xml'.
 \openout1 = `Final.run.xml'.
 
  )
 (\end occurred when \iftrue on line 24 was incomplete) 
 Here is how much of TeX's memory you used:
- 45700 strings out of 494910
- 1019540 string characters out of 6179836
- 1446379 words of memory out of 5000000
- 47953 multiletter control sequences out of 15000+600000
- 62918 words of font info for 174 fonts, out of 8000000 for 9000
+ 45759 strings out of 494910
+ 1020428 string characters out of 6179836
+ 1446377 words of memory out of 5000000
+ 47983 multiletter control sequences out of 15000+600000
+ 67050 words of font info for 185 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  62i,11n,94p,10395b,1559s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf
--dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/ur
-w/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8
-a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Final.pdf (25 pages, 145016 bytes).
+-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/couri
+er/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/urw/times/utmri8a.pfb>
+Output written on Final.pdf (31 pages, 248800 bytes).
 PDF statistics:
- 137 PDF objects out of 1000 (max. 8388607)
- 87 compressed objects within 1 object stream
+ 223 PDF objects out of 1000 (max. 8388607)
+ 149 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 27250 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 27280 words of extra memory for PDF output out of 29859 (max. 10000000)
 

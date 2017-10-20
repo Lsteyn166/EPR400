@@ -21,17 +21,14 @@
 \input{Lit.tex}
 
 \secun{Approach}
-
-\subsubsection{Design alternatives}
-
-\subsubsection{Preferred solution}
-
+\input{App.tex}
 
 \secun{Design and implementation}
+\subsubsection{Background}
+\input{Back.tex}
 
-\subsubsection{Theoretical Analysis}
-
-\subsubsection{Modelling}
+\subsubsection{Theoretical analysis and modelling}
+\input{Theory.tex}
 
 \subsubsection{Simulation}
 
