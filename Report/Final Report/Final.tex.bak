@@ -51,9 +51,8 @@
 \input{Part3}
 %Main report
 \input{Part4}
-%Just cite something for bibTex to work
-\cite{Hidayat:Autonomous}
-
+%Bibliography
+\newpage
 \printbibliography[heading=subbibnumbered]
 
 

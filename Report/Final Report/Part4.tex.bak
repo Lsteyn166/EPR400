@@ -1,7 +1,7 @@
 \newpage
 \setcounter{subsection}{0}
 %Change formatting for tis section
-\pagenumbering{arabic}
+
 \titleformat{\section}[frame]
 {\fontsize{24pt}{28.8pt}\selectfont\bfseries} {} {5pt} {}
 \titleformat{\subsection}[display]
@@ -17,6 +17,7 @@
 \addcontentsline{toc}{section}{Part 4. Main report}
 \markright{Part 4. Main report}
 \secun{Literature study}
+\pagenumbering{arabic}
 \input{Lit.tex}
 
 \secun{Approach}
