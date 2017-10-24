@@ -25,6 +25,7 @@ In order to control the robot in a Cartesian world it is necessary to find a tra
 By using Figure \ref{fig:Leg_design_2} and some simple trigonometry, theta can be found to be
 
 \begin{align}
+\label{eq:IKstart}
 \theta = arctan\Big(\frac{x}{y}\Big)
 \end{align}
 
@@ -95,6 +96,7 @@ e = tan^{-1}\Bigg(\frac{E_x}{E_y}\Bigg).
 With all of this calculated, phi can be calculated as
 
 \begin{align}
+\label{eq:IKend}
 \phi = 270^o - c -e.
 \end{align}
 
@@ -114,6 +116,7 @@ Figure \ref{fig:Body_layout_2} illustrates that both leg 1 and 2 have a theta an
 If \textit{leg} denotes the number of the desired leg, a leg's coordinate system can be rotated by using
 
 \begin{align}
+\label{eq:rotation}
 (x',y') &= (x\times cos(\gamma) -y\times sin(\gamma),x \times sin(\gamma) + y \times cos(\gamma))\\
 \text{where }\gamma &= (leg-1)\times 72^o. 
 \end{align}
@@ -151,4 +154,45 @@ All of the calculations above only account for translation, that is moving forwa
 \end{figure}
 \FloatBarrier
 
-If each leg were instructed to follow the dashed arrows shown in Figure \ref{fig:Body_layout_4}, the legs would fight each other for grip since they vectors will force them to spread out. Since this is not a controlled movement. Simply using the instantaneous trajectory as the movement vector will not work like it did in the case of translational movement. Instead the trajectory will constantly be changing to keep rotate the body while keeping the feet in their positions. This change can be seen in Figure 
+If each leg were instructed to follow the dashed arrows shown in Figure \ref{fig:Body_layout_4}, the legs would fight each other for grip since they vectors will force them to spread out. Since this is not a controlled movement. Simply using the instantaneous trajectory as the movement vector will not work like it did in the case of translational movement. Instead the trajectory will constantly be changing to keep rotate the body while keeping the feet in their positions. This change can be seen in Figure \ref{fig:Body_layout_5}. The dotted lines represent this constantly changing vector. This can be calculated by rotating the foot position around the origin of the robot. It is important to note that although the legs will be spreading out as the robot body rotates, the feet should stay exactly where they are until the foot is out of the perimeter that the system allows. At this point the robot will lift up the leg and place it in the neutral position to allow further rotation.
+
+\FloatBarrier
+\begin{figure}[h]
+\centering
+\includegraphics[scale = 1]{pics/Body_Layout_5.pdf}
+\caption{Top view of the robot showing the addition of curved approximation for rotation about the origin.}
+\label{fig:Body_layout_5}
+\end{figure}
+\FloatBarrier
+
+Since a curve can not be added to  the vector of translation, the curve will need to be broken up into small segments of straight pieces approximating the curved line. These straight pieces can then be added to the translation as vectors. Rotating the coordinates around the robot is not a simple task because of the shifting Cartesian systems. In order to rotate about a point that is not the origin of the plane, the coordinate system needs to be translated to move the origin, rotated around this origin and then shifted back to the original origin.
+
+\FloatBarrier
+\begin{figure}[h]
+\centering
+\includegraphics[scale = 1]{pics/Body_Layout_6.pdf}
+\caption{Illustration showing the procedure of rotation about the origin.}
+\label{fig:Body_layout_6}
+\end{figure}
+\FloatBarrier
+
+Figure \ref{fig:Body_layout_6} attempts to explain the robot rotation procedure. The following features appear on the sketch:
+\begin{itemize}
+\item Point \textit{O} is the origin, the centre of the robot.
+\item Point \textit{A} is the shoulder of the relevant leg.
+\item Point \textit{P} is the position coordinate of the foot before any rotation.
+\item Point \textit{P*} is the position coordinate of the foot after rotation.
+\item $\beta$ is the rotation angle.
+\item \textit{r} is the robot radius.
+\item The dashed line is the rotation path of the foot.
+\end{itemize}
+
+When the robot needs to rotate, the procedure is therefore as follows.
+\begin{enumerate}
+\item Start with coordinates of point \textit{P}, relative to point \textit{A} which is the origin of the Cartesian system at this point.
+\item Add the coordinates of \textit{P} relative to \textit{A} to the coordinates of \textit{A} relative to \textit{O}. The result is the  coordinates of \textit{P} relative to \textit{O}.
+\item Rotate through angle $\beta$ using the rotation formula used in Equation \ref{eq:rotation}.
+\item Move the origin back to \textit{A} by subtracting \textit{A} relative to \textit{O}.
+\end{enumerate}
+
+The result can be used to perform the Inverse Kinematic calculations as described in Equations \ref{eq:IKstart} through \ref{eq:IKend}
