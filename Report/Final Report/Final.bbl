@@ -156,6 +156,24 @@
   \warn{\item Invalid format of field 'month'}
 \endentry
 
+\entry{Dhawan:Analogy}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Dhawan}{D.}%
+     {Sanjeev}{S.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{DS1}
+  \strng{fullhash}{DS1}
+  \field{title}{Analogy of Promising Wireless Technologies on Different
+  Frequencies: Bluetooth, WiFi, and WiMAX}
+  \field{volume}{2}
+  \field{journaltitle}{Wireless Broadband and Ultra Wideband Communications}
+  \field{year}{2007}
+  \warn{\item Invalid format of field 'month'}
+\endentry
+
 \lossort
 \endlossort
 

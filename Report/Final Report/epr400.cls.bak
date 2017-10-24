@@ -87,14 +87,14 @@
 \RequirePackage{pifont}
 
 %% Load AMS mathematics support, fonts and symbols.
-\RequirePackage[fleqn]{amsmath}
+\RequirePackage{amsmath}
 \RequirePackage{amsfonts}
 \RequirePackage{amstext}
 \RequirePackage{amssymb}
 \RequirePackage{mathtools}
 
 %% Set maths equation number to reset per section
-\numberwithin{equation}{section}
+%\numberwithin{equation}{section}
 
 %% Yet more mathematics font related modules...
 \RequirePackage{bm}
@@ -391,12 +391,12 @@
   \setlength{\abovedisplayshortskip}{0pt plus 1pt}
   \setlength{\belowdisplayshortskip}{0pt minus 1pt}
 }
-\appto{\normalsize}{\zerodisplayskips}
-\appto{\small}{\zerodisplayskips}
-\appto{\footnotesize}{\zerodisplayskips}
+%\appto{\normalsize}{\zerodisplayskips}
+%\appto{\small}{\zerodisplayskips}
+%\appto{\footnotesize}{\zerodisplayskips}
 
 %% Include space between rows in equarray
-\setlength{\jot}{5 pt}
+%\setlength{\jot}{5 pt}
 
 %% Allow extra whitespace in lines, decrease number of hyphenations
 \sloppy

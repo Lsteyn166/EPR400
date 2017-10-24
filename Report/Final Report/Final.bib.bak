@@ -94,3 +94,62 @@
  volume = "",
  month = "May"
 )
+
+@ARTICLE{Parallel:1,
+ author = "Reeds, J.A. and Shepp, L.A.",
+ title = "Optimal paths for a car that goes both forwards and backwards",
+ journal = "Pacific Journal of Mathematics",
+ year = "1990",
+ volume = "145",
+ month = "October"
+}
+
+@ARTICLE{Omni:1,
+ author = "Tadakuma, K. and Tadakuma, R. and  Berengeres, J.",
+ title = "Development of holonomic omnidirectional Vehicle with Omni-Ball: spherical wheels",
+ journal = "Intellegent Robots and Systems",
+ year = "2007",
+ volume = "2007",
+ month = "November"
+}
+
+@ONLINE{StudyGuide,
+author = "Hanekom, J",
+title = "2017 Study guide part 1",
+year = "2017",
+url = "http://www2.ee.up.ac.za/~epr400/StudyGuide.pdf",
+note = "Accessed 2017-02-20"
+}
+
+@ONLINE{ProposalRequirements,
+author = "Hanekom",
+title = "Requirements for written reports",
+year = "2017",
+url = "http://www2.ee.up.ac.za/~epr400/APPENDIX2\_2017.pdf",
+note = "Accessed 2017-02-20"
+}
+
+@ONLINE{LS3,
+Author = "Boston Dynamics",
+title = "LS3 - Legged Squad Support Systems",
+year= "2012",
+url = "http://www.bostondynamics.com/robot-ls3.html",
+note = "Accessed 2017-04-12"
+}
+
+@ONLINE{BigDog,
+author = "Raibert, M. and Bankespoor, K. and Nelson, G. and Playter, R.",
+title = "BigDog, the Rough-Terrain Quaduped Robot",
+year= "2008",
+url = "http://www.bostondynamics.com/img/BigDog-IFAC-Apr-8-2008.pdf",
+note = "Accessed 2017-04-12"
+}
+
+@ARTICLE(Dhawan:Analogy,
+ author = "Sanjeev Dhawan",
+ title = "Analogy of Promising Wireless Technologies on Different Frequencies: Bluetooth, WiFi, and WiMAX ",
+ journal = " Wireless Broadband and Ultra Wideband Communications",
+ year = "2007",
+ volume = "2",
+ month = "Aug"
+)
