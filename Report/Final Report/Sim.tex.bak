@@ -1,1 +1,2 @@
-In order to test the equations and design outlined in the Theory section above, the mathematics was implemented in a
+In order to test the equations and design outlined in the Theory section above, the mathematics was implemented in a Python program consisting of a GUI to enter elementary commands similar to that implemented in the Android application, as well as a window for plotting the result in a 3-Dimensional Cartesian system. Some results showing the validity of the design equations in the previous section can be found below. All of the source code used to build this simulation can be found in Part 5 of this report on the attached optical disc.
+

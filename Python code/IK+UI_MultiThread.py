@@ -15,7 +15,6 @@ import matplotlib.pyplot as plt
 import mpl_toolkits.mplot3d.art3d as art3d
 import math
 from matplotlib.patches import Circle
-
 # Predefine Vectors
 X_Vector = 0
 Y_Vector = 0
