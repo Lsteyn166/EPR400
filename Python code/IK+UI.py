@@ -13,8 +13,7 @@ import matplotlib.pyplot as plt
 import mpl_toolkits.mplot3d.art3d as art3d
 import math
 from matplotlib.patches import Circle
-import time
-
+import matplotlib
 # Predefine Vectors
 X_Vector = 0
 Y_Vector = 0
@@ -42,40 +41,49 @@ class GUI(QtGui.QDialog):
         GUI.canvas = FigureCanvas(self.figure)         # Put this figure on a canvas object
         plt.ion()
 
+        font = {'family': 'Serif',
+                'weight': 'normal',
+                'size': 20}
+
+        matplotlib.rc('font', **font)
+
+        self.setStyleSheet("QWidget {font: 20pt Times}")
+
+
         # Create UI widgets
         self.PlotButton = QtGui.QPushButton('Step')     # Plot button
-        self.PlotButton.setFixedSize(50, 50)
+        self.PlotButton.setFixedSize(90, 90)
         self.PlotButton.clicked.connect(self.Step)
         self.UpButton = QtGui.QPushButton('UP')         # Forward button
-        self.UpButton.setFixedSize(50, 50)
+        self.UpButton.setFixedSize(90, 90)
         self.UpButton.clicked.connect(self.UP)
         self.DownButton = QtGui.QPushButton('DOWN')     # Reverse button
-        self.DownButton.setFixedSize(50, 50)
+        self.DownButton.setFixedSize(90, 90)
         self.DownButton.clicked.connect(self.DOWN)
         self.LeftButton = QtGui.QPushButton('LEFT')     # Left button
-        self.LeftButton.setFixedSize(50, 50)
+        self.LeftButton.setFixedSize(90, 90)
         self.LeftButton.clicked.connect(self.LEFT)
         self.RightButton = QtGui.QPushButton('RIGHT')   # Right button
-        self.RightButton.setFixedSize(50, 50)
+        self.RightButton.setFixedSize(90, 90)
         self.RightButton.clicked.connect(self.RIGHT)
         self.CWButton = QtGui.QPushButton('CW')         # Rotate clockwise button
-        self.CWButton.setFixedSize(50, 50)
+        self.CWButton.setFixedSize(90, 90)
         self.CWButton.clicked.connect(self.CW)
         self.CCWButton = QtGui.QPushButton('CCW')       # Rotate counterclockwise button
-        self.CCWButton.setFixedSize(50, 50)
+        self.CCWButton.setFixedSize(90, 90)
         self.CCWButton.clicked.connect(self.CCW)
         self.D11 = QtGui.QLabel('X Vector:')            # X vector text label
-        self.D11.setFixedWidth(75)
+        self.D11.setFixedWidth(135)
         self.D12 = QtGui.QLabel('0')                    # X vector numerical label
-        self.D12.setFixedWidth(75)
+        self.D12.setFixedWidth(135)
         self.D21 = QtGui.QLabel('Y Vector:')            # Y vector text label
-        self.D21.setFixedWidth(75)
+        self.D21.setFixedWidth(135)
         self.D22 = QtGui.QLabel('0')                    # Y vector numerical label
-        self.D22.setFixedWidth(75)
+        self.D22.setFixedWidth(135)
         self.D31 = QtGui.QLabel('Rotation:')            # Rotation text label
-        self.D31.setFixedWidth(75)
+        self.D31.setFixedWidth(135)
         self.D32 = QtGui.QLabel('0')                    # Rotation numerical label
-        self.D32.setFixedWidth(75)
+        self.D32.setFixedWidth(135)
         self.AutoPlot = QtGui.QCheckBox('Auto Plot')    # Checkbox to enable plotting on press of a a directional button
 
         # Set all widgets in layouts
@@ -109,9 +117,11 @@ class GUI(QtGui.QDialog):
 
         self.setLayout(HL)
         self.showMaximized()
+        self.Step()
 
     def Step(self):                                     # Function for updating the plot in the UI
         GUI.ax = self.figure.add_subplot(111, projection='3d')  # Create axis on plot
+        self.figure.tight_layout()
         GUI.ax.hold(True)
         ConfigurePlot()
         for leg in range(1, 6):
@@ -134,7 +144,7 @@ class GUI(QtGui.QDialog):
             # Find position of little orange markers
             x, y = RotateLeg(2.5, 0, leg)
             # Plot little orange markers for home position
-            self.ax.plot([x, x], [y, y], [0, -0.05], color='#FFAF00')
+            self.ax.plot([x, x], [y, y], [0, -0.05], color='#FFAF00',linewidth=4)
 
         GUI.canvas.draw()                              # Refresh canvas
 
@@ -211,7 +221,7 @@ def Plotleg(Theta, Phi, Alpha, leg, Dim):
     LegX = [offsetx, offsetx + A * math.sin(Theta)]
     LegY = [offsety, offsety + A * math.cos(Theta)]
     LegZ = [Z_body, Z_body]
-    GUI.ax.plot(LegX, LegY, LegZ, plotColour)
+    GUI.ax.plot(LegX, LegY, LegZ, plotColour,linewidth=2)
 
     # Plot segment B
     if Dim == True:
@@ -221,7 +231,7 @@ def Plotleg(Theta, Phi, Alpha, leg, Dim):
     LegX = [offsetx + A * math.sin(Theta), offsetx + A * math.sin(Theta) + B * math.sin(Phi) * math.sin(Theta)]
     LegY = [offsety + A * math.cos(Theta), offsety + A * math.cos(Theta) + B * math.sin(Phi) * math.cos(Theta)]
     LegZ = [Z_body, Z_body + B * math.cos(Phi)]
-    GUI.ax.plot(LegX, LegY, LegZ, plotColour)
+    GUI.ax.plot(LegX, LegY, LegZ, plotColour,linewidth=2)
 
     # Plot segment C
     if Dim == True:
@@ -235,7 +245,7 @@ def Plotleg(Theta, Phi, Alpha, leg, Dim):
             offsety + A * math.cos(Theta) + B * math.sin(Phi) * math.cos(Theta) + C * math.sin(
                 Phi + Alpha - math.radians(90)) * math.cos(Theta)]
     LegZ = [Z_body + B * math.cos(Phi), Z_body + B * math.cos(Phi) + C * math.cos(Phi + Alpha - math.radians(90))]
-    GUI.ax.plot(LegX, LegY, LegZ, plotColour)
+    GUI.ax.plot(LegX, LegY, LegZ, plotColour,linewidth=2)
     # print (LegX[1], LegY[1], LegZ[1]), "\n\r"
     return
 
@@ -366,17 +376,17 @@ def ConfigurePlot():
     ""
     "This function creates a 3D plot and configures axes and labels"
     blank = [0, 0]
-    GUI.ax.plot(blank, blank, blank, label="Segment A", color='#FF0000')
+    GUI.ax.plot(blank, blank, blank, label="Segment A", color='#FF0000' )
     GUI.ax.plot(blank, blank, blank, label="Segment B", color='#00FF00')
     GUI.ax.plot(blank, blank, blank, label="Segment C", color='#0000FF')
     GUI.ax.plot(blank, blank, blank, label="Chassis", color='#AF00FF')
-    GUI.ax.plot(blank, blank, blank, label="Feet zone", color='#FFAF00')
+    GUI.ax.plot(blank, blank, blank, label="Feet neutral", color='#FFAF00')
 
     p = Circle((0, 0), Radius, color='#AF00FF')
     GUI.ax.add_patch(p)
     art3d.pathpatch_2d_to_3d(p, z=Z_body, zdir="z")
 
-    GUI.ax.legend()
+    GUI.ax.legend(loc = 2)
     GUI.ax.set_xlabel('X')
     GUI.ax.set_ylabel('Y')
     GUI.ax.set_zlabel('Z')

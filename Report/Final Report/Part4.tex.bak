@@ -34,12 +34,14 @@
 \input{Sim.tex}
 
 \subsubsection{Optimisation}
+\input{Opt.tex}
 
 \subsubsection{Hardware design}
 
 \subsubsection{Hardware implementation}
 
 \subsubsection{Software design}
+\label{sec:soft}
 
 \subsubsection{Software implementation}
 

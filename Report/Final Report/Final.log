@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.29)  24 OCT 2017 22:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.29)  28 OCT 2017 15:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2606,22 +2606,122 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[17 <./pics/Body_Layout_6.pdf>] (./Sim.tex)
+[17 <./pics/Body_Layout_6.pdf>] (./Sim.tex
+Underfull \hbox (badness 10000) in paragraph at lines 1--2
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3--4
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5--6
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 7--8
+
+ []
+
+<pics/Sim1.png, id=330, 1329.96875pt x 746.79pt>
+File: pics/Sim1.png Graphic file (type png)
+ <use pics/Sim1.png>
+Package pdftex.def Info: pics/Sim1.png used on input line 11.
+(pdftex.def)             Requested size: 438.89105pt x 246.44145pt.
+
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[18]
-Package mdframed Info: Not enough space on this page on input line 49.
+[18] <pics/Sim2.png, id=334, 1329.96875pt x 746.79pt>
+File: pics/Sim2.png Graphic file (type png)
+ <use pics/Sim2.png>
+Package pdftex.def Info: pics/Sim2.png used on input line 20.
+(pdftex.def)             Requested size: 438.89105pt x 246.44145pt.
 
-Underfull \hbox (badness 4621) in paragraph at lines 56--56
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[19 <./pics/Sim1.png>] <pics/Sim3.png, id=339, 1329.96875pt x 746.79pt>
+File: pics/Sim3.png Graphic file (type png)
+
+<use pics/Sim3.png>
+Package pdftex.def Info: pics/Sim3.png used on input line 29.
+(pdftex.def)             Requested size: 438.89105pt x 246.44145pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[20 <./pics/Sim2.png> <./pics/Sim3.png>]
+<pics/Sim4.png, id=343, 1329.96875pt x 746.79pt>
+File: pics/Sim4.png Graphic file (type png)
+ <use pics/Sim4.png>
+Package pdftex.def Info: pics/Sim4.png used on input line 38.
+(pdftex.def)             Requested size: 438.89105pt x 246.44145pt.
+
+<pics/Sim5.png, id=344, 1329.96875pt x 746.79pt>
+File: pics/Sim5.png Graphic file (type png)
+ <use pics/Sim5.png>
+Package pdftex.def Info: pics/Sim5.png used on input line 47.
+(pdftex.def)             Requested size: 438.89105pt x 246.44145pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[21 <./pics/Sim4.png>] <pics/Sim6.png, id=348, 1329.96875pt x 746.79pt>
+File: pics/Sim6.png Graphic file (type png)
+
+<use pics/Sim6.png>
+Package pdftex.def Info: pics/Sim6.png used on input line 56.
+(pdftex.def)             Requested size: 438.89105pt x 246.44145pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[22 <./pics/Sim5.png>]) (./Opt.tex
+Underfull \hbox (badness 10000) in paragraph at lines 1--2
+
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[23 <./pics/Sim6.png>])
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[24]
+Package mdframed Info: Not enough space on this page on input line 51.
+
+Underfull \hbox (badness 4621) in paragraph at lines 58--58
 \T1/ptm/b/n/12 or spe-cific-a-tion (in-ten-ded
  []
 
 
-Overfull \hbox (23.37358pt too wide) in paragraph at lines 53--80
+Overfull \hbox (23.37358pt too wide) in paragraph at lines 55--82
 [] 
  []
 
@@ -2632,24 +2732,24 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[19]
+[25]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[20] (./Final.aux)
+[26] (./Final.aux)
 Package logreq Info: Writing requests to 'Final.run.xml'.
 \openout1 = `Final.run.xml'.
 
  )
 (\end occurred when \iftrue on line 25 was incomplete) 
 Here is how much of TeX's memory you used:
- 45893 strings out of 494910
- 1022711 string characters out of 6179836
- 1447317 words of memory out of 5000000
- 48084 multiletter control sequences out of 15000+600000
+ 45934 strings out of 494910
+ 1023278 string characters out of 6179836
+ 1448317 words of memory out of 5000000
+ 48115 multiletter control sequences out of 15000+600000
  77829 words of font info for 206 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  62i,12n,94p,10395b,1559s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2664,10 +2764,10 @@ m10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr
 exmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/time
 s/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Final.pdf (38 pages, 447931 bytes).
+Output written on Final.pdf (44 pages, 1107077 bytes).
 PDF statistics:
- 379 PDF objects out of 1000 (max. 8388607)
- 263 compressed objects within 3 object streams
+ 404 PDF objects out of 1000 (max. 8388607)
+ 276 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 30899 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 30929 words of extra memory for PDF output out of 35830 (max. 10000000)
 

@@ -4,6 +4,8 @@
 \normalsize{}\\
 \begin{tabular}{ p{5cm} l}
   \textbf{LED} & light emitting diode\\
-  \textbf{PWM} & pulse width modulation
+  \textbf{PWM} & pulse width modulation\\
+  \textbf{IK} & inverse kinematics\\
+  \textbf{PID} & proportional, integral and derivative
 
 \end{tabular}
