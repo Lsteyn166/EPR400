@@ -6,6 +6,7 @@
   \textbf{LED} & light emitting diode\\
   \textbf{PWM} & pulse width modulation\\
   \textbf{IK} & inverse kinematics\\
-  \textbf{PID} & proportional, integral and derivative
+  \textbf{PID} & proportional, integral and derivative\\
+  \textbf{FPU} & floating point arithmetic 
 
 \end{tabular}

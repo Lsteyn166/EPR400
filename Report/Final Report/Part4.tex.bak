@@ -36,17 +36,14 @@
 \subsubsection{Optimisation}
 \input{Opt.tex}
 
-\subsubsection{Hardware design}
-
-\subsubsection{Hardware implementation}
-
-\subsubsection{Software design}
-\label{sec:soft}
-
-\subsubsection{Software implementation}
+%Electronics
+\input{Elec.tex}
+%Software
+\input{Soft.tex}
+%Hardware
+\input{Hard.tex}
 
 \subsubsection{Design summary}
-
 
 \secun{Results}
 
