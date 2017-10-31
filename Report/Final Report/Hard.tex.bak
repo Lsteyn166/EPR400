@@ -17,4 +17,25 @@ The first of the parts to be designed was the legs that would determine the scal
 \label{fig:DrawingB}
 \end{figure}
 
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 0.8]{pics/DrawingC.pdf}
+\caption{Illustration of how multiple servo motors are controlled using two timers.}
+\label{fig:DrawingC}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 0.8]{pics/DrawingBase.pdf}
+\caption{Illustration of how multiple servo motors are controlled using two timers.}
+\label{fig:DrawingBase}
+\end{figure}
+
 \subsubsection{Hardware implementation}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 0.8]{pics/DrawingSpring.pdf}
+\caption{Illustration of how multiple servo motors are controlled using two timers.}
+\label{fig:DrawingSpring}
+\end{figure}
