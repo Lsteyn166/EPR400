@@ -38,7 +38,7 @@
 \pagenumbering{roman}
 \setcounter{page}{1}
 %Import preamble
-%\input{Part1}
+\input{Part1}
 %Import TOC
 \newpage
 \markright{Part 1. Preamble}
@@ -47,12 +47,12 @@
 \tocloftpagestyle{fancy}
 \tableofcontents
 %List of abbreviations
-%\input{ListOfAbbreviations}
+\input{ListOfAbbreviations}
 %% Import the content
-%\input{Part2}
-%\input{Part3}
+\input{Part2}
+\input{Part3}
 %Main report
-%\input{Part4}
+\input{Part4}
 %Bibliography
 \newpage
 \printbibliography[heading=subbibnumbered]

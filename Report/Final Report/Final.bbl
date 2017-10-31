@@ -114,6 +114,51 @@
   \field{year}{2012}
 \endentry
 
+\entry{MORITZ}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Zagler}{Z.}%
+     {A.}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Pfeiffer}{P.}%
+     {F.}{F.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{ZAPF1}
+  \strng{fullhash}{ZAPF1}
+  \field{title}{MORITZ a pipe crawler for tube junctions}
+  \field{volume}{3}
+  \field{journaltitle}{Robotics and Automation}
+  \field{year}{2003}
+  \warn{\item Invalid format of field 'month'}
+\endentry
+
+\entry{Atsushi:Design}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Kakogawa}{K.}%
+     {Atsushi}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ma}{M.}%
+     {Shugen}{S.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{KAMS1}
+  \strng{fullhash}{KAMS1}
+  \field{title}{Design of a multilink-articulated wheeled inspection robot for
+  winding pipelines: AIRo-II}
+  \field{volume}{1}
+  \field{journaltitle}{Intelligent Robots and Systems}
+  \field{year}{2016}
+  \warn{\item Invalid format of field 'month'}
+\endentry
+
 \entry{Arkin:Reactive}{article}{}
   \name{author}{2}{}{%
     {{}%

@@ -6,10 +6,22 @@ This report documents the development of a robot intended for exploration in unk
 
 \subsubsection*{What has been done}
 \addcontentsline{toc}{subsection}{What has been done}
+A mathematical simulation program was developed in the Python programming language in order to investigate the algorithm for inverse kinematic calculations. This was later extended to a full simulation of the robot with the addition of a GUI and a plotting window that plotted a representation of the entire robot in a 3-dimensional Cartesian coordinate system. This platform was then used to develop the algorithm to make the robot take steps, responding to inputs from the user. When the algorithm was sufficient for a first real world test, the algorithm was implemented on a STM32F7 microcontroller. Leg segments and a chassis were designed in CAD software and printed on a 3D-printer. Servo motors were installed and the robot started to move. To control the robot, an Android application was created to serve as a user interface for the robot. The smartphone uses Bluetooth to communicate elementary commands to a Bluetooth module located on the robot, which passes all the commands to the microcontroller via a serial connection. The robot was heavier than expected and the added weight of batteries and a few unforeseen components made it necessary to implement torsional springs in some of the joints to take some of the force caused be the weight of the robot off of the servo motors.\\
 
-\subsubsection*{What has been acieved}
+\subsubsection*{What has been achieved}
 \addcontentsline{toc}{subsection}{What has been achieved}
+The robot can successfully receive and interpret commands from the Android application. The robot is able to move holonomically, therefore start moving in any direction without rotation as well as being able to rotate around its own axis without translation. The robot is able to walk on loose and slippery surfaces as well as being able to cross small obstacles.\\
 
 \subsubsection*{Findings}
 \addcontentsline{toc}{subsection}{Findings}
+Weight plays a very important role in the correct functioning of the robot. If the servo motors are unable to successfully carry the weight of the robot, the robot struggles to perform basic tasks it would otherwise be able to complete easily. The quality of the servo motors also place a large restriction on the performance and, more specifically, accuracy that the robot is able to achieve. The inexpensive motors used because low torque was required for the horizontal servo motors have large slop in the gearbox and can therefore not be moved with a high repeatability.\\
 
+\subsubsection*{Contribution}
+\addcontentsline{toc}{subsection}{Contribution}
+There is no specific software package that had to be mastered for the completion of the project. Instead it was just the application of previously used software on new problems and in new ways. Plotting in 3 dimensions as well as creating a GUI in Python were new skills to be mastered in Python. Using the Bluetooth module of a smartphone through an application developed in Android Studio was new to the student as well.\\
+
+The mathematical model of the robot as well as the movement algorithms were developed from first principles by the student. The electronic hardware consists mainly of the microcontroller and its support electronics, implemented as recommended in the application notes provided by the manufacturer. The interface circuits used for digital inputs and outputs to the microcontroller were built using knowledge from prior modules. All of the 3D-printed parts used in the project including battery holders, torsion springs, gears and the LED lens holder were designed from start by the student in a CAD package.\\
+
+Physical skills gained though the progress of this project includes the soldering of 0.4mm pin pitch SMD components such as the LQFP100 package in which the STM32F7 microcontrollers are available.\\
+
+The student came into contact with new electronic hardware in the form of servo motors. The control of one of these with a microcontroller had to be mastered before being able to control 15 at once using no external control hardware. The use and proper implementation of Lithium-Ion batteries was also new to the student before this project.\\
