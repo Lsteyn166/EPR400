@@ -100,3 +100,40 @@ For the simplified case where 5 servo motors should be controlled, Table \ref{ta
 \end{figure}
 
 \subsubsection{Software implementation}
+For the implementation of the program on the microcontroller, the C programming language together with the KEIL microcontroller development kit integrated development environment (IDE) was used. The STM32 series microcontrollers come with an application called CubeMX that can be used to generate initialization code for a specific microcontroller. This was used to configure all of the peripherals used as well as the system clock settings.\\
+
+The algorithms developed and refined in Python was then translated to C and implemented in the software. Some of the functions implemented that were not included in the Python program are outlined below.\\
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 1]{pics/Soft4.pdf}
+\caption{Flow diagram showing the functioning of the sorting required by the servo algorithm.}
+\label{fig:Soft4}
+\end{figure}
+
+Figure \ref{fig:Soft4} shows the functioning of the algorithm that sorts the servo times in ascending order. The sorting method used here is one of the simplest sorting methods, often referred to as bubble sorting. Since it is only 15 values being compared, it is not worth implementing a more complicated algorithm for the sake of efficiency\\
+
+The timer interrupts are difficult to show in the main program flow because it is something that is constantly happening in the background. Figures \ref{fig:Soft5} through \ref{fig:Soft7} show the different timer interrupt service routines to show how this functions.\\
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 1]{pics/Soft5.pdf}
+\caption{Flow diagram showing the functioning of the sorting required by the servo algorithm.}
+\label{fig:Soft5}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 1]{pics/Soft6.pdf}
+\caption{Flow diagram showing the functioning of the sorting required by the servo algorithm.}
+\label{fig:Soft6}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 1]{pics/Soft7.pdf}
+\caption{Flow diagram showing the functioning of the sorting required by the servo algorithm.}
+\label{fig:Soft7}
+\end{figure}
+
