@@ -21,7 +21,7 @@ Phi describes the angle between leg segments A and B viewed directly from the si
 \end{figure}
 \FloatBarrier
 
-In order to control the robot in a Cartesian world it is necessary to find a transfer function for a leg that can translate a coordinate vector in the domain $[\theta,\phi,\alpha]$ to a vector in the domain $[x,y,z]$. This is done through mathematical analysis of a single leg.\\
+In order to control the robot in a Cartesian world, it is necessary to find a transfer function for a leg that can translate a coordinate vector in the domain $[\theta,\phi,\alpha]$ to a vector in the domain $[x,y,z]$. This is done through mathematical analysis of a single leg.\\
 
 By using Figure \ref{fig:Leg_design_2} and some simple trigonometry, theta can be found to be
 
@@ -41,7 +41,7 @@ where \textit{x}, \textit{y} and \textit{z} are the desired coordinates for the 
 \end{figure}
 \FloatBarrier
 
-In order to do an analysis on phi and alpha, it is necessary to add a few construction lines to the generic model in Figure \ref{fig:Leg_design}. The additions can be seen in Figure \ref{fig:Leg_design_4} and the additions are explained below.
+In order to do an analysis of phi and alpha, it is necessary to add a few construction lines to the generic model in Figure \ref{fig:Leg_design}. The additions can be seen in Figure \ref{fig:Leg_design_4} and the additions are explained below.
 
 \begin{figure}[h]
 \centering
@@ -52,7 +52,7 @@ In order to do an analysis on phi and alpha, it is necessary to add a few constr
 
 From Figure 8:
 \begin{itemize}
-\item $Z_{body}$ is the nominal height difference between the robot chassis and ground. This value is a constant.
+\item $Z_{body}$ is the nominal height difference between the robot chassis and ground. This value is constant.
 \item \textit{Reach} is the horizontal distance between the hip and the foot.
 \item \textit{D} is an imaginary line between joint 2 and the foot that completes the triangle \textit{BCD} that will form the basis of this analysis.
 \item $E_x$ is the horizontal distance between joint 2 and the foot.
@@ -101,7 +101,7 @@ With all of this calculated, phi can be calculated as
 \phi = 270^o - c -e.
 \end{align}
 
-The analysis above is valid for the generic 3 segment design shown in Figures \ref{fig:Leg_design_2} and \ref{fig:Leg_design} where the hip is at the origin of the Cartesian system. The real robot has five legs that need to be calculated for. In order to avoid using five different Cartesian systems, it is necessary to be able to rotate and translate this generic model to suit the requirements of any of the legs.\\
+The analysis above is valid for the generic 3 segment design shown in Figures \ref{fig:Leg_design_2} and \ref{fig:Leg_design} where the hip is at the origin of the Cartesian system. For the real robot, the calculations need to be performed for five legs. In order to avoid using five different Cartesian systems, it is necessary to be able to rotate and translate this generic model to suit the requirements of any of the legs.\\
 
 \FloatBarrier
 \begin{figure}[h]
@@ -133,7 +133,7 @@ For the robot to be able to walk, all five legs should be working together to mo
 \end{figure}
 \FloatBarrier
 
-All of the legs move together towards a point inside or on the edge of each individual perimeter. The direction of movement of the robot can be calculated as
+All of the legs move together towards a point inside or on the edge of each individual perimeter. The direction of the movement of the robot can be calculated as
 
 \begin{align}
 angle = arctan \Bigg(\frac{y}{x}\Bigg),
@@ -144,7 +144,7 @@ magnitude = \sqrt{x^2+y^2}.
 \end{align}
 The magnitude and direction can be used to check if the vector fits inside the perimeter.\\
 
-All of the calculations above only account for translation, that is moving forward, backward, left, right or a combination of the above. Being able to move truly holonomically means being able to rotate with or without translating. The vectors used to calculate the trajectory of each leg works well for representing translation but does not work so well for rotation. Rotation can instead be expressed as a scalar value, which has magnitude and a sign indicating the direction of rotation. A positive value indicates a clockwise rotation. When these rotation vectors are applied to the individual legs, it results in a different vector being added to each leg indicating the trajectory required by each leg to rotate the robot body. Figure \ref{fig:Body_layout_4} shows the effect of adding a rotation scalar to the movement. The dashed arrows indicate the trajectory of each individual leg.
+All of the calculations above only account for translation, that is moving forward, backward, left, right or a combination of the above. Being able to move truly holonomically means being able to rotate with or without translating. The vectors used to calculate the trajectory of each leg works well for representing translation, but does not work so well for rotation. Rotation can instead be expressed as a scalar value, which has magnitude and a sign indicating the direction of rotation. A positive value indicates a clockwise rotation. When these rotation vectors are applied to the individual legs, it results in a different vector being added to each leg indicating the trajectory required by each leg to rotate the robot body. Figure \ref{fig:Body_layout_4} shows the effect of adding a rotation scalar to the movement. The dashed arrows indicate the trajectory of each individual leg.
 
 \FloatBarrier
 \begin{figure}[h]
@@ -155,7 +155,7 @@ All of the calculations above only account for translation, that is moving forwa
 \end{figure}
 \FloatBarrier
 
-If each leg were instructed to follow the dashed arrows shown in Figure \ref{fig:Body_layout_4}, the legs would fight each other for grip since they vectors will force them to spread out. Since this is not a controlled movement. Simply using the instantaneous trajectory as the movement vector will not work like it did in the case of translational movement. Instead the trajectory will constantly be changing to keep rotate the body while keeping the feet in their positions. This change can be seen in Figure \ref{fig:Body_layout_5}. The dotted lines represent this constantly changing vector. This can be calculated by rotating the foot position around the origin of the robot. It is important to note that although the legs will be spreading out as the robot body rotates, the feet should stay exactly where they are until the foot is out of the perimeter that the system allows. At this point the robot will lift up the leg and place it in the neutral position to allow further rotation.
+If each leg were instructed to follow the dashed arrows shown in Figure \ref{fig:Body_layout_4}, the legs would fight each other for grip since the vectors will force them to spread out. Simply using the instantaneous trajectory as the movement vector will not work like it did in the case of translational movement. Instead the trajectory will constantly be changing to keep rotating the body while keeping the feet in their original positions. This change can be seen in Figure \ref{fig:Body_layout_5}. The dotted lines represent this constantly changing vector. This can be calculated by rotating the foot position around the origin of the robot. It is important to note that although the legs will be spreading out as the robot body rotates, the feet should stay exactly where they are until the foot is out of the perimeter that the system allows. At this point the robot will lift up the leg and place it in the neutral position to allow for further rotation.
 
 \FloatBarrier
 \begin{figure}[h]
@@ -166,7 +166,7 @@ If each leg were instructed to follow the dashed arrows shown in Figure \ref{fig
 \end{figure}
 \FloatBarrier
 
-Since a curve can not be added to  the vector of translation, the curve will need to be broken up into small segments of straight pieces approximating the curved line. These straight pieces can then be added to the translation as vectors. Rotating the coordinates around the robot is not a simple task because of the shifting Cartesian systems. In order to rotate about a point that is not the origin of the plane, the coordinate system needs to be translated to move the origin, rotated around this origin and then shifted back to the original origin.
+Since a curve cannot be added to  the vector of translation, the curve will need to be broken up into smaller segments of straight pieces approximating the curved line. These straight pieces can then be added to the translation as vectors. Rotating the coordinates around the robot is not a simple task because of the shifting Cartesian systems. In order to rotate about a point that is not the origin of the plane, the coordinate system needs to be translated to move the origin, rotated around this origin and then shifted back to the original origin.
 
 \FloatBarrier
 \begin{figure}[h]
@@ -192,7 +192,7 @@ When the robot needs to rotate, the procedure is therefore as follows.
 \begin{enumerate}
 \item Start with coordinates of point \textit{P}, relative to point \textit{A} which is the origin of the Cartesian system at this point.
 \item Add the coordinates of \textit{P} relative to \textit{A} to the coordinates of \textit{A} relative to \textit{O}. The result is the  coordinates of \textit{P} relative to \textit{O}.
-\item Rotate through angle $\beta$ using the rotation formula used in Equation \ref{eq:rotation}.
+\item Rotate through angle $\beta$ using the rotation formula in Equation \ref{eq:rotation}.
 \item Move the origin back to \textit{A} by subtracting \textit{A} relative to \textit{O}.
 \end{enumerate}
 

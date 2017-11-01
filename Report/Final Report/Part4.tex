@@ -11,6 +11,15 @@
 \renewcommand\thesubsection{\arabic{subsection}.}
 \renewcommand\thesubsubsection{\arabic{subsection}.\arabic{subsubsection}}
 \rhead{\rightmark}
+%add paragraph as extra level for experiments
+\setcounter{secnumdepth}{5}
+\titleformat{\paragraph}[display]
+{\fontsize{12pt}{14pt}\selectfont\bfseries}{}{5pt} {\theparagraph\quad}
+%add subparagraph
+\titleformat{\subparagraph}[display]
+{\fontsize{12pt}{14pt}}{}{5pt} {\thesubparagraph\quad}
+\renewcommand\thesubparagraph{\arabic{subsection}.\arabic{subsubsection}.\arabic{paragraph}\alph{subparagraph}}
+
 
 %Start
 \section*{Part 4. Main report}
@@ -18,6 +27,7 @@
 \markright{Part 4. Main report}
 \secun{Literature study}
 \pagenumbering{arabic}
+\captionsetup[table]{position=bottom}
 \input{Lit.tex}
 
 \secun{Approach}
@@ -38,17 +48,42 @@
 
 %Electronics
 \input{Elec.tex}
+
+\captionsetup[table]{position=bottom}
 %Software
 \input{Soft.tex}
 %Hardware
 \input{Hard.tex}
 
 \subsubsection{Design summary}
+\begin{table}[H]
+\centering
+
+\begin{tabular}{|p{5cm}|p{5cm}|p{5cm}|}
+\hline
+\textbf{Task} & \textbf{Implementation} & \textbf{Task complete} \\
+\hline
+ Development of an IK engine in software & The mathematical analysis of the robot was used to create a generic model, which was then first implemented in Python and thereafter in the final robot implementation. & Completed \\\hline
+ 
+Development of a walking algorithm  & A walking algorithm was developed and optimized in Python and then implemented in the final robot.  & Completed\\\hline
+
+Development of a user interface & The user interface was developed for an Android smartphone using Android Studio. & Completed \\\hline
+
+Communication channel between user interface and robot & Bluetooth was used to establish a low bandwidth, low cost communication system between the smartphone and the robot. It communicates commands successfully. & Completed \\\hline
+
+Implementation of electronics on a PCB.& All electronics were implemented on a Veroboard instead of a PCB which is inexpensive and sufficiently robust for the purpose of this project. A PCB would not have made any functional difference to the end result and is not suited for making changes while prototyping. The only difference would have been aesthetically.& Incomplete \\\hline
+
+Implementation of inclinometer sensor & An inclinometer was planned to give the robot the ability to adapt to the exact angle of slanted surfaces but this was not implemented because the robot walks without a problem on the angles of surfaces specified for this project. & Incomplete \\\hline
+\end{tabular}
+\caption{Design summary}
+\label{my-label}
+\end{table}
+
 
 \secun{Results}
 
 \subsubsection{Summary of results achieved}
-
+\begin{table}[H]
 \begin{tabular}{|p{5cm}|p{5cm}|p{5cm}|}
 \hline
 \textbf{Description of requirement or specification
@@ -57,24 +92,151 @@
 \multicolumn{3}{|l|}{}\\
 \multicolumn{3}{|l|}{\textbf{Mission requirements of the product}}\\
 \hline
-1&2&3\\
-\hline
+
+The robot should be able to move in a given direction in 30 degree increments from a stationary position. & The robot is able to move holonomically, therefore able to move in 30 degree increments.&\\\hline
+
+The robot should be able to rotate 90 degrees without translating the centre of the body by more than 5\% of the body diameter.&&\\\hline
+
+The time it requires to complete a manoeuvre should not vary more than 25\% between smooth and rough surfaces.&&\\\hline
+
+The robot should be able to walk at a speed of at least 100mm/s.&&\\\hline
+
+The robot should be able to walk on a surface with a 10\% incline without falling over.&The robot can successfully walk on a slanted surface with an incline of up to 10\% &\\\hline
+
 \multicolumn{3}{|l|}{}\\
 \multicolumn{3}{|l|}{\textbf{Field conditions}}\\
 \hline
-1&2&3\\
-\hline
+The robot should be in range of the wireless smartphone controller.&The robot works fine if it is within a range of 10m of the smartphone&\\\hline
+
+To prevent falling over, the robot should walk on surfaces close to horizontal.&The robot is able to work on slanted surfaces with an incline of less than 10\%&\\\hline
+
+The robot should stay dry to protect electronics.&The robot was never tested in wet conditions&\\\hline
+
+The robot should work in normal temperature conditions for South Africa.&The robot never experienced any issues during the testing phase that relates to ambient temperature, relative humidity or any other atmospheric conditions&\\\hline
+
 \multicolumn{3}{|l|}{}\\
 \multicolumn{3}{|l|}{\textbf{Specifications}}\\
 \hline
-1&2&3\\
-\hline
+The smartphone application should communicate commands from the user interface to the robot at a frequency of at least 10 Hz.&&\\\hline
+
+The inverse kinematics calculator of the robot should be able to calculate the joint positions correctly to move each leg to the desired location.&&\\\hline
+
+The servo motor angles should all be within 5 degrees from the calculated values.&&\\\hline
+
 \multicolumn{3}{|l|}{}\\
 \multicolumn{3}{|l|}{\textbf{Deliverables}}\\
 \hline
-1&2&3\\
-\hline
+Control code for inverse kinematics and servo control.&&\\\hline
+
+Android application with a user interface for control of the robot.&&\\\hline
+
+Circuits implemented on PCB for interfacing all hardware with the microcontroller.&&\\\hline
+
+Robot body and legs.&&\\\hline
+
+Simulations on all implemented software and analogue design&&\\\hline
 
 \end{tabular}
+\caption{Summary of results achieved}
+\label{my-label}
+\end{table}
 
 \subsubsection{Qualification tests}
+
+%Test 1
+\paragraph{Qualification test \arabic{paragraph} : Holonomic translation}
+\label{par:1}
+\subparagraph{Qualification test}
+\textit{Objectives of test/experiment}\\
+The objective is to prove that the robot is capable of moving in any direction from a standing position without first rotating.
+\textit{Equipment used}\\
+A canvas with lines in 30 degree increments is used to put the robot on.
+\textit{Experimental parameters and setup }\\
+The robot is turned on and placed in the centre of the canvas.
+\textit{Experimental protocol}\\
+The robot is instructed to move along one of the lines and then return to the centre by using the smartphone as remote control. Once back in the centre, the next line is followed. This process continues until all the lines have been followed.
+\subparagraph{Results and observations}
+\textit{Measurements}\\
+Figure \ref{fig:Res1} shows the robot on the canvas where the qualification test is being performed.
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 1]{pics/Res1.jpg}
+\caption{Top view of the robot on the canvas.}
+\label{fig:Res1}
+\end{figure}
+\textit{Description of results}\\
+The robot is able to successfully follow the lines on the canvas without ever rotating.
+
+%Test 2
+\paragraph{Qualification test \arabic{paragraph} : Rotation without translation}
+\subparagraph{Qualification test}
+\textit{Objectives of test/experiment}\\
+The objective of this test is to confirm that the robot is capable of rotating around its own axis without translating.
+\textit{Equipment used}\\
+The same canvas used in \ref{par:1} is used for this qualification test. It has two circles, one has the diameter of the robot base, the second is 5\% larger.
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 1]{pics/Res2.jpg}
+\caption{Canvas used for this experiment.}
+\label{fig:Res2}
+\end{figure}
+\textit{Experimental parameters and setup }\\
+The robot is placed inside the smaller circle and switched on.
+\textit{Experimental protocol}\\
+The robot is instructed to rotate from the smartphone application. After 90 degrees of rotation, the robot is instructed to stop and is then turned off. The robot should be within the bigger circle.
+\subparagraph{Results and observations}
+\textit{Measurements}\\
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 1]{pics/Res3.jpg}
+\caption{Robot inside the larger circle}
+\label{fig:Res3}
+\end{figure}
+\textit{Description of results}\\
+The robot is still inside the larger circle after rotating 90 degrees.
+
+%Test 3
+\paragraph{Qualification test \arabic{paragraph} :Speed on rough terrain}
+\subparagraph{Qualification test}
+
+\textit{Objectives of test/experiment}\\The purpose of this test is to show that the robot functions reasonably well on rough terrain when compared to a smooth surface.
+\textit{Equipment used}\\
+A small test track developed for this purpose is used. In order to compare performance between the smooth and rough terrain, the time to complete the track is recorded with a stopwatch application on a smartphone.
+\textit{Experimental parameters and setup }\\
+A rough terrain is simulated by scattering small, loose obstacles (foam blocks) over the test track. This is a realistic representation of a wide variety of terrain conditions. For preparation the robot is placed on the start line of the smooth test track and switched on. 
+\textit{Experimental protocol}\\
+The stopwatch is started and the robot is instructed to follow the line that forms the test track. When the robot reaches the end, the time on the stopwatch is recorded. The test track is scattered with the small obstacles and the procedure is repeated.
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[scale = 1]{pics/Res5.jpg}
+        \caption{Test track without obstacles.}
+    \end{subfigure}%
+    ~ 
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[scale = 1]{pics/Res4.jpg}
+        \caption{Test track with obstacles.}
+    \end{subfigure}
+    \caption{Test setup for proving that the robot can easily walk on rough surfaces}
+    \label{fig:Res4}
+\end{figure}
+\Figure \ref{fig:Res4} shows the test track for the two different tests.
+\subparagraph{Results and observations}
+\textit{Measurements}\\
+\textit{Description of results}\\
+
+%Test 
+\paragraph{Qualification test \arabic{paragraph} :}
+\subparagraph{Qualification test}
+\textit{Objectives of test/experiment}\\
+\textit{Equipment used}\\
+\textit{Experimental parameters and setup }\\
+\textit{Experimental protocol}\\
+\subparagraph{Results and observations}
+\textit{Measurements}\\
+\textit{Description of results}\\
+
+
+

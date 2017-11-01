@@ -1,0 +1,92 @@
+%%
+%%  Department of Electrical, Electronic and Computer Engineering.
+%%  EPR400/2 Project Proposal - Section 4.
+%%  Copyright (C) 2011-2017 University of Pretoria.
+%%
+
+\section*{4. Specifications}
+\addcontentsline{toc}{subsection}{4. Specifications}
+
+\subsection*{Mission-critical system specifications}
+
+\begin{center}
+\begin{longtable}{|p{5cm}|p{5cm}|p{5cm}|}
+\hline
+  \textbf{SPECIFICATION (IN MEASURABLE TERMS)} &
+  \textbf{ORIGIN OR MOTIVATION OF THIS SPECIFICATION} &
+  \textbf{HOW WILL YOU CONFIRM THAT YOUR SYSTEM COMPLIES WITH
+           THIS SPECIFICATION?}\\
+\hline The robot should be able to move in a given direction in 30 degree increments from a stationary position.
+   & Proving that the robot can move straight forward, left, backwards and right (directions spaced 90 degrees apart), will prove that the robot is holonomic.
+   &The robot will be placed on a grid on the floor and instructed to move in one of the chosen directions at a time.
+   \\
+\hline The robot should be able to rotate 90 degrees without translating the centre of the body by more than 5\% of the body diameter.
+   & Rotating 90 degrees proves that the robot does not suffer from the parallel parking problem. 5\% of the robot diameter can still be considered negligible and prove that no translation is required to rotate.
+   & The robot will be placed on the grid on the floor and instructed to rotate. The translation of the centre of the body will be noted.
+   \\
+\hline The time it requires to complete a manoeuvre should not vary more than 25\% between smooth and rough surfaces.
+   & A variation of less than 25\% in time can still be considered to be a similar time. This proves that the robot can move over different surfaces with similar difficulty.
+   &The robot will be instructed to complete a specific set of movements on a flat smooth surface and the time to completion will be recorded. Various obstacles will be placed in the way of the robot (small blocks, sand, etc.), and the robot will be instructed to repeat the specific set of instructions and the time difference will be noted.
+   \\
+\hline The robot should be able to walk at a speed of at least 100mm/s.
+&100mm/s is a reasonable speed for the scale of the robot. This proves that all of the subsystems function together well.
+&The robot will be instructed to walk at maximum speed in a straight line for one meter. The time to completion will be measured.\\
+\hline The robot should be able to walk on a surface with a 10\% incline without falling over.
+& An incline of 10\% proves that the robot platform is stable while not putting too much strain on the servo motors.
+& The robot will be placed on a slanted surface and instructed to translate and rotate. It should not fall over while performing these manoeuvres.\\
+\hline
+
+\caption{Mission-critical system specification}
+\end{longtable}
+\end{center}
+
+\vspace{1cm}
+\subsection*{Field conditions}
+
+\begin{center}
+\begin{longtable}{|p{7.5cm}|p{7.5cm}|}
+\hline
+  \textbf{REQUIREMENT} &
+  \textbf{SPECIFICATION (IN MEASURABLE TERMS)} \\
+\hline The robot should be in range of the wireless smartphone controller.
+   & For wireless communication to work reliably, the user with the smartphone should be less than 10m from the robot.
+   \\
+\hline To prevent falling over, the robot should walk on surfaces close to horizontal.
+   & The robot should not be operated on surfaces with an incline of more than 10\%
+   \\
+\hline The robot should stay dry to protect electronics.
+   & The robot should never be operated near water or wet surfaces.
+   \\
+\hline The robot should work in normal temperature conditions for South Africa.
+& The robot should be operated in the temperature range 10$^o$C to 40$^o$C.
+\\
+\hline
+\caption{Field conditions}
+\end{longtable}
+\end{center}
+
+\subsection*{Functional unit specifications}
+
+\begin{center}
+\begin{longtable}{|p{7.5cm}|p{7.5cm}|}
+\hline
+  \textbf{SPECIFICATION} & \textbf{ORIGIN OR MOTIVATION} \\
+\hline FU1. The smartphone application should communicate commands from the user interface to the robot at a frequency of at least 10 Hz.
+   & The robot should be in constant communication with the smartphone application to update the trajectory vectors. An update frequency of 10 Hz will update the robot fast enough to make the robot feel responsive.
+\\
+\hline FU2. The inverse kinematics calculator of the robot should be able to calculate the joint positions correctly to move each leg to the desired location.
+   & The joints should all be calculated correctly in order for the robot to make the correct set of movements to walk.
+   \\
+\hline FU3. The servo motor angles should all be within 5 degrees from the calculated values.
+& The servo angles have to be accurate in order to make the robot walk predictably. A tolerance of 5 degrees can still be considered accurate for hobbyist servo motors.
+\\
+\hline
+\caption{Functional unit specifications}
+\end{longtable}
+\end{center}
+
+\newpage
+
+%% End of File.
+
+

@@ -209,7 +209,7 @@ struct servos IK( struct coordinates input);									//Inverse Kinematics functi
 bool CheckBounds(struct servos leg);													//Check if legs need to be reset
 struct coordinates Rotate(double x, double y, double angle);	//Rotate coordinates about an angle
 void TranslateLeg(void);																			//Generates constants at beginning of program
-struct coordinates Vector(double x, double y, int leg, bool offset);
+struct coordinates Vector(double x, double y, int leg, bool offset, double r);
 void StartPosition(void);																			//Resets robot to default position
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart);			//ISR for when bluetooth communication is received.
 void BTDecrypt(void);																//Resturns vectors sent from android
@@ -299,7 +299,7 @@ int main(void)
 		//Put legs in the 0,0,50 position one at a time
 		for (int leg = 1; leg <6; leg++)
 		{
-			struct coordinates leg_Vector = Vector(0,0,leg,true);
+			struct coordinates leg_Vector = Vector(0,0,leg,true,0);
 			leg_Vector.z = 50;			//Lift legs above ground
 			struct servos leg_servo = IK(leg_Vector);
 			
@@ -314,7 +314,7 @@ int main(void)
 		{
 			for (int leg = 1; leg <6; leg++)
 			{
-				struct coordinates leg_Vector = Vector(0,0,leg,true);
+				struct coordinates leg_Vector = Vector(0,0,leg,true,0);
 				leg_Vector.z = height;			//Lift legs above ground
 				struct servos leg_servo = IK(leg_Vector);
 				
@@ -992,7 +992,7 @@ struct coordinates Rotate(double x, double y, double angle)
 							denormalized
   * @retval a struct of type coordinates. The z member is unused
   */
-struct coordinates Vector(double x, double y, int leg, bool offset)
+struct coordinates Vector(double x, double y, int leg, bool offset, double r)
 {
 	//Create return struct
 	struct coordinates result;
@@ -1015,7 +1015,7 @@ struct coordinates Vector(double x, double y, int leg, bool offset)
 	result.x = neutral.x + magnitude*cos(trajectory) + translateLeg[0][leg-1];
 	result.y = neutral.y + magnitude*sin(trajectory) + translateLeg[1][leg-1];
 	//+ Rotation
-	struct coordinates temp = Rotate(result.x,result.y,-(leg-1)*72);
+	struct coordinates temp = Rotate(result.x,result.y,-(leg-1)*72-5*r);
 	result.x = temp.x - translateLeg[0][0];
 	result.y = temp.y - translateLeg[1][0];
 	if (offset)
@@ -1061,7 +1061,7 @@ void ResetLeg(int leg)
 	ServoUpdate();
 	Delay(10);
 	//Now move the leg over to the new position
-	struct coordinates reset = Vector(X_Vector,Y_Vector,leg,true);
+	struct coordinates reset = Vector(X_Vect,Y_Vect,leg,true,R_Vect);
 	reset.z = 30;
 	destination[0][leg-1] = reset.x;
 	destination[1][leg-1] = reset.y;
@@ -1195,7 +1195,7 @@ void DestinationUpdate(int leg)
 	//Vector to add to this
 //	struct coordinates leg_Vector = Vector(-X_Vect,-Y_Vect,leg,true);
 //	leg_Vector.z = 0;
-	struct coordinates newVector = Vector(-X_Vect,-Y_Vect,leg,false);
+	struct coordinates newVector = Vector(-X_Vect,-Y_Vect,leg,false,-R_Vect);
 	//Destination = current + new
 	destination[0][leg-1] = newVector.x + currentPosition[0][leg-1];
 	destination[1][leg-1] = newVector.y + currentPosition[1][leg-1];

@@ -483,7 +483,7 @@
 }
 
 % Less detailed TOC
-\setcounter{tocdepth}{3}
+\setcounter{tocdepth}{5}
 %No dots in toc
 \renewcommand{\cftdot}{}
 %\renewcommand{\cftsecafterpnum}{\text{  }}

@@ -1,7 +1,7 @@
 \subsubsection{Electronic design}
 In this project, the user interface is implemented in the form of an android application. Commands are communicated to a microcontroller via a serial connection with a Bluetooth module. The microcontroller does all of the calculations and performs the necessary algorithms to determine what should be done with which servo and then communicates this to the relevant servo motor. The algorithm for movement also takes some inputs from the microcontroller into account.\\
 
-The electronics to be implemented for this project therefore includes the following list. Each item is discussed separately below.
+The electronics to be implemented for this project is listed below. 
 \begin{itemize}
 \item Power regulation and supply.
 \item Support electronics for the microcontroller.
@@ -10,6 +10,7 @@ The electronics to be implemented for this project therefore includes the follow
 \item Digital output driving where applicable.
 \item Servo power control switch
 \end{itemize}
+Each of these items are discussed separately below.\\
 
 Power regulation and supply for the project can be divided into two parts. The first of these is the low voltage, low power part that supplies the microcontroller, Bluetooth module and support electronics. The second part is the higher voltage, high power part that supplies power exclusively to the servo motors. Both these supplies will be powered by Li-Ion 18650 cells because of their high power density. The nominal voltage of these cells are $3.7V$. The low voltage, low power supply can easily be powered from a single cell making use of a low dropout (LDO) linear regulator to provide the $3.3V$ rail required. A linear voltage regulator is not suited for the high power application, mainly for two reasons. The first of the two is that these regulators are rarely rated for use above $1.5A$. The second is that a linear regulator dissipates power in itself as heat in order to regulate voltage. This means that the voltage drop formed over the device to bring the output voltage down is dissipated in the device. The power dissipated can be quantified by
 
@@ -30,7 +31,7 @@ A better solution for regulation at high power is making use of a step-down DC-D
 
 The support electronics for the microcontroller includes everything necessary for it to be able to start after power up and function normally. The application note provided by the manufacturer has detailed instructions and schematics on this and it was implemented as recommended for this project. This includes ceramic capacitors on all of the power supply pins, electrolytic capacitors on the power rails, a high frequency crystal oscillator, timing capacitors, a reset switch, various pull-up and pull-down resistors and a selector for pulling the BOOT pin high or low. More details on this can be fond in the technical documentation section of the report.\\
 
-In order to protect digital input pins on the microcontroller as well as debouncing input signals from switches, a small interface circuit is used between an input and a digital pin. This is implemented from prior knowledge gained from earlier modules. Figure \ref{fig:InputProtection} shows the schematic for this.
+In order to protect digital input pins on the microcontroller, as well as debouncing input signals from switches, a small interface circuit is used between an input and a digital pin. This is implemented from prior knowledge gained in earlier modules. Figure \ref{fig:InputProtection} shows the schematic for this.
 
 \begin{figure}[H]
 \centering
@@ -41,7 +42,7 @@ In order to protect digital input pins on the microcontroller as well as debounc
 
 The Bluetooth module used in this project does all of the Bluetooth protocol and decryption automatically and makes the data available through the serial interface. This means that the module is powered by the rails of the microcontroller and all that is further required to receive information is to connect the $TX$ pin of the module to the \textit{USART\_RX} pin of the microcontroller.\\
 
-In order to make the actions and decisions of the robot more apparent to the user, a red, green and blue (RGB) LED array is connected to the microcontroller. Different colours can then be used to indicate different states of the robot. Since the LEDs can't be powered directly from a digital output pin, a driver will have to be built to protect both the microcontroller and the LEDs. Figure \ref{fig:LEDDriver} shows the schematic for this. Each LED requires a bipolar junction transistor (BJT)of type PNP. The PNP is required because the RGB LED has a common ground and therefore has to be switched on the positive side. The microcontroller is used to pull the base of the PNP  high or low. The LED will then switch off or on respectively.
+In order to make the actions and decisions of the robot more apparent to the user, a red, green and blue (RGB) LED array is connected to the microcontroller. Different colours can then be used to indicate different states of the robot. Since the LEDs can't be powered directly from a digital output pin, a driver will have to be built to protect both the microcontroller and the LEDs. Figure \ref{fig:LEDDriver} shows the schematic for this. Each LED requires a bipolar junction transistor (BJT) of type PNP. The PNP is required because the RGB LED has a common ground and therefore has to be switched on the positive side. The microcontroller is used to pull the base of the PNP  high or low. The LED will then switch off or on respectively.
 
 \begin{figure}[H]
 \centering

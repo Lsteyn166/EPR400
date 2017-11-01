@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\Objects\EPR400.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\EPR400.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Sun Oct 01 21:00:25 2017
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Wed Nov 01 18:01:27 2017
 <BR><P>
-<H3>Maximum Stack Usage =        584 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        608 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 __rt_entry_main &rArr; main &rArr; ResetLeg &rArr; IK &rArr; __hardfp_pow &rArr; sqrt &rArr; _dsqrt &rArr; __fpl_dnaninf
 <P>
@@ -257,7 +257,7 @@ Global Symbols
 <P><STRONG><a name="[143]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[84]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 584 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 608 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; ResetLeg &rArr; IK &rArr; __hardfp_pow &rArr; sqrt &rArr; _dsqrt &rArr; __fpl_dnaninf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -791,8 +791,8 @@ Global Symbols
 <LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ResetLeg
 </UL>
 
-<P><STRONG><a name="[9f]"></a>DestinationUpdate</STRONG> (Thumb, 250 bytes, Stack size 48 bytes, main.o(i.DestinationUpdate))
-<BR><BR>[Stack]<UL><LI>Max Depth = 480<LI>Call Chain = DestinationUpdate &rArr; Vector &rArr; Rotate &rArr; __hardfp_sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub
+<P><STRONG><a name="[9f]"></a>DestinationUpdate</STRONG> (Thumb, 268 bytes, Stack size 56 bytes, main.o(i.DestinationUpdate))
+<BR><BR>[Stack]<UL><LI>Max Depth = 496<LI>Call Chain = DestinationUpdate &rArr; Vector &rArr; Rotate &rArr; __hardfp_sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Vector
@@ -1195,14 +1195,15 @@ Global Symbols
 <P><STRONG><a name="[f]"></a>PendSV_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f7xx_it.o(i.PendSV_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f756xx.o(RESET)
 </UL>
-<P><STRONG><a name="[ee]"></a>ResetLeg</STRONG> (Thumb, 324 bytes, Stack size 88 bytes, main.o(i.ResetLeg))
-<BR><BR>[Stack]<UL><LI>Max Depth = 544<LI>Call Chain = ResetLeg &rArr; IK &rArr; __hardfp_pow &rArr; sqrt &rArr; _dsqrt &rArr; __fpl_dnaninf
+<P><STRONG><a name="[ee]"></a>ResetLeg</STRONG> (Thumb, 380 bytes, Stack size 112 bytes, main.o(i.ResetLeg))
+<BR><BR>[Stack]<UL><LI>Max Depth = 568<LI>Call Chain = ResetLeg &rArr; IK &rArr; __hardfp_pow &rArr; sqrt &rArr; _dsqrt &rArr; __fpl_dnaninf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Vector
 <LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetServo
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ServoUpdate
 <LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IK
 <LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
 </UL>
 <BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1374,8 +1375,8 @@ Global Symbols
 <P><STRONG><a name="[c]"></a>UsageFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f7xx_it.o(i.UsageFault_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f756xx.o(RESET)
 </UL>
-<P><STRONG><a name="[a1]"></a>Vector</STRONG> (Thumb, 732 bytes, Stack size 168 bytes, main.o(i.Vector))
-<BR><BR>[Stack]<UL><LI>Max Depth = 432<LI>Call Chain = Vector &rArr; Rotate &rArr; __hardfp_sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub
+<P><STRONG><a name="[a1]"></a>Vector</STRONG> (Thumb, 768 bytes, Stack size 176 bytes, main.o(i.Vector))
+<BR><BR>[Stack]<UL><LI>Max Depth = 440<LI>Call Chain = Vector &rArr; Rotate &rArr; __hardfp_sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dsub
 </UL>
 <BR>[Calls]<UL><LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
 <LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
@@ -1690,8 +1691,8 @@ Global Symbols
 <LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
 </UL>
 
-<P><STRONG><a name="[85]"></a>main</STRONG> (Thumb, 674 bytes, Stack size 40 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 584<LI>Call Chain = main &rArr; ResetLeg &rArr; IK &rArr; __hardfp_pow &rArr; sqrt &rArr; _dsqrt &rArr; __fpl_dnaninf
+<P><STRONG><a name="[85]"></a>main</STRONG> (Thumb, 682 bytes, Stack size 40 bytes, main.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 608<LI>Call Chain = main &rArr; ResetLeg &rArr; IK &rArr; __hardfp_pow &rArr; sqrt &rArr; _dsqrt &rArr; __fpl_dnaninf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Receive_IT
 <LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init
@@ -1822,6 +1823,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Vector
 <LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TranslateLeg
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ResetLeg
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DestinationUpdate
 <LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ieee754_rem_pio2
 <LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow

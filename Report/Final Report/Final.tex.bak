@@ -21,6 +21,7 @@
 \usepackage{subcaption}
 \bibliography{Final}
 \usepackage{enumitem}
+\captionsetup[table]{position=bottom}
 
 %\bibliographystyle{ieeetr}
 \begin{document}
