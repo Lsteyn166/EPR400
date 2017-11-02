@@ -88,10 +88,40 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subparagraph}{\numberline {4.2.3b}Results and observations}{54}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{\numberline {4.2.4}Qualification test 4 :}{55}
+\contentsline {paragraph}{\numberline {4.2.4}Qualification test 4 : Speed}{55}
 \defcounter {refsection}{0}\relax 
 \contentsline {subparagraph}{\numberline {4.2.4a}Qualification test}{55}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {4.2.4b}Results and observations}{55}
+\contentsline {subparagraph}{\numberline {4.2.4b}Results and observations}{56}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.}References}{56}
+\contentsline {paragraph}{\numberline {4.2.5}Qualification test 5 :Slopes}{56}
+\defcounter {refsection}{0}\relax 
+\contentsline {subparagraph}{\numberline {4.2.5a}Qualification test}{56}
+\defcounter {refsection}{0}\relax 
+\contentsline {subparagraph}{\numberline {4.2.5b}Results and observations}{57}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\numberline {4.2.6}Qualification test 6 :Slippery surfaces}{57}
+\defcounter {refsection}{0}\relax 
+\contentsline {subparagraph}{\numberline {4.2.6a}Qualification test}{57}
+\defcounter {refsection}{0}\relax 
+\contentsline {subparagraph}{\numberline {4.2.6b}Results and observations}{57}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.}Discussion}{58}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {5.1}Interpretation of results}{59}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {5.2}Aspects to be improved}{59}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {5.3}Strong points}{59}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {5.4}Under which circumstances will the current system fail?}{59}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {5.5}Design ergonomics}{59}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {5.6}Health and safety aspects of the design}{59}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {5.7}Social and legal impact and benefits of the design}{59}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {5.8}Environmental impact and benefits of the design}{59}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.}References}{60}

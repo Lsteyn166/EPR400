@@ -138,7 +138,7 @@ Simulations on all implemented software and analogue design&&\\\hline
 
 \end{tabular}
 \caption{Summary of results achieved}
-\label{my-label}
+\label{tab:sum}
 \end{table}
 
 \subsubsection{Qualification tests}
@@ -152,7 +152,7 @@ The objective is to prove that the robot is capable of moving in any direction f
 \textit{Equipment used}\\
 A canvas with lines in 30 degree increments is used to put the robot on.
 \textit{Experimental parameters and setup }\\
-The robot is turned on and placed in the centre of the canvas.
+The robot is turned on and placed in the centre of the canvas. The test is conducted in the field conditions listed in Table \ref{tab:sum}.
 \textit{Experimental protocol}\\
 The robot is instructed to move along one of the lines and then return to the centre by using the smartphone as remote control. Once back in the centre, the next line is followed. This process continues until all the lines have been followed.
 \subparagraph{Results and observations}
@@ -181,7 +181,7 @@ The same canvas used in \ref{par:1} is used for this qualification test. It has 
 \label{fig:Res2}
 \end{figure}
 \textit{Experimental parameters and setup }\\
-The robot is placed inside the smaller circle and switched on.
+The robot is placed inside the smaller circle and switched on. The test is conducted in the field conditions listed in Table \ref{tab:sum}.
 \textit{Experimental protocol}\\
 The robot is instructed to rotate from the smartphone application. After 90 degrees of rotation, the robot is instructed to stop and is then turned off. The robot should be within the bigger circle.
 \subparagraph{Results and observations}
@@ -203,7 +203,7 @@ The robot is still inside the larger circle after rotating 90 degrees.
 \textit{Equipment used}\\
 A small test track developed for this purpose is used. In order to compare performance between the smooth and rough terrain, the time to complete the track is recorded with a stopwatch application on a smartphone.
 \textit{Experimental parameters and setup }\\
-A rough terrain is simulated by scattering small, loose obstacles (foam blocks) over the test track. This is a realistic representation of a wide variety of terrain conditions. For preparation the robot is placed on the start line of the smooth test track and switched on. 
+A rough terrain is simulated by scattering small, loose obstacles (foam blocks) over the test track. This is a realistic representation of a wide variety of terrain conditions. For preparation the robot is placed on the start line of the smooth test track and switched on. The test is conducted in the field conditions listed in Table \ref{tab:sum}.
 \textit{Experimental protocol}\\
 The stopwatch is started and the robot is instructed to follow the line that forms the test track. When the robot reaches the end, the time on the stopwatch is recorded. The test track is scattered with the small obstacles and the procedure is repeated.
 \begin{figure}[H]
@@ -222,21 +222,86 @@ The stopwatch is started and the robot is instructed to follow the line that for
     \caption{Test setup for proving that the robot can easily walk on rough surfaces}
     \label{fig:Res4}
 \end{figure}
-\
+Figure \ref{fig:Res4} shows the test track for the two different tests.
 \subparagraph{Results and observations}
 \textit{Measurements}\\
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Course condition}&\textbf{Time}\\\hline
+Smooth&5:12\\\hline
+Rough & 6:20\\
+\hline
+\end{tabular}
+\caption{Results achieved for the test track}
+\label{my-label}
+\end{table}
 \textit{Description of results}\\
+The robot moves slower over the obstacles than on the smooth course.
 
-%Test 
-\paragraph{Qualification test \arabic{paragraph} :}
+%Test 4
+\paragraph{Qualification test \arabic{paragraph} : Speed}
 \subparagraph{Qualification test}
 \textit{Objectives of test/experiment}\\
+The objective of this test is to prove that the robot can reach a speed of 100mm/s
 \textit{Equipment used}\\
+A linear track designed for this experiment is used to measure the speed. It has markings that is a fixed distance apart that makes it easy to measure the distance travelled. The time will be recorded using a stopwatch application on a smartphone. 
+\begin{figure}[H]
+\centering
+\includegraphics[scale = 1]{pics/Res6.jpg}
+\caption{Robot on the track for measuring speed.}
+\label{fig:Res6}
+\end{figure}
+Figure \ref{fig:Res6} shows the robot on the track mentioned above.
 \textit{Experimental parameters and setup }\\
+The robot is placed at the start of the track and switched on. The test is conducted in the field conditions listed in Table \ref{tab:sum}.
 \textit{Experimental protocol}\\
+The stopwatch is started and the robot is instructed to move down the track as fast as possible. When the end of the track is reached, the time on the stopwatch is recorded.
 \subparagraph{Results and observations}
 \textit{Measurements}\\
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Distance}&\textbf{Time}&\textbf{Speed}\\\hline
+1.5m&3:07&8mm/s\\\hline
+\end{tabular}
+\caption{Results achieved for the speed test track}
+\label{my-label}
+\end{table}
 \textit{Description of results}\\
+The robot moves much slower than anticipated.
 
+%Test 5
+\paragraph{Qualification test \arabic{paragraph} :Slopes}
+\subparagraph{Qualification test}
+\textit{Objectives of test/experiment}\\
+The objective is to prove that the robot is capable of walking on a slanted surface without falling over.
+\textit{Equipment used}\\
+A plank is used to create the slanted surface. A long ruler is used to measure the incline of the plank.
+\textit{Experimental parameters and setup }\\
+The plank is angled at 10\%. This is ensured by making sure that the plank has a height of 10cm at the point that is 1m from the edge of the plank on the ground. The robot is put at the base of the plank. The test is conducted in the field conditions listed in Table \ref{tab:sum}.
+\textit{Experimental protocol}\\
+The robot is instructed to walk on the plank to see if it struggles or falls over at any stage in the process.
+\subparagraph{Results and observations}
+\textit{Description of results}\\
+The robot walks without any additional difficulty due to the incline. The robot was never close to falling over at any stage in the experiment.
 
+%Test 6
+\paragraph{Qualification test \arabic{paragraph} :Slippery surfaces}
+\subparagraph{Qualification test}
+\textit{Objectives of test/experiment}\\
+The objective is investigate the performance of the robot on a slippery surface
+\textit{Equipment used}\\
+A wooden floor is used as the slippery surface for the robot to walk on.
+\textit{Experimental parameters and setup }\\
+The robot is put on the wooden floor and turned on. The test is conducted in the field conditions listed in Table \ref{tab:sum}.
+\textit{Experimental protocol}\\
+The robot is instructed to walk on the wooden floor in both slow and rapid movements to investigate how the legged design functions on low traction environments.
+\subparagraph{Results and observations}
+\textit{Description of results}\\
+The robot with more difficulty on slippery surfaces than on surfaces withh higher traction.
 
+\secun{Discussion}
+\input{Disc.tex}
