@@ -58,70 +58,80 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {3.8}Software implementation}{35}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.9}Hardware design}{42}
+\contentsline {subsubsection}{\numberline {3.9}Hardware design}{43}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.10}Hardware implementation}{46}
+\contentsline {subsubsection}{\numberline {3.10}Hardware implementation}{47}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.11}Design summary}{47}
+\contentsline {subsubsection}{\numberline {3.11}Design summary}{49}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.}Results}{48}
+\contentsline {subsection}{\numberline {4.}Results}{50}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1}Summary of results achieved}{49}
+\contentsline {subsubsection}{\numberline {4.1}Summary of results achieved}{51}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.2}Qualification tests}{50}
+\contentsline {subsubsection}{\numberline {4.2}Summary of results achieved}{52}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{\numberline {4.2.1}Qualification test 1 : Holonomic translation}{50}
+\contentsline {subsubsection}{\numberline {4.3}Qualification tests}{53}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {4.2.1a}Qualification test}{50}
+\contentsline {paragraph}{\numberline {4.3.1}Qualification test 1 : Holonomic translation}{53}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {4.2.1b}Results and observations}{50}
+\contentsline {subparagraph}{\numberline {4.3.1a}Qualification test}{53}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{\numberline {4.2.2}Qualification test 2 : Rotation without translation}{51}
+\contentsline {subparagraph}{\numberline {4.3.1b}Results and observations}{53}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {4.2.2a}Qualification test}{51}
+\contentsline {paragraph}{\numberline {4.3.2}Qualification test 2 : Rotation without translation}{54}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {4.2.2b}Results and observations}{52}
+\contentsline {subparagraph}{\numberline {4.3.2a}Qualification test}{54}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{\numberline {4.2.3}Qualification test 3 :Speed on rough terrain}{53}
+\contentsline {subparagraph}{\numberline {4.3.2b}Results and observations}{55}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {4.2.3a}Qualification test}{53}
+\contentsline {paragraph}{\numberline {4.3.3}Qualification test 3 :Speed on rough terrain}{56}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {4.2.3b}Results and observations}{54}
+\contentsline {subparagraph}{\numberline {4.3.3a}Qualification test}{56}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{\numberline {4.2.4}Qualification test 4 : Speed}{55}
+\contentsline {subparagraph}{\numberline {4.3.3b}Results and observations}{57}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {4.2.4a}Qualification test}{55}
+\contentsline {paragraph}{\numberline {4.3.4}Qualification test 4 : Speed}{58}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {4.2.4b}Results and observations}{56}
+\contentsline {subparagraph}{\numberline {4.3.4a}Qualification test}{58}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{\numberline {4.2.5}Qualification test 5 :Slopes}{56}
+\contentsline {subparagraph}{\numberline {4.3.4b}Results and observations}{59}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {4.2.5a}Qualification test}{56}
+\contentsline {paragraph}{\numberline {4.3.5}Qualification test 5 :Slopes}{59}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {4.2.5b}Results and observations}{57}
+\contentsline {subparagraph}{\numberline {4.3.5a}Qualification test}{59}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{\numberline {4.2.6}Qualification test 6 :Slippery surfaces}{57}
+\contentsline {subparagraph}{\numberline {4.3.5b}Results and observations}{60}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {4.2.6a}Qualification test}{57}
+\contentsline {paragraph}{\numberline {4.3.6}Qualification test 6 :Slippery surfaces}{60}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {4.2.6b}Results and observations}{57}
+\contentsline {subparagraph}{\numberline {4.3.6a}Qualification test}{60}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.}Discussion}{58}
+\contentsline {subparagraph}{\numberline {4.3.6b}Results and observations}{60}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.1}Interpretation of results}{59}
+\contentsline {subsection}{\numberline {5.}Discussion}{61}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.2}Aspects to be improved}{59}
+\contentsline {subsubsection}{\numberline {5.1}Interpretation of results}{62}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.3}Strong points}{59}
+\contentsline {subsubsection}{\numberline {5.2}Aspects to be improved}{62}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.4}Under which circumstances will the current system fail?}{59}
+\contentsline {subsubsection}{\numberline {5.3}Strong points}{62}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.5}Design ergonomics}{59}
+\contentsline {subsubsection}{\numberline {5.4}Under which circumstances will the current system fail?}{63}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.6}Health and safety aspects of the design}{59}
+\contentsline {subsubsection}{\numberline {5.5}Design ergonomics}{63}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.7}Social and legal impact and benefits of the design}{59}
+\contentsline {subsubsection}{\numberline {5.6}Health and safety aspects of the design}{63}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.8}Environmental impact and benefits of the design}{59}
+\contentsline {subsubsection}{\numberline {5.7}Social and legal impact and benefits of the design}{63}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.}References}{60}
+\contentsline {subsubsection}{\numberline {5.8}Environmental impact and benefits of the design}{63}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.}Conclusion}{65}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {6.1}Summary of the work}{65}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {6.2}Summary of the observations and findings}{65}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {6.3}Suggestions for future work}{66}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {7.}References}{67}

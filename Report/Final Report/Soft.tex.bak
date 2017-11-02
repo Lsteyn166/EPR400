@@ -22,7 +22,7 @@ While this is the core of the algorithm, some additional functions need to be in
 \item Bluetooth is suddenly disconnected.
 \end{itemize}
 
-A more complete diagram illustrating the design implemented on the microcontroller can be seen in Figure \ref{fig:Soft2}.\\
+A more complete diagram illustrating the design implemented on the microcontroller can be seen in Figure \ref{fig:Soft2}. The colour of the block indicates the colour that the RGB LED on the robot would be in that state.\\
 
 Servos are controlled with a square pulse with a specific width. The standard for hobbyist servo motors with a $180^o$ movement range is that a high pulse of $1ms$ equates to $0^o$ while $2ms$ results in $180^o$. The period of this signal is $20ms$.\\
 
@@ -104,7 +104,7 @@ For the simplified case where 5 servo motors should be controlled, Table \ref{ta
 \subsubsection{Software implementation}
 For the implementation of the program on the microcontroller, the C programming language together with the KEIL microcontroller development kit, which is an integrated development environment (IDE), was used. The STM32 series microcontrollers come with an application called CubeMX that can be used to generate initialization code for a specific microcontroller. This was used to configure all of the peripherals used as well as the system clock settings.\\
 
-The algorithms developed and refined in Python was then translated to C and implemented in the software. Some of the functions implemented that were not included in the Python program are outlined below.\\
+The algorithms developed and refined in Python was then translated to C and implemented in the software. One important addition to the software used in Python is for the closed loop control system. In Python the legs would automatically be where they are instructed to be since this is a simulation. In the final implementation, sensors are added to the robot feet to sense that the leg makes contact with the ground. Some of the other functions implemented that were not included in the Python program are outlined below.\\
 
 
 \begin{figure}[H]

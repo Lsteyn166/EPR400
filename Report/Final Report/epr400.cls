@@ -476,7 +476,7 @@
   \vspace*{\stretch{4}}
 
   \begin{flushright}
-    {\normalsize Copy 1 of 4}
+    {\normalsize Copy 4 of 4}
   \end{flushright}
 }
 \newpage

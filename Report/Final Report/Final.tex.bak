@@ -57,7 +57,13 @@
 %Bibliography
 \newpage
 \printbibliography[heading=subbibnumbered]
+\section*{Part 5. Technical documentation}
 
+This main report is supplemented with technical documentation. This 
+provides  more  detail  on  the  software  that  was  used  in  the  
+experiments,  including  program  listings,  a  user  guide  and  circuit  
+designs. This section appears on the CD or DVD that accompanies this 
+report. 
 
 \end{document}
 

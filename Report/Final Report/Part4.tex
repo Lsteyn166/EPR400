@@ -93,15 +93,15 @@ Implementation of inclinometer sensor & An inclinometer was planned to give the 
 \multicolumn{3}{|l|}{\textbf{Mission requirements of the product}}\\
 \hline
 
-The robot should be able to move in a given direction in 30 degree increments from a stationary position. & The robot is able to move holonomically, therefore able to move in 30 degree increments.&\\\hline
+The robot should be able to move in a given direction in 30 degree increments from a stationary position. & The robot is able to move holonomically, therefore able to move in 30 degree increments.&4.2.1\\\hline
 
-The robot should be able to rotate 90 degrees without translating the centre of the body by more than 5\% of the body diameter.&&\\\hline
+The robot should be able to rotate 90 degrees without translating the centre of the body by more than 5\% of the body diameter.&The robot is able to do this.&4.2.2\\\hline
 
-The time it requires to complete a manoeuvre should not vary more than 25\% between smooth and rough surfaces.&&\\\hline
+The time it requires to complete a manoeuvre should not vary more than 25\% between smooth and rough surfaces.&The time differs by about 20\%&4.2.3\\\hline
 
-The robot should be able to walk at a speed of at least 100mm/s.&&\\\hline
+The robot should be able to walk at a speed of at least 100mm/s.&The robot is only capable of 8mm/s&4.2.4\\\hline
 
-The robot should be able to walk on a surface with a 10\% incline without falling over.&The robot can successfully walk on a slanted surface with an incline of up to 10\% &\\\hline
+The robot should be able to walk on a surface with a 10\% incline without falling over.&The robot can successfully walk on a slanted surface with an incline of up to 10\% &4.2.5\\\hline
 
 \multicolumn{3}{|l|}{}\\
 \multicolumn{3}{|l|}{\textbf{Field conditions}}\\
@@ -114,31 +114,41 @@ The robot should stay dry to protect electronics.&The robot was never tested in 
 
 The robot should work in normal temperature conditions for South Africa.&The robot never experienced any issues during the testing phase that relates to ambient temperature, relative humidity or any other atmospheric conditions&\\\hline
 
+\end{tabular}
+\caption{Summary of results achieved}
+\label{tab:sum}
+\end{table}
+
+\subsubsection{Summary of results achieved}
+\begin{table}[H]
+\begin{tabular}{|p{5cm}|p{5cm}|p{5cm}|}
+\hline
+
 \multicolumn{3}{|l|}{}\\
 \multicolumn{3}{|l|}{\textbf{Specifications}}\\
 \hline
-The smartphone application should communicate commands from the user interface to the robot at a frequency of at least 10 Hz.&&\\\hline
+The smartphone application should communicate commands from the user interface to the robot at a frequency of at least 10 Hz.&The smartphone application does do this&\\\hline
 
-The inverse kinematics calculator of the robot should be able to calculate the joint positions correctly to move each leg to the desired location.&&\\\hline
+The inverse kinematics calculator of the robot should be able to calculate the joint positions correctly to move each leg to the desired location.& This works as designed&\\\hline
 
-The servo motor angles should all be within 5 degrees from the calculated values.&&\\\hline
+The servo motor angles should all be within 5 degrees from the calculated values.& The servo motors are all accurate to within 5 degrees&\\\hline
 
 \multicolumn{3}{|l|}{}\\
 \multicolumn{3}{|l|}{\textbf{Deliverables}}\\
 \hline
-Control code for inverse kinematics and servo control.&&\\\hline
+Control code for inverse kinematics and servo control.&This was completed and is functional&\\\hline
 
-Android application with a user interface for control of the robot.&&\\\hline
+Android application with a user interface for control of the robot.&This was completed and is functional&\\\hline
 
-Circuits implemented on PCB for interfacing all hardware with the microcontroller.&&\\\hline
+Circuits implemented on PCB for interfacing all hardware with the microcontroller.&This was performed on Veroboard instead of PCB&\\\hline
 
-Robot body and legs.&&\\\hline
+Robot body and legs.& This was all successfully 3D printed&\\\hline
 
-Simulations on all implemented software and analogue design&&\\\hline
+Simulations on all implemented software and analogue design& Tis was completed and is functional&\\\hline
 
 \end{tabular}
-\caption{Summary of results achieved}
-\label{tab:sum}
+\caption{Summary of results achieved (continued)}
+\label{tab:sum2}
 \end{table}
 
 \subsubsection{Qualification tests}
@@ -305,3 +315,7 @@ The robot with more difficulty on slippery surfaces than on surfaces withh highe
 
 \secun{Discussion}
 \input{Disc.tex}
+
+\secun{Conclusion}
+\input{Conc.tex}
+
