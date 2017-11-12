@@ -2,136 +2,60 @@
 \defcounter {refsection}{0}\relax 
 \select@language {british}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Part 2. Summary}{v}
+\contentsline {subsection}{\numberline {1.}System block}{1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{What has been done}{vi}
+\contentsline {subsection}{\numberline {2.}Systems level description of design}{2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{What has been achieved}{vi}
+\contentsline {subsection}{\numberline {3.}Block diagrams of modules}{2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Findings}{vi}
+\contentsline {subsection}{\numberline {4.}Description of modules}{2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Contribution}{vi}
+\contentsline {subsection}{\numberline {5.}Description of interfacing with other modules}{2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Part 3. Project identification: approved Project Proposal}{viii}
-\defcounter {refsection}{1}\relax 
-\contentsline {subsection}{1. Problem statement}{ix}
-\defcounter {refsection}{1}\relax 
-\contentsline {subsection}{2. Project requirements}{x}
-\defcounter {refsection}{1}\relax 
-\contentsline {subsection}{3. Functional analysis}{xii}
-\defcounter {refsection}{1}\relax 
-\contentsline {subsection}{4. Specifications}{xiii}
-\defcounter {refsection}{1}\relax 
-\contentsline {subsection}{5. Deliverables}{xvi}
-\defcounter {refsection}{1}\relax 
-\contentsline {subsection}{\numberline {6.}References}{xviii}
+\contentsline {subsection}{\numberline {6.}Complete circuit diagram}{3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Part 4. Main report}{xix}
+\contentsline {subsection}{\numberline {7.}Description of circuit}{6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.}Literature study}{1}
+\contentsline {subsection}{\numberline {8.}Circuit diagrams of modules}{6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {1.1}Background and context}{1}
+\contentsline {subsection}{\numberline {9.}Description of circuit diagrams}{6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {1.2}Application of background to this project}{3}
+\contentsline {subsection}{\numberline {10.}Timing diagrams}{6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.}Approach}{5}
+\contentsline {subsection}{\numberline {11.}VHDL code}{6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.1}Design alternatives}{5}
+\contentsline {subsection}{\numberline {12.}PC board layout}{6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.2}Preferred solution}{6}
+\contentsline {subsection}{\numberline {13.}Components placement on the board}{7}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.}Design and implementation}{8}
+\contentsline {subsection}{\numberline {14.}Wiring diagram of the product mounted in the enclosure}{7}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.1}Background}{8}
+\contentsline {subsection}{\numberline {15.}Mechanical design}{7}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.2}Theoretical analysis and modelling}{10}
+\contentsline {subsection}{\numberline {16.}Acceptance test procedure}{12}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.3}Simulation}{19}
+\contentsline {subsection}{\numberline {17.}Pictures of final product}{12}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.4}Optimisation}{24}
+\contentsline {subsection}{\numberline {18.}User guide}{14}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.5}Electronic design}{25}
+\contentsline {subsection}{\numberline {19.}List of components cost and suppliers}{14}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.6}Electronic implementation}{29}
+\contentsline {subsection}{\numberline {20.}Description of interfacing with other entities}{14}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.7}Software design}{29}
+\contentsline {subsection}{\numberline {21.}Flow diagram of software}{14}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.8}Software implementation}{35}
+\contentsline {subsection}{\numberline {22.}UML diagrams}{15}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.9}Hardware design}{43}
+\contentsline {subsection}{\numberline {23.}Complete source code}{16}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.10}Hardware implementation}{47}
+\contentsline {subsection}{\numberline {24.}Explanation of software modules}{44}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.11}Design summary}{49}
+\contentsline {subsection}{\numberline {25.}Simulations}{44}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.}Results}{50}
+\contentsline {subsection}{\numberline {26.}Hardware, software and operating system requirements}{56}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1}Summary of results achieved}{51}
+\contentsline {subsection}{\numberline {27.}Software user guide}{56}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.2}Summary of results achieved}{52}
+\contentsline {subsection}{\numberline {28.}Software acceptance test procedure}{56}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.3}Qualification tests}{53}
-\defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{\numberline {4.3.1}Qualification test 1 : Holonomic translation}{53}
-\defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {4.3.1a}Qualification test}{53}
-\defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {4.3.1b}Results and observations}{53}
-\defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{\numberline {4.3.2}Qualification test 2 : Rotation without translation}{54}
-\defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {4.3.2a}Qualification test}{54}
-\defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {4.3.2b}Results and observations}{55}
-\defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{\numberline {4.3.3}Qualification test 3 :Speed on rough terrain}{56}
-\defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {4.3.3a}Qualification test}{56}
-\defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {4.3.3b}Results and observations}{57}
-\defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{\numberline {4.3.4}Qualification test 4 : Speed}{58}
-\defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {4.3.4a}Qualification test}{58}
-\defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {4.3.4b}Results and observations}{59}
-\defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{\numberline {4.3.5}Qualification test 5 :Slopes}{59}
-\defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {4.3.5a}Qualification test}{59}
-\defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {4.3.5b}Results and observations}{60}
-\defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{\numberline {4.3.6}Qualification test 6 :Slippery surfaces}{60}
-\defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {4.3.6a}Qualification test}{60}
-\defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {4.3.6b}Results and observations}{60}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.}Discussion}{61}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.1}Interpretation of results}{62}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.2}Aspects to be improved}{62}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.3}Strong points}{62}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.4}Under which circumstances will the current system fail?}{63}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.5}Design ergonomics}{63}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.6}Health and safety aspects of the design}{63}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.7}Social and legal impact and benefits of the design}{63}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.8}Environmental impact and benefits of the design}{63}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.}Conclusion}{65}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {6.1}Summary of the work}{65}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {6.2}Summary of the observations and findings}{65}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {6.3}Suggestions for future work}{66}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.}References}{67}
+\contentsline {subsection}{\numberline {29.}Experimental data}{56}

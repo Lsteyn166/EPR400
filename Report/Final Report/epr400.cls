@@ -342,7 +342,7 @@
 \newcommand{\secunderline}[1]{
     \underline{\smash{\fontsize{14pt}{14pt}\selectfont\bfseries{#1}}}}
     
-\newcommand{\secun}[1]{\newpage \begin{mdframed}[topline = false, bottomline = true, rightline = false, leftline = false]
+\newcommand{\secun}[1]{\begin{mdframed}[topline = false, bottomline = true, rightline = false, leftline = false]
 \subsection{#1}
 \end{mdframed}}
 
@@ -476,7 +476,7 @@
   \vspace*{\stretch{4}}
 
   \begin{flushright}
-    {\normalsize Copy 4 of 4}
+    %{\normalsize Copy 4 of 4}
   \end{flushright}
 }
 \newpage

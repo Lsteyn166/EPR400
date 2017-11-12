@@ -22,6 +22,7 @@
 \bibliography{Final}
 \usepackage{enumitem}
 \captionsetup[table]{position=bottom}
+\usepackage{listings}
 
 %\bibliographystyle{ieeetr}
 \begin{document}
@@ -39,32 +40,25 @@
 \pagenumbering{roman}
 \setcounter{page}{1}
 %Import preamble
-\input{Part1}
+%\input{Part1}
 %Import TOC
 \newpage
-\markright{Part 1. Preamble}
+\markright{Part 5. Technical documentation}
 \setlength{\cftsubsecnumwidth}{1em}
 \setlength{\cftsubsubsecnumwidth}{2em}
 \tocloftpagestyle{fancy}
-\tableofcontents
+
 %List of abbreviations
-\input{ListOfAbbreviations}
+%\input{ListOfAbbreviations}
 %% Import the content
-\input{Part2}
-\input{Part3}
+%\input{Part2}
+%\input{Part3}
 %Main report
-\input{Part4}
+%\input{Part4}
+\input{Part5}
 %Bibliography
 \newpage
 \printbibliography[heading=subbibnumbered]
-\section*{Part 5. Technical documentation}
-
-This main report is supplemented with technical documentation. This 
-provides  more  detail  on  the  software  that  was  used  in  the  
-experiments,  including  program  listings,  a  user  guide  and  circuit  
-designs. This section appears on the CD or DVD that accompanies this 
-report. 
-
 \end{document}
 
 %% End of File.

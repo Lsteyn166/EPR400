@@ -45,12 +45,10 @@
     <generic>latex</generic>
     <provides type="dynamic">
       <file>Final.aux</file>
-      <file>Final1-blx.aux</file>
       <file>Final-blx.bib</file>
     </provides>
     <requires type="dynamic">
       <file>Final.bbl</file>
-      <file>Final1-blx.bbl</file>
     </requires>
     <requires type="static">
       <file>blx-compat.def</file>
@@ -85,34 +83,6 @@
     </provides>
     <requires type="dynamic">
       <file>Final.aux</file>
-      <file>Final-blx.bib</file>
-    </requires>
-    <requires type="editable">
-      <file>Final.bib</file>
-    </requires>
-    <requires type="static">
-      <file>biblatex.bst</file>
-    </requires>
-  </external>
-  <external package="biblatex" priority="5" active="0">
-    <generic>bibtex</generic>
-    <cmdline>
-      <binary>bibtex8</binary>
-      <option>--wolfgang</option>
-      <option>--min_crossrefs 2</option>
-      <infile>Final1-blx</infile>
-    </cmdline>
-    <input>
-      <file>Final1-blx.aux</file>
-    </input>
-    <output>
-      <file>Final1-blx.bbl</file>
-    </output>
-    <provides type="dynamic">
-      <file>Final1-blx.bbl</file>
-    </provides>
-    <requires type="dynamic">
-      <file>Final1-blx.aux</file>
       <file>Final-blx.bib</file>
     </requires>
     <requires type="editable">
